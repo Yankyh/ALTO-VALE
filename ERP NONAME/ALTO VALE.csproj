@@ -32,8 +32,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.ReportViewer.WinForms">
+      <HintPath>..\..\..\..\..\..\..\LJM SOFT\LJM Soft Project\GitRepo\LJMSOFT\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.140.340.80\lib\net40\Microsoft.ReportViewer.WinForms.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web.Services" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -45,14 +49,37 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.cs">
+    <Compile Include="DAL\Connection.cs" />
+    <Compile Include="DAL\StatusFilter.cs" />
+    <Compile Include="VIEW\MD_SISTEMA\IMenu.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="VIEW\MD_SISTEMA\IMenu.Designer.cs">
+      <DependentUpon>IMenu.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="VIEW\PS_PESSOA\GPessoa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VIEW\PS_PESSOA\GPessoa.Designer.cs">
+      <DependentUpon>GPessoa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VIEW\PS_PESSOA\IPessoa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VIEW\PS_PESSOA\IPessoa.Designer.cs">
+      <DependentUpon>IPessoa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VIEW\PS_PESSOA\IPessoaEndereco.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VIEW\PS_PESSOA\IPessoaEndereco.Designer.cs">
+      <DependentUpon>IPessoaEndereco.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="VIEW\MD_SISTEMA\IMenu.resx">
+      <DependentUpon>IMenu.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -61,7 +88,17 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="VIEW\PS_PESSOA\GPessoa.resx">
+      <DependentUpon>GPessoa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VIEW\PS_PESSOA\IPessoa.resx">
+      <DependentUpon>IPessoa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VIEW\PS_PESSOA\IPessoaEndereco.resx">
+      <DependentUpon>IPessoaEndereco.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -74,6 +111,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\backGround.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\backGround2.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\backGround3.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

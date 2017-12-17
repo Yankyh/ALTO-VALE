@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ERP_NONAME.Properties
+namespace ALTO_VALE.Properties
 {
 
 
