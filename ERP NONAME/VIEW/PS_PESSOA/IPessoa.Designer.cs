@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.observacaoTabPage = new System.Windows.Forms.TabPage();
             this.ObservacaoTextBox = new System.Windows.Forms.RichTextBox();
@@ -71,13 +71,16 @@
             this.clienteCheckBox = new System.Windows.Forms.CheckBox();
             this.fornecedorCheckBox = new System.Windows.Forms.CheckBox();
             this.checkBox3 = new System.Windows.Forms.CheckBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.contatoDataGridView = new System.Windows.Forms.DataGridView();
+            this.button1 = new System.Windows.Forms.Button();
+            this.voltarButton = new System.Windows.Forms.Button();
+            this.liberarButton = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.observacaoTabPage.SuspendLayout();
             this.pessoaEnderecoTabpage.SuspendLayout();
             this.contatoTabPage.SuspendLayout();
             this.abrangenciaTabPage.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.contatoDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -117,7 +120,7 @@
             // 
             // pessoaEnderecoTabpage
             // 
-            this.pessoaEnderecoTabpage.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.pessoaEnderecoTabpage.BackColor = System.Drawing.SystemColors.Window;
             this.pessoaEnderecoTabpage.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.pessoaEnderecoTabpage.Controls.Add(this.estadoTextBox);
             this.pessoaEnderecoTabpage.Controls.Add(this.label5);
@@ -168,7 +171,7 @@
             this.cepComboBox.Size = new System.Drawing.Size(248, 26);
             this.cepComboBox.TabIndex = 43;
             this.cepComboBox.DropDown += new System.EventHandler(this.cepDropDown);
-            this.cepComboBox.DropDownClosed += new System.EventHandler(this.cepDropDownClosed);
+            this.cepComboBox.TextChanged += new System.EventHandler(this.cepTextChanged);
             // 
             // numeroTextBox
             // 
@@ -278,9 +281,10 @@
             // 
             // contatoTabPage
             // 
-            this.contatoTabPage.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.contatoTabPage.BackColor = System.Drawing.SystemColors.Window;
             this.contatoTabPage.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.contatoTabPage.Controls.Add(this.dataGridView1);
+            this.contatoTabPage.Controls.Add(this.button1);
+            this.contatoTabPage.Controls.Add(this.contatoDataGridView);
             this.contatoTabPage.Location = new System.Drawing.Point(4, 27);
             this.contatoTabPage.Name = "contatoTabPage";
             this.contatoTabPage.Size = new System.Drawing.Size(963, 126);
@@ -477,7 +481,7 @@
             // 
             // abrangenciaTabPage
             // 
-            this.abrangenciaTabPage.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.abrangenciaTabPage.BackColor = System.Drawing.SystemColors.Window;
             this.abrangenciaTabPage.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.abrangenciaTabPage.Controls.Add(this.checkBox3);
             this.abrangenciaTabPage.Controls.Add(this.fornecedorCheckBox);
@@ -518,32 +522,71 @@
             this.checkBox3.Text = "checkBox3";
             this.checkBox3.UseVisualStyleBackColor = true;
             // 
-            // dataGridView1
+            // contatoDataGridView
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.LightGray;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
-            this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.dataGridView1.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.RaisedVertical;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(2, 1);
-            this.dataGridView1.MultiSelect = false;
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
-            this.dataGridView1.RowHeadersVisible = false;
-            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(956, 122);
-            this.dataGridView1.TabIndex = 3;
+            this.contatoDataGridView.AllowUserToAddRows = false;
+            dataGridViewCellStyle8.BackColor = System.Drawing.Color.LightGray;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.contatoDataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle8;
+            this.contatoDataGridView.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
+            this.contatoDataGridView.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.contatoDataGridView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.RaisedVertical;
+            this.contatoDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.contatoDataGridView.Location = new System.Drawing.Point(2, 23);
+            this.contatoDataGridView.MultiSelect = false;
+            this.contatoDataGridView.Name = "contatoDataGridView";
+            this.contatoDataGridView.ReadOnly = true;
+            this.contatoDataGridView.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
+            this.contatoDataGridView.RowHeadersVisible = false;
+            this.contatoDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.contatoDataGridView.Size = new System.Drawing.Size(957, 99);
+            this.contatoDataGridView.TabIndex = 3;
+            // 
+            // button1
+            // 
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(934, -2);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(24, 25);
+            this.button1.TabIndex = 60;
+            this.button1.Text = "+";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // voltarButton
+            // 
+            this.voltarButton.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.voltarButton.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.voltarButton.Location = new System.Drawing.Point(672, 324);
+            this.voltarButton.Name = "voltarButton";
+            this.voltarButton.Size = new System.Drawing.Size(103, 32);
+            this.voltarButton.TabIndex = 45;
+            this.voltarButton.Text = "Voltar";
+            this.voltarButton.UseVisualStyleBackColor = true;
+            this.voltarButton.Click += new System.EventHandler(this.voltarButtonOnClick);
+            // 
+            // liberarButton
+            // 
+            this.liberarButton.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.liberarButton.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.liberarButton.Location = new System.Drawing.Point(568, 324);
+            this.liberarButton.Name = "liberarButton";
+            this.liberarButton.Size = new System.Drawing.Size(103, 32);
+            this.liberarButton.TabIndex = 46;
+            this.liberarButton.Text = "Liberar";
+            this.liberarButton.UseVisualStyleBackColor = true;
+            this.liberarButton.Visible = false;
+            this.liberarButton.Click += new System.EventHandler(this.liberarButtonOnClick);
             // 
             // IPessoa
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.Azure;
+            this.BackColor = System.Drawing.SystemColors.ControlLight;
             this.ClientSize = new System.Drawing.Size(993, 363);
+            this.Controls.Add(this.liberarButton);
+            this.Controls.Add(this.voltarButton);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.celularTextBox);
             this.Controls.Add(this.label3);
@@ -576,7 +619,7 @@
             this.contatoTabPage.ResumeLayout(false);
             this.abrangenciaTabPage.ResumeLayout(false);
             this.abrangenciaTabPage.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.contatoDataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -626,6 +669,9 @@
         private System.Windows.Forms.CheckBox checkBox3;
         private System.Windows.Forms.CheckBox fornecedorCheckBox;
         private System.Windows.Forms.CheckBox clienteCheckBox;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView contatoDataGridView;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button voltarButton;
+        private System.Windows.Forms.Button liberarButton;
     }
 }
