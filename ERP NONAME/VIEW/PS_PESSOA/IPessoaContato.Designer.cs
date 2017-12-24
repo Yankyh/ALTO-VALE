@@ -166,6 +166,7 @@
             this.cancelarButton.TabIndex = 62;
             this.cancelarButton.Text = "Cancelar";
             this.cancelarButton.UseVisualStyleBackColor = true;
+            this.cancelarButton.Click += new System.EventHandler(this.cancelarButtonOnClick);
             // 
             // gravarButton
             // 

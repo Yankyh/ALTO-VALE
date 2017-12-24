@@ -41,6 +41,7 @@
             this.pessoaDataGridView.AllowUserToAddRows = false;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.LightGray;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.MenuHighlight;
             this.pessoaDataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.pessoaDataGridView.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
             this.pessoaDataGridView.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -58,7 +59,7 @@
             dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.MenuHighlight;
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.pessoaDataGridView.DefaultCellStyle = dataGridViewCellStyle3;

@@ -62,11 +62,11 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
 
         private void gravarButtonOnClick(object sender, EventArgs e)
         {
-            inserirRegistro("Gravar");
+            alterarRegistro("Gravar");
         }
 
         //Inserir informações com o gravar
-        private void inserirRegistro(String origem)
+        private void alterarRegistro(String origem)
         {
             //Verifica se os campos obrigatorios foram preenchidos
             if (verificarCamposObrigatorios() == false)
@@ -90,17 +90,20 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
                     String query = "INSERT INTO PS_PESSOACONTATO (STATUS, TIPO, TELEFONE, CELULAR, EMAIL, OBSERVACAO) VALUES (1," + tipo + ", '" + telefone + "', '" + celular + "', '" + email + "', '" + observacao + "')";
                     connection.Inserir(query);
 
-                    String query1 = "SELECT MAX(HANDLE) HANDLE FROM PS_PESSOACONTATO WHERE TIPO = " + tipo + " AND TELEFONE = '" + telefone + "' AND CELULAR = '" + celular + "' AND EMAIL = '" + email + "' AND OBSERVACAO = '" + observacao + "'";
+                    String query1 = " SELECT MAX(A.HANDLE) HANDLE " +
+                                    " FROM PS_PESSOACONTATO A" +
+                                    " WHERE A.TIPO = " + tipo + " AND A.TELEFONE = '" + telefone + "' AND A.CELULAR = '" + celular + "' AND A.EMAIL = '" + email + "' AND A.OBSERVACAO = '" + observacao + "'";
+
                     SqlDataReader reader = connection.Pesquisa(query1);
                     int maxHandleContato = 0;
                     while (reader.Read())
                     {
                         maxHandleContato = Convert.ToInt32(reader["HANDLE"]);
+                        contatoHandle = maxHandleContato;
                     }
                     reader.Close();
                     String query2 = "INSERT INTO PS_PESSOACONTATOFK (PESSOA, CONTATO) VALUES (" + pessoaHandle + ", " + maxHandleContato + ")";
                     connection.Inserir(query2);
-                    controleDeStatus();
                 }
                 //Alterar
                 if (origem == "Alterar")
@@ -108,14 +111,23 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
                     String query = " UPDATE PS_PESSOACONTATO" +
                                    " SET " +
                                    " STATUS = 3," +
-                                   " TELEFONE = '"+telefone+"'," +
-                                   " CELULAR = '"+celular+"'," +
-                                   " EMAIL = '"+email+"'," +
-                                   " OBSERVACAO = '"+observacao+"'," +
-                                   " TIPO = "+tipo+"" +
-                                   " WHERE HANDLE = "+contatoHandle;
+                                   " TELEFONE = '" + telefone + "'," +
+                                   " CELULAR = '" + celular + "'," +
+                                   " EMAIL = '" + email + "'," +
+                                   " OBSERVACAO = '" + observacao + "'," +
+                                   " TIPO = " + tipo + "" +
+                                   " WHERE HANDLE = " + contatoHandle;
                     connection.Inserir(query);
                 }
+                if (origem == "Cancelar")
+                {
+                    String query = " UPDATE PS_PESSOACONTATO" +
+                                   " SET " +
+                                   " STATUS = 4" +
+                                   " WHERE HANDLE = " + contatoHandle;
+                    connection.Inserir(query);
+                }
+                controleDeStatus();
             }
         }
 
@@ -162,7 +174,7 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
             String query = " SELECT B.NOME" +
                            " FROM PS_PESSOACONTATO A" +
                            " INNER JOIN MD_STATUS B ON B.HANDLE = A.STATUS" +
-                           " WHERE A.HANDLE = "+contatoHandle;
+                           " WHERE A.HANDLE = " + contatoHandle;
             SqlDataReader reader = connection.Pesquisa(query);
             while (reader.Read())
             {
@@ -175,7 +187,6 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
                 cancelarButton.Visible = true;
                 voltarButton.Visible = false;
                 liberarButton.Visible = true;
-                this.Text = "Contato - Cadastrado";
                 liberarButton.Location = new Point(564, 205);
                 cancelarButton.Location = new Point(668, 205);
             }
@@ -184,7 +195,6 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
                 if (status == "Ag. modificações")
                 {
                     //Controle de status
-
                     emailTextBox.Enabled = true;
                     tipoComboBox.Enabled = true;
                     telefoneTextBox.Enabled = true;
@@ -195,7 +205,6 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
                     cancelarButton.Visible = true;
                     voltarButton.Visible = false;
                     gravarButton.Visible = false;
-                    this.Text = "Contato - Ag. modificações";
                     liberarButton.Location = new Point(564, 205);
                     cancelarButton.Location = new Point(668, 205);
                 }
@@ -214,18 +223,36 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
                         cancelarButton.Visible = false;
                         voltarButton.Visible = true;
                         liberarButton.Visible = false;
-                        this.Text = "Pessoa - Ativo";
                         voltarButton.Location = new Point(668, 205);
                     }
                     else
                     {
+                        if (status == "Cancelado")
+                        {
+                            //Caso esteja ativo, não permite alterar antes de voltar o registro
+                            emailTextBox.Enabled = false;
+                            tipoComboBox.Enabled = false;
+                            telefoneTextBox.Enabled = false;
+                            celularTextBox.Enabled = false;
+                            ObservacaoTextBox.Enabled = false;
+                            //Controle de botões (Criar classe para isso)
+                            gravarButton.Visible = false;
+                            cancelarButton.Visible = false;
+                            voltarButton.Visible = true;
+                            liberarButton.Visible = false;
+                            voltarButton.Location = new Point(668, 205);
+                        }
+                        else
+                        {
                             gravarButton.Visible = true;
                             cancelarButton.Visible = false;
                             voltarButton.Visible = false;
                             liberarButton.Visible = false;
                             gravarButton.Location = new Point(668, 205);
+                        }
                     }
                 }
+                this.Text = "Contato - " + status;
             }
         }
 
@@ -281,9 +308,14 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
             contatoHandle = 0;
         }
 
+        private void cancelarButtonOnClick(object sender, EventArgs e)
+        {
+            alterarRegistro("Cancelar");
+        }
+
         private void liberarButtonOnClick(object sender, EventArgs e)
         {
-            inserirRegistro("Alterar");
+            alterarRegistro("Alterar");
             controleDeStatus();
         }
     }
