@@ -155,6 +155,7 @@
             this.voltarButton.TabIndex = 64;
             this.voltarButton.Text = "Voltar";
             this.voltarButton.UseVisualStyleBackColor = true;
+            this.voltarButton.Click += new System.EventHandler(this.voltarButtonOnClick);
             // 
             // cancelarButton
             // 
@@ -207,9 +208,12 @@
             this.Controls.Add(this.tipoComboBox);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.telefoneTextBox);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "IPessoaContato";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Contato";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.contatoFormClosed);
             this.ResumeLayout(false);
             this.PerformLayout();
 

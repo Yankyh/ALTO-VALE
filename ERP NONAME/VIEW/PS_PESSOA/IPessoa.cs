@@ -28,7 +28,7 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
             //preenche o formulario caso seja diferente de 0
             if(pessoaHandle == 0)
             {
-                controleDeStatus("Vazio");
+                controleDeStatus();
             }
             else
             {
@@ -46,7 +46,7 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
             {
                     //.Gravar o registro
                     gravarRegistroPessoa();
-                    controleDeStatus("Cadastrado");
+                    controleDeStatus();
             }          
         }
 
@@ -441,7 +441,7 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
             //Preenche o contato
             preencherContatoPessoa();
 
-            controleDeStatus(situacao);
+            controleDeStatus();
         }
 
         private void voltarButtonOnClick(object sender, EventArgs e)
@@ -453,7 +453,7 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
                 String query1 = "UPDATE PS_PESSOA SET STATUS  = 2 WHERE HANDLE = " + buscarHandlePessoa();
                 SqlDataReader reader = connection.Pesquisa(query1);
                 reader.Close();
-                controleDeStatus("Ag. modificações");
+                controleDeStatus();
             }
             else
             {
@@ -490,7 +490,7 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
                 reader.Close();
                 //Grava o registro
                 gravarRegistroPessoa();
-                controleDeStatus("Ativo");
+                controleDeStatus();
             }
             else
             {
@@ -503,8 +503,19 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
 
 
         //Controle de status
-        public void controleDeStatus(String status)
+        public void controleDeStatus()
         {
+            String status = "";
+            String query = " SELECT B.NOME" +
+                           " FROM PS_PESSOA A" +
+                           " INNER JOIN MD_STATUS B ON B.HANDLE = A.STATUS" +
+                           " WHERE A.HANDLE = " + buscarHandlePessoa();
+            SqlDataReader reader = connection.Pesquisa(query);
+            while (reader.Read())
+            {
+                status = reader["NOME"].ToString();
+            }
+            reader.Close();
             if (status == "Cadastrado")
             {                    
                 gravarButton.Visible = false;
@@ -577,14 +588,11 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
                     }
                     else
                     {
-                        if(status == "Vazio")
-                        {
                             gravarButton.Visible = true;
                             cancelarButton.Visible = false;
                             voltarButton.Visible = false;
                             liberarButton.Visible = false;
                             gravarButton.Location = new Point(874, 286);
-                        }
                     }
                 }
             }
@@ -610,21 +618,23 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
         {
             BindingSource Binding = new BindingSource();
             contatoDataGridView.AutoGenerateColumns = true;
-            String query = " SELECT D.NOME TIPO, C.TELEFONE, C.CELULAR, C.EMAIL, C.OBSERVACAO, C.HANDLE" +
+            String query = " SELECT E.NOME SITUAÇÃO, D.NOME TIPO, C.TELEFONE, C.CELULAR, C.EMAIL, C.OBSERVACAO, C.HANDLE" +
                            " FROM PS_PESSOA A" +
                            " INNER JOIN PS_PESSOACONTATOFK B ON B.PESSOA = A.HANDLE" +
                            " INNER JOIN PS_PESSOACONTATO C ON C.HANDLE = B.CONTATO" +
                            " INNER JOIN PS_PESSOACONTATOTIPO D ON D.HANDLE = C.TIPO" +
+                           " INNER JOIN MD_STATUS E ON E.HANDLE = C.STATUS" +
                            " WHERE A.HANDLE = " + buscarHandlePessoa();
             Binding.DataSource = connection.DataTable(query);
             
             contatoDataGridView.DataSource = Binding;
-            contatoDataGridView.Columns[0].Width = 150;
+            contatoDataGridView.Columns[0].Width = 100;
             contatoDataGridView.Columns[1].Width = 150;
             contatoDataGridView.Columns[2].Width = 150;
             contatoDataGridView.Columns[3].Width = 150;
-            contatoDataGridView.Columns[4].Width = 355;
-            //contatoDataGridView.Columns[5].Visible = false;
+            contatoDataGridView.Columns[4].Width = 150;
+            contatoDataGridView.Columns[5].Width = 250;
+            contatoDataGridView.Columns[6].Visible = false;
             contatoDataGridView.AllowUserToResizeRows = false;
         }
 
@@ -648,8 +658,7 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
         {
             //Pega o handle do contato para pesquisar
             int contatoHandle = 0;
-            contatoHandle = Convert.ToInt32(contatoDataGridView.CurrentRow.Cells[5].Value.ToString());
-
+            contatoHandle = Convert.ToInt32(contatoDataGridView.CurrentRow.Cells[6].Value.ToString());
             if (contatoHandle == 0)
             {
 

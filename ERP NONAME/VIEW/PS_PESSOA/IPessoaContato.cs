@@ -27,12 +27,11 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
             //Preencher o formulário ao abrir
             if (contatoHandle == 0)
             {
-                controleDeStatus("Vazio");
+                controleDeStatus();
             }
             else
             {
                 preencherFormulario(contatoHandle);
-                contatoHandle = 0;
             }
 
         }
@@ -101,12 +100,21 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
                     reader.Close();
                     String query2 = "INSERT INTO PS_PESSOACONTATOFK (PESSOA, CONTATO) VALUES (" + pessoaHandle + ", " + maxHandleContato + ")";
                     connection.Inserir(query2);
-                    controleDeStatus("Cadastrado");
+                    controleDeStatus();
                 }
                 //Alterar
                 if (origem == "Alterar")
                 {
-
+                    String query = " UPDATE PS_PESSOACONTATO" +
+                                   " SET " +
+                                   " STATUS = 3," +
+                                   " TELEFONE = '"+telefone+"'," +
+                                   " CELULAR = '"+celular+"'," +
+                                   " EMAIL = '"+email+"'," +
+                                   " OBSERVACAO = '"+observacao+"'," +
+                                   " TIPO = "+tipo+"" +
+                                   " WHERE HANDLE = "+contatoHandle;
+                    connection.Inserir(query);
                 }
             }
         }
@@ -148,8 +156,19 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
         }
 
         //Controle de status
-        public void controleDeStatus(String status)
+        public void controleDeStatus()
         {
+            String status = "";
+            String query = " SELECT B.NOME" +
+                           " FROM PS_PESSOACONTATO A" +
+                           " INNER JOIN MD_STATUS B ON B.HANDLE = A.STATUS" +
+                           " WHERE A.HANDLE = "+contatoHandle;
+            SqlDataReader reader = connection.Pesquisa(query);
+            while (reader.Read())
+            {
+                status = reader["NOME"].ToString();
+            }
+            reader.Close();
             if (status == "Cadastrado")
             {
                 gravarButton.Visible = false;
@@ -177,8 +196,8 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
                     voltarButton.Visible = false;
                     gravarButton.Visible = false;
                     this.Text = "Contato - Ag. modificações";
-                    liberarButton.Location = new Point(770, 286);
-                    cancelarButton.Location = new Point(874, 286);
+                    liberarButton.Location = new Point(564, 205);
+                    cancelarButton.Location = new Point(668, 205);
                 }
                 else
                 {
@@ -196,18 +215,15 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
                         voltarButton.Visible = true;
                         liberarButton.Visible = false;
                         this.Text = "Pessoa - Ativo";
-                        voltarButton.Location = new Point(874, 286);
+                        voltarButton.Location = new Point(668, 205);
                     }
                     else
                     {
-                        if (status == "Vazio")
-                        {
                             gravarButton.Visible = true;
                             cancelarButton.Visible = false;
                             voltarButton.Visible = false;
                             liberarButton.Visible = false;
                             gravarButton.Location = new Point(668, 205);
-                        }
                     }
                 }
             }
@@ -220,7 +236,7 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
 
             //Preenche o form com as informações da pessoa selecionada
             String telefone = "", celular = "", email = "", observacao = "", tipoContato = "", situacao = "";
-            String query = " SELECT A.TIPO, A.TELEFONE, A.CELULAR, A.EMAIL, A.OBSERVACAO, B.NOME TIPO, C.NOME SITUACAO" +
+            String query = " SELECT  A.TELEFONE, A.CELULAR, A.EMAIL, A.OBSERVACAO, B.NOME TIPO, C.NOME SITUACAO" +
                            " FROM PS_PESSOACONTATO A" +
                            " INNER JOIN PS_PESSOACONTATOTIPO B ON B.HANDLE = A.TIPO" +
                            " INNER JOIN MD_STATUS C ON C.HANDLE = A.STATUS" +
@@ -244,12 +260,31 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
             telefoneTextBox.Text = telefone;
             celularTextBox.Text = celular;
             ObservacaoTextBox.Text = observacao;
-            controleDeStatus(situacao);
+            controleDeStatus();
+        }
+        private void voltarRegistro()
+        {
+            String query = " UPDATE PS_PESSOACONTATO" +
+                           " SET STATUS = 2" +
+                           " WHERE HANDLE =" + contatoHandle;
+            connection.Inserir(query);
+            controleDeStatus();
+        }
+        private void voltarButtonOnClick(object sender, EventArgs e)
+        {
+            voltarRegistro();
+        }
+
+        private void contatoFormClosed(object sender, FormClosedEventArgs e)
+        {
+            pessoaHandle = 0;
+            contatoHandle = 0;
         }
 
         private void liberarButtonOnClick(object sender, EventArgs e)
         {
-
+            inserirRegistro("Alterar");
+            controleDeStatus();
         }
     }
 }
