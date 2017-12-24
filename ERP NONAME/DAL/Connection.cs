@@ -11,7 +11,7 @@ namespace ALTO_VALE.DAL
 {
     class Connection
     {
-        protected String stringConexao = "Data Source=127.0.0.1;Initial Catalog=ALTO_VALE;Persist Security Info=True;User ID=sa;Password=33226655;";
+        protected String stringConexao = "Data Source=192.168.2.3;Initial Catalog=ALTO_VALE;Persist Security Info=True;User ID=sa;Password=33226655;";
         protected SqlConnection conexao;
         protected SqlCommand cmd;
         protected SqlDataReader resultSet;
@@ -28,10 +28,10 @@ namespace ALTO_VALE.DAL
             
             this.cmd = new SqlCommand(query, this.conexao);
             this.resultSet = cmd.ExecuteReader();
-
+            
             return resultSet;
         }
-
+        
         public int VerificaSenha(String login, String senha)
         {
             int i = 0;

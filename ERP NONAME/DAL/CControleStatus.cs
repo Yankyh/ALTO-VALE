@@ -9,8 +9,7 @@ namespace ALTO_VALE.DAL
 {
     class CControleStatus
     {
-       
-         
+
 
 
 

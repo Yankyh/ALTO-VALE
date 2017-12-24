@@ -94,7 +94,6 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
             reader.Close();
 
             //Envia para a outra tela o registro
-            // IPessoa.ehAbrirRegistro(handlePessoa);
             IPessoa.pessoaHandle = handlePessoa;
             IPessoa iPessoa = new IPessoa();
             iPessoa.ShowDialog();

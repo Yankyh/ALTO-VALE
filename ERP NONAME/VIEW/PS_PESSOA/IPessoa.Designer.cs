@@ -28,10 +28,21 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.observacaoTabPage = new System.Windows.Forms.TabPage();
             this.ObservacaoTextBox = new System.Windows.Forms.RichTextBox();
+            this.abrangenciaTabPage = new System.Windows.Forms.TabPage();
+            this.checkBox3 = new System.Windows.Forms.CheckBox();
+            this.fornecedorCheckBox = new System.Windows.Forms.CheckBox();
+            this.clienteCheckBox = new System.Windows.Forms.CheckBox();
+            this.contatoTabPage = new System.Windows.Forms.TabPage();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.contatoDataGridView = new System.Windows.Forms.DataGridView();
             this.pessoaEnderecoTabpage = new System.Windows.Forms.TabPage();
             this.estadoTextBox = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -47,7 +58,6 @@
             this.label6 = new System.Windows.Forms.Label();
             this.Bairrolabel6 = new System.Windows.Forms.Label();
             this.RuaLabel = new System.Windows.Forms.Label();
-            this.contatoTabPage = new System.Windows.Forms.TabPage();
             this.label10 = new System.Windows.Forms.Label();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -67,20 +77,15 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.celularTextBox = new System.Windows.Forms.TextBox();
-            this.abrangenciaTabPage = new System.Windows.Forms.TabPage();
-            this.clienteCheckBox = new System.Windows.Forms.CheckBox();
-            this.fornecedorCheckBox = new System.Windows.Forms.CheckBox();
-            this.checkBox3 = new System.Windows.Forms.CheckBox();
-            this.contatoDataGridView = new System.Windows.Forms.DataGridView();
-            this.button1 = new System.Windows.Forms.Button();
             this.voltarButton = new System.Windows.Forms.Button();
             this.liberarButton = new System.Windows.Forms.Button();
+            this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.tabControl1.SuspendLayout();
             this.observacaoTabPage.SuspendLayout();
-            this.pessoaEnderecoTabpage.SuspendLayout();
-            this.contatoTabPage.SuspendLayout();
             this.abrangenciaTabPage.SuspendLayout();
+            this.contatoTabPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.contatoDataGridView)).BeginInit();
+            this.pessoaEnderecoTabpage.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -89,8 +94,8 @@
             this.tabControl1.Controls.Add(this.abrangenciaTabPage);
             this.tabControl1.Controls.Add(this.contatoTabPage);
             this.tabControl1.Controls.Add(this.pessoaEnderecoTabpage);
-            this.tabControl1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tabControl1.Location = new System.Drawing.Point(12, 162);
+            this.tabControl1.Font = new System.Drawing.Font("Arial", 10F);
+            this.tabControl1.Location = new System.Drawing.Point(6, 126);
             this.tabControl1.Multiline = true;
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -101,10 +106,10 @@
             // 
             this.observacaoTabPage.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.observacaoTabPage.Controls.Add(this.ObservacaoTextBox);
-            this.observacaoTabPage.Location = new System.Drawing.Point(4, 27);
+            this.observacaoTabPage.Location = new System.Drawing.Point(4, 25);
             this.observacaoTabPage.Name = "observacaoTabPage";
             this.observacaoTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.observacaoTabPage.Size = new System.Drawing.Size(963, 126);
+            this.observacaoTabPage.Size = new System.Drawing.Size(963, 128);
             this.observacaoTabPage.TabIndex = 1;
             this.observacaoTabPage.Text = "Observação";
             this.observacaoTabPage.UseVisualStyleBackColor = true;
@@ -117,6 +122,133 @@
             this.ObservacaoTextBox.Size = new System.Drawing.Size(960, 120);
             this.ObservacaoTextBox.TabIndex = 0;
             this.ObservacaoTextBox.Text = "";
+            // 
+            // abrangenciaTabPage
+            // 
+            this.abrangenciaTabPage.BackColor = System.Drawing.SystemColors.Window;
+            this.abrangenciaTabPage.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.abrangenciaTabPage.Controls.Add(this.checkBox3);
+            this.abrangenciaTabPage.Controls.Add(this.fornecedorCheckBox);
+            this.abrangenciaTabPage.Controls.Add(this.clienteCheckBox);
+            this.abrangenciaTabPage.Location = new System.Drawing.Point(4, 25);
+            this.abrangenciaTabPage.Name = "abrangenciaTabPage";
+            this.abrangenciaTabPage.Size = new System.Drawing.Size(963, 128);
+            this.abrangenciaTabPage.TabIndex = 3;
+            this.abrangenciaTabPage.Text = "Abrangência";
+            // 
+            // checkBox3
+            // 
+            this.checkBox3.AutoSize = true;
+            this.checkBox3.Location = new System.Drawing.Point(15, 83);
+            this.checkBox3.Name = "checkBox3";
+            this.checkBox3.Size = new System.Drawing.Size(116, 20);
+            this.checkBox3.TabIndex = 2;
+            this.checkBox3.Text = "Orgão público";
+            this.checkBox3.UseVisualStyleBackColor = true;
+            // 
+            // fornecedorCheckBox
+            // 
+            this.fornecedorCheckBox.AutoSize = true;
+            this.fornecedorCheckBox.Location = new System.Drawing.Point(15, 49);
+            this.fornecedorCheckBox.Name = "fornecedorCheckBox";
+            this.fornecedorCheckBox.Size = new System.Drawing.Size(101, 20);
+            this.fornecedorCheckBox.TabIndex = 1;
+            this.fornecedorCheckBox.Text = "Fornecedor";
+            this.fornecedorCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // clienteCheckBox
+            // 
+            this.clienteCheckBox.AutoSize = true;
+            this.clienteCheckBox.Location = new System.Drawing.Point(15, 16);
+            this.clienteCheckBox.Name = "clienteCheckBox";
+            this.clienteCheckBox.Size = new System.Drawing.Size(71, 20);
+            this.clienteCheckBox.TabIndex = 0;
+            this.clienteCheckBox.Text = "Cliente";
+            this.clienteCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // contatoTabPage
+            // 
+            this.contatoTabPage.BackColor = System.Drawing.SystemColors.Window;
+            this.contatoTabPage.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.contatoTabPage.Controls.Add(this.button2);
+            this.contatoTabPage.Controls.Add(this.button1);
+            this.contatoTabPage.Controls.Add(this.contatoDataGridView);
+            this.contatoTabPage.Location = new System.Drawing.Point(4, 25);
+            this.contatoTabPage.Name = "contatoTabPage";
+            this.contatoTabPage.Size = new System.Drawing.Size(963, 128);
+            this.contatoTabPage.TabIndex = 2;
+            this.contatoTabPage.Text = "Contato";
+            // 
+            // button2
+            // 
+            this.button2.FlatAppearance.BorderSize = 0;
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.Location = new System.Drawing.Point(934, 24);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(24, 25);
+            this.button2.TabIndex = 61;
+            this.button2.Text = "-";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
+            // button1
+            // 
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(934, -2);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(24, 25);
+            this.button1.TabIndex = 60;
+            this.button1.Text = "+";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.adicionarButtonOnClick);
+            // 
+            // contatoDataGridView
+            // 
+            this.contatoDataGridView.AllowUserToAddRows = false;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.LightGray;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Arial", 10F);
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.LightGray;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black;
+            this.contatoDataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.contatoDataGridView.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
+            this.contatoDataGridView.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.contatoDataGridView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Arial", 10F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Transparent;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.contatoDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.contatoDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Arial", 10F);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.contatoDataGridView.DefaultCellStyle = dataGridViewCellStyle3;
+            this.contatoDataGridView.Location = new System.Drawing.Point(2, 3);
+            this.contatoDataGridView.MultiSelect = false;
+            this.contatoDataGridView.Name = "contatoDataGridView";
+            this.contatoDataGridView.ReadOnly = true;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Arial", 10F);
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.contatoDataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            this.contatoDataGridView.RowHeadersVisible = false;
+            this.contatoDataGridView.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.contatoDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.contatoDataGridView.Size = new System.Drawing.Size(933, 119);
+            this.contatoDataGridView.TabIndex = 3;
+            this.contatoDataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.cellClick);
             // 
             // pessoaEnderecoTabpage
             // 
@@ -136,10 +268,10 @@
             this.pessoaEnderecoTabpage.Controls.Add(this.label6);
             this.pessoaEnderecoTabpage.Controls.Add(this.Bairrolabel6);
             this.pessoaEnderecoTabpage.Controls.Add(this.RuaLabel);
-            this.pessoaEnderecoTabpage.Location = new System.Drawing.Point(4, 27);
+            this.pessoaEnderecoTabpage.Location = new System.Drawing.Point(4, 25);
             this.pessoaEnderecoTabpage.Name = "pessoaEnderecoTabpage";
             this.pessoaEnderecoTabpage.Padding = new System.Windows.Forms.Padding(3);
-            this.pessoaEnderecoTabpage.Size = new System.Drawing.Size(963, 126);
+            this.pessoaEnderecoTabpage.Size = new System.Drawing.Size(963, 128);
             this.pessoaEnderecoTabpage.TabIndex = 0;
             this.pessoaEnderecoTabpage.Text = "Endereço";
             // 
@@ -279,18 +411,6 @@
             this.RuaLabel.TabIndex = 0;
             this.RuaLabel.Text = "Logradouro";
             // 
-            // contatoTabPage
-            // 
-            this.contatoTabPage.BackColor = System.Drawing.SystemColors.Window;
-            this.contatoTabPage.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.contatoTabPage.Controls.Add(this.button1);
-            this.contatoTabPage.Controls.Add(this.contatoDataGridView);
-            this.contatoTabPage.Location = new System.Drawing.Point(4, 27);
-            this.contatoTabPage.Name = "contatoTabPage";
-            this.contatoTabPage.Size = new System.Drawing.Size(963, 126);
-            this.contatoTabPage.TabIndex = 2;
-            this.contatoTabPage.Text = "Contato";
-            // 
             // label10
             // 
             this.label10.AutoSize = true;
@@ -314,15 +434,15 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(9, 119);
+            this.label2.Location = new System.Drawing.Point(2, 115);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(0, 13);
             this.label2.TabIndex = 21;
             // 
             // cancelarButton
             // 
-            this.cancelarButton.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cancelarButton.Location = new System.Drawing.Point(776, 324);
+            this.cancelarButton.Font = new System.Drawing.Font("Arial", 10F);
+            this.cancelarButton.Location = new System.Drawing.Point(770, 286);
             this.cancelarButton.Name = "cancelarButton";
             this.cancelarButton.Size = new System.Drawing.Size(103, 32);
             this.cancelarButton.TabIndex = 23;
@@ -331,8 +451,8 @@
             // 
             // gravarButton
             // 
-            this.gravarButton.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gravarButton.Location = new System.Drawing.Point(880, 324);
+            this.gravarButton.Font = new System.Drawing.Font("Arial", 10F);
+            this.gravarButton.Location = new System.Drawing.Point(874, 286);
             this.gravarButton.Name = "gravarButton";
             this.gravarButton.Size = new System.Drawing.Size(103, 32);
             this.gravarButton.TabIndex = 24;
@@ -342,38 +462,38 @@
             // 
             // emailTextBox
             // 
-            this.emailTextBox.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.emailTextBox.Location = new System.Drawing.Point(677, 106);
+            this.emailTextBox.Font = new System.Drawing.Font("Arial", 10F);
+            this.emailTextBox.Location = new System.Drawing.Point(671, 86);
             this.emailTextBox.Name = "emailTextBox";
-            this.emailTextBox.Size = new System.Drawing.Size(302, 26);
+            this.emailTextBox.Size = new System.Drawing.Size(302, 23);
             this.emailTextBox.TabIndex = 7;
             // 
             // cpfcnpjTextBox
             // 
-            this.cpfcnpjTextBox.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cpfcnpjTextBox.Location = new System.Drawing.Point(12, 106);
+            this.cpfcnpjTextBox.Font = new System.Drawing.Font("Arial", 10F);
+            this.cpfcnpjTextBox.Location = new System.Drawing.Point(6, 86);
             this.cpfcnpjTextBox.MaxLength = 18;
             this.cpfcnpjTextBox.Name = "cpfcnpjTextBox";
-            this.cpfcnpjTextBox.Size = new System.Drawing.Size(320, 26);
+            this.cpfcnpjTextBox.Size = new System.Drawing.Size(320, 23);
             this.cpfcnpjTextBox.TabIndex = 4;
             this.cpfcnpjTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cpfCnpjKeyPress);
             // 
             // razaoSocialTextBox
             // 
-            this.razaoSocialTextBox.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.razaoSocialTextBox.Location = new System.Drawing.Point(12, 40);
+            this.razaoSocialTextBox.Font = new System.Drawing.Font("Arial", 10F);
+            this.razaoSocialTextBox.Location = new System.Drawing.Point(6, 30);
             this.razaoSocialTextBox.Name = "razaoSocialTextBox";
-            this.razaoSocialTextBox.Size = new System.Drawing.Size(320, 26);
+            this.razaoSocialTextBox.Size = new System.Drawing.Size(320, 23);
             this.razaoSocialTextBox.TabIndex = 1;
             // 
             // label12
             // 
             this.label12.AutoSize = true;
             this.label12.BackColor = System.Drawing.Color.Transparent;
-            this.label12.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(337, 83);
+            this.label12.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(329, 67);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(66, 18);
+            this.label12.Size = new System.Drawing.Size(55, 16);
             this.label12.TabIndex = 32;
             this.label12.Text = "Telefone";
             // 
@@ -381,10 +501,10 @@
             // 
             this.label13.AutoSize = true;
             this.label13.BackColor = System.Drawing.Color.Transparent;
-            this.label13.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(8, 15);
+            this.label13.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Location = new System.Drawing.Point(3, 11);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(138, 18);
+            this.label13.Size = new System.Drawing.Size(116, 16);
             this.label13.TabIndex = 40;
             this.label13.Text = "Nome/razão social";
             // 
@@ -392,37 +512,37 @@
             // 
             this.label14.AutoSize = true;
             this.label14.BackColor = System.Drawing.Color.Transparent;
-            this.label14.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(8, 83);
+            this.label14.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.Location = new System.Drawing.Point(3, 67);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(87, 18);
+            this.label14.Size = new System.Drawing.Size(71, 16);
             this.label14.TabIndex = 31;
             this.label14.Text = "CPF/CPNJ";
             // 
             // apelidoTextBox
             // 
-            this.apelidoTextBox.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.apelidoTextBox.Location = new System.Drawing.Point(338, 40);
+            this.apelidoTextBox.Font = new System.Drawing.Font("Arial", 10F);
+            this.apelidoTextBox.Location = new System.Drawing.Point(332, 30);
             this.apelidoTextBox.Name = "apelidoTextBox";
-            this.apelidoTextBox.Size = new System.Drawing.Size(333, 26);
+            this.apelidoTextBox.Size = new System.Drawing.Size(333, 23);
             this.apelidoTextBox.TabIndex = 2;
             // 
             // telefoneTextBox
             // 
-            this.telefoneTextBox.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.telefoneTextBox.Location = new System.Drawing.Point(338, 106);
+            this.telefoneTextBox.Font = new System.Drawing.Font("Arial", 10F);
+            this.telefoneTextBox.Location = new System.Drawing.Point(332, 86);
             this.telefoneTextBox.Name = "telefoneTextBox";
-            this.telefoneTextBox.Size = new System.Drawing.Size(165, 26);
+            this.telefoneTextBox.Size = new System.Drawing.Size(165, 23);
             this.telefoneTextBox.TabIndex = 5;
             // 
             // label15
             // 
             this.label15.AutoSize = true;
             this.label15.BackColor = System.Drawing.Color.Transparent;
-            this.label15.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(334, 12);
+            this.label15.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.Location = new System.Drawing.Point(329, 11);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(164, 18);
+            this.label15.Size = new System.Drawing.Size(136, 16);
             this.label15.TabIndex = 29;
             this.label15.Text = "Apelido/nome fantasia";
             // 
@@ -430,20 +550,20 @@
             // 
             this.label16.AutoSize = true;
             this.label16.BackColor = System.Drawing.Color.Transparent;
-            this.label16.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.Location = new System.Drawing.Point(678, 82);
+            this.label16.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.Location = new System.Drawing.Point(667, 67);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(53, 18);
+            this.label16.Size = new System.Drawing.Size(45, 16);
             this.label16.TabIndex = 33;
             this.label16.Text = "E-mail";
             // 
             // tipoComboBox
             // 
-            this.tipoComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tipoComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.tipoComboBox.FormattingEnabled = true;
-            this.tipoComboBox.Location = new System.Drawing.Point(677, 39);
+            this.tipoComboBox.Location = new System.Drawing.Point(671, 29);
             this.tipoComboBox.Name = "tipoComboBox";
-            this.tipoComboBox.Size = new System.Drawing.Size(302, 28);
+            this.tipoComboBox.Size = new System.Drawing.Size(302, 24);
             this.tipoComboBox.TabIndex = 3;
             this.tipoComboBox.DropDown += new System.EventHandler(this.tipoDropDown);
             this.tipoComboBox.DropDownClosed += new System.EventHandler(this.tipoDropClosed);
@@ -453,10 +573,10 @@
             // 
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.label3.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(673, 16);
+            this.label3.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(668, 10);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(38, 18);
+            this.label3.Size = new System.Drawing.Size(32, 16);
             this.label3.TabIndex = 42;
             this.label3.Text = "Tipo";
             // 
@@ -464,101 +584,25 @@
             // 
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(505, 83);
+            this.label1.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(500, 67);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(57, 18);
+            this.label1.Size = new System.Drawing.Size(48, 16);
             this.label1.TabIndex = 44;
             this.label1.Text = "Celular";
             // 
             // celularTextBox
             // 
-            this.celularTextBox.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.celularTextBox.Location = new System.Drawing.Point(509, 106);
+            this.celularTextBox.Font = new System.Drawing.Font("Arial", 10F);
+            this.celularTextBox.Location = new System.Drawing.Point(503, 86);
             this.celularTextBox.Name = "celularTextBox";
-            this.celularTextBox.Size = new System.Drawing.Size(162, 26);
+            this.celularTextBox.Size = new System.Drawing.Size(162, 23);
             this.celularTextBox.TabIndex = 6;
-            // 
-            // abrangenciaTabPage
-            // 
-            this.abrangenciaTabPage.BackColor = System.Drawing.SystemColors.Window;
-            this.abrangenciaTabPage.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.abrangenciaTabPage.Controls.Add(this.checkBox3);
-            this.abrangenciaTabPage.Controls.Add(this.fornecedorCheckBox);
-            this.abrangenciaTabPage.Controls.Add(this.clienteCheckBox);
-            this.abrangenciaTabPage.Location = new System.Drawing.Point(4, 27);
-            this.abrangenciaTabPage.Name = "abrangenciaTabPage";
-            this.abrangenciaTabPage.Size = new System.Drawing.Size(963, 126);
-            this.abrangenciaTabPage.TabIndex = 3;
-            this.abrangenciaTabPage.Text = "Abrangência";
-            // 
-            // clienteCheckBox
-            // 
-            this.clienteCheckBox.AutoSize = true;
-            this.clienteCheckBox.Location = new System.Drawing.Point(15, 16);
-            this.clienteCheckBox.Name = "clienteCheckBox";
-            this.clienteCheckBox.Size = new System.Drawing.Size(76, 22);
-            this.clienteCheckBox.TabIndex = 0;
-            this.clienteCheckBox.Text = "Cliente";
-            this.clienteCheckBox.UseVisualStyleBackColor = true;
-            // 
-            // fornecedorCheckBox
-            // 
-            this.fornecedorCheckBox.AutoSize = true;
-            this.fornecedorCheckBox.Location = new System.Drawing.Point(15, 49);
-            this.fornecedorCheckBox.Name = "fornecedorCheckBox";
-            this.fornecedorCheckBox.Size = new System.Drawing.Size(108, 22);
-            this.fornecedorCheckBox.TabIndex = 1;
-            this.fornecedorCheckBox.Text = "Fornecedor";
-            this.fornecedorCheckBox.UseVisualStyleBackColor = true;
-            // 
-            // checkBox3
-            // 
-            this.checkBox3.AutoSize = true;
-            this.checkBox3.Location = new System.Drawing.Point(15, 83);
-            this.checkBox3.Name = "checkBox3";
-            this.checkBox3.Size = new System.Drawing.Size(104, 22);
-            this.checkBox3.TabIndex = 2;
-            this.checkBox3.Text = "checkBox3";
-            this.checkBox3.UseVisualStyleBackColor = true;
-            // 
-            // contatoDataGridView
-            // 
-            this.contatoDataGridView.AllowUserToAddRows = false;
-            dataGridViewCellStyle8.BackColor = System.Drawing.Color.LightGray;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.contatoDataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle8;
-            this.contatoDataGridView.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
-            this.contatoDataGridView.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.contatoDataGridView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.RaisedVertical;
-            this.contatoDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.contatoDataGridView.Location = new System.Drawing.Point(2, 23);
-            this.contatoDataGridView.MultiSelect = false;
-            this.contatoDataGridView.Name = "contatoDataGridView";
-            this.contatoDataGridView.ReadOnly = true;
-            this.contatoDataGridView.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
-            this.contatoDataGridView.RowHeadersVisible = false;
-            this.contatoDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.contatoDataGridView.Size = new System.Drawing.Size(957, 99);
-            this.contatoDataGridView.TabIndex = 3;
-            // 
-            // button1
-            // 
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(934, -2);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(24, 25);
-            this.button1.TabIndex = 60;
-            this.button1.Text = "+";
-            this.button1.UseVisualStyleBackColor = true;
             // 
             // voltarButton
             // 
-            this.voltarButton.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.voltarButton.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.voltarButton.Location = new System.Drawing.Point(672, 324);
+            this.voltarButton.Font = new System.Drawing.Font("Arial", 10F);
+            this.voltarButton.Location = new System.Drawing.Point(664, 286);
             this.voltarButton.Name = "voltarButton";
             this.voltarButton.Size = new System.Drawing.Size(103, 32);
             this.voltarButton.TabIndex = 45;
@@ -568,9 +612,8 @@
             // 
             // liberarButton
             // 
-            this.liberarButton.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.liberarButton.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.liberarButton.Location = new System.Drawing.Point(568, 324);
+            this.liberarButton.Font = new System.Drawing.Font("Arial", 10F);
+            this.liberarButton.Location = new System.Drawing.Point(560, 286);
             this.liberarButton.Name = "liberarButton";
             this.liberarButton.Size = new System.Drawing.Size(103, 32);
             this.liberarButton.TabIndex = 46;
@@ -579,12 +622,20 @@
             this.liberarButton.Visible = false;
             this.liberarButton.Click += new System.EventHandler(this.liberarButtonOnClick);
             // 
+            // reportViewer1
+            // 
+            this.reportViewer1.Location = new System.Drawing.Point(0, 0);
+            this.reportViewer1.Name = "ReportViewer";
+            this.reportViewer1.ServerReport.BearerToken = null;
+            this.reportViewer1.Size = new System.Drawing.Size(396, 246);
+            this.reportViewer1.TabIndex = 0;
+            // 
             // IPessoa
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.ClientSize = new System.Drawing.Size(993, 363);
+            this.ClientSize = new System.Drawing.Size(980, 320);
             this.Controls.Add(this.liberarButton);
             this.Controls.Add(this.voltarButton);
             this.Controls.Add(this.label1);
@@ -611,15 +662,16 @@
             this.Name = "IPessoa";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Pessoa";
+            this.Activated += new System.EventHandler(this.atualizarInformacoesDoFormulario);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.IPessoa_FormClosed);
             this.tabControl1.ResumeLayout(false);
             this.observacaoTabPage.ResumeLayout(false);
-            this.pessoaEnderecoTabpage.ResumeLayout(false);
-            this.pessoaEnderecoTabpage.PerformLayout();
-            this.contatoTabPage.ResumeLayout(false);
             this.abrangenciaTabPage.ResumeLayout(false);
             this.abrangenciaTabPage.PerformLayout();
+            this.contatoTabPage.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.contatoDataGridView)).EndInit();
+            this.pessoaEnderecoTabpage.ResumeLayout(false);
+            this.pessoaEnderecoTabpage.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -673,5 +725,7 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button voltarButton;
         private System.Windows.Forms.Button liberarButton;
+        private Microsoft.Reporting.WinForms.ReportViewer reportViewer1;
+        private System.Windows.Forms.Button button2;
     }
 }

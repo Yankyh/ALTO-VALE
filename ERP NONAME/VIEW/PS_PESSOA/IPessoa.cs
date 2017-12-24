@@ -8,7 +8,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ALTO_VALE.DAL;
-using ALTO_VALE.DAL;
 using System.Data.SqlClient;
 
 namespace ALTO_VALE.VIEW.PS_PESSOA
@@ -20,7 +19,7 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
 
         //verifica se foi aberto pelo datagridview
         public static int pessoaHandle = 0;
-
+        
         public IPessoa()
         {
             InitializeComponent();
@@ -45,7 +44,7 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
             //Método para verificar os campos obrigatórios e método para validar se o cpf/cnpj já não foi cadastrado
             if (verificarCamposObrigatorios() == true && (validarCpfCnpjCadastrado() == true || buscarHandlePessoa() != 0))
             {
-                    //Gravar o registro
+                    //.Gravar o registro
                     gravarRegistroPessoa();
                     controleDeStatus("Cadastrado");
             }          
@@ -200,7 +199,6 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
 
             //Lista os tipos
             String query = "SELECT NOME FROM PS_PESSOATIPO";
-            query = StatusFilter.StatusNotIn(query);
 
             SqlDataReader reader = connection.Pesquisa(query);
 
@@ -218,7 +216,7 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
         private Boolean validarCpfCnpj()
         {
             int tipoPessoa = 0;
-            String cpfCnpj = "";
+       
             tipoPessoa = tipoPessoaHandle();
 
             if (tipoPessoa == 1)
@@ -398,9 +396,9 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
             //Preenche o combo box tipo
             preencherTipo();
             preencherCep();
+
             //Preenche o form com as informações da pessoa selecionada
             String apelido = "", razaoSocial = "", email = "", cpfCnpj = "", telefone = "", celular = "", observacao = "", tipo = "", situacao = "", cep = "";
-            int tipoPessoa = 0, cepSelecionadoHandle = 0;
 
             String query = " SELECT C.NOME SITUACAO, A.APELIDO, A.RAZAOSOCIAL, B.NOME TIPO, A.CPFCNPJ, A.TELEFONE, A.CELULAR, A.EMAIL, A.OBSERVACAO, D.CEP" +
                            " FROM PS_PESSOA A" +
@@ -440,6 +438,8 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
             //Busca os dados do cep selecionado
             cepComboBox.SelectedItem = cep;
             preencherEndereco();
+            //Preenche o contato
+            preencherContatoPessoa();
 
             controleDeStatus(situacao);
         }
@@ -512,6 +512,9 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
                 voltarButton.Visible = false;
                 liberarButton.Visible = true;
                 this.Text = "Pessoa - Cadastrado";
+                liberarButton.Location = new Point(770, 286);
+                cancelarButton.Location = new Point(874, 286);
+                
             }
             else
             {
@@ -540,6 +543,8 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
                     voltarButton.Visible = false;
                     gravarButton.Visible = false;
                     this.Text = "Pessoa - Ag. modificações";
+                    liberarButton.Location = new Point(770, 286);
+                    cancelarButton.Location = new Point(874, 286);
                 }
                 else
                 {
@@ -567,8 +572,8 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
                     cancelarButton.Visible = false;
                     voltarButton.Visible = true;
                     liberarButton.Visible = false;
-
                     this.Text = "Pessoa - Ativo";
+                    voltarButton.Location = new Point(874, 286);
                     }
                     else
                     {
@@ -578,6 +583,7 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
                             cancelarButton.Visible = false;
                             voltarButton.Visible = false;
                             liberarButton.Visible = false;
+                            gravarButton.Location = new Point(874, 286);
                         }
                     }
                 }
@@ -599,10 +605,61 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
         }
 
 
+        //Contato da pessoa
+        private void preencherContatoPessoa()
+        {
+            BindingSource Binding = new BindingSource();
+            contatoDataGridView.AutoGenerateColumns = true;
+            String query = " SELECT D.NOME TIPO, C.TELEFONE, C.CELULAR, C.EMAIL, C.OBSERVACAO, C.HANDLE" +
+                           " FROM PS_PESSOA A" +
+                           " INNER JOIN PS_PESSOACONTATOFK B ON B.PESSOA = A.HANDLE" +
+                           " INNER JOIN PS_PESSOACONTATO C ON C.HANDLE = B.CONTATO" +
+                           " INNER JOIN PS_PESSOACONTATOTIPO D ON D.HANDLE = C.TIPO" +
+                           " WHERE A.HANDLE = " + buscarHandlePessoa();
+            Binding.DataSource = connection.DataTable(query);
+            
+            contatoDataGridView.DataSource = Binding;
+            contatoDataGridView.Columns[0].Width = 150;
+            contatoDataGridView.Columns[1].Width = 150;
+            contatoDataGridView.Columns[2].Width = 150;
+            contatoDataGridView.Columns[3].Width = 150;
+            contatoDataGridView.Columns[4].Width = 355;
+            //contatoDataGridView.Columns[5].Visible = false;
+            contatoDataGridView.AllowUserToResizeRows = false;
+        }
 
+        //Botão adicionar dos contatos
+        private void adicionarButtonOnClick(object sender, EventArgs e)
+        {
+            //Passa o handle da pessoa pro contato
+            IPessoaContato.pessoaHandle = buscarHandlePessoa();
+            IPessoaContato iPessoaContato = new IPessoaContato();
+            iPessoaContato.ShowDialog();
+        }
 
+   
 
+        private void atualizarInformacoesDoFormulario(object sender, EventArgs e)
+        {
+            preencherContatoPessoa();
+        }
 
+        private void cellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            //Pega o handle do contato para pesquisar
+            int contatoHandle = 0;
+            contatoHandle = Convert.ToInt32(contatoDataGridView.CurrentRow.Cells[5].Value.ToString());
 
+            if (contatoHandle == 0)
+            {
+
+            }
+            else
+            {
+                IPessoaContato.contatoHandle = contatoHandle;
+                IPessoaContato iPessoaContato = new IPessoaContato();
+                iPessoaContato.ShowDialog();
+            }
+        }
     }
 }
