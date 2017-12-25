@@ -42,7 +42,7 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
         private void gravarButtonOnClick(object sender, EventArgs e)
         {
             //Método para verificar os campos obrigatórios e método para validar se o cpf/cnpj já não foi cadastrado
-            if (verificarCamposObrigatorios() == true && (validarCpfCnpjCadastrado() == true || buscarHandlePessoa() != 0))
+            if ((validarCpfCnpjCadastrado() == true || buscarHandlePessoa() != 0))
             {
                 //.Gravar o registro
                 alterarRegistroPessoa("Gravar");
@@ -62,7 +62,6 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
             cpfCnpj = cpfcnpjTextBox.Text;
             telefone = telefoneTextBox.Text;
             tipoPessoa = tipoPessoaHandle();
-            cepSelecionadoHandle = cepHandle();
             celular = celularTextBox.Text;
             observacao = ObservacaoTextBox.Text;
 
@@ -115,28 +114,7 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
 
             return tipoPessoaHandle;
         }
-        //Busca o handle do CEP
-        private int cepHandle()
-        {
-            int cepHandle = 0;
-            String cepSelecionado = "";
-
-            if (cepComboBox.SelectedItem != null)
-            {
-                cepSelecionado = cepComboBox.SelectedItem.ToString();
-
-            }
-
-            String query = "SELECT HANDLE FROM PS_PESSOAENDERECO WHERE CEP = '" + cepSelecionado + "'";
-            SqlDataReader reader = connection.Pesquisa(query);
-            while (reader.Read())
-            {
-                cepHandle = Convert.ToInt32((reader["HANDLE"]));
-            }
-            reader.Close();
-
-            return cepHandle;
-        }
+     
         //--------------------
         //Metodos de fomatação
         //Conversor de CNPJ
@@ -294,119 +272,12 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
             connection.Desconectar();
         }
 
-
-        //Campos obrigatórios
-        public Boolean verificarCamposObrigatorios()
-        {
-
-            if (apelidoTextBox.Text == "")
-            {
-                MessageBox.Show("O campo apelido é obrigatório.");
-                return false;
-            }
-            else
-            {
-                if (razaoSocialTextBox.Text == "")
-                {
-                    MessageBox.Show("O campo razão social é obrigatório.");
-                    return false;
-                }
-                else
-                {
-                    if (tipoComboBox.SelectedIndex == -1)
-                    {
-                        MessageBox.Show("O campo tipo é obrigatório.");
-                        return false;
-                    }
-                    else
-                    {
-                        if (cpfcnpjTextBox.Text == "")
-                        {
-                            MessageBox.Show("O campo CPF/CNPJ é obrigatório.");
-                            return false;
-                        }
-                        else
-                        {
-                            if (cepComboBox.SelectedIndex == -1)
-                            {
-                                MessageBox.Show("O campo CEP é obrigatório.");
-                                return false;
-                            }
-                            else
-                            {
-                                return true;
-                            }
-                        }
-                    }
-                }
-            }
-
-
-        }
-
-        private void cepDropDown(object sender, EventArgs e)
-        {
-            preencherCep();
-        }
-        private void preencherCep()
-        {
-            //Limpa a combo box
-            cepComboBox.Items.Clear();
-
-            //Lista os tipos
-            String query = "SELECT CEP FROM PS_PESSOAENDERECO";
-            query = StatusFilter.StatusNotIn(query);
-
-            SqlDataReader reader = connection.Pesquisa(query);
-
-            while (reader.Read())
-            {
-                cepComboBox.Items.Add((reader["CEP"].ToString()));
-            }
-            reader.Close();
-        }
-
-        private void cepTextChanged(object sender, EventArgs e)
-        {
-            preencherEndereco();
-        }
-        public void preencherEndereco()
-        {
-            int cepHandleSelecionado = cepHandle();
-            String cidade = "", bairro = "", logradouro = "", numero = "", referencia = "", estado = "";
-            //Busca as informações do CEP selecionado para preencher os campos
-            String query = " SELECT A.CIDADE, A.BAIRRO, A.LOGRADOURO, A.NUMERO, A.REFERENCIA, B.SIGLA ESTADO " +
-                           " FROM PS_PESSOAENDERECO A " +
-                           " INNER JOIN PS_ESTADO B ON B.HANDLE = A.ESTADO " +
-                           " WHERE A.HANDLE = " + cepHandleSelecionado;
-            // query = StatusFilter.StatusNotIn(query);
-
-            SqlDataReader reader = connection.Pesquisa(query);
-
-            while (reader.Read())
-            {
-                cidade = (reader["CIDADE"].ToString());
-                bairro = (reader["BAIRRO"].ToString());
-                logradouro = (reader["LOGRADOURO"].ToString());
-                numero = (reader["NUMERO"].ToString());
-                referencia = (reader["REFERENCIA"].ToString());
-                estado = (reader["ESTADO"].ToString());
-            }
-            reader.Close();
-            //Preenche os campos
-            cidadeTextBox.Text = cidade;
-            bairroTextBox.Text = bairro;
-            logradouroTextBox.Text = logradouro;
-            numeroTextBox.Text = numero;
-            referenciaTextBox.Text = referencia;
-            estadoTextBox.Text = estado;
-        }
-
         public void preencherFormulario(int handlePessoa)
         {
             //Preenche o combo box tipo
             preencherTipo();
-            preencherCep();
+            //Preenche os endereços
+            PreencherEndereco();
 
             //Preenche o form com as informações da pessoa selecionada
             String apelido = "", razaoSocial = "", email = "", cpfCnpj = "", telefone = "", celular = "", observacao = "", tipo = "", situacao = "", cep = "";
@@ -446,9 +317,6 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
             celularTextBox.Text = celular;
             ObservacaoTextBox.Text = observacao;
             //Preenche o endereço
-            //Busca os dados do cep selecionado
-            cepComboBox.SelectedItem = cep;
-            preencherEndereco();
             //Preenche o contato
             preencherContatoPessoa();
 
@@ -551,14 +419,6 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
                     telefoneTextBox.Enabled = true;
                     celularTextBox.Enabled = true;
                     ObservacaoTextBox.Enabled = true;
-                    //Endereços
-                    cepComboBox.Enabled = true;
-                    cidadeTextBox.Enabled = true;
-                    estadoTextBox.Enabled = true;
-                    bairroTextBox.Enabled = true;
-                    logradouroTextBox.Enabled = true;
-                    numeroTextBox.Enabled = true;
-                    referenciaTextBox.Enabled = true;
                     //Controle de botões (Criar classe para isso)
                     liberarButton.Visible = true;
                     cancelarButton.Visible = true;
@@ -580,14 +440,6 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
                         telefoneTextBox.Enabled = false;
                         celularTextBox.Enabled = false;
                         ObservacaoTextBox.Enabled = false;
-                        //Endereço
-                        cepComboBox.Enabled = false;
-                        cidadeTextBox.Enabled = false;
-                        estadoTextBox.Enabled = false;
-                        bairroTextBox.Enabled = false;
-                        logradouroTextBox.Enabled = false;
-                        numeroTextBox.Enabled = false;
-                        referenciaTextBox.Enabled = false;
                         //Controle de botões (Criar classe para isso)
                         gravarButton.Visible = false;
                         cancelarButton.Visible = false;
@@ -608,14 +460,6 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
                             telefoneTextBox.Enabled = false;
                             celularTextBox.Enabled = false;
                             ObservacaoTextBox.Enabled = false;
-                            //Endereço
-                            cepComboBox.Enabled = false;
-                            cidadeTextBox.Enabled = false;
-                            estadoTextBox.Enabled = false;
-                            bairroTextBox.Enabled = false;
-                            logradouroTextBox.Enabled = false;
-                            numeroTextBox.Enabled = false;
-                            referenciaTextBox.Enabled = false;
                             //Controle de botões (Criar classe para isso)
                             gravarButton.Visible = false;
                             cancelarButton.Visible = false;
@@ -678,7 +522,26 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
             contatoDataGridView.Columns[6].Visible = false;
             contatoDataGridView.AllowUserToResizeRows = false;
         }
+        //Preencher endereço da pessoa
+        private void PreencherEndereco()
+        {
+            BindingSource Binding = new BindingSource();
+            enderecoDataGridView.AutoGenerateColumns = true;
+            String query = " SELECT B.NOME, A.CEP, A.PAIS, A.ESTADO, A.CIDADE, A.BAIRRO, A.LOGRADOURO, A.HANDLE" +
+                           " FROM MD_CEP A" +
+                           " INNER JOIN MD_STATUS B ON B.HANDLE = A.STATUS";
+            Binding.DataSource = connection.DataTable(query);
+            enderecoDataGridView.DataSource = Binding;
 
+            enderecoDataGridView.Columns[0].Width = 150;
+            enderecoDataGridView.Columns[1].Width = 150;
+            enderecoDataGridView.Columns[2].Width = 150;
+            enderecoDataGridView.Columns[3].Width = 150;
+            enderecoDataGridView.Columns[4].Width = 200;
+            enderecoDataGridView.Columns[6].Width = 300;
+            enderecoDataGridView.Columns[7].Visible = false;
+            enderecoDataGridView.AllowUserToResizeRows = false;
+        }
         //Botão adicionar dos contatos
         private void adicionarButtonOnClick(object sender, EventArgs e)
         {

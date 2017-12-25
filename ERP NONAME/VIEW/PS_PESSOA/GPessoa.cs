@@ -45,8 +45,8 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
             pessoaDataGridView.DataSource = Binding;
 
             pessoaDataGridView.Columns[0].Width = 150;
-            pessoaDataGridView.Columns[1].Width = 180;
-            pessoaDataGridView.Columns[2].Width = 180;
+            pessoaDataGridView.Columns[1].Width = 300;
+            pessoaDataGridView.Columns[2].Width = 300;
             pessoaDataGridView.Columns[3].Width = 150;
             pessoaDataGridView.Columns[4].Width = 130;
             pessoaDataGridView.Columns[7].Width = 230;

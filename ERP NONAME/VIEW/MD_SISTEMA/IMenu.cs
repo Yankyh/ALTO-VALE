@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ALTO_VALE.VIEW.MD_SISTEMA;
 using ALTO_VALE.VIEW.PS_PESSOA;
 
 namespace ALTO_VALE
@@ -29,6 +30,12 @@ namespace ALTO_VALE
         {
             GPessoa gPessoa = new GPessoa();
             gPessoa.ShowDialog();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            GCep gCep = new GCep();
+            gCep.ShowDialog();
         }
     }
 }

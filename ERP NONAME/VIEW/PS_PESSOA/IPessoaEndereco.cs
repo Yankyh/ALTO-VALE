@@ -36,7 +36,7 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
         {
             String cep = "", cidade = "", bairro = "", logradouro = "", numero = "", referencia = "";
             int estado = 0;
-            cep = cepTextBox.Text;
+            //cep = cepTextBox.Text;
             cidade = cidadeTextBox.Text;
             bairro = bairroTextBox.Text;
             logradouro = logradouroTextBox.Text;
@@ -96,51 +96,68 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
         //Verificar campos obrigatórios
         public Boolean verificarCamposObrigatorios()
         {
-            if(cepTextBox.Text == "")
-            {
-                MessageBox.Show("O campo Cep é obrigatório.");
-                return false;
-            }
-            else
-            {
-                if(cidadeTextBox.Text == "")
-                {
-                    MessageBox.Show("O campo cidade é obrigatório.");
-                    return false;
-                }
-                else
-                {
-                    if (estadoComboBox.SelectedValue == "")
-                    {
-                        MessageBox.Show("O campo estado é obrigatório.");
-                        return false;
-                    }
-                    else
-                    {
-                        if (bairroTextBox.Text == "")
-                        {
-                            MessageBox.Show("O campo bairro é obrigatório.");
-                            return false;
-                        }
-                        else
-                        {
-                            if (logradouroTextBox.Text == "")
-                            {
-                                MessageBox.Show("O campo logradouro é obrigatório.");
-                                return false;
-                            }
-                            else
-                            {
-                                return true;
-                            }
-                        }
-                    }
-                }
-            }   
+            /*  if(cepTextBox.Text == "")
+              {
+                  MessageBox.Show("O campo Cep é obrigatório.");
+                  return false;
+              }
+              else
+              {
+                  if(cidadeTextBox.Text == "")
+                  {
+                      MessageBox.Show("O campo cidade é obrigatório.");
+                      return false;
+                  }
+                  else
+                  {
+                      if (estadoComboBox.SelectedValue == "")
+                      {
+                          MessageBox.Show("O campo estado é obrigatório.");
+                          return false;
+                      }
+                      else
+                      {
+                          if (bairroTextBox.Text == "")
+                          {
+                              MessageBox.Show("O campo bairro é obrigatório.");
+                              return false;
+                          }
+                          else
+                          {
+                              if (logradouroTextBox.Text == "")
+                              {
+                                  MessageBox.Show("O campo logradouro é obrigatório.");
+                                  return false;
+                              }
+                              else
+                              {
+                                  return true;
+                              }
+                          }
+                      }
+                  }
+              } */
+            return true;
         }
 
+        private void logradouroTextBox_TextChanged(object sender, EventArgs e)
+        {
 
+        }
 
+        private void cepTextBox_TextChanged(object sender, EventArgs e)
+        {
 
+        }
+
+        private void cidadeTextBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void estadoComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

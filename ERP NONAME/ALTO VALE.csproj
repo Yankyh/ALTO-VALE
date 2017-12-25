@@ -52,6 +52,12 @@
     <Compile Include="DAL\CControleStatus.cs" />
     <Compile Include="DAL\Connection.cs" />
     <Compile Include="DAL\StatusFilter.cs" />
+    <Compile Include="VIEW\MD_SISTEMA\GCep.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VIEW\MD_SISTEMA\GCep.Designer.cs">
+      <DependentUpon>GCep.cs</DependentUpon>
+    </Compile>
     <Compile Include="VIEW\MD_SISTEMA\IMenu.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -60,6 +66,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="VIEW\MD_SISTEMA\ICep.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VIEW\MD_SISTEMA\ICep.Designer.cs">
+      <DependentUpon>ICep.cs</DependentUpon>
+    </Compile>
     <Compile Include="VIEW\PS_PESSOA\GPessoa.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -84,6 +96,12 @@
     <Compile Include="VIEW\PS_PESSOA\IPessoaEndereco.Designer.cs">
       <DependentUpon>IPessoaEndereco.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="VIEW\MD_SISTEMA\GCep.resx">
+      <DependentUpon>GCep.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VIEW\MD_SISTEMA\ICep.resx">
+      <DependentUpon>ICep.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="VIEW\MD_SISTEMA\IMenu.resx">
       <DependentUpon>IMenu.cs</DependentUpon>
     </EmbeddedResource>

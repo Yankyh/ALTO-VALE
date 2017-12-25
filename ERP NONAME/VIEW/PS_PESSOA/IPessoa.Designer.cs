@@ -28,10 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.observacaoTabPage = new System.Windows.Forms.TabPage();
             this.ObservacaoTextBox = new System.Windows.Forms.RichTextBox();
@@ -44,20 +48,6 @@
             this.adicionarContatoButton = new System.Windows.Forms.Button();
             this.contatoDataGridView = new System.Windows.Forms.DataGridView();
             this.pessoaEnderecoTabpage = new System.Windows.Forms.TabPage();
-            this.estadoTextBox = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.cepComboBox = new System.Windows.Forms.ComboBox();
-            this.numeroTextBox = new System.Windows.Forms.TextBox();
-            this.cidadeTextBox = new System.Windows.Forms.TextBox();
-            this.referenciaTextBox = new System.Windows.Forms.TextBox();
-            this.bairroTextBox = new System.Windows.Forms.TextBox();
-            this.logradouroTextBox = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.CEPlabel7 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.Bairrolabel6 = new System.Windows.Forms.Label();
-            this.RuaLabel = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -80,12 +70,16 @@
             this.voltarButton = new System.Windows.Forms.Button();
             this.liberarButton = new System.Windows.Forms.Button();
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
+            this.enderecoDataGridView = new System.Windows.Forms.DataGridView();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             this.tabControl.SuspendLayout();
             this.observacaoTabPage.SuspendLayout();
             this.abrangenciaTabPage.SuspendLayout();
             this.contatoTabPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.contatoDataGridView)).BeginInit();
             this.pessoaEnderecoTabpage.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.enderecoDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl
@@ -208,42 +202,42 @@
             // contatoDataGridView
             // 
             this.contatoDataGridView.AllowUserToAddRows = false;
-            dataGridViewCellStyle9.BackColor = System.Drawing.Color.LightGray;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Arial", 10F);
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.MenuHighlight;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.Black;
-            this.contatoDataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.LightGray;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Arial", 10F);
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.MenuHighlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black;
+            this.contatoDataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.contatoDataGridView.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
             this.contatoDataGridView.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.contatoDataGridView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Arial", 10F);
-            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.Transparent;
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.contatoDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Arial", 10F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Transparent;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.contatoDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.contatoDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Arial", 10F);
-            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.MenuHighlight;
-            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.contatoDataGridView.DefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Arial", 10F);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.MenuHighlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.contatoDataGridView.DefaultCellStyle = dataGridViewCellStyle3;
             this.contatoDataGridView.Location = new System.Drawing.Point(2, 3);
             this.contatoDataGridView.MultiSelect = false;
             this.contatoDataGridView.Name = "contatoDataGridView";
             this.contatoDataGridView.ReadOnly = true;
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Arial", 10F);
-            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.contatoDataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Arial", 10F);
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.contatoDataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.contatoDataGridView.RowHeadersVisible = false;
             this.contatoDataGridView.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.contatoDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -255,162 +249,15 @@
             // 
             this.pessoaEnderecoTabpage.BackColor = System.Drawing.SystemColors.Window;
             this.pessoaEnderecoTabpage.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.pessoaEnderecoTabpage.Controls.Add(this.estadoTextBox);
-            this.pessoaEnderecoTabpage.Controls.Add(this.label5);
-            this.pessoaEnderecoTabpage.Controls.Add(this.cepComboBox);
-            this.pessoaEnderecoTabpage.Controls.Add(this.numeroTextBox);
-            this.pessoaEnderecoTabpage.Controls.Add(this.cidadeTextBox);
-            this.pessoaEnderecoTabpage.Controls.Add(this.referenciaTextBox);
-            this.pessoaEnderecoTabpage.Controls.Add(this.bairroTextBox);
-            this.pessoaEnderecoTabpage.Controls.Add(this.logradouroTextBox);
-            this.pessoaEnderecoTabpage.Controls.Add(this.label8);
-            this.pessoaEnderecoTabpage.Controls.Add(this.label7);
-            this.pessoaEnderecoTabpage.Controls.Add(this.CEPlabel7);
-            this.pessoaEnderecoTabpage.Controls.Add(this.label6);
-            this.pessoaEnderecoTabpage.Controls.Add(this.Bairrolabel6);
-            this.pessoaEnderecoTabpage.Controls.Add(this.RuaLabel);
+            this.pessoaEnderecoTabpage.Controls.Add(this.button1);
+            this.pessoaEnderecoTabpage.Controls.Add(this.button2);
+            this.pessoaEnderecoTabpage.Controls.Add(this.enderecoDataGridView);
             this.pessoaEnderecoTabpage.Location = new System.Drawing.Point(4, 25);
             this.pessoaEnderecoTabpage.Name = "pessoaEnderecoTabpage";
             this.pessoaEnderecoTabpage.Padding = new System.Windows.Forms.Padding(3);
             this.pessoaEnderecoTabpage.Size = new System.Drawing.Size(963, 128);
             this.pessoaEnderecoTabpage.TabIndex = 0;
             this.pessoaEnderecoTabpage.Text = "Endereço";
-            // 
-            // estadoTextBox
-            // 
-            this.estadoTextBox.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.estadoTextBox.Location = new System.Drawing.Point(514, 27);
-            this.estadoTextBox.Name = "estadoTextBox";
-            this.estadoTextBox.Size = new System.Drawing.Size(106, 26);
-            this.estadoTextBox.TabIndex = 45;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.BackColor = System.Drawing.Color.Transparent;
-            this.label5.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(510, 5);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(58, 18);
-            this.label5.TabIndex = 44;
-            this.label5.Text = "Estado";
-            // 
-            // cepComboBox
-            // 
-            this.cepComboBox.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cepComboBox.FormattingEnabled = true;
-            this.cepComboBox.Location = new System.Drawing.Point(7, 27);
-            this.cepComboBox.Name = "cepComboBox";
-            this.cepComboBox.Size = new System.Drawing.Size(248, 26);
-            this.cepComboBox.TabIndex = 43;
-            this.cepComboBox.DropDown += new System.EventHandler(this.cepDropDown);
-            this.cepComboBox.TextChanged += new System.EventHandler(this.cepTextChanged);
-            // 
-            // numeroTextBox
-            // 
-            this.numeroTextBox.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numeroTextBox.Location = new System.Drawing.Point(420, 89);
-            this.numeroTextBox.Name = "numeroTextBox";
-            this.numeroTextBox.Size = new System.Drawing.Size(106, 26);
-            this.numeroTextBox.TabIndex = 29;
-            // 
-            // cidadeTextBox
-            // 
-            this.cidadeTextBox.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cidadeTextBox.Location = new System.Drawing.Point(260, 27);
-            this.cidadeTextBox.Name = "cidadeTextBox";
-            this.cidadeTextBox.Size = new System.Drawing.Size(248, 26);
-            this.cidadeTextBox.TabIndex = 28;
-            // 
-            // referenciaTextBox
-            // 
-            this.referenciaTextBox.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.referenciaTextBox.Location = new System.Drawing.Point(532, 89);
-            this.referenciaTextBox.Name = "referenciaTextBox";
-            this.referenciaTextBox.Size = new System.Drawing.Size(420, 26);
-            this.referenciaTextBox.TabIndex = 26;
-            // 
-            // bairroTextBox
-            // 
-            this.bairroTextBox.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bairroTextBox.Location = new System.Drawing.Point(626, 27);
-            this.bairroTextBox.Name = "bairroTextBox";
-            this.bairroTextBox.Size = new System.Drawing.Size(326, 26);
-            this.bairroTextBox.TabIndex = 25;
-            // 
-            // logradouroTextBox
-            // 
-            this.logradouroTextBox.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.logradouroTextBox.Location = new System.Drawing.Point(7, 89);
-            this.logradouroTextBox.Name = "logradouroTextBox";
-            this.logradouroTextBox.Size = new System.Drawing.Size(407, 26);
-            this.logradouroTextBox.TabIndex = 24;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.BackColor = System.Drawing.Color.Transparent;
-            this.label8.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(417, 69);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(63, 18);
-            this.label8.TabIndex = 10;
-            this.label8.Text = "Número";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.BackColor = System.Drawing.Color.Transparent;
-            this.label7.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(529, 69);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(88, 18);
-            this.label7.TabIndex = 8;
-            this.label7.Text = "Referência ";
-            // 
-            // CEPlabel7
-            // 
-            this.CEPlabel7.AutoSize = true;
-            this.CEPlabel7.BackColor = System.Drawing.Color.Transparent;
-            this.CEPlabel7.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CEPlabel7.Location = new System.Drawing.Point(3, 6);
-            this.CEPlabel7.Name = "CEPlabel7";
-            this.CEPlabel7.Size = new System.Drawing.Size(78, 18);
-            this.CEPlabel7.TabIndex = 7;
-            this.CEPlabel7.Text = "Cep          ";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.BackColor = System.Drawing.Color.Transparent;
-            this.label6.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(256, 5);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(76, 18);
-            this.label6.TabIndex = 4;
-            this.label6.Text = "Cidade    ";
-            // 
-            // Bairrolabel6
-            // 
-            this.Bairrolabel6.AutoSize = true;
-            this.Bairrolabel6.BackColor = System.Drawing.Color.Transparent;
-            this.Bairrolabel6.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Bairrolabel6.Location = new System.Drawing.Point(623, 5);
-            this.Bairrolabel6.Name = "Bairrolabel6";
-            this.Bairrolabel6.Size = new System.Drawing.Size(87, 18);
-            this.Bairrolabel6.TabIndex = 2;
-            this.Bairrolabel6.Text = "Bairro         ";
-            // 
-            // RuaLabel
-            // 
-            this.RuaLabel.AutoSize = true;
-            this.RuaLabel.BackColor = System.Drawing.Color.Transparent;
-            this.RuaLabel.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.RuaLabel.Location = new System.Drawing.Point(3, 67);
-            this.RuaLabel.Name = "RuaLabel";
-            this.RuaLabel.Size = new System.Drawing.Size(89, 18);
-            this.RuaLabel.TabIndex = 0;
-            this.RuaLabel.Text = "Logradouro";
             // 
             // label10
             // 
@@ -633,6 +480,75 @@
             this.reportViewer1.Size = new System.Drawing.Size(396, 246);
             this.reportViewer1.TabIndex = 0;
             // 
+            // enderecoDataGridView
+            // 
+            this.enderecoDataGridView.AllowUserToAddRows = false;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.LightGray;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Arial", 10F);
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.MenuHighlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.Black;
+            this.enderecoDataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
+            this.enderecoDataGridView.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
+            this.enderecoDataGridView.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.enderecoDataGridView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Arial", 10F);
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.Transparent;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.enderecoDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            this.enderecoDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Arial", 10F);
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.MenuHighlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.enderecoDataGridView.DefaultCellStyle = dataGridViewCellStyle7;
+            this.enderecoDataGridView.Location = new System.Drawing.Point(0, 2);
+            this.enderecoDataGridView.MultiSelect = false;
+            this.enderecoDataGridView.Name = "enderecoDataGridView";
+            this.enderecoDataGridView.ReadOnly = true;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Arial", 10F);
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.enderecoDataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
+            this.enderecoDataGridView.RowHeadersVisible = false;
+            this.enderecoDataGridView.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.enderecoDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.enderecoDataGridView.Size = new System.Drawing.Size(933, 119);
+            this.enderecoDataGridView.TabIndex = 4;
+            // 
+            // button1
+            // 
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(935, 26);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(24, 25);
+            this.button1.TabIndex = 63;
+            this.button1.Text = "-";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            this.button2.FlatAppearance.BorderSize = 0;
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.Location = new System.Drawing.Point(935, 0);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(24, 25);
+            this.button2.TabIndex = 62;
+            this.button2.Text = "+";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
             // IPessoa
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -676,7 +592,7 @@
             this.contatoTabPage.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.contatoDataGridView)).EndInit();
             this.pessoaEnderecoTabpage.ResumeLayout(false);
-            this.pessoaEnderecoTabpage.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.enderecoDataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -686,17 +602,6 @@
 
         private System.Windows.Forms.TabControl tabControl;
         private System.Windows.Forms.TabPage pessoaEnderecoTabpage;
-        private System.Windows.Forms.TextBox numeroTextBox;
-        private System.Windows.Forms.TextBox cidadeTextBox;
-        private System.Windows.Forms.TextBox referenciaTextBox;
-        private System.Windows.Forms.TextBox bairroTextBox;
-        private System.Windows.Forms.TextBox logradouroTextBox;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label CEPlabel7;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label Bairrolabel6;
-        private System.Windows.Forms.Label RuaLabel;
         private System.Windows.Forms.TabPage observacaoTabPage;
         private System.Windows.Forms.RichTextBox ObservacaoTextBox;
         private System.Windows.Forms.Label label10;
@@ -716,12 +621,9 @@
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.ComboBox tipoComboBox;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.ComboBox cepComboBox;
         private System.Windows.Forms.TabPage contatoTabPage;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox celularTextBox;
-        private System.Windows.Forms.TextBox estadoTextBox;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TabPage abrangenciaTabPage;
         private System.Windows.Forms.CheckBox checkBox3;
         private System.Windows.Forms.CheckBox fornecedorCheckBox;
@@ -732,5 +634,8 @@
         private System.Windows.Forms.Button liberarButton;
         private Microsoft.Reporting.WinForms.ReportViewer reportViewer1;
         private System.Windows.Forms.Button removerContatoButton;
+        private System.Windows.Forms.DataGridView enderecoDataGridView;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
     }
 }
