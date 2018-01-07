@@ -22,7 +22,54 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
             InitializeComponent();
             //Conectar
             connection.Conectar();
+            //Preencher o formulario
+            if (handleEndereco != 0)
+            {
+                PreencherFormulario();
+            }
         }
+
+        private void PreencherFormulario()
+        {
+            String cep = "", cidade = "", bairro = "", logradouro = "", numero = "", referencia = "", estado = "", observacao = "";
+
+
+            //Preenche o formulário
+            String query = " SELECT B.NOME, A.CEP, A.CIDADE, B.NOME ESTADO, A.BAIRRO, A.LOGRADOURO, A.NUMERO, A.REFERENCIA, A.OBSERVACAO" +
+                           " FROM PS_PESSOAENDERECO A" +
+                           " INNER JOIN MD_ESTADO B ON B.HANDLE = A.ESTADO" +
+                           " INNER JOIN MD_STATUS C ON C.HANDLE = A.STATUS" +
+                           " WHERE A.HANDLE = " + handleEndereco;
+            SqlDataReader reader = connection.Pesquisa(query);
+            while (reader.Read())
+            {
+                cep = reader["CEP"].ToString();
+                cidade = reader["CIDADE"].ToString();
+                estado = reader["ESTADO"].ToString();
+                bairro = reader["BAIRRO"].ToString();
+                logradouro = reader["LOGRADOURO"].ToString();
+                numero = reader["NUMERO"].ToString();
+                referencia = reader["REFERENCIA"].ToString();
+                observacao = reader["OBSERVACAO"].ToString();
+            }
+            reader.Close();
+
+            //preenche o cep combo box
+            PreencherCepComboBox();
+            preencherEstado();
+            //Preenche os campos
+            cepComboBox.SelectedItem = cep;
+            cidadeTextBox.Text = cidade;
+            estadoComboBox.SelectedItem = estado;
+            bairroTextBox.Text = bairro;
+            logradouroTextBox.Text = logradouro;
+            numeroTextBox.Text = numero;
+            referenciaTextBox.Text = referencia;
+            ObservacaoTextBox.Text = observacao;
+
+            controleDeStatus();
+        }
+
 
         private void gravarButtonOnClick(object sender, EventArgs e)
         {
@@ -34,7 +81,7 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
 
         public void gravarRegistroEndereco(String acao)
         {
-            String cep = "", cidade = "", bairro = "", logradouro = "", numero = "", referencia = "";
+            String cep = "", cidade = "", bairro = "", logradouro = "", numero = "", referencia = "", observacao = "";
             int estado = 0;
             cep = cepComboBox.SelectedItem.ToString();
             cidade = cidadeTextBox.Text;
@@ -43,46 +90,77 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
             numero = numeroTextBox.Text;
             referencia = referenciaTextBox.Text;
             estado = estadoHandle();
-
-            if (acao == "Gravar")
+            observacao = ObservacaoTextBox.Text;
+            if (verificarCamposObrigatorios() == true)
             {
-                String query = "INSERT INTO PS_PESSOAENDERECO (STATUS, CEP, CIDADE, BAIRRO, LOGRADOURO, NUMERO, REFERENCIA, ESTADO) VALUES " +
-                              " (1, " +
-                              " '" + cep + "', " +
-                              " '" + cidade + "', " +
-                              " '" + bairro + "', " +
-                              " '" + logradouro + "', " +
-                              " '" + numero + "', " +
-                              " '" + referencia + "', " +
-                              " " + estado + ")";
-                connection.Inserir(query);
-
-                //Busca o registro para adicionar na fk
-                String query2 = " SELECT MAX(A.HANDLE) AS HANDLE" +
-                                " FROM PS_PESSOAENDERECO A" +
-                                " WHERE CEP = '" + cep + "'" +
-                                " AND CIDADE = '" + cidade + "'" +
-                                " AND BAIRRO = '" + bairro + "' " +
-                                " AND LOGRADOURO = '" + logradouro + "'" +
-                                " AND NUMERO = '" + numero + "'" +
-                                " AND REFERENCIA = '" + referencia + "'" +
-                                " AND ESTADO = " + estado;
-                SqlDataReader reader = connection.Pesquisa(query2);
-                while (reader.Read())
+                if (acao == "Gravar")
                 {
-                    handleEndereco = Convert.ToInt32(reader["HANDLE"]);
+                    String query = "INSERT INTO PS_PESSOAENDERECO (STATUS, CEP, CIDADE, BAIRRO, LOGRADOURO, NUMERO, REFERENCIA, OBSERVACAO, ESTADO) VALUES " +
+                                  " (1, " +
+                                  " '" + cep + "', " +
+                                  " '" + cidade + "', " +
+                                  " '" + bairro + "', " +
+                                  " '" + logradouro + "', " +
+                                  " '" + numero + "', " +
+                                  " '" + referencia + "', " +
+                                  " '" + observacao + "', " +
+                                  " " + estado + ")";
+                    connection.Inserir(query);
+
+                    //Busca o registro para adicionar na fk
+                    String query2 = " SELECT MAX(A.HANDLE) AS HANDLE" +
+                                    " FROM PS_PESSOAENDERECO A" +
+                                    " WHERE CEP = '" + cep + "'" +
+                                    " AND CIDADE = '" + cidade + "'" +
+                                    " AND BAIRRO = '" + bairro + "' " +
+                                    " AND LOGRADOURO = '" + logradouro + "'" +
+                                    " AND NUMERO = '" + numero + "'" +
+                                    " AND REFERENCIA = '" + referencia + "'" +
+                                    " AND ESTADO = " + estado;
+                    SqlDataReader reader = connection.Pesquisa(query2);
+                    while (reader.Read())
+                    {
+                        handleEndereco = Convert.ToInt32(reader["HANDLE"]);
+                    }
+                    reader.Close();
+                    String query3 = " INSERT INTO PS_PESSOAENDERECOFK" +
+                                    " (PESSOA, ENDERECO)" +
+                                    " VALUES" +
+                                    " (" + handlePessoa + ", " + handleEndereco + ")";
+
+                    connection.Inserir(query3);
                 }
-                reader.Close();
-                String query3 = " INSERT INTO PS_PESSOAENDERECOFK" +
-                                " (PESSOA, ENDERECO)" +
-                                " VALUES" +
-                                " (" + handlePessoa + ", " + handleEndereco + ")";
+                else
+                {
+                    if (acao == "Liberar")
+                    {
+                        String query = " UPDATE PS_PESSOAENDERECO" +
+                                 " SET CEP = '" + cep + "'," +
+                                 " CIDADE = '" + cidade + "'," +
+                                 " BAIRRO = '" + bairro + "'," +
+                                 " LOGRADOURO = '" + logradouro + "'," +
+                                 " NUMERO = '" + numero + "'," +
+                                 " REFERENCIA = '" + referencia + "'," +
+                                 " ESTADO = '" + estado + "'," +
+                                 " STATUS = 3" +
+                                 " WHERE HANDLE = " + handleEndereco;
+                        connection.Inserir(query);
+                    }
+                    else
+                    {
+                        if (acao == "Voltar")
+                        {
+                            String query = " UPDATE PS_PESSOAENDERECO" +
+                                           " SET STATUS = 2" +
+                                           " WHERE HANDLE = " + handleEndereco;
+                            connection.Inserir(query);
+                        }
+                    }
+                }
 
-                connection.Inserir(query3);
+                //Controle de status
+                controleDeStatus();
             }
-
-            //Controle de status
-            controleDeStatus();
         }
 
 
@@ -99,7 +177,7 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
             estadoComboBox.Items.Clear();
 
             //Lista os tipos
-            String query = "SELECT NOME FROM PS_ESTADO";
+            String query = "SELECT NOME FROM MD_ESTADO";
             query = StatusFilter.StatusNotIn(query);
 
             SqlDataReader reader = connection.Pesquisa(query);
@@ -120,7 +198,7 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
             String estadoSelecionado = "";
             estadoSelecionado = estadoComboBox.SelectedItem.ToString();
 
-            String query = "SELECT HANDLE FROM PS_ESTADO WHERE NOME = '" + estadoSelecionado + "'";
+            String query = "SELECT HANDLE FROM MD_ESTADO WHERE NOME = '" + estadoSelecionado + "'";
             SqlDataReader reader = connection.Pesquisa(query);
             while (reader.Read())
             {
@@ -182,6 +260,11 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
 
 
         private void cepDropDown(object sender, EventArgs e)
+        {
+            PreencherCepComboBox();
+        }
+        //Preencher combo box cep
+        private void PreencherCepComboBox()
         {
             //Limpa a combo box
             cepComboBox.Items.Clear();
@@ -252,6 +335,16 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
             logradouroTextBox.Text = logradouro;
         }
 
+        private void liberarButtonOnClick(object sender, EventArgs e)
+        {
+            gravarRegistroEndereco("Liberar");
+        }
+
+        private void voltarButtonOnClick(object sender, EventArgs e)
+        {
+            gravarRegistroEndereco("Voltar");
+        }
+
         //Controle de status
         public void controleDeStatus()
         {
@@ -261,12 +354,12 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
                            " INNER JOIN MD_STATUS B ON B.HANDLE = A.STATUS" +
                            " WHERE A.HANDLE = " + handleEndereco;
             SqlDataReader reader = connection.Pesquisa(query);
+
             while (reader.Read())
             {
                 status = reader["NOME"].ToString();
             }
             reader.Close();
-
             if (status == "Cadastrado")
             {
                 gravarButton.Visible = false;
@@ -347,16 +440,8 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
                         }
                     }
                 }
-                this.Text = "Pessoa - " + status;
-                //  }
             }
-
-
-
-
-
-
-
-
+            this.Text = "Endereço - " + status;
         }
     }
+}

@@ -40,7 +40,7 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
                            " FROM PS_PESSOA A" +
                            " INNER JOIN MD_STATUS B ON B.HANDLE = A.STATUS " +
                            " LEFT JOIN PS_PESSOAENDERECO C ON C.HANDLE = A.ENDERECO" +
-                           " LEFT JOIN PS_ESTADO D ON D.HANDLE = C.ESTADO";
+                           " LEFT JOIN MD_ESTADO D ON D.HANDLE = C.ESTADO";
             Binding.DataSource = connection.DataTable(query);
             pessoaDataGridView.DataSource = Binding;
 

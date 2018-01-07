@@ -187,7 +187,7 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
                 cancelarButton.Visible = true;
                 voltarButton.Visible = false;
                 liberarButton.Visible = true;
-                liberarButton.Location = new Point(564, 205);
+                liberarButton.Location = new Point(564, 228);
                 cancelarButton.Location = new Point(668, 205);
             }
             else
@@ -205,8 +205,8 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
                     cancelarButton.Visible = true;
                     voltarButton.Visible = false;
                     gravarButton.Visible = false;
-                    liberarButton.Location = new Point(564, 205);
-                    cancelarButton.Location = new Point(668, 205);
+                    liberarButton.Location = new Point(564, 228);
+                    cancelarButton.Location = new Point(668, 228);
                 }
                 else
                 {
@@ -223,7 +223,7 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
                         cancelarButton.Visible = false;
                         voltarButton.Visible = true;
                         liberarButton.Visible = false;
-                        voltarButton.Location = new Point(668, 205);
+                        voltarButton.Location = new Point(668, 228);
                     }
                     else
                     {
@@ -240,7 +240,7 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
                             cancelarButton.Visible = false;
                             voltarButton.Visible = true;
                             liberarButton.Visible = false;
-                            voltarButton.Location = new Point(668, 205);
+                            voltarButton.Location = new Point(668, 228);
                         }
                         else
                         {
@@ -248,12 +248,12 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
                             cancelarButton.Visible = false;
                             voltarButton.Visible = false;
                             liberarButton.Visible = false;
-                            gravarButton.Location = new Point(668, 205);
+                            gravarButton.Location = new Point(668, 228);
                         }
                     }
                 }
-                this.Text = "Contato - " + status;
             }
+            this.Text = "Contato - " + status;
         }
 
         public void preencherFormulario(int contatoHandle)

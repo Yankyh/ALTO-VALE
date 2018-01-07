@@ -59,7 +59,7 @@
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Arial", 10F);
-            this.label1.Location = new System.Drawing.Point(410, 51);
+            this.label1.Location = new System.Drawing.Point(412, 51);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(57, 16);
             this.label1.TabIndex = 62;
@@ -68,7 +68,7 @@
             // numeroTextBox
             // 
             this.numeroTextBox.Font = new System.Drawing.Font("Arial", 10F);
-            this.numeroTextBox.Location = new System.Drawing.Point(413, 70);
+            this.numeroTextBox.Location = new System.Drawing.Point(415, 70);
             this.numeroTextBox.Name = "numeroTextBox";
             this.numeroTextBox.Size = new System.Drawing.Size(162, 23);
             this.numeroTextBox.TabIndex = 6;
@@ -78,7 +78,7 @@
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Arial", 10F);
-            this.label3.Location = new System.Drawing.Point(534, 7);
+            this.label3.Location = new System.Drawing.Point(536, 7);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(52, 16);
             this.label3.TabIndex = 61;
@@ -89,7 +89,7 @@
             this.estadoComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.estadoComboBox.Font = new System.Drawing.Font("Arial", 10F);
             this.estadoComboBox.FormattingEnabled = true;
-            this.estadoComboBox.Location = new System.Drawing.Point(534, 25);
+            this.estadoComboBox.Location = new System.Drawing.Point(536, 25);
             this.estadoComboBox.Name = "estadoComboBox";
             this.estadoComboBox.Size = new System.Drawing.Size(224, 24);
             this.estadoComboBox.TabIndex = 3;
@@ -98,18 +98,18 @@
             // referenciaTextBox
             // 
             this.referenciaTextBox.Font = new System.Drawing.Font("Arial", 10F);
-            this.referenciaTextBox.Location = new System.Drawing.Point(581, 69);
+            this.referenciaTextBox.Location = new System.Drawing.Point(583, 69);
             this.referenciaTextBox.Name = "referenciaTextBox";
-            this.referenciaTextBox.Size = new System.Drawing.Size(399, 23);
+            this.referenciaTextBox.Size = new System.Drawing.Size(392, 23);
             this.referenciaTextBox.TabIndex = 7;
             // 
             // bairroTextBox
             // 
             this.bairroTextBox.Font = new System.Drawing.Font("Arial", 10F);
-            this.bairroTextBox.Location = new System.Drawing.Point(764, 25);
+            this.bairroTextBox.Location = new System.Drawing.Point(766, 25);
             this.bairroTextBox.MaxLength = 18;
             this.bairroTextBox.Name = "bairroTextBox";
-            this.bairroTextBox.Size = new System.Drawing.Size(216, 23);
+            this.bairroTextBox.Size = new System.Drawing.Size(209, 23);
             this.bairroTextBox.TabIndex = 4;
             // 
             // label12
@@ -117,7 +117,7 @@
             this.label12.AutoSize = true;
             this.label12.BackColor = System.Drawing.Color.Transparent;
             this.label12.Font = new System.Drawing.Font("Arial", 10F);
-            this.label12.Location = new System.Drawing.Point(5, 51);
+            this.label12.Location = new System.Drawing.Point(7, 51);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(82, 16);
             this.label12.TabIndex = 58;
@@ -128,7 +128,7 @@
             this.label13.AutoSize = true;
             this.label13.BackColor = System.Drawing.Color.Transparent;
             this.label13.Font = new System.Drawing.Font("Arial", 10F);
-            this.label13.Location = new System.Drawing.Point(6, 7);
+            this.label13.Location = new System.Drawing.Point(8, 7);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(34, 16);
             this.label13.TabIndex = 60;
@@ -139,7 +139,7 @@
             this.label14.AutoSize = true;
             this.label14.BackColor = System.Drawing.Color.Transparent;
             this.label14.Font = new System.Drawing.Font("Arial", 10F);
-            this.label14.Location = new System.Drawing.Point(761, 7);
+            this.label14.Location = new System.Drawing.Point(763, 7);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(46, 16);
             this.label14.TabIndex = 57;
@@ -148,7 +148,7 @@
             // cidadeTextBox
             // 
             this.cidadeTextBox.Font = new System.Drawing.Font("Arial", 10F);
-            this.cidadeTextBox.Location = new System.Drawing.Point(195, 26);
+            this.cidadeTextBox.Location = new System.Drawing.Point(197, 26);
             this.cidadeTextBox.Name = "cidadeTextBox";
             this.cidadeTextBox.Size = new System.Drawing.Size(333, 23);
             this.cidadeTextBox.TabIndex = 2;
@@ -156,7 +156,7 @@
             // logradouroTextBox
             // 
             this.logradouroTextBox.Font = new System.Drawing.Font("Arial", 10F);
-            this.logradouroTextBox.Location = new System.Drawing.Point(9, 70);
+            this.logradouroTextBox.Location = new System.Drawing.Point(11, 70);
             this.logradouroTextBox.Name = "logradouroTextBox";
             this.logradouroTextBox.Size = new System.Drawing.Size(398, 23);
             this.logradouroTextBox.TabIndex = 5;
@@ -166,7 +166,7 @@
             this.label15.AutoSize = true;
             this.label15.BackColor = System.Drawing.Color.Transparent;
             this.label15.Font = new System.Drawing.Font("Arial", 10F);
-            this.label15.Location = new System.Drawing.Point(192, 7);
+            this.label15.Location = new System.Drawing.Point(194, 7);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(53, 16);
             this.label15.TabIndex = 56;
@@ -177,7 +177,7 @@
             this.label16.AutoSize = true;
             this.label16.BackColor = System.Drawing.Color.Transparent;
             this.label16.Font = new System.Drawing.Font("Arial", 10F);
-            this.label16.Location = new System.Drawing.Point(578, 51);
+            this.label16.Location = new System.Drawing.Point(580, 51);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(77, 16);
             this.label16.TabIndex = 59;
@@ -187,7 +187,7 @@
             // 
             this.tabControl1.Controls.Add(this.observacaoTabPage);
             this.tabControl1.Font = new System.Drawing.Font("Arial", 10F);
-            this.tabControl1.Location = new System.Drawing.Point(9, 105);
+            this.tabControl1.Location = new System.Drawing.Point(4, 126);
             this.tabControl1.Multiline = true;
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -226,8 +226,8 @@
             // 
             // cancelarButton
             // 
-            this.cancelarButton.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cancelarButton.Location = new System.Drawing.Point(773, 265);
+            this.cancelarButton.Font = new System.Drawing.Font("Arial", 10F);
+            this.cancelarButton.Location = new System.Drawing.Point(768, 288);
             this.cancelarButton.Name = "cancelarButton";
             this.cancelarButton.Size = new System.Drawing.Size(103, 32);
             this.cancelarButton.TabIndex = 12;
@@ -236,8 +236,8 @@
             // 
             // gravarButton
             // 
-            this.gravarButton.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gravarButton.Location = new System.Drawing.Point(877, 265);
+            this.gravarButton.Font = new System.Drawing.Font("Arial", 10F);
+            this.gravarButton.Location = new System.Drawing.Point(872, 288);
             this.gravarButton.Name = "gravarButton";
             this.gravarButton.Size = new System.Drawing.Size(103, 32);
             this.gravarButton.TabIndex = 11;
@@ -251,7 +251,7 @@
             this.cepComboBox.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.cepComboBox.Font = new System.Drawing.Font("Arial", 10F);
             this.cepComboBox.FormattingEnabled = true;
-            this.cepComboBox.Location = new System.Drawing.Point(8, 26);
+            this.cepComboBox.Location = new System.Drawing.Point(10, 26);
             this.cepComboBox.Name = "cepComboBox";
             this.cepComboBox.Size = new System.Drawing.Size(181, 24);
             this.cepComboBox.TabIndex = 63;
@@ -260,30 +260,32 @@
             // 
             // voltarButton
             // 
-            this.voltarButton.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.voltarButton.Location = new System.Drawing.Point(664, 268);
+            this.voltarButton.Font = new System.Drawing.Font("Arial", 10F);
+            this.voltarButton.Location = new System.Drawing.Point(664, 288);
             this.voltarButton.Name = "voltarButton";
             this.voltarButton.Size = new System.Drawing.Size(103, 32);
             this.voltarButton.TabIndex = 64;
             this.voltarButton.Text = "Voltar";
             this.voltarButton.UseVisualStyleBackColor = true;
+            this.voltarButton.Click += new System.EventHandler(this.voltarButtonOnClick);
             // 
             // liberarButton
             // 
-            this.liberarButton.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.liberarButton.Location = new System.Drawing.Point(552, 268);
+            this.liberarButton.Font = new System.Drawing.Font("Arial", 10F);
+            this.liberarButton.Location = new System.Drawing.Point(561, 288);
             this.liberarButton.Name = "liberarButton";
             this.liberarButton.Size = new System.Drawing.Size(103, 32);
             this.liberarButton.TabIndex = 65;
             this.liberarButton.Text = "Liberar";
             this.liberarButton.UseVisualStyleBackColor = true;
+            this.liberarButton.Click += new System.EventHandler(this.liberarButtonOnClick);
             // 
             // IPessoaEndereco
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.ClientSize = new System.Drawing.Size(988, 303);
+            this.ClientSize = new System.Drawing.Size(984, 324);
             this.Controls.Add(this.liberarButton);
             this.Controls.Add(this.voltarButton);
             this.Controls.Add(this.cepComboBox);
@@ -305,6 +307,7 @@
             this.Controls.Add(this.cancelarButton);
             this.Controls.Add(this.gravarButton);
             this.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;

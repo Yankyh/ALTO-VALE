@@ -355,7 +355,6 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
             }
             reader.Close();
             //alterado status do registro voltado
-
             return handlePessoaModificar;
         }
 
@@ -531,10 +530,9 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
                            " FROM PS_PESSOA A" +
                            " INNER JOIN PS_PESSOAENDERECOFK B ON B.PESSOA = A.HANDLE" +
                            " INNER JOIN PS_PESSOAENDERECO C ON C.HANDLE = B.ENDERECO" +
-                           " WHERE A.HANDLE = "+buscarHandlePessoa();
+                           " WHERE A.HANDLE = "+ buscarHandlePessoa();
             Binding.DataSource = connection.DataTable(query);
             enderecoDataGridView.DataSource = Binding;
-
             enderecoDataGridView.Columns[7].Width = 150;
             enderecoDataGridView.Columns[1].Width = 150;
             enderecoDataGridView.Columns[2].Width = 150;
@@ -558,6 +556,7 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
         private void atualizarInformacoesDoFormulario(object sender, EventArgs e)
         {
             preencherContatoPessoa();
+            PreencherEndereco();
         }
 
         private void cellClick(object sender, DataGridViewCellEventArgs e)
@@ -609,14 +608,9 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
         {
             //Pega o handle do contato para pesquisar
             int contatoHandle = 0;
-            try
-            {
-                contatoHandle = Convert.ToInt32(contatoDataGridView.CurrentRow.Cells[6].Value.ToString());
-            }
-            catch
-            {
 
-            }
+                contatoHandle = Convert.ToInt32(contatoDataGridView.CurrentRow.Cells[6].Value.ToString());
+
             return contatoHandle;
         }
 
@@ -644,6 +638,20 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
 
             }            
             return enderecoHandle;
+        }
+
+        private void EnderecoCellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (PegarHandleEndereco() == 0)
+            {
+
+            }
+            else
+            {
+                IPessoaEndereco.handleEndereco = PegarHandleEndereco();
+                IPessoaEndereco iPessoaEndereco = new IPessoaEndereco();
+                iPessoaEndereco.ShowDialog();
+            }
         }
     }
 }
