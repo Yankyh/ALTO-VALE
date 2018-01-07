@@ -49,7 +49,7 @@
             // cepTextBox
             // 
             this.cepTextBox.Font = new System.Drawing.Font("Arial", 10F);
-            this.cepTextBox.Location = new System.Drawing.Point(10, 28);
+            this.cepTextBox.Location = new System.Drawing.Point(6, 25);
             this.cepTextBox.MaxLength = 8;
             this.cepTextBox.Name = "cepTextBox";
             this.cepTextBox.Size = new System.Drawing.Size(177, 23);
@@ -60,7 +60,7 @@
             this.label14.AutoSize = true;
             this.label14.BackColor = System.Drawing.Color.Transparent;
             this.label14.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(7, 9);
+            this.label14.Location = new System.Drawing.Point(3, 6);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(31, 16);
             this.label14.TabIndex = 33;
@@ -69,7 +69,7 @@
             // logradouroTextBox
             // 
             this.logradouroTextBox.Font = new System.Drawing.Font("Arial", 10F);
-            this.logradouroTextBox.Location = new System.Drawing.Point(214, 75);
+            this.logradouroTextBox.Location = new System.Drawing.Point(210, 72);
             this.logradouroTextBox.MaxLength = 18;
             this.logradouroTextBox.Name = "logradouroTextBox";
             this.logradouroTextBox.Size = new System.Drawing.Size(282, 23);
@@ -80,7 +80,7 @@
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(211, 56);
+            this.label1.Location = new System.Drawing.Point(207, 53);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(72, 16);
             this.label1.TabIndex = 35;
@@ -89,7 +89,7 @@
             // bairroTextBox
             // 
             this.bairroTextBox.Font = new System.Drawing.Font("Arial", 10F);
-            this.bairroTextBox.Location = new System.Drawing.Point(10, 75);
+            this.bairroTextBox.Location = new System.Drawing.Point(6, 72);
             this.bairroTextBox.MaxLength = 18;
             this.bairroTextBox.Name = "bairroTextBox";
             this.bairroTextBox.Size = new System.Drawing.Size(200, 23);
@@ -100,7 +100,7 @@
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(7, 56);
+            this.label2.Location = new System.Drawing.Point(3, 53);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(42, 16);
             this.label2.TabIndex = 37;
@@ -109,7 +109,7 @@
             // cidadeTextBox
             // 
             this.cidadeTextBox.Font = new System.Drawing.Font("Arial", 10F);
-            this.cidadeTextBox.Location = new System.Drawing.Point(417, 27);
+            this.cidadeTextBox.Location = new System.Drawing.Point(413, 24);
             this.cidadeTextBox.MaxLength = 18;
             this.cidadeTextBox.Name = "cidadeTextBox";
             this.cidadeTextBox.Size = new System.Drawing.Size(305, 23);
@@ -120,7 +120,7 @@
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(411, 9);
+            this.label3.Location = new System.Drawing.Point(410, 6);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(48, 16);
             this.label3.TabIndex = 39;
@@ -131,7 +131,7 @@
             this.label4.AutoSize = true;
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(499, 56);
+            this.label4.Location = new System.Drawing.Point(495, 53);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(49, 16);
             this.label4.TabIndex = 41;
@@ -145,12 +145,12 @@
             this.estadoComboBox.Items.AddRange(new object[] {
             "Acre",
             "Alagoas",
-            "Amapá\t ",
+            "Amapá",
             "Amazonas\t",
             "Bahia",
             "Ceará",
             "Distrito Federal",
-            "Espírito Santo ",
+            "Espírito Santo",
             "Goiás",
             "Maranhão",
             "Mato Grosso",
@@ -164,13 +164,13 @@
             "Rio de Janeiro",
             "Rio Grande do Norte",
             "Rio Grande do Sul",
-            "Rondônia ",
+            "Rondônia",
             "Roraima",
-            "Santa Catarina ",
+            "Santa Catarina",
             "São Paulo",
             "Sergipe",
             "Tocantins"});
-            this.estadoComboBox.Location = new System.Drawing.Point(502, 74);
+            this.estadoComboBox.Location = new System.Drawing.Point(498, 71);
             this.estadoComboBox.Name = "estadoComboBox";
             this.estadoComboBox.Size = new System.Drawing.Size(220, 24);
             this.estadoComboBox.TabIndex = 42;
@@ -182,7 +182,7 @@
             this.paisComboBox.FormattingEnabled = true;
             this.paisComboBox.Items.AddRange(new object[] {
             "Brasil"});
-            this.paisComboBox.Location = new System.Drawing.Point(191, 27);
+            this.paisComboBox.Location = new System.Drawing.Point(187, 24);
             this.paisComboBox.Name = "paisComboBox";
             this.paisComboBox.Size = new System.Drawing.Size(220, 24);
             this.paisComboBox.TabIndex = 44;
@@ -192,7 +192,7 @@
             this.label5.AutoSize = true;
             this.label5.BackColor = System.Drawing.Color.Transparent;
             this.label5.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(188, 8);
+            this.label5.Location = new System.Drawing.Point(184, 5);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(34, 16);
             this.label5.TabIndex = 43;
@@ -201,7 +201,7 @@
             // liberarButton
             // 
             this.liberarButton.Font = new System.Drawing.Font("Arial", 10F);
-            this.liberarButton.Location = new System.Drawing.Point(308, 114);
+            this.liberarButton.Location = new System.Drawing.Point(304, 114);
             this.liberarButton.Name = "liberarButton";
             this.liberarButton.Size = new System.Drawing.Size(103, 32);
             this.liberarButton.TabIndex = 69;
@@ -213,7 +213,7 @@
             // voltarButton
             // 
             this.voltarButton.Font = new System.Drawing.Font("Arial", 10F);
-            this.voltarButton.Location = new System.Drawing.Point(412, 114);
+            this.voltarButton.Location = new System.Drawing.Point(408, 114);
             this.voltarButton.Name = "voltarButton";
             this.voltarButton.Size = new System.Drawing.Size(103, 32);
             this.voltarButton.TabIndex = 68;
@@ -224,7 +224,7 @@
             // cancelarButton
             // 
             this.cancelarButton.Font = new System.Drawing.Font("Arial", 10F);
-            this.cancelarButton.Location = new System.Drawing.Point(515, 114);
+            this.cancelarButton.Location = new System.Drawing.Point(511, 114);
             this.cancelarButton.Name = "cancelarButton";
             this.cancelarButton.Size = new System.Drawing.Size(103, 32);
             this.cancelarButton.TabIndex = 66;
@@ -235,7 +235,7 @@
             // gravarButton
             // 
             this.gravarButton.Font = new System.Drawing.Font("Arial", 10F);
-            this.gravarButton.Location = new System.Drawing.Point(619, 114);
+            this.gravarButton.Location = new System.Drawing.Point(615, 114);
             this.gravarButton.Name = "gravarButton";
             this.gravarButton.Size = new System.Drawing.Size(103, 32);
             this.gravarButton.TabIndex = 67;
@@ -247,7 +247,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(733, 150);
+            this.ClientSize = new System.Drawing.Size(724, 150);
             this.Controls.Add(this.liberarButton);
             this.Controls.Add(this.voltarButton);
             this.Controls.Add(this.cancelarButton);
@@ -264,6 +264,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.cepTextBox);
             this.Controls.Add(this.label14);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "ICep";

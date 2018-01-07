@@ -286,7 +286,7 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
                            " FROM PS_PESSOA A" +
                            " INNER JOIN PS_PESSOATIPO B ON B.HANDLE = A.TIPO" +
                            " INNER JOIN MD_STATUS C ON C.HANDLE = A.STATUS" +
-                           " INNER JOIN PS_PESSOAENDERECO D ON D.HANDLE = A.ENDERECO" +
+                           " LEFT JOIN PS_PESSOAENDERECO D ON D.HANDLE = A.ENDERECO" +
                            " WHERE A.HANDLE = " + handlePessoa;
             SqlDataReader reader = connection.Pesquisa(query);
 
@@ -527,19 +527,21 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
         {
             BindingSource Binding = new BindingSource();
             enderecoDataGridView.AutoGenerateColumns = true;
-            String query = " SELECT B.NOME, A.CEP, A.PAIS, A.ESTADO, A.CIDADE, A.BAIRRO, A.LOGRADOURO, A.HANDLE" +
-                           " FROM MD_CEP A" +
-                           " INNER JOIN MD_STATUS B ON B.HANDLE = A.STATUS";
+            String query = " SELECT C.HANDLE, C.CEP, C.CIDADE, C.ESTADO, C.BAIRRO, C.LOGRADOURO, C.NUMERO, C.REFERENCIA" +
+                           " FROM PS_PESSOA A" +
+                           " INNER JOIN PS_PESSOAENDERECOFK B ON B.PESSOA = A.HANDLE" +
+                           " INNER JOIN PS_PESSOAENDERECO C ON C.HANDLE = B.ENDERECO" +
+                           " WHERE A.HANDLE = "+buscarHandlePessoa();
             Binding.DataSource = connection.DataTable(query);
             enderecoDataGridView.DataSource = Binding;
 
-            enderecoDataGridView.Columns[0].Width = 150;
+            enderecoDataGridView.Columns[7].Width = 150;
             enderecoDataGridView.Columns[1].Width = 150;
             enderecoDataGridView.Columns[2].Width = 150;
             enderecoDataGridView.Columns[3].Width = 150;
             enderecoDataGridView.Columns[4].Width = 200;
             enderecoDataGridView.Columns[6].Width = 300;
-            enderecoDataGridView.Columns[7].Visible = false;
+            enderecoDataGridView.Columns[0].Visible = false;
             enderecoDataGridView.AllowUserToResizeRows = false;
         }
         //Botão adicionar dos contatos
@@ -621,6 +623,27 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
         private void cancelarButtonOnClick(object sender, EventArgs e)
         {
             alterarRegistroPessoa("Cancelar");
+        }
+
+        private void adicionarEnderecoButtonOnClick(object sender, EventArgs e)
+        {
+            IPessoaEndereco.handlePessoa = buscarHandlePessoa();
+            IPessoaEndereco iPessoaEndereco = new IPessoaEndereco();
+            iPessoaEndereco.ShowDialog();
+        }
+        private int PegarHandleEndereco()
+        {
+            int enderecoHandle = 0;
+
+            try
+            {
+                enderecoHandle = Convert.ToInt32(enderecoDataGridView.CurrentRow.Cells[0].Value.ToString());
+            }
+            catch
+            {
+
+            }            
+            return enderecoHandle;
         }
     }
 }

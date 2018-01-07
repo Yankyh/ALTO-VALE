@@ -48,6 +48,8 @@
             this.cancelarButton = new System.Windows.Forms.Button();
             this.gravarButton = new System.Windows.Forms.Button();
             this.cepComboBox = new System.Windows.Forms.ComboBox();
+            this.voltarButton = new System.Windows.Forms.Button();
+            this.liberarButton = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.observacaoTabPage.SuspendLayout();
             this.SuspendLayout();
@@ -84,6 +86,7 @@
             // 
             // estadoComboBox
             // 
+            this.estadoComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.estadoComboBox.Font = new System.Drawing.Font("Arial", 10F);
             this.estadoComboBox.FormattingEnabled = true;
             this.estadoComboBox.Location = new System.Drawing.Point(534, 25);
@@ -91,7 +94,6 @@
             this.estadoComboBox.Size = new System.Drawing.Size(224, 24);
             this.estadoComboBox.TabIndex = 3;
             this.estadoComboBox.DropDown += new System.EventHandler(this.estadoDropDown);
-            this.estadoComboBox.SelectedIndexChanged += new System.EventHandler(this.estadoComboBox_SelectedIndexChanged);
             // 
             // referenciaTextBox
             // 
@@ -150,7 +152,6 @@
             this.cidadeTextBox.Name = "cidadeTextBox";
             this.cidadeTextBox.Size = new System.Drawing.Size(333, 23);
             this.cidadeTextBox.TabIndex = 2;
-            this.cidadeTextBox.TextChanged += new System.EventHandler(this.cidadeTextBox_TextChanged);
             // 
             // logradouroTextBox
             // 
@@ -159,7 +160,6 @@
             this.logradouroTextBox.Name = "logradouroTextBox";
             this.logradouroTextBox.Size = new System.Drawing.Size(398, 23);
             this.logradouroTextBox.TabIndex = 5;
-            this.logradouroTextBox.TextChanged += new System.EventHandler(this.logradouroTextBox_TextChanged);
             // 
             // label15
             // 
@@ -247,12 +247,36 @@
             // 
             // cepComboBox
             // 
+            this.cepComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cepComboBox.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.cepComboBox.Font = new System.Drawing.Font("Arial", 10F);
             this.cepComboBox.FormattingEnabled = true;
             this.cepComboBox.Location = new System.Drawing.Point(8, 26);
             this.cepComboBox.Name = "cepComboBox";
             this.cepComboBox.Size = new System.Drawing.Size(181, 24);
             this.cepComboBox.TabIndex = 63;
+            this.cepComboBox.DropDown += new System.EventHandler(this.cepDropDown);
+            this.cepComboBox.DropDownClosed += new System.EventHandler(this.cepDropDownClosed);
+            // 
+            // voltarButton
+            // 
+            this.voltarButton.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.voltarButton.Location = new System.Drawing.Point(664, 268);
+            this.voltarButton.Name = "voltarButton";
+            this.voltarButton.Size = new System.Drawing.Size(103, 32);
+            this.voltarButton.TabIndex = 64;
+            this.voltarButton.Text = "Voltar";
+            this.voltarButton.UseVisualStyleBackColor = true;
+            // 
+            // liberarButton
+            // 
+            this.liberarButton.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.liberarButton.Location = new System.Drawing.Point(552, 268);
+            this.liberarButton.Name = "liberarButton";
+            this.liberarButton.Size = new System.Drawing.Size(103, 32);
+            this.liberarButton.TabIndex = 65;
+            this.liberarButton.Text = "Liberar";
+            this.liberarButton.UseVisualStyleBackColor = true;
             // 
             // IPessoaEndereco
             // 
@@ -260,6 +284,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLight;
             this.ClientSize = new System.Drawing.Size(988, 303);
+            this.Controls.Add(this.liberarButton);
+            this.Controls.Add(this.voltarButton);
             this.Controls.Add(this.cepComboBox);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.numeroTextBox);
@@ -314,5 +340,7 @@
         private System.Windows.Forms.Button cancelarButton;
         private System.Windows.Forms.Button gravarButton;
         private System.Windows.Forms.ComboBox cepComboBox;
+        private System.Windows.Forms.Button voltarButton;
+        private System.Windows.Forms.Button liberarButton;
     }
 }

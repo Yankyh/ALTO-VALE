@@ -39,8 +39,8 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
             String query = " SELECT B.NOME SITUAÇÃO, A.RAZAOSOCIAL AS 'RAZÃO SOCIAL', A.APELIDO, A.CPFCNPJ AS 'CPF/CNPJ', A.TELEFONE, C.CIDADE, D.SIGLA ESTADO, C.LOGRADOURO" +
                            " FROM PS_PESSOA A" +
                            " INNER JOIN MD_STATUS B ON B.HANDLE = A.STATUS " +
-                           " INNER JOIN PS_PESSOAENDERECO C ON C.HANDLE = A.ENDERECO" +
-                           " INNER JOIN PS_ESTADO D ON D.HANDLE = C.ESTADO";
+                           " LEFT JOIN PS_PESSOAENDERECO C ON C.HANDLE = A.ENDERECO" +
+                           " LEFT JOIN PS_ESTADO D ON D.HANDLE = C.ESTADO";
             Binding.DataSource = connection.DataTable(query);
             pessoaDataGridView.DataSource = Binding;
 
