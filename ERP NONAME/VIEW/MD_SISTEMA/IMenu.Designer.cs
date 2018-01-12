@@ -35,6 +35,9 @@
             this.button2 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
+            // reportViewer1
+            // 
+          
             // treeView1
             // 
             this.treeView1.Location = new System.Drawing.Point(12, 12);
@@ -100,6 +103,8 @@
         }
 
         #endregion
+
+       
         private System.Windows.Forms.TreeView treeView1;
         private System.Windows.Forms.Button pessoaButton;
         private System.Windows.Forms.Button enderecoButton;
