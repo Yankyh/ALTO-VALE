@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.treeView1 = new System.Windows.Forms.TreeView();
             this.pessoaButton = new System.Windows.Forms.Button();
             this.enderecoButton = new System.Windows.Forms.Button();
@@ -38,12 +37,7 @@
             // 
             // reportViewer1
             // 
-            this.reportViewer1.Location = new System.Drawing.Point(0, 0);
-            this.reportViewer1.Name = "ReportViewer";
-            this.reportViewer1.ServerReport.BearerToken = null;
-            this.reportViewer1.Size = new System.Drawing.Size(1920, 1080);
-            this.reportViewer1.TabIndex = 0;
-            // 
+          
             // treeView1
             // 
             this.treeView1.Location = new System.Drawing.Point(12, 12);
@@ -110,7 +104,7 @@
 
         #endregion
 
-        private Microsoft.Reporting.WinForms.ReportViewer reportViewer1;
+       
         private System.Windows.Forms.TreeView treeView1;
         private System.Windows.Forms.Button pessoaButton;
         private System.Windows.Forms.Button enderecoButton;

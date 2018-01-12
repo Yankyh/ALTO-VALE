@@ -72,7 +72,7 @@
             this.celularTextBox = new System.Windows.Forms.TextBox();
             this.voltarButton = new System.Windows.Forms.Button();
             this.liberarButton = new System.Windows.Forms.Button();
-            this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
+       
             this.tabControl.SuspendLayout();
             this.observacaoTabPage.SuspendLayout();
             this.abrangenciaTabPage.SuspendLayout();
@@ -545,12 +545,7 @@
             // 
             // reportViewer1
             // 
-            this.reportViewer1.Location = new System.Drawing.Point(0, 0);
-            this.reportViewer1.Name = "ReportViewer";
-            this.reportViewer1.ServerReport.BearerToken = null;
-            this.reportViewer1.Size = new System.Drawing.Size(396, 246);
-            this.reportViewer1.TabIndex = 0;
-            // 
+        
             // IPessoa
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -634,7 +629,7 @@
         private System.Windows.Forms.Button adicionarContatoButton;
         private System.Windows.Forms.Button voltarButton;
         private System.Windows.Forms.Button liberarButton;
-        private Microsoft.Reporting.WinForms.ReportViewer reportViewer1;
+    
         private System.Windows.Forms.Button removerContatoButton;
         private System.Windows.Forms.DataGridView enderecoDataGridView;
         private System.Windows.Forms.Button button1;
