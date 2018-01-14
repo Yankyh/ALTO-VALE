@@ -11,7 +11,7 @@ namespace ALTO_VALE.DAL
 {
     class Connection
     {
-        protected String stringConexao = "Data Source=192.168.2.3;Initial Catalog=ALTO_VALE;Persist Security Info=True;User ID=sa;Password=33226655;";
+        protected String stringConexao = "Data Source=25.68.65.176;Initial Catalog=ALTO_VALE;Persist Security Info=True;User ID=sa;Password=33226655;";
         protected SqlConnection conexao;
         protected SqlCommand cmd;
         protected SqlDataReader resultSet;
