@@ -188,7 +188,7 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
                 voltarButton.Visible = false;
                 liberarButton.Visible = true;
                 liberarButton.Location = new Point(564, 228);
-                cancelarButton.Location = new Point(668, 205);
+                cancelarButton.Location = new Point(668, 228);
             }
             else
             {
