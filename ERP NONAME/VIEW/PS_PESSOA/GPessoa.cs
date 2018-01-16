@@ -104,5 +104,10 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
         {
             configurarDataGridView();
         }
+
+        private void pessoaDataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

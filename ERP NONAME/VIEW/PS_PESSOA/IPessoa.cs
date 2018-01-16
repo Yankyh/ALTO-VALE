@@ -50,7 +50,6 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
                 controleDeStatus();
             }
         }
-        //meu pau te ama
 
         //Metodos
         private void alterarRegistroPessoa(String situacao)
