@@ -72,7 +72,9 @@
             this.celularTextBox = new System.Windows.Forms.TextBox();
             this.voltarButton = new System.Windows.Forms.Button();
             this.liberarButton = new System.Windows.Forms.Button();
-       
+            this.anexoTabPage = new System.Windows.Forms.TabPage();
+            this.adicionarArquivoButton = new System.Windows.Forms.Button();
+            this.testeRichBox = new System.Windows.Forms.RichTextBox();
             this.tabControl.SuspendLayout();
             this.observacaoTabPage.SuspendLayout();
             this.abrangenciaTabPage.SuspendLayout();
@@ -80,6 +82,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.contatoDataGridView)).BeginInit();
             this.pessoaEnderecoTabpage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.enderecoDataGridView)).BeginInit();
+            this.anexoTabPage.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl
@@ -88,6 +91,7 @@
             this.tabControl.Controls.Add(this.abrangenciaTabPage);
             this.tabControl.Controls.Add(this.contatoTabPage);
             this.tabControl.Controls.Add(this.pessoaEnderecoTabpage);
+            this.tabControl.Controls.Add(this.anexoTabPage);
             this.tabControl.Font = new System.Drawing.Font("Arial", 10F);
             this.tabControl.Location = new System.Drawing.Point(6, 126);
             this.tabControl.Multiline = true;
@@ -543,9 +547,38 @@
             this.liberarButton.Visible = false;
             this.liberarButton.Click += new System.EventHandler(this.liberarButtonOnClick);
             // 
-            // reportViewer1
+            // anexoTabPage
             // 
-        
+            this.anexoTabPage.Controls.Add(this.testeRichBox);
+            this.anexoTabPage.Controls.Add(this.adicionarArquivoButton);
+            this.anexoTabPage.Location = new System.Drawing.Point(4, 25);
+            this.anexoTabPage.Name = "anexoTabPage";
+            this.anexoTabPage.Size = new System.Drawing.Size(963, 128);
+            this.anexoTabPage.TabIndex = 4;
+            this.anexoTabPage.Text = "Anexo";
+            this.anexoTabPage.UseVisualStyleBackColor = true;
+            // 
+            // adicionarArquivoButton
+            // 
+            this.adicionarArquivoButton.FlatAppearance.BorderSize = 0;
+            this.adicionarArquivoButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.adicionarArquivoButton.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.adicionarArquivoButton.Location = new System.Drawing.Point(939, 3);
+            this.adicionarArquivoButton.Name = "adicionarArquivoButton";
+            this.adicionarArquivoButton.Size = new System.Drawing.Size(24, 25);
+            this.adicionarArquivoButton.TabIndex = 63;
+            this.adicionarArquivoButton.Text = "+";
+            this.adicionarArquivoButton.UseVisualStyleBackColor = true;
+            this.adicionarArquivoButton.Click += new System.EventHandler(this.adicionarArquivoButtonOnClick);
+            // 
+            // testeRichBox
+            // 
+            this.testeRichBox.Location = new System.Drawing.Point(267, 33);
+            this.testeRichBox.Name = "testeRichBox";
+            this.testeRichBox.Size = new System.Drawing.Size(340, 70);
+            this.testeRichBox.TabIndex = 64;
+            this.testeRichBox.Text = "";
+            // 
             // IPessoa
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -590,6 +623,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.contatoDataGridView)).EndInit();
             this.pessoaEnderecoTabpage.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.enderecoDataGridView)).EndInit();
+            this.anexoTabPage.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -634,5 +668,8 @@
         private System.Windows.Forms.DataGridView enderecoDataGridView;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.TabPage anexoTabPage;
+        private System.Windows.Forms.Button adicionarArquivoButton;
+        private System.Windows.Forms.RichTextBox testeRichBox;
     }
 }

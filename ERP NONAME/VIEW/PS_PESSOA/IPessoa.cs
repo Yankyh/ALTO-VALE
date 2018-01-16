@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using ALTO_VALE.DAL;
 using System.Data.SqlClient;
+using System.IO;
 
 namespace ALTO_VALE.VIEW.PS_PESSOA
 {
@@ -652,6 +653,65 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
                 IPessoaEndereco iPessoaEndereco = new IPessoaEndereco();
                 iPessoaEndereco.ShowDialog();
             }
+        }
+
+        private void saveFileDialog1_FileOk(object sender, CancelEventArgs e)
+        {
+
+        }
+
+        private void adicionarArquivoButtonOnClick(object sender, EventArgs e)
+        {
+            string sourceDir = @"C:\ALTO_VALE\Teste";
+            string backupDir = @"C:\ALTO_VALE\Teste\SS";
+
+            try
+            {
+                string[] picList = Directory.GetFiles(sourceDir, "*.jpg");
+             
+
+                // Copy picture files.
+                foreach (string f in picList)
+                {
+                    // Remove path from the file name.
+                    string fName = f.Substring(sourceDir.Length + 1);
+
+                    // Use the Path.Combine method to safely append the file name to the path.
+                    // Will overwrite if the destination file already exists.
+                    File.Copy(Path.Combine(sourceDir, fName), Path.Combine(backupDir, fName), true);
+                }
+
+           
+                foreach (string f in picList)
+                {
+                    File.Delete(f);
+                }
+            }
+
+            catch (DirectoryNotFoundException dirNotFound)
+            {
+                Console.WriteLine(dirNotFound.Message);
+            }
+
+
+
+
+            /*OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Title = "Teste";
+            if(openFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                //testeRichBox.LoadFile(openFileDialog, RichTextBoxStreamType.PlainText);
+                testeRichBox.Text = System.IO.Path.GetFullPath(openFileDialog.FileName);
+            }
+
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Title = "Teste";
+            saveFileDialog.Filter = "Txt |*.txt";
+            if (saveFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                testeRichBox.SaveFile(saveFileDialog.FileName, RichTextBoxStreamType.PlainText);
+            }*/
+
         }
     }
 }
