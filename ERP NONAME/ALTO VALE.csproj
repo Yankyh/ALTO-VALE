@@ -59,7 +59,7 @@
     <GenerateManifests>true</GenerateManifests>
   </PropertyGroup>
   <PropertyGroup>
-    <SignManifests>true</SignManifests>
+    <SignManifests>false</SignManifests>
   </PropertyGroup>
   <PropertyGroup>
     <StartupObject>ALTO_VALE.Program</StartupObject>
@@ -160,7 +160,6 @@
     <EmbeddedResource Include="VIEW\PS_PESSOA\IPessoaEndereco.resx">
       <DependentUpon>IPessoaEndereco.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="bin\Debug\ALTO VALE.exe.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -198,10 +197,6 @@
   <ItemGroup>
     <Folder Include="bin\Release\" />
     <Folder Include="obj\Debug\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="bin\Debug\ALTO VALE.exe" />
-    <Content Include="bin\Debug\ALTO VALE.pdb" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

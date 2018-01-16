@@ -72,6 +72,7 @@
             this.pessoaDataGridView.Size = new System.Drawing.Size(1896, 937);
             this.pessoaDataGridView.TabIndex = 0;
             this.pessoaDataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.cellDoubleClick);
+            this.pessoaDataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.pessoaDataGridView_CellContentClick);
             // 
             // button1
             // 
@@ -87,7 +88,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Azure;
-            this.ClientSize = new System.Drawing.Size(1904, 996);
+            this.ClientSize = new System.Drawing.Size(1604, 882);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.pessoaDataGridView);
             this.Name = "GPessoa";

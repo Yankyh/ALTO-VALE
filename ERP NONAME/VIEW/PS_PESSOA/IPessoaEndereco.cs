@@ -345,6 +345,11 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
             gravarRegistroEndereco("Voltar");
         }
 
+        private void IPessoaEndereco_Load(object sender, EventArgs e)
+        {
+
+        }
+
         //Controle de status
         public void controleDeStatus()
         {
