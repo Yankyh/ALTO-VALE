@@ -82,5 +82,10 @@ namespace ALTO_VALE.VIEW.MD_SISTEMA
         {
             preencherDataGridView();
         }
+
+        private void cepDataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            //teste
+        }
     }
 }
