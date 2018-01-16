@@ -155,9 +155,35 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
                                            " WHERE HANDLE = " + handleEndereco;
                             connection.Inserir(query);
                         }
+                        else
+                        {
+                            if(acao == "Cancelar")
+                            {
+                                int status = 0;
+                                String query = " SELECT STATUS" +
+                                               " FROM PS_PESSOAENDERECO" +
+                                               " WHERE HANDLE = " + handleEndereco;
+                                SqlDataReader reader = connection.Pesquisa(query);
+                                while (reader.Read()){
+                                    status = Convert.ToInt32(reader["STATUS"]);
+                                }
+                                reader.Close();
+                                if (status == 2)
+                                {
+                                    String query1 = " UPDATE PS_PESSOAENDERECO" +
+                                                    " SET STATUS = 4" +
+                                                    " WHERE HANDLE = "+handleEndereco;
+                                    connection.Inserir(query1);
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Para cancelar o registro do endereço, o endereço deve estar no status Ag. modificações.");
+                                }
+                              
+                            }
+                        }
                     }
                 }
-
                 //Controle de status
                 controleDeStatus();
             }
@@ -345,9 +371,9 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
             gravarRegistroEndereco("Voltar");
         }
 
-        private void IPessoaEndereco_Load(object sender, EventArgs e)
+        private void cancelarButtonOnClick(object sender, EventArgs e)
         {
-
+            gravarRegistroEndereco("Cancelar");
         }
 
         //Controle de status
