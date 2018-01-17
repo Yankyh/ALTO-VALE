@@ -315,7 +315,7 @@
             this.Name = "IPessoaEndereco";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Endereço";
-            
+         
             this.tabControl1.ResumeLayout(false);
             this.observacaoTabPage.ResumeLayout(false);
             this.ResumeLayout(false);

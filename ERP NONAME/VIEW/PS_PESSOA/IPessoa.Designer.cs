@@ -36,6 +36,10 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.observacaoTabPage = new System.Windows.Forms.TabPage();
             this.ObservacaoTextBox = new System.Windows.Forms.RichTextBox();
@@ -51,6 +55,9 @@
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.enderecoDataGridView = new System.Windows.Forms.DataGridView();
+            this.anexoTabPage = new System.Windows.Forms.TabPage();
+            this.anexoDataGridView = new System.Windows.Forms.DataGridView();
+            this.adicionarArquivoButton = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -72,9 +79,6 @@
             this.celularTextBox = new System.Windows.Forms.TextBox();
             this.voltarButton = new System.Windows.Forms.Button();
             this.liberarButton = new System.Windows.Forms.Button();
-            this.anexoTabPage = new System.Windows.Forms.TabPage();
-            this.adicionarArquivoButton = new System.Windows.Forms.Button();
-            this.testeRichBox = new System.Windows.Forms.RichTextBox();
             this.tabControl.SuspendLayout();
             this.observacaoTabPage.SuspendLayout();
             this.abrangenciaTabPage.SuspendLayout();
@@ -83,6 +87,7 @@
             this.pessoaEnderecoTabpage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.enderecoDataGridView)).BeginInit();
             this.anexoTabPage.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.anexoDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl
@@ -334,6 +339,77 @@
             this.enderecoDataGridView.TabIndex = 4;
             this.enderecoDataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.EnderecoCellClick);
             // 
+            // anexoTabPage
+            // 
+            this.anexoTabPage.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.anexoTabPage.Controls.Add(this.anexoDataGridView);
+            this.anexoTabPage.Controls.Add(this.adicionarArquivoButton);
+            this.anexoTabPage.Location = new System.Drawing.Point(4, 25);
+            this.anexoTabPage.Name = "anexoTabPage";
+            this.anexoTabPage.Size = new System.Drawing.Size(963, 128);
+            this.anexoTabPage.TabIndex = 4;
+            this.anexoTabPage.Text = "Anexo";
+            this.anexoTabPage.UseVisualStyleBackColor = true;
+            // 
+            // anexoDataGridView
+            // 
+            this.anexoDataGridView.AllowUserToAddRows = false;
+            dataGridViewCellStyle9.BackColor = System.Drawing.Color.LightGray;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Arial", 9F);
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.MenuHighlight;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.Black;
+            this.anexoDataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle9;
+            this.anexoDataGridView.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
+            this.anexoDataGridView.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.anexoDataGridView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Arial", 10F);
+            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.Transparent;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.anexoDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
+            this.anexoDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Arial", 10F);
+            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.MenuHighlight;
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.anexoDataGridView.DefaultCellStyle = dataGridViewCellStyle11;
+            this.anexoDataGridView.Location = new System.Drawing.Point(2, 2);
+            this.anexoDataGridView.MultiSelect = false;
+            this.anexoDataGridView.Name = "anexoDataGridView";
+            this.anexoDataGridView.ReadOnly = true;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("Arial", 10F);
+            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.anexoDataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle12;
+            this.anexoDataGridView.RowHeadersVisible = false;
+            this.anexoDataGridView.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.anexoDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.anexoDataGridView.Size = new System.Drawing.Size(933, 119);
+            this.anexoDataGridView.TabIndex = 64;
+            this.anexoDataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.anexoDataGridViewCellClick);
+            // 
+            // adicionarArquivoButton
+            // 
+            this.adicionarArquivoButton.FlatAppearance.BorderSize = 0;
+            this.adicionarArquivoButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.adicionarArquivoButton.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.adicionarArquivoButton.Location = new System.Drawing.Point(935, 1);
+            this.adicionarArquivoButton.Name = "adicionarArquivoButton";
+            this.adicionarArquivoButton.Size = new System.Drawing.Size(24, 25);
+            this.adicionarArquivoButton.TabIndex = 63;
+            this.adicionarArquivoButton.Text = "+";
+            this.adicionarArquivoButton.UseVisualStyleBackColor = true;
+            this.adicionarArquivoButton.Click += new System.EventHandler(this.adicionarArquivoButtonOnClick);
+            // 
             // label10
             // 
             this.label10.AutoSize = true;
@@ -547,38 +623,6 @@
             this.liberarButton.Visible = false;
             this.liberarButton.Click += new System.EventHandler(this.liberarButtonOnClick);
             // 
-            // anexoTabPage
-            // 
-            this.anexoTabPage.Controls.Add(this.testeRichBox);
-            this.anexoTabPage.Controls.Add(this.adicionarArquivoButton);
-            this.anexoTabPage.Location = new System.Drawing.Point(4, 25);
-            this.anexoTabPage.Name = "anexoTabPage";
-            this.anexoTabPage.Size = new System.Drawing.Size(963, 128);
-            this.anexoTabPage.TabIndex = 4;
-            this.anexoTabPage.Text = "Anexo";
-            this.anexoTabPage.UseVisualStyleBackColor = true;
-            // 
-            // adicionarArquivoButton
-            // 
-            this.adicionarArquivoButton.FlatAppearance.BorderSize = 0;
-            this.adicionarArquivoButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.adicionarArquivoButton.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.adicionarArquivoButton.Location = new System.Drawing.Point(939, 3);
-            this.adicionarArquivoButton.Name = "adicionarArquivoButton";
-            this.adicionarArquivoButton.Size = new System.Drawing.Size(24, 25);
-            this.adicionarArquivoButton.TabIndex = 63;
-            this.adicionarArquivoButton.Text = "+";
-            this.adicionarArquivoButton.UseVisualStyleBackColor = true;
-            this.adicionarArquivoButton.Click += new System.EventHandler(this.adicionarArquivoButtonOnClick);
-            // 
-            // testeRichBox
-            // 
-            this.testeRichBox.Location = new System.Drawing.Point(267, 33);
-            this.testeRichBox.Name = "testeRichBox";
-            this.testeRichBox.Size = new System.Drawing.Size(340, 70);
-            this.testeRichBox.TabIndex = 64;
-            this.testeRichBox.Text = "";
-            // 
             // IPessoa
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -624,6 +668,7 @@
             this.pessoaEnderecoTabpage.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.enderecoDataGridView)).EndInit();
             this.anexoTabPage.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.anexoDataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -669,7 +714,7 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.TabPage anexoTabPage;
+        private System.Windows.Forms.DataGridView anexoDataGridView;
         private System.Windows.Forms.Button adicionarArquivoButton;
-        private System.Windows.Forms.RichTextBox testeRichBox;
     }
 }

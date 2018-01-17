@@ -114,7 +114,7 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
 
             return tipoPessoaHandle;
         }
-     
+
         //--------------------
         //Metodos de fomatação
         //Conversor de CNPJ
@@ -401,7 +401,7 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
                 voltarButton.Visible = false;
                 liberarButton.Visible = true;
                 adicionarContatoButton.Visible = true;
-                removerContatoButton.Visible = true;  
+                removerContatoButton.Visible = true;
                 liberarButton.Location = new Point(770, 286);
                 cancelarButton.Location = new Point(874, 286);
             }
@@ -448,7 +448,7 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
                     }
                     else
                     {
-                        if(status == "Cancelado")
+                        if (status == "Cancelado")
                         {
                             //Caso esteja cancelado, não permite alterar antes de voltar o registro
                             apelidoTextBox.Enabled = false;
@@ -478,7 +478,7 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
                         }
                     }
                 }
-                this.Text = "Pessoa - "+status;
+                this.Text = "Pessoa - " + status;
             }
         }
 
@@ -530,7 +530,7 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
                            " FROM PS_PESSOA A" +
                            " INNER JOIN PS_PESSOAENDERECOFK B ON B.PESSOA = A.HANDLE" +
                            " INNER JOIN PS_PESSOAENDERECO C ON C.HANDLE = B.ENDERECO" +
-                           " WHERE A.HANDLE = "+ buscarHandlePessoa();
+                           " WHERE A.HANDLE = " + buscarHandlePessoa();
             Binding.DataSource = connection.DataTable(query);
             enderecoDataGridView.DataSource = Binding;
             enderecoDataGridView.Columns[7].Width = 150;
@@ -557,6 +557,7 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
         {
             preencherContatoPessoa();
             PreencherEndereco();
+            PreencherAnexo();
         }
 
         private void cellClick(object sender, DataGridViewCellEventArgs e)
@@ -609,7 +610,7 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
             //Pega o handle do contato para pesquisar
             int contatoHandle = 0;
 
-                contatoHandle = Convert.ToInt32(contatoDataGridView.CurrentRow.Cells[6].Value.ToString());
+            contatoHandle = Convert.ToInt32(contatoDataGridView.CurrentRow.Cells[6].Value.ToString());
 
             return contatoHandle;
         }
@@ -636,7 +637,7 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
             catch
             {
 
-            }            
+            }
             return enderecoHandle;
         }
 
@@ -661,56 +662,51 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
 
         private void adicionarArquivoButtonOnClick(object sender, EventArgs e)
         {
-            string sourceDir = @"C:\ALTO_VALE\Teste";
-            string backupDir = @"C:\ALTO_VALE\Teste\SS";
+            IPessoaAnexo.handlePessoa = buscarHandlePessoa();
+            IPessoaAnexo ipessoaAnexo = new IPessoaAnexo();
+            ipessoaAnexo.ShowDialog();
+        }
+
+
+        //Preencher a tabela de anexo
+        private void PreencherAnexo()
+        {
+            BindingSource Binding = new BindingSource();
+            String query = " SELECT A.HANDLE, A.DESCRICAO DESCRIÇÃO, A.NOMEARQUIVO NOME, A.CAMINHO" +
+                           " FROM PS_PESSOAANEXO A" +
+                           " INNER JOIN PS_PESSOA B ON B.HANDLE = A.PESSOA" +
+                           " WHERE B.HANDLE = " + buscarHandlePessoa();
+            Console.WriteLine(query);
+            anexoDataGridView.AutoGenerateColumns = true;
+            Binding.DataSource = connection.DataTable(query);
+            anexoDataGridView.DataSource = Binding;
+            anexoDataGridView.Columns[0].Width = 0;
+            anexoDataGridView.Columns[0].Visible = false;
+            anexoDataGridView.Columns[1].Width = 200;
+            anexoDataGridView.Columns[2].Width = 200;
+            anexoDataGridView.Columns[3].Width = 600;
+            enderecoDataGridView.AllowUserToResizeRows = false;
+        }
+
+        private void anexoDataGridViewCellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            IPessoaAnexo.handleAnexo = PegarHandleAnexo();
+            IPessoaAnexo iPessoaAnexo = new IPessoaAnexo();
+            iPessoaAnexo.ShowDialog();
+        }
+        private int PegarHandleAnexo()
+        {
+            int handleAnexo = 0;
 
             try
             {
-                string[] picList = Directory.GetFiles(sourceDir, "*.jpg");
-             
-
-                // Copy picture files.
-                foreach (string f in picList)
-                {
-                    // Remove path from the file name.
-                    string fName = f.Substring(sourceDir.Length + 1);
-
-                    // Use the Path.Combine method to safely append the file name to the path.
-                    // Will overwrite if the destination file already exists.
-                    File.Copy(Path.Combine(sourceDir, fName), Path.Combine(backupDir, fName), true);
-                }
-
-           
-                foreach (string f in picList)
-                {
-                    File.Delete(f);
-                }
+                handleAnexo = Convert.ToInt32(anexoDataGridView.CurrentRow.Cells[0].Value.ToString());
             }
-
-            catch (DirectoryNotFoundException dirNotFound)
+            catch
             {
-                Console.WriteLine(dirNotFound.Message);
+
             }
-
-
-
-
-            /*OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.Title = "Teste";
-            if(openFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-            {
-                //testeRichBox.LoadFile(openFileDialog, RichTextBoxStreamType.PlainText);
-                testeRichBox.Text = System.IO.Path.GetFullPath(openFileDialog.FileName);
-            }
-
-            SaveFileDialog saveFileDialog = new SaveFileDialog();
-            saveFileDialog.Title = "Teste";
-            saveFileDialog.Filter = "Txt |*.txt";
-            if (saveFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-            {
-                testeRichBox.SaveFile(saveFileDialog.FileName, RichTextBoxStreamType.PlainText);
-            }*/
-
+            return handleAnexo;
         }
     }
 }
