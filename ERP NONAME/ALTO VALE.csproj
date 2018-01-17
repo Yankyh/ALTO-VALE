@@ -84,6 +84,7 @@
   <ItemGroup>
     <Compile Include="DAL\CControleStatus.cs" />
     <Compile Include="DAL\Connection.cs" />
+    <Compile Include="DAL\CSistema.cs" />
     <Compile Include="DAL\StatusFilter.cs" />
     <Compile Include="VIEW\MD_SISTEMA\GCep.cs">
       <SubType>Form</SubType>
@@ -116,6 +117,12 @@
     </Compile>
     <Compile Include="VIEW\PS_PESSOA\IPessoa.Designer.cs">
       <DependentUpon>IPessoa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VIEW\PS_PESSOA\IPessoaAnexo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VIEW\PS_PESSOA\IPessoaAnexo.Designer.cs">
+      <DependentUpon>IPessoaAnexo.cs</DependentUpon>
     </Compile>
     <Compile Include="VIEW\PS_PESSOA\IPessoaContato.cs">
       <SubType>Form</SubType>
@@ -153,6 +160,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="VIEW\PS_PESSOA\IPessoa.resx">
       <DependentUpon>IPessoa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VIEW\PS_PESSOA\IPessoaAnexo.resx">
+      <DependentUpon>IPessoaAnexo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="VIEW\PS_PESSOA\IPessoaContato.resx">
       <DependentUpon>IPessoaContato.cs</DependentUpon>

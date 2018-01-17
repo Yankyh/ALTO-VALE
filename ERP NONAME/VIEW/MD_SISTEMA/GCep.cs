@@ -63,9 +63,6 @@ namespace ALTO_VALE.VIEW.MD_SISTEMA
             }
         }
 
-
-
-
         //Controle de status
         private void ControleDeStatus()
         {
