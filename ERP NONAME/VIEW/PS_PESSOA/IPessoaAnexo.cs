@@ -150,7 +150,14 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
 
         private void exibirButtonOnClick(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start(@"" + caminhoAnexoTextBox.Text + "");
+            try
+            {
+                System.Diagnostics.Process.Start(@"" + caminhoAnexoTextBox.Text + "");
+            }
+            catch(Exception exception)
+            {
+                MessageBox.Show(exception.Message);
+            }
         }
 
         private void excluirButtonOnClick(object sender, EventArgs e)
