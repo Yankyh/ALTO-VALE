@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -36,6 +37,12 @@ namespace ALTO_VALE
         {
             GCep gCep = new GCep();
             gCep.ShowDialog();
+        }
+
+        private void TESTE(object sender, EventArgs e)
+        {
+
+            System.Diagnostics.Process.Start(@"C:\ALTO_VALE\Documentos\teste.jpg");
         }
     }
 }

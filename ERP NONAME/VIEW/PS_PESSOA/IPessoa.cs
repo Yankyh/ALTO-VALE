@@ -557,6 +557,7 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
         {
             preencherContatoPessoa();
             PreencherEndereco();
+            PreencherAnexo();
         }
 
         private void cellClick(object sender, DataGridViewCellEventArgs e)
@@ -666,5 +667,46 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
             ipessoaAnexo.ShowDialog();
         }
 
+
+        //Preencher a tabela de anexo
+        private void PreencherAnexo()
+        {
+            BindingSource Binding = new BindingSource();
+            String query = " SELECT A.HANDLE, A.DESCRICAO DESCRIÇÃO, A.NOMEARQUIVO NOME, A.CAMINHO" +
+                           " FROM PS_PESSOAANEXO A" +
+                           " INNER JOIN PS_PESSOA B ON B.HANDLE = A.PESSOA" +
+                           " WHERE B.HANDLE = " + buscarHandlePessoa();
+            Console.WriteLine(query);
+            anexoDataGridView.AutoGenerateColumns = true;
+            Binding.DataSource = connection.DataTable(query);
+            anexoDataGridView.DataSource = Binding;
+            anexoDataGridView.Columns[0].Width = 0;
+            anexoDataGridView.Columns[0].Visible = false;
+            anexoDataGridView.Columns[1].Width = 200;
+            anexoDataGridView.Columns[2].Width = 200;
+            anexoDataGridView.Columns[3].Width = 600;
+            enderecoDataGridView.AllowUserToResizeRows = false;
+        }
+
+        private void anexoDataGridViewCellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            IPessoaAnexo.handleAnexo = PegarHandleAnexo();
+            IPessoaAnexo iPessoaAnexo = new IPessoaAnexo();
+            iPessoaAnexo.ShowDialog();
+        }
+        private int PegarHandleAnexo()
+        {
+            int handleAnexo = 0;
+
+            try
+            {
+                handleAnexo = Convert.ToInt32(anexoDataGridView.CurrentRow.Cells[0].Value.ToString());
+            }
+            catch
+            {
+
+            }
+            return handleAnexo;
+        }
     }
 }

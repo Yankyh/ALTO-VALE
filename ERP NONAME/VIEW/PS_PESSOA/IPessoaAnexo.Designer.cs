@@ -33,8 +33,9 @@
             this.label1 = new System.Windows.Forms.Label();
             this.gravarButton = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.descricaoTextBox = new System.Windows.Forms.TextBox();
+            this.exibirButton = new System.Windows.Forms.Button();
+            this.excluirButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // selecionarAnexoButton
@@ -87,31 +88,46 @@
             this.label2.TabIndex = 27;
             this.label2.Text = "Descrição";
             // 
-            // textBox1
+            // descricaoTextBox
             // 
-            this.textBox1.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(9, 24);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(465, 22);
-            this.textBox1.TabIndex = 28;
+            this.descricaoTextBox.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.descricaoTextBox.Location = new System.Drawing.Point(9, 24);
+            this.descricaoTextBox.Name = "descricaoTextBox";
+            this.descricaoTextBox.Size = new System.Drawing.Size(465, 22);
+            this.descricaoTextBox.TabIndex = 28;
             // 
-            // button1
+            // exibirButton
             // 
-            this.button1.Font = new System.Drawing.Font("Arial", 10F);
-            this.button1.Location = new System.Drawing.Point(268, 107);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(103, 32);
-            this.button1.TabIndex = 29;
-            this.button1.Text = "Exibir";
-            this.button1.UseVisualStyleBackColor = true;
+            this.exibirButton.Font = new System.Drawing.Font("Arial", 10F);
+            this.exibirButton.Location = new System.Drawing.Point(268, 107);
+            this.exibirButton.Name = "exibirButton";
+            this.exibirButton.Size = new System.Drawing.Size(103, 32);
+            this.exibirButton.TabIndex = 29;
+            this.exibirButton.Text = "Exibir";
+            this.exibirButton.UseVisualStyleBackColor = true;
+            this.exibirButton.Visible = false;
+            this.exibirButton.Click += new System.EventHandler(this.exibirButtonOnClick);
+            // 
+            // excluirButton
+            // 
+            this.excluirButton.Font = new System.Drawing.Font("Arial", 10F);
+            this.excluirButton.Location = new System.Drawing.Point(159, 107);
+            this.excluirButton.Name = "excluirButton";
+            this.excluirButton.Size = new System.Drawing.Size(103, 32);
+            this.excluirButton.TabIndex = 30;
+            this.excluirButton.Text = "Excluir";
+            this.excluirButton.UseVisualStyleBackColor = true;
+            this.excluirButton.Visible = false;
+            this.excluirButton.Click += new System.EventHandler(this.excluirButtonOnClick);
             // 
             // IPessoaAnexo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(479, 142);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.excluirButton);
+            this.Controls.Add(this.exibirButton);
+            this.Controls.Add(this.descricaoTextBox);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.gravarButton);
             this.Controls.Add(this.label1);
@@ -136,7 +152,8 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button gravarButton;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TextBox descricaoTextBox;
+        private System.Windows.Forms.Button exibirButton;
+        private System.Windows.Forms.Button excluirButton;
     }
 }
