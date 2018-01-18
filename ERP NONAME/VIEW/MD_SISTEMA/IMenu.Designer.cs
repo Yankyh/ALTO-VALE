@@ -33,7 +33,6 @@
             this.enderecoButton = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
             this.JOHANN = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
@@ -46,9 +45,9 @@
             // 
             // pessoaButton
             // 
-            this.pessoaButton.Location = new System.Drawing.Point(78, 78);
+            this.pessoaButton.Location = new System.Drawing.Point(12, 37);
             this.pessoaButton.Name = "pessoaButton";
-            this.pessoaButton.Size = new System.Drawing.Size(75, 23);
+            this.pessoaButton.Size = new System.Drawing.Size(323, 44);
             this.pessoaButton.TabIndex = 1;
             this.pessoaButton.Text = "Pessoa";
             this.pessoaButton.UseVisualStyleBackColor = true;
@@ -56,9 +55,9 @@
             // 
             // enderecoButton
             // 
-            this.enderecoButton.Location = new System.Drawing.Point(78, 107);
+            this.enderecoButton.Location = new System.Drawing.Point(12, 87);
             this.enderecoButton.Name = "enderecoButton";
-            this.enderecoButton.Size = new System.Drawing.Size(75, 23);
+            this.enderecoButton.Size = new System.Drawing.Size(323, 43);
             this.enderecoButton.TabIndex = 2;
             this.enderecoButton.Text = "Endereço";
             this.enderecoButton.UseVisualStyleBackColor = true;
@@ -66,9 +65,9 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(78, 136);
+            this.button1.Location = new System.Drawing.Point(12, 136);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.Size = new System.Drawing.Size(323, 54);
             this.button1.TabIndex = 3;
             this.button1.Text = "CEP";
             this.button1.UseVisualStyleBackColor = true;
@@ -84,21 +83,11 @@
             this.label1.TabIndex = 4;
             this.label1.Text = "Alfa 0.01";
             // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(463, 78);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 5;
-            this.button2.Text = "CEP";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.TESTE);
-            // 
             // JOHANN
             // 
-            this.JOHANN.Location = new System.Drawing.Point(573, 253);
+            this.JOHANN.Location = new System.Drawing.Point(12, 262);
             this.JOHANN.Name = "JOHANN";
-            this.JOHANN.Size = new System.Drawing.Size(75, 23);
+            this.JOHANN.Size = new System.Drawing.Size(323, 95);
             this.JOHANN.TabIndex = 6;
             this.JOHANN.Text = "JOHANN";
             this.JOHANN.UseVisualStyleBackColor = true;
@@ -108,9 +97,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1904, 1041);
+            this.ClientSize = new System.Drawing.Size(1604, 882);
             this.Controls.Add(this.JOHANN);
-            this.Controls.Add(this.button2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.enderecoButton);
@@ -133,7 +121,6 @@
         private System.Windows.Forms.Button enderecoButton;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button JOHANN;
     }
 }
