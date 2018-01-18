@@ -24,25 +24,48 @@ namespace ALTO_VALE.TN_TECNOLOGIA.EditorSQL
 
         private void richTextBox1_KeyPress(object sender, KeyPressEventArgs e)
         {
-            String query;
-            DAL.Connection conexao = new DAL.Connection();
 
-            if (e.KeyChar == 13)
+        }
+
+        private void textSQL_KeyDown(object sender, KeyEventArgs e)
+        {
+            String sQuery;
+            if (e.KeyCode == Keys.F5)
             {
-                query = textSQL.Text;
-                conexao.Conectar();
-                BindingSource bind = new BindingSource();
+                if (String.IsNullOrEmpty(textSQL.Text))
+                {
+                    MessageBox.Show("pesquisa incorreta");
+                }
+                else if ( String.IsNullOrEmpty(textSQL.SelectedText))
+                {
+                    sQuery = textSQL.Text;
+                    DAL.Connection conexao = new DAL.Connection();
+                    conexao.Conectar();
+                    BindingSource bind = new BindingSource();
+                    bind.DataSource = conexao.DataTable(sQuery);
+                    gridSQL.AutoGenerateColumns = true;
+                    gridSQL.DataSource = bind.DataSource;
+                }
+                else
+                {
+                    sQuery = textSQL.SelectedText;
+                    DAL.Connection conexao = new DAL.Connection();
+                    conexao.Conectar();
+                    BindingSource bind = new BindingSource();
+                    bind.DataSource = conexao.DataTable(sQuery);
+                    gridSQL.AutoGenerateColumns = true;
+                    gridSQL.DataSource = bind.DataSource;
+                }
 
-                gridSQL.AutoGenerateColumns = true;
-            
-                    bind.DataSource = conexao.DataTable(query);
-                    gridSQL.DataSource = bind;
-                    gridSQL.AllowUserToResizeRows = true;
-             
+                
+            }
+        }
 
-
-
-
+        private void Tela_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+            {
+                this.Close();
             }
         }
     }

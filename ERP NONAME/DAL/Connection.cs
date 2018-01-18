@@ -87,17 +87,15 @@ namespace ALTO_VALE.DAL
             {
                 this.cmd = new SqlCommand(query, this.conexao);
                 adapter.SelectCommand = cmd;
-                
-           
-               
                 table.Locale = System.Globalization.CultureInfo.InvariantCulture;
                 adapter.Fill(table);
             }
-            catch (SqlException exc)
+            catch(SqlException e)
             {
-                MessageBox.Show(exc.ToString());
+                MessageBox.Show(e.Message);
             }
-
+                
+            
             return table;
         }
 
