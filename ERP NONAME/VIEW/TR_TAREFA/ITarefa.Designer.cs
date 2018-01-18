@@ -80,7 +80,7 @@
             this.solicitanteTextBox.Location = new System.Drawing.Point(8, 29);
             this.solicitanteTextBox.Name = "solicitanteTextBox";
             this.solicitanteTextBox.Size = new System.Drawing.Size(235, 22);
-            this.solicitanteTextBox.TabIndex = 58;
+            this.solicitanteTextBox.TabIndex = 1;
             // 
             // label3
             // 
@@ -135,7 +135,7 @@
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(968, 199);
-            this.tabControl1.TabIndex = 53;
+            this.tabControl1.TabIndex = 8;
             // 
             // observacaoTabPage
             // 
@@ -165,7 +165,7 @@
             this.tipoComboBox.Location = new System.Drawing.Point(249, 28);
             this.tipoComboBox.Name = "tipoComboBox";
             this.tipoComboBox.Size = new System.Drawing.Size(212, 23);
-            this.tipoComboBox.TabIndex = 64;
+            this.tipoComboBox.TabIndex = 2;
             // 
             // situacaoComboBox
             // 
@@ -175,7 +175,7 @@
             this.situacaoComboBox.Location = new System.Drawing.Point(467, 28);
             this.situacaoComboBox.Name = "situacaoComboBox";
             this.situacaoComboBox.Size = new System.Drawing.Size(212, 23);
-            this.situacaoComboBox.TabIndex = 65;
+            this.situacaoComboBox.TabIndex = 3;
             // 
             // severidadeComboBox
             // 
@@ -185,7 +185,7 @@
             this.severidadeComboBox.Location = new System.Drawing.Point(685, 28);
             this.severidadeComboBox.Name = "severidadeComboBox";
             this.severidadeComboBox.Size = new System.Drawing.Size(178, 23);
-            this.severidadeComboBox.TabIndex = 66;
+            this.severidadeComboBox.TabIndex = 4;
             // 
             // label7
             // 
@@ -204,7 +204,7 @@
             this.numeroTextBox.Location = new System.Drawing.Point(868, 28);
             this.numeroTextBox.Name = "numeroTextBox";
             this.numeroTextBox.Size = new System.Drawing.Size(107, 22);
-            this.numeroTextBox.TabIndex = 68;
+            this.numeroTextBox.TabIndex = 5;
             // 
             // dataTextBox
             // 
@@ -212,7 +212,7 @@
             this.dataTextBox.Location = new System.Drawing.Point(8, 84);
             this.dataTextBox.Name = "dataTextBox";
             this.dataTextBox.Size = new System.Drawing.Size(128, 22);
-            this.dataTextBox.TabIndex = 69;
+            this.dataTextBox.TabIndex = 6;
             // 
             // label8
             // 
@@ -242,7 +242,7 @@
             this.prazoTextBox.Location = new System.Drawing.Point(142, 84);
             this.prazoTextBox.Name = "prazoTextBox";
             this.prazoTextBox.Size = new System.Drawing.Size(128, 22);
-            this.prazoTextBox.TabIndex = 73;
+            this.prazoTextBox.TabIndex = 7;
             // 
             // liberarButton
             // 
@@ -250,7 +250,7 @@
             this.liberarButton.Location = new System.Drawing.Point(558, 375);
             this.liberarButton.Name = "liberarButton";
             this.liberarButton.Size = new System.Drawing.Size(103, 32);
-            this.liberarButton.TabIndex = 77;
+            this.liberarButton.TabIndex = 8;
             this.liberarButton.Text = "Liberar";
             this.liberarButton.UseVisualStyleBackColor = true;
             this.liberarButton.Visible = false;
@@ -261,7 +261,7 @@
             this.voltarButton.Location = new System.Drawing.Point(662, 375);
             this.voltarButton.Name = "voltarButton";
             this.voltarButton.Size = new System.Drawing.Size(103, 32);
-            this.voltarButton.TabIndex = 76;
+            this.voltarButton.TabIndex = 9;
             this.voltarButton.Text = "Voltar";
             this.voltarButton.UseVisualStyleBackColor = true;
             // 
@@ -271,7 +271,7 @@
             this.cancelarButton.Location = new System.Drawing.Point(768, 375);
             this.cancelarButton.Name = "cancelarButton";
             this.cancelarButton.Size = new System.Drawing.Size(103, 32);
-            this.cancelarButton.TabIndex = 74;
+            this.cancelarButton.TabIndex = 10;
             this.cancelarButton.Text = "Cancelar";
             this.cancelarButton.UseVisualStyleBackColor = true;
             // 
@@ -281,7 +281,7 @@
             this.gravarButton.Location = new System.Drawing.Point(872, 375);
             this.gravarButton.Name = "gravarButton";
             this.gravarButton.Size = new System.Drawing.Size(103, 32);
-            this.gravarButton.TabIndex = 75;
+            this.gravarButton.TabIndex = 11;
             this.gravarButton.Text = "Gravar";
             this.gravarButton.UseVisualStyleBackColor = true;
             // 
