@@ -51,5 +51,11 @@ namespace ALTO_VALE
             GTarefa gTarefa = new GTarefa();
             gTarefa.ShowDialog();
         }
+
+        private void TarefaDiretoOnClick(object sender, EventArgs e)
+        {
+            ITarefa iTarefa = new ITarefa();
+            iTarefa.ShowDialog();
+        }
     }
 }
