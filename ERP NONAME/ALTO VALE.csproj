@@ -98,6 +98,7 @@
     <Compile Include="DEFAULT\GiantForm.Designer.cs">
       <DependentUpon>GiantForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="TN_TECNOLOGIA\Controles\Control.cs" />
     <Compile Include="TN_TECNOLOGIA\EditorSQL\Tela.cs">
       <SubType>Form</SubType>
     </Compile>
