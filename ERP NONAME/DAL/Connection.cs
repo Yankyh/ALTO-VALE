@@ -81,12 +81,22 @@ namespace ALTO_VALE.DAL
         public DataTable DataTable(String query)
         {
             SqlDataAdapter adapter = new SqlDataAdapter();
-            this.cmd = new SqlCommand(query, this.conexao);
-            adapter.SelectCommand = cmd;
-
             DataTable table = new DataTable();
-            table.Locale = System.Globalization.CultureInfo.InvariantCulture;
-            adapter.Fill(table);
+
+            try
+            {
+                this.cmd = new SqlCommand(query, this.conexao);
+                adapter.SelectCommand = cmd;
+                
+           
+               
+                table.Locale = System.Globalization.CultureInfo.InvariantCulture;
+                adapter.Fill(table);
+            }
+            catch (SqlException exc)
+            {
+                MessageBox.Show(exc.ToString());
+            }
 
             return table;
         }

@@ -24,11 +24,25 @@ namespace ALTO_VALE.TN_TECNOLOGIA.EditorSQL
 
         private void richTextBox1_KeyPress(object sender, KeyPressEventArgs e)
         {
-            String textoTeste;
-            if(e.KeyChar == 13)
+            String query;
+            DAL.Connection conexao = new DAL.Connection();
+
+            if (e.KeyChar == 13)
             {
-                textoTeste = textSQL.Text;
-                MessageBox.Show(textoTeste);
+                query = textSQL.Text;
+                conexao.Conectar();
+                BindingSource bind = new BindingSource();
+
+                gridSQL.AutoGenerateColumns = true;
+            
+                    bind.DataSource = conexao.DataTable(query);
+                    gridSQL.DataSource = bind;
+                    gridSQL.AllowUserToResizeRows = true;
+             
+
+
+
+
             }
         }
     }

@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using ALTO_VALE.DAL;
 using System.Data.SqlClient;
 using ALTO_VALE.VIEW;
+using ALTO_VALE.TN_TECNOLOGIA;
 
 namespace ALTO_VALE.VIEW.PS_PESSOA
 {

@@ -28,6 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.textSQL = new System.Windows.Forms.RichTextBox();
             this.gridSQL = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.gridSQL)).BeginInit();
@@ -45,11 +49,48 @@
             // 
             // gridSQL
             // 
+            this.gridSQL.AllowUserToAddRows = false;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.LightGray;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Arial", 9F);
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.MenuHighlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black;
+            this.gridSQL.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.gridSQL.BackgroundColor = System.Drawing.SystemColors.ScrollBar;
+            this.gridSQL.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.gridSQL.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Arial", 10F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Transparent;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.gridSQL.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.gridSQL.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.gridSQL.Location = new System.Drawing.Point(0, 398);
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Arial", 10F);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.MenuHighlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.gridSQL.DefaultCellStyle = dataGridViewCellStyle3;
+            this.gridSQL.Location = new System.Drawing.Point(0, 376);
+            this.gridSQL.MultiSelect = false;
             this.gridSQL.Name = "gridSQL";
-            this.gridSQL.Size = new System.Drawing.Size(1439, 228);
-            this.gridSQL.TabIndex = 1;
+            this.gridSQL.ReadOnly = true;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Arial", 10F);
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.gridSQL.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            this.gridSQL.RowHeadersVisible = false;
+            this.gridSQL.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.gridSQL.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.gridSQL.Size = new System.Drawing.Size(1439, 252);
+            this.gridSQL.TabIndex = 4;
             // 
             // Tela
             // 
@@ -58,10 +99,11 @@
             this.ClientSize = new System.Drawing.Size(1439, 625);
             this.Controls.Add(this.gridSQL);
             this.Controls.Add(this.textSQL);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "Tela";
             this.Text = "Tela";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             ((System.ComponentModel.ISupportInitialize)(this.gridSQL)).EndInit();
             this.ResumeLayout(false);
 
