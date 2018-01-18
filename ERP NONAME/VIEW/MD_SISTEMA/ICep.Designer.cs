@@ -53,7 +53,7 @@
             this.cepTextBox.MaxLength = 8;
             this.cepTextBox.Name = "cepTextBox";
             this.cepTextBox.Size = new System.Drawing.Size(177, 23);
-            this.cepTextBox.TabIndex = 32;
+            this.cepTextBox.TabIndex = 1;
             // 
             // label14
             // 
@@ -73,7 +73,7 @@
             this.logradouroTextBox.MaxLength = 18;
             this.logradouroTextBox.Name = "logradouroTextBox";
             this.logradouroTextBox.Size = new System.Drawing.Size(282, 23);
-            this.logradouroTextBox.TabIndex = 34;
+            this.logradouroTextBox.TabIndex = 5;
             // 
             // label1
             // 
@@ -93,7 +93,7 @@
             this.bairroTextBox.MaxLength = 18;
             this.bairroTextBox.Name = "bairroTextBox";
             this.bairroTextBox.Size = new System.Drawing.Size(200, 23);
-            this.bairroTextBox.TabIndex = 36;
+            this.bairroTextBox.TabIndex = 4;
             // 
             // label2
             // 
@@ -113,7 +113,7 @@
             this.cidadeTextBox.MaxLength = 18;
             this.cidadeTextBox.Name = "cidadeTextBox";
             this.cidadeTextBox.Size = new System.Drawing.Size(305, 23);
-            this.cidadeTextBox.TabIndex = 38;
+            this.cidadeTextBox.TabIndex = 3;
             // 
             // label3
             // 
@@ -173,7 +173,7 @@
             this.estadoComboBox.Location = new System.Drawing.Point(498, 71);
             this.estadoComboBox.Name = "estadoComboBox";
             this.estadoComboBox.Size = new System.Drawing.Size(220, 24);
-            this.estadoComboBox.TabIndex = 42;
+            this.estadoComboBox.TabIndex = 6;
             // 
             // paisComboBox
             // 
@@ -185,7 +185,7 @@
             this.paisComboBox.Location = new System.Drawing.Point(187, 24);
             this.paisComboBox.Name = "paisComboBox";
             this.paisComboBox.Size = new System.Drawing.Size(220, 24);
-            this.paisComboBox.TabIndex = 44;
+            this.paisComboBox.TabIndex = 2;
             // 
             // label5
             // 
@@ -204,7 +204,7 @@
             this.liberarButton.Location = new System.Drawing.Point(304, 114);
             this.liberarButton.Name = "liberarButton";
             this.liberarButton.Size = new System.Drawing.Size(103, 32);
-            this.liberarButton.TabIndex = 69;
+            this.liberarButton.TabIndex = 7;
             this.liberarButton.Text = "Liberar";
             this.liberarButton.UseVisualStyleBackColor = true;
             this.liberarButton.Visible = false;
@@ -216,7 +216,7 @@
             this.voltarButton.Location = new System.Drawing.Point(408, 114);
             this.voltarButton.Name = "voltarButton";
             this.voltarButton.Size = new System.Drawing.Size(103, 32);
-            this.voltarButton.TabIndex = 68;
+            this.voltarButton.TabIndex = 8;
             this.voltarButton.Text = "Voltar";
             this.voltarButton.UseVisualStyleBackColor = true;
             this.voltarButton.Click += new System.EventHandler(this.voltarButtonOnClick);
@@ -227,7 +227,7 @@
             this.cancelarButton.Location = new System.Drawing.Point(511, 114);
             this.cancelarButton.Name = "cancelarButton";
             this.cancelarButton.Size = new System.Drawing.Size(103, 32);
-            this.cancelarButton.TabIndex = 66;
+            this.cancelarButton.TabIndex = 9;
             this.cancelarButton.Text = "Cancelar";
             this.cancelarButton.UseVisualStyleBackColor = true;
             this.cancelarButton.Click += new System.EventHandler(this.cancelarButtonOnClick);
@@ -238,7 +238,7 @@
             this.gravarButton.Location = new System.Drawing.Point(615, 114);
             this.gravarButton.Name = "gravarButton";
             this.gravarButton.Size = new System.Drawing.Size(103, 32);
-            this.gravarButton.TabIndex = 67;
+            this.gravarButton.TabIndex = 10;
             this.gravarButton.Text = "Gravar";
             this.gravarButton.UseVisualStyleBackColor = true;
             this.gravarButton.Click += new System.EventHandler(this.gravarButtonOnClick);

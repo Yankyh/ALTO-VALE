@@ -90,7 +90,7 @@
             this.JOHANN.Location = new System.Drawing.Point(12, 336);
             this.JOHANN.Name = "JOHANN";
             this.JOHANN.Size = new System.Drawing.Size(323, 95);
-            this.JOHANN.TabIndex = 6;
+            this.JOHANN.TabIndex = 4;
             this.JOHANN.Text = "JOHANN";
             this.JOHANN.UseVisualStyleBackColor = true;
             this.JOHANN.Click += new System.EventHandler(this.button3_Click);
@@ -100,7 +100,7 @@
             this.button2.Location = new System.Drawing.Point(12, 196);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(323, 54);
-            this.button2.TabIndex = 7;
+            this.button2.TabIndex = 3;
             this.button2.Text = "Tarefa";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.tarefaButtonOnClick);
