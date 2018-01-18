@@ -14,6 +14,10 @@ namespace ALTO_VALE.VIEW.TR_TAREFA
 {
     public partial class ITarefa : Form
     {
+        //Variaveis
+        String data = "", prazo = "", assunto = "", solicitacao = "";
+        int solicitante = 0, tipo = 0, situacao = 0, severidade = 0, responsavel = 0;
+
         //Variaveis static
         public static int handleTarefa = 0;
 
@@ -35,6 +39,34 @@ namespace ALTO_VALE.VIEW.TR_TAREFA
         //Preenche formulario
         private void PreencherFormulario()
         {
+            //Preencher os combo box
+            PreencherComboBoxResponsavel();
+            PreencherComboBoxSeveridade();
+            PreencherComboBoxSituacao();
+            PreencherComboBoxSolicitante();
+            PreencherComboBoxTipo();
+
+            String query = " SELECT A.DATA, A.PRAZO, B.NOME SOLICITANTE, C.NOME RESPONSAVEL, D.NOME SEVERIDADE, E.NOME SITUACAO, F.NOME TIPO" +
+                           " FROM TR_TAREFA A" +
+                           " INNER JOIN PS_USUARIO B ON B.HANDLE = A.SOLICITANTE" +
+                           " INNER JOIN PS_USUARIO C ON C.HANDLE = A.RESPONSAVEL" +
+                           " INNER JOIN TR_TAREFASEVERIDADE D ON D.HANDLE = A.SEVERIDADE" +
+                           " INNER JOIN TR_TAREFASITUACAO E ON E.HANDLE = A.SITUACAO" +
+                           " INNER JOIN TR_TAREFATIPO F ON F.HANDLE = A.TIPO";
+            SqlDataReader reader = connection.Pesquisa(query);
+            while (reader.Read())
+            {
+                solicitanteComboBox.SelectedItem = reader["SOLICITANTE"];
+                tipoComboBox.SelectedItem = reader["TIPO"];
+                situacaoComboBox.SelectedItem = reader["SITUACAO"];
+                severidadeComboBox.SelectedItem = reader["SEVERIDADE"];
+                data = dataTimePicker.Value.ToString();
+                prazo = prazoTimePicker.Value.ToString();
+                assunto = assuntoTextBox.Text;
+                solicitacao = solicitacaoTextBox.Text;
+                responsavel = BuscarHandleResponsavel();
+            }
+            reader.Close();
 
         }
         private void tarefaFormClosed(object sender, FormClosedEventArgs e)
@@ -53,8 +85,6 @@ namespace ALTO_VALE.VIEW.TR_TAREFA
         {
             //   if (ValidarCamposObrigatorios() == true)
             // {
-            String data = "", prazo = "", assunto = "", solicitacao = "";
-            int solicitante = 0, tipo = 0, situacao = 0, severidade = 0, responsavel = 0;
             solicitante = BuscarHandleSolicitante();
             tipo = BuscarHandleTipo();
             situacao = BuscarHandleSituacao();
