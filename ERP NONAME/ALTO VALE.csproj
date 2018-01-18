@@ -209,6 +209,9 @@
     <EmbeddedResource Include="VIEW\PS_PESSOA\IPessoaEndereco.resx">
       <DependentUpon>IPessoaEndereco.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="VIEW\TR_TAREFA\GTarefa.resx">
+      <DependentUpon>GTarefa.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="VIEW\TR_TAREFA\ITarefa.resx">
       <DependentUpon>ITarefa.cs</DependentUpon>
     </EmbeddedResource>

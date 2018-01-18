@@ -43,7 +43,7 @@
             this.selecionarAnexoButton.Location = new System.Drawing.Point(439, 68);
             this.selecionarAnexoButton.Name = "selecionarAnexoButton";
             this.selecionarAnexoButton.Size = new System.Drawing.Size(35, 23);
-            this.selecionarAnexoButton.TabIndex = 0;
+            this.selecionarAnexoButton.TabIndex = 3;
             this.selecionarAnexoButton.Text = "....";
             this.selecionarAnexoButton.UseVisualStyleBackColor = true;
             this.selecionarAnexoButton.Click += new System.EventHandler(this.selecionarAnexoButtonOnclick);
@@ -54,7 +54,7 @@
             this.caminhoAnexoTextBox.Location = new System.Drawing.Point(9, 68);
             this.caminhoAnexoTextBox.Name = "caminhoAnexoTextBox";
             this.caminhoAnexoTextBox.Size = new System.Drawing.Size(428, 22);
-            this.caminhoAnexoTextBox.TabIndex = 1;
+            this.caminhoAnexoTextBox.TabIndex = 2;
             // 
             // label1
             // 
@@ -73,7 +73,7 @@
             this.gravarButton.Location = new System.Drawing.Point(373, 107);
             this.gravarButton.Name = "gravarButton";
             this.gravarButton.Size = new System.Drawing.Size(103, 32);
-            this.gravarButton.TabIndex = 25;
+            this.gravarButton.TabIndex = 6;
             this.gravarButton.Text = "Gravar";
             this.gravarButton.UseVisualStyleBackColor = true;
             this.gravarButton.Click += new System.EventHandler(this.gravarButtonOnClick);
@@ -94,7 +94,7 @@
             this.descricaoTextBox.Location = new System.Drawing.Point(9, 24);
             this.descricaoTextBox.Name = "descricaoTextBox";
             this.descricaoTextBox.Size = new System.Drawing.Size(465, 22);
-            this.descricaoTextBox.TabIndex = 28;
+            this.descricaoTextBox.TabIndex = 1;
             // 
             // exibirButton
             // 
@@ -102,7 +102,7 @@
             this.exibirButton.Location = new System.Drawing.Point(268, 107);
             this.exibirButton.Name = "exibirButton";
             this.exibirButton.Size = new System.Drawing.Size(103, 32);
-            this.exibirButton.TabIndex = 29;
+            this.exibirButton.TabIndex = 5;
             this.exibirButton.Text = "Exibir";
             this.exibirButton.UseVisualStyleBackColor = true;
             this.exibirButton.Visible = false;
@@ -114,7 +114,7 @@
             this.excluirButton.Location = new System.Drawing.Point(159, 107);
             this.excluirButton.Name = "excluirButton";
             this.excluirButton.Size = new System.Drawing.Size(103, 32);
-            this.excluirButton.TabIndex = 30;
+            this.excluirButton.TabIndex = 4;
             this.excluirButton.Text = "Excluir";
             this.excluirButton.UseVisualStyleBackColor = true;
             this.excluirButton.Visible = false;

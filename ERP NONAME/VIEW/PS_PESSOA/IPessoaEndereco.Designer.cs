@@ -255,7 +255,7 @@
             this.cepComboBox.Location = new System.Drawing.Point(10, 26);
             this.cepComboBox.Name = "cepComboBox";
             this.cepComboBox.Size = new System.Drawing.Size(181, 24);
-            this.cepComboBox.TabIndex = 63;
+            this.cepComboBox.TabIndex = 1;
             this.cepComboBox.DropDown += new System.EventHandler(this.cepDropDown);
             this.cepComboBox.DropDownClosed += new System.EventHandler(this.cepDropDownClosed);
             // 
