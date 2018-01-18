@@ -76,14 +76,6 @@
             this.assuntoTextBox.Size = new System.Drawing.Size(965, 22);
             this.assuntoTextBox.TabIndex = 59;
             // 
-            // solicitanteTextBox
-            // 
-            this.solicitanteTextBox.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.solicitanteTextBox.Location = new System.Drawing.Point(8, 29);
-            this.solicitanteTextBox.Name = "solicitanteTextBox";
-            this.solicitanteTextBox.Size = new System.Drawing.Size(235, 22);
-            this.solicitanteTextBox.TabIndex = 1;
-            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -167,8 +159,8 @@
             this.tipoComboBox.Location = new System.Drawing.Point(249, 28);
             this.tipoComboBox.Name = "tipoComboBox";
             this.tipoComboBox.Size = new System.Drawing.Size(212, 23);
-
             this.tipoComboBox.TabIndex = 64;
+            this.tipoComboBox.DropDown += new System.EventHandler(this.TipoDropDown);
             // 
             // situacaoComboBox
             // 
@@ -178,8 +170,8 @@
             this.situacaoComboBox.Location = new System.Drawing.Point(467, 28);
             this.situacaoComboBox.Name = "situacaoComboBox";
             this.situacaoComboBox.Size = new System.Drawing.Size(212, 23);
-
             this.situacaoComboBox.TabIndex = 65;
+            this.situacaoComboBox.DropDown += new System.EventHandler(this.SituacaoDropDown);
             // 
             // severidadeComboBox
             // 
@@ -189,8 +181,8 @@
             this.severidadeComboBox.Location = new System.Drawing.Point(685, 28);
             this.severidadeComboBox.Name = "severidadeComboBox";
             this.severidadeComboBox.Size = new System.Drawing.Size(178, 23);
-
             this.severidadeComboBox.TabIndex = 66;
+            this.severidadeComboBox.DropDown += new System.EventHandler(this.SeveridadeDropDown);
             // 
             // label7
             // 
@@ -211,14 +203,6 @@
             this.numeroTextBox.Name = "numeroTextBox";
             this.numeroTextBox.Size = new System.Drawing.Size(107, 22);
             this.numeroTextBox.TabIndex = 5;
-            // 
-            // dataTextBox
-            // 
-            this.dataTextBox.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dataTextBox.Location = new System.Drawing.Point(8, 84);
-            this.dataTextBox.Name = "dataTextBox";
-            this.dataTextBox.Size = new System.Drawing.Size(128, 22);
-            this.dataTextBox.TabIndex = 6;
             // 
             // label8
             // 
@@ -241,14 +225,6 @@
             this.label9.Size = new System.Drawing.Size(42, 16);
             this.label9.TabIndex = 72;
             this.label9.Text = "Prazo";
-            // 
-            // prazoTextBox
-            // 
-            this.prazoTextBox.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.prazoTextBox.Location = new System.Drawing.Point(142, 84);
-            this.prazoTextBox.Name = "prazoTextBox";
-            this.prazoTextBox.Size = new System.Drawing.Size(128, 22);
-            this.prazoTextBox.TabIndex = 7;
             // 
             // liberarButton
             // 
