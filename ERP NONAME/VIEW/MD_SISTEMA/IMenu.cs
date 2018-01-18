@@ -38,5 +38,17 @@ namespace ALTO_VALE
             GCep gCep = new GCep();
             gCep.ShowDialog();
         }
+
+        private void TESTE(object sender, EventArgs e)
+        {
+
+            System.Diagnostics.Process.Start(@"C:\ALTO_VALE\Documentos\teste.jpg");
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            TN_TECNOLOGIA.EditorSQL.Tela Tela = new TN_TECNOLOGIA.EditorSQL.Tela();
+            Tela.ShowDialog();
+        }
     }
 }
