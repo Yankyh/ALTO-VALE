@@ -619,32 +619,36 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
 
         private void removerContatoButtonOnClick(object sender, EventArgs e)
         {
-            String status = "";
-            String query = " SELECT B.NOME" +
-                           " FROM PS_PESSOACONTATO A" +
-                           " INNER JOIN MD_STATUS B ON B.HANDLE = A.STATUS" +
-                           " WHERE A.HANDLE = " + pegarHandleContato();
-            SqlDataReader reader = connection.Pesquisa(query);
-            while (reader.Read())
+            DialogResult confirmacaoButton = MessageBox.Show("Deseja Continuar?", "Excluir Arquivo", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button2);
+            if (confirmacaoButton.ToString().ToUpper() == "YES")
             {
-                status = reader["NOME"].ToString();
-            }
-            reader.Close();
-            if (status != "Cancelado")
-            {
-                MessageBox.Show("O registro deve estar cancelado para que possa ser excluído.");
-            }
-            else
-            {
-                String query1 = " DELETE " +
-                                " FROM PS_PESSOACONTATOFK" +
-                                " WHERE CONTATO = " + pegarHandleContato();
-                connection.Inserir(query1);
-                String query2 = " DELETE" +
-                                " FROM PS_PESSOACONTATO" +
-                                " WHERE HANDLE = " + pegarHandleContato();
-                connection.Inserir(query2);
-                preencherContatoPessoa();
+                String status = "";
+                String query = " SELECT B.NOME" +
+                               " FROM PS_PESSOACONTATO A" +
+                               " INNER JOIN MD_STATUS B ON B.HANDLE = A.STATUS" +
+                               " WHERE A.HANDLE = " + pegarHandleContato();
+                SqlDataReader reader = connection.Pesquisa(query);
+                while (reader.Read())
+                {
+                    status = reader["NOME"].ToString();
+                }
+                reader.Close();
+                if (status != "Cancelado")
+                {
+                    MessageBox.Show("O registro deve estar cancelado para que possa ser excluído.");
+                }
+                else
+                {
+                    String query1 = " DELETE " +
+                                    " FROM PS_PESSOACONTATOFK" +
+                                    " WHERE CONTATO = " + pegarHandleContato();
+                    connection.Inserir(query1);
+                    String query2 = " DELETE" +
+                                    " FROM PS_PESSOACONTATO" +
+                                    " WHERE HANDLE = " + pegarHandleContato();
+                    connection.Inserir(query2);
+                    preencherContatoPessoa();
+                }
             }
         }
 
@@ -748,32 +752,36 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
         }
         private void removerEnderecoButtonOnClick(object sender, EventArgs e)
         {
-            String status = "";
-            String query = " SELECT B.NOME" +
-                           " FROM PS_PESSOAENDERECO A" +
-                           " INNER JOIN MD_STATUS B ON B.HANDLE = A.STATUS" +
-                           " WHERE A.HANDLE = " + PegarHandleEndereco();
-            SqlDataReader reader = connection.Pesquisa(query);
-            while (reader.Read())
+            DialogResult confirmacaoButton = MessageBox.Show("Deseja Continuar?", "Excluir Arquivo", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button2);
+            if (confirmacaoButton.ToString().ToUpper() == "YES")
             {
-                status = reader["NOME"].ToString();
-            }
-            reader.Close();
-            if (status != "Cancelado")
-            {
-                MessageBox.Show("O registro deve estar cancelado para que possa ser excluído.");
-            }
-            else
-            {
-                String query1 = " DELETE " +
-                                " FROM PS_PESSOAENDERECOFK" +
-                                " WHERE ENDERECO = " + PegarHandleEndereco();
-                connection.Inserir(query1);
-                String query2 = " DELETE" +
-                                " FROM PS_PESSOAENDERECO" +
-                                " WHERE HANDLE = " + PegarHandleEndereco();
-                connection.Inserir(query2);
-                PreencherEndereco();
+                String status = "";
+                String query = " SELECT B.NOME" +
+                               " FROM PS_PESSOAENDERECO A" +
+                               " INNER JOIN MD_STATUS B ON B.HANDLE = A.STATUS" +
+                               " WHERE A.HANDLE = " + PegarHandleEndereco();
+                SqlDataReader reader = connection.Pesquisa(query);
+                while (reader.Read())
+                {
+                    status = reader["NOME"].ToString();
+                }
+                reader.Close();
+                if (status != "Cancelado")
+                {
+                    MessageBox.Show("O registro deve estar cancelado para que possa ser excluído.");
+                }
+                else
+                {
+                    String query1 = " DELETE " +
+                                    " FROM PS_PESSOAENDERECOFK" +
+                                    " WHERE ENDERECO = " + PegarHandleEndereco();
+                    connection.Inserir(query1);
+                    String query2 = " DELETE" +
+                                    " FROM PS_PESSOAENDERECO" +
+                                    " WHERE HANDLE = " + PegarHandleEndereco();
+                    connection.Inserir(query2);
+                    PreencherEndereco();
+                }
             }
         }
     }
