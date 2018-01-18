@@ -39,14 +39,16 @@ namespace ALTO_VALE
             gCep.ShowDialog();
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void TESTE(object sender, EventArgs e)
         {
 
+            System.Diagnostics.Process.Start(@"C:\ALTO_VALE\Documentos\teste.jpg");
         }
 
-        private void label2_Click(object sender, EventArgs e)
+        private void button3_Click(object sender, EventArgs e)
         {
-
+            TN_TECNOLOGIA.EditorSQL.Tela Tela = new TN_TECNOLOGIA.EditorSQL.Tela();
+            Tela.ShowDialog();
         }
     }
 }

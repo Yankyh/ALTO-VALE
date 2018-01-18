@@ -86,7 +86,7 @@
     <Compile Include="DAL\Connection.cs" />
     <Compile Include="DAL\CSistema.cs" />
     <Compile Include="DAL\StatusFilter.cs" />
-    <Compile Include="Formulários\Formprincipal.cs">
+	   <Compile Include="Formulários\Formprincipal.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Formulários\Formprincipal.Designer.cs">
@@ -98,6 +98,14 @@
     <Compile Include="Formulários\hd.Designer.cs">
       <DependentUpon>hd.cs</DependentUpon>
     </Compile>
+	 <Compile Include="TN_TECNOLOGIA\EditorSQL\Tela.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TN_TECNOLOGIA\EditorSQL\Tela.Designer.cs">
+      <DependentUpon>Tela.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TN_TECNOLOGIA\TControleFluxo.cs" />
+    <Compile Include="TN_TECNOLOGIA\TControle.cs" />
     <Compile Include="VIEW\MD_SISTEMA\GCep.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -148,12 +156,6 @@
     <Compile Include="VIEW\PS_PESSOA\IPessoaEndereco.Designer.cs">
       <DependentUpon>IPessoaEndereco.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Formulários\Formprincipal.resx">
-      <DependentUpon>Formprincipal.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Formulários\hd.resx">
-      <DependentUpon>hd.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="VIEW\MD_SISTEMA\GCep.resx">
       <DependentUpon>GCep.cs</DependentUpon>
     </EmbeddedResource>
