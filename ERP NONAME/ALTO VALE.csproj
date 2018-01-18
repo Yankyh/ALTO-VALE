@@ -86,17 +86,18 @@
     <Compile Include="DAL\Connection.cs" />
     <Compile Include="DAL\CSistema.cs" />
     <Compile Include="DAL\StatusFilter.cs" />
+    <Compile Include="DEFAULT\Formprincipal.cs">
     <Compile Include="Formulários\Formprincipal.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formulários\Formprincipal.Designer.cs">
+    <Compile Include="DEFAULT\Formprincipal.Designer.cs">
       <DependentUpon>Formprincipal.cs</DependentUpon>
     </Compile>
-    <Compile Include="Formulários\hd.cs">
+    <Compile Include="DEFAULT\GiantForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formulários\hd.Designer.cs">
-      <DependentUpon>hd.cs</DependentUpon>
+    <Compile Include="DEFAULT\GiantForm.Designer.cs">
+      <DependentUpon>GiantForm.cs</DependentUpon>
     </Compile>
     <Compile Include="TN_TECNOLOGIA\EditorSQL\Tela.cs">
       <SubType>Form</SubType>
@@ -104,6 +105,8 @@
     <Compile Include="TN_TECNOLOGIA\EditorSQL\Tela.Designer.cs">
       <DependentUpon>Tela.cs</DependentUpon>
     </Compile>
+    <Compile Include="TN_TECNOLOGIA\TControle.cs" />
+    <Compile Include="TN_TECNOLOGIA\TControleFluxo.cs" />
     <Compile Include="VIEW\MD_SISTEMA\GCep.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -154,6 +157,21 @@
     <Compile Include="VIEW\PS_PESSOA\IPessoaEndereco.Designer.cs">
       <DependentUpon>IPessoaEndereco.cs</DependentUpon>
     </Compile>
+    <Compile Include="VIEW\TR_TAREFA\ITarefa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VIEW\TR_TAREFA\ITarefa.Designer.cs">
+      <DependentUpon>ITarefa.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="DEFAULT\Formprincipal.resx">
+      <DependentUpon>Formprincipal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DEFAULT\GiantForm.resx">
+      <DependentUpon>GiantForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TN_TECNOLOGIA\EditorSQL\Tela.resx">
+      <DependentUpon>Tela.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="TN_TECNOLOGIA\EditorSQL\Tela.resx">
       <DependentUpon>Tela.cs</DependentUpon>
     </EmbeddedResource>
@@ -190,6 +208,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="VIEW\PS_PESSOA\IPessoaEndereco.resx">
       <DependentUpon>IPessoaEndereco.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VIEW\TR_TAREFA\ITarefa.resx">
+      <DependentUpon>ITarefa.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

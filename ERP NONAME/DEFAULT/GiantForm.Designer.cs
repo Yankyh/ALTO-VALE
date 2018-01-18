@@ -30,6 +30,8 @@
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.observacaoTabPage = new System.Windows.Forms.TabPage();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             this.ObservacaoTextBox = new System.Windows.Forms.RichTextBox();
             this.label13 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -41,8 +43,6 @@
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.textBox4 = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.observacaoTabPage.SuspendLayout();
             this.SuspendLayout();
@@ -71,6 +71,30 @@
             this.observacaoTabPage.TabIndex = 1;
             this.observacaoTabPage.Text = "Solicitação";
             this.observacaoTabPage.UseVisualStyleBackColor = true;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.BackColor = System.Drawing.Color.Transparent;
+            this.label6.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(59, 80);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(583, 16);
+            this.label6.TabIndex = 54;
+            this.label6.Text = "Também é possível fazer o mesmo para os outros campos. Deixa o solicitante como s" +
+    "tring mesmo.";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.BackColor = System.Drawing.Color.Transparent;
+            this.label5.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(59, 54);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(574, 16);
+            this.label5.TabIndex = 53;
+            this.label5.Text = "Seguinte, por enquanto é possível voltar o hd e alterar os campos para Feito/Ag.t" +
+    "estar/Ag corrigir. ";
             // 
             // ObservacaoTextBox
             // 
@@ -181,35 +205,11 @@
             this.textBox4.Size = new System.Drawing.Size(215, 22);
             this.textBox4.TabIndex = 52;
             // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.BackColor = System.Drawing.Color.Transparent;
-            this.label5.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(59, 54);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(574, 16);
-            this.label5.TabIndex = 53;
-            this.label5.Text = "Seguinte, por enquanto é possível voltar o hd e alterar os campos para Feito/Ag.t" +
-    "estar/Ag corrigir. ";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.BackColor = System.Drawing.Color.Transparent;
-            this.label6.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(59, 80);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(583, 16);
-            this.label6.TabIndex = 54;
-            this.label6.Text = "Também é possível fazer o mesmo para os outros campos. Deixa o solicitante como s" +
-    "tring mesmo.";
-            // 
             // hd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(984, 412);
+            this.ClientSize = new System.Drawing.Size(984, 411);
             this.Controls.Add(this.textBox4);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.textBox3);
