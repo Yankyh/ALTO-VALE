@@ -89,7 +89,6 @@
     <Compile Include="DEFAULT\Formprincipal.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formulários\Formprincipal.cs" />
     <Compile Include="DEFAULT\Formprincipal.Designer.cs">
       <DependentUpon>Formprincipal.cs</DependentUpon>
     </Compile>
