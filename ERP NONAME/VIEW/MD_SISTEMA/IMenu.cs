@@ -57,5 +57,7 @@ namespace ALTO_VALE
             ITarefa iTarefa = new ITarefa();
             iTarefa.ShowDialog();
         }
+
+        
     }
 }

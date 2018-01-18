@@ -128,6 +128,7 @@
             this.Controls.Add(this.enderecoButton);
             this.Controls.Add(this.pessoaButton);
             this.Controls.Add(this.treeView1);
+            this.KeyPreview = true;
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Menu";
