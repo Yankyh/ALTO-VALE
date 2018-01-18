@@ -11,7 +11,7 @@ namespace ALTO_VALE.TN_TECNOLOGIA.EditorSQL
     static class Control
     {
 
-        public static int ChaveRegistro(String tabela, String campo, String valorCampo)
+        public static int BuscarHandleRegistro(String tabela, String campo, String valorCampo)
         {
             int handle = 0;
             String query;
