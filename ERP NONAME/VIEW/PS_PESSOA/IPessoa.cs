@@ -29,7 +29,7 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
             //preenche o formulario caso seja diferente de 0
             if (pessoaHandle == 0)
             {
-                controleDeStatus();
+                ControleDeStatus();
             }
             else
             {
@@ -47,7 +47,7 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
             {
                 //.Gravar o registro
                 alterarRegistroPessoa("Gravar");
-                controleDeStatus();
+                ControleDeStatus();
             }
         }
 
@@ -55,6 +55,7 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
         private void alterarRegistroPessoa(String situacao)
         {
             String apelido = "", razaoSocial = "", email = "", cpfCnpj = "", telefone = "", celular = "", observacao = "";
+            Boolean ehCliente = false, ehFornecedor = false, ehOrgaoPublico = false;
             int tipoPessoa = 0, cepSelecionadoHandle = 0;
             apelido = apelidoTextBox.Text;
             razaoSocial = razaoSocialTextBox.Text;
@@ -64,16 +65,34 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
             tipoPessoa = tipoPessoaHandle();
             celular = celularTextBox.Text;
             observacao = ObservacaoTextBox.Text;
-
+            //booleans
+            ehCliente = ClienteCheckBox.Checked;
+            ehFornecedor = fornecedorCheckBox.Checked;
+            ehOrgaoPublico = orgaoPublicoCheckBox.Checked;
+            int handlePessoa = 0;
+            handlePessoa = buscarHandlePessoa();
             //Verifica se o registro já foi gravado alguma vez
             if (situacao == "Alterar")
             {
                 //BOTAR O TIPO DA PESSOA
-                String queryUpdate = "UPDATE PS_PESSOA SET STATUS = 3, APELIDO = '" + apelido + "', RAZAOSOCIAL = '" + razaoSocial + "'," +
+                String query = "UPDATE PS_PESSOA SET STATUS = 3, APELIDO = '" + apelido + "', RAZAOSOCIAL = '" + razaoSocial + "'," +
                                      " EMAIL = '" + email + "', CPFCNPJ = '" + cpfCnpj + "', TIPO = " + tipoPessoaHandle() + ", " +
-                                     " TELEFONE = '" + telefone + "', CELULAR = '" + celular + "', OBSERVACAO = '" + observacao + "'" +
+                                     " TELEFONE = '" + telefone + "', CELULAR = '" + celular + "', OBSERVACAO = '" + observacao + "'," +
+                                     " EHCLIENTE = '"+ehCliente+"', EHFORNECEDOR = '"+ehFornecedor+"', EHORGAOPUBLICO = '"+ehOrgaoPublico+"'" +
                                      " WHERE HANDLE = " + buscarHandlePessoa();
-                connection.Inserir(queryUpdate);
+                connection.Inserir(query);
+                //Ativar Endereço
+                String query1 = " UPDATE PS_PESSOAENDERECO" +
+                                " SET STATUS = 3" +
+                                " WHERE HANDLE IN (SELECT ENDERECO FROM PS_PESSOAENDERECOFK WHERE PESSOA = " + handlePessoa + ")";
+                connection.Inserir(query1);
+
+                //Ativar Contato
+                String query2 = " UPDATE PS_PESSOACONTATO" +
+                                " SET STATUS = 3" +
+                                " WHERE HANDLE IN (SELECT CONTATO FROM PS_PESSOACONTATOFK WHERE PESSOA = " + handlePessoa + ")";
+                connection.Inserir(query2);
+
             }
             else
             {
@@ -81,20 +100,32 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
                 {
                     String query = " UPDATE PS_PESSOA" +
                                    " SET STATUS = 4" +
-                                   " WHERE HANDLE = " + buscarHandlePessoa();
+                                   " WHERE HANDLE = " + handlePessoa;
                     connection.Inserir(query);
+                    //Cancelar Endereço
+                    String query1 = " UPDATE PS_PESSOAENDERECO" +
+                                    " SET STATUS = 4" +
+                                    " WHERE HANDLE IN (SELECT ENDERECO FROM PS_PESSOAENDERECOFK WHERE PESSOA = "+ handlePessoa+")";
+                    connection.Inserir(query1);
+
+                    //Cancelar Contato
+                    String query2 = " UPDATE PS_PESSOACONTATO" +
+                                    " SET STATUS = 4" +
+                                    " WHERE HANDLE IN (SELECT CONTATO FROM PS_PESSOACONTATOFK WHERE PESSOA = " + handlePessoa + ")";
+                    connection.Inserir(query2);
                 }
                 else
                 {
                     //Caso não exista ele insere
                     //Query principal de insert
-                    String queryInsert = " INSERT INTO PS_PESSOA (STATUS, APELIDO, RAZAOSOCIAL, EMAIL,CPFCNPJSEMMASCARA, CPFCNPJ, TELEFONE, CELULAR, TIPO, ENDERECO, OBSERVACAO) VALUES" +
+                    String queryInsert = " INSERT INTO PS_PESSOA (STATUS, APELIDO, RAZAOSOCIAL, EMAIL,CPFCNPJSEMMASCARA, CPFCNPJ, TELEFONE, CELULAR, TIPO, ENDERECO, OBSERVACAO, EHCLIENTE, EHFORNECEDOR, EHORGAOPUBLICO) VALUES" +
                                          " ( " + 1 + ",'" + apelido + "', '" + razaoSocial + "','" + email + "','" + cpfCnpj.Replace(".", "").Replace("-", "").Replace("/", "") + "', " +
-                                         " '" + cpfCnpj + "', '" + telefone + "', '" + celular + "', '" + tipoPessoa + "', " + cepSelecionadoHandle + ", '" + observacao + "')";
+                                         " '" + cpfCnpj + "', '" + telefone + "', '" + celular + "', '" + tipoPessoa + "', " + cepSelecionadoHandle + ", '" + observacao + "'," +
+                                         " '"+ehCliente+"', '"+ehFornecedor+"',  '"+ehOrgaoPublico+"')";
                     connection.Inserir(queryInsert);
                 }
             }
-            controleDeStatus();
+            ControleDeStatus();
         }
 
         //Metodos de busca de handle
@@ -320,7 +351,7 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
             //Preenche o contato
             preencherContatoPessoa();
 
-            controleDeStatus();
+            ControleDeStatus();
         }
 
         private void voltarButtonOnClick(object sender, EventArgs e)
@@ -332,7 +363,7 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
                 String query1 = "UPDATE PS_PESSOA SET STATUS  = 2 WHERE HANDLE = " + buscarHandlePessoa();
                 SqlDataReader reader = connection.Pesquisa(query1);
                 reader.Close();
-                controleDeStatus();
+                ControleDeStatus();
             }
             else
             {
@@ -363,12 +394,9 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
             //Altera o status
             if (buscarStatusRegistro() == 1 || buscarStatusRegistro() == 2)
             {
-                String query = "UPDATE PS_PESSOA SET STATUS = 3 WHERE HANDLE = " + buscarHandlePessoa();
-                SqlDataReader reader = connection.Pesquisa(query);
-                reader.Close();
                 //Grava o registro
                 alterarRegistroPessoa("Alterar");
-                controleDeStatus();
+                ControleDeStatus();
             }
             else
             {
@@ -381,7 +409,7 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
 
 
         //Controle de status
-        public void controleDeStatus()
+        public void ControleDeStatus()
         {
             String status = "";
             String query = " SELECT B.NOME" +
@@ -526,10 +554,12 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
         {
             BindingSource Binding = new BindingSource();
             enderecoDataGridView.AutoGenerateColumns = true;
-            String query = " SELECT C.HANDLE, C.CEP, C.CIDADE, C.ESTADO, C.BAIRRO, C.LOGRADOURO, C.NUMERO, C.REFERENCIA" +
+            String query = " SELECT C.HANDLE, D.NOME SITUAÇÃO, C.CEP, C.CIDADE, E.NOME ESTADO, C.BAIRRO, C.LOGRADOURO, C.NUMERO, C.REFERENCIA" +
                            " FROM PS_PESSOA A" +
                            " INNER JOIN PS_PESSOAENDERECOFK B ON B.PESSOA = A.HANDLE" +
                            " INNER JOIN PS_PESSOAENDERECO C ON C.HANDLE = B.ENDERECO" +
+                           " INNER JOIN MD_STATUS D ON D.HANDLE = C.STATUS" +
+                           " INNER JOIN MD_ESTADO E ON E.HANDLE = C.ESTADO" +
                            " WHERE A.HANDLE = " + buscarHandlePessoa();
             Binding.DataSource = connection.DataTable(query);
             enderecoDataGridView.DataSource = Binding;

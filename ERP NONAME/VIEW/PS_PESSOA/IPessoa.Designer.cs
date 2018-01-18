@@ -44,9 +44,9 @@
             this.observacaoTabPage = new System.Windows.Forms.TabPage();
             this.ObservacaoTextBox = new System.Windows.Forms.RichTextBox();
             this.abrangenciaTabPage = new System.Windows.Forms.TabPage();
-            this.checkBox3 = new System.Windows.Forms.CheckBox();
+            this.orgaoPublicoCheckBox = new System.Windows.Forms.CheckBox();
             this.fornecedorCheckBox = new System.Windows.Forms.CheckBox();
-            this.clienteCheckBox = new System.Windows.Forms.CheckBox();
+            this.ClienteCheckBox = new System.Windows.Forms.CheckBox();
             this.contatoTabPage = new System.Windows.Forms.TabPage();
             this.removerContatoButton = new System.Windows.Forms.Button();
             this.adicionarContatoButton = new System.Windows.Forms.Button();
@@ -130,44 +130,47 @@
             // 
             this.abrangenciaTabPage.BackColor = System.Drawing.SystemColors.Window;
             this.abrangenciaTabPage.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.abrangenciaTabPage.Controls.Add(this.checkBox3);
+            this.abrangenciaTabPage.Controls.Add(this.orgaoPublicoCheckBox);
             this.abrangenciaTabPage.Controls.Add(this.fornecedorCheckBox);
-            this.abrangenciaTabPage.Controls.Add(this.clienteCheckBox);
+            this.abrangenciaTabPage.Controls.Add(this.ClienteCheckBox);
             this.abrangenciaTabPage.Location = new System.Drawing.Point(4, 25);
             this.abrangenciaTabPage.Name = "abrangenciaTabPage";
             this.abrangenciaTabPage.Size = new System.Drawing.Size(963, 128);
             this.abrangenciaTabPage.TabIndex = 3;
             this.abrangenciaTabPage.Text = "Abrangência";
             // 
-            // checkBox3
+            // orgaoPublicoCheckBox
             // 
-            this.checkBox3.AutoSize = true;
-            this.checkBox3.Location = new System.Drawing.Point(15, 83);
-            this.checkBox3.Name = "checkBox3";
-            this.checkBox3.Size = new System.Drawing.Size(116, 20);
-            this.checkBox3.TabIndex = 2;
-            this.checkBox3.Text = "Orgão público";
-            this.checkBox3.UseVisualStyleBackColor = true;
+            this.orgaoPublicoCheckBox.AutoSize = true;
+            this.orgaoPublicoCheckBox.Font = new System.Drawing.Font("Arial", 9F);
+            this.orgaoPublicoCheckBox.Location = new System.Drawing.Point(15, 83);
+            this.orgaoPublicoCheckBox.Name = "orgaoPublicoCheckBox";
+            this.orgaoPublicoCheckBox.Size = new System.Drawing.Size(103, 19);
+            this.orgaoPublicoCheckBox.TabIndex = 2;
+            this.orgaoPublicoCheckBox.Text = "Orgão público";
+            this.orgaoPublicoCheckBox.UseVisualStyleBackColor = true;
             // 
             // fornecedorCheckBox
             // 
             this.fornecedorCheckBox.AutoSize = true;
+            this.fornecedorCheckBox.Font = new System.Drawing.Font("Arial", 9F);
             this.fornecedorCheckBox.Location = new System.Drawing.Point(15, 49);
             this.fornecedorCheckBox.Name = "fornecedorCheckBox";
-            this.fornecedorCheckBox.Size = new System.Drawing.Size(101, 20);
+            this.fornecedorCheckBox.Size = new System.Drawing.Size(89, 19);
             this.fornecedorCheckBox.TabIndex = 1;
             this.fornecedorCheckBox.Text = "Fornecedor";
             this.fornecedorCheckBox.UseVisualStyleBackColor = true;
             // 
-            // clienteCheckBox
+            // ClienteCheckBox
             // 
-            this.clienteCheckBox.AutoSize = true;
-            this.clienteCheckBox.Location = new System.Drawing.Point(15, 16);
-            this.clienteCheckBox.Name = "clienteCheckBox";
-            this.clienteCheckBox.Size = new System.Drawing.Size(71, 20);
-            this.clienteCheckBox.TabIndex = 0;
-            this.clienteCheckBox.Text = "Cliente";
-            this.clienteCheckBox.UseVisualStyleBackColor = true;
+            this.ClienteCheckBox.AutoSize = true;
+            this.ClienteCheckBox.Font = new System.Drawing.Font("Arial", 9F);
+            this.ClienteCheckBox.Location = new System.Drawing.Point(15, 16);
+            this.ClienteCheckBox.Name = "ClienteCheckBox";
+            this.ClienteCheckBox.Size = new System.Drawing.Size(65, 19);
+            this.ClienteCheckBox.TabIndex = 0;
+            this.ClienteCheckBox.Text = "Cliente";
+            this.ClienteCheckBox.UseVisualStyleBackColor = true;
             // 
             // contatoTabPage
             // 
@@ -221,7 +224,7 @@
             this.contatoDataGridView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Arial", 10F);
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Transparent;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
@@ -229,7 +232,7 @@
             this.contatoDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Arial", 10F);
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Arial", 9F);
             dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.MenuHighlight;
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.WindowText;
@@ -306,7 +309,7 @@
             this.enderecoDataGridView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
             dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Arial", 10F);
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.Transparent;
             dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
@@ -314,7 +317,7 @@
             this.enderecoDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Arial", 10F);
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Arial", 9F);
             dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.MenuHighlight;
             dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.WindowText;
@@ -372,7 +375,7 @@
             this.anexoDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Arial", 10F);
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Arial", 9F);
             dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.MenuHighlight;
             dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.WindowText;
@@ -701,9 +704,9 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox celularTextBox;
         private System.Windows.Forms.TabPage abrangenciaTabPage;
-        private System.Windows.Forms.CheckBox checkBox3;
+        private System.Windows.Forms.CheckBox orgaoPublicoCheckBox;
         private System.Windows.Forms.CheckBox fornecedorCheckBox;
-        private System.Windows.Forms.CheckBox clienteCheckBox;
+        private System.Windows.Forms.CheckBox ClienteCheckBox;
         private System.Windows.Forms.DataGridView contatoDataGridView;
         private System.Windows.Forms.Button adicionarContatoButton;
         private System.Windows.Forms.Button voltarButton;
