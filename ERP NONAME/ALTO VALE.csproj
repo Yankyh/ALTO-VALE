@@ -98,6 +98,14 @@
     <Compile Include="DEFAULT\GiantForm.Designer.cs">
       <DependentUpon>GiantForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="TN_TECNOLOGIA\EditorSQL\Tela.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TN_TECNOLOGIA\EditorSQL\Tela.Designer.cs">
+      <DependentUpon>Tela.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TN_TECNOLOGIA\TControle.cs" />
+    <Compile Include="TN_TECNOLOGIA\TControleFluxo.cs" />
     <Compile Include="VIEW\MD_SISTEMA\GCep.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -159,6 +167,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="DEFAULT\GiantForm.resx">
       <DependentUpon>GiantForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TN_TECNOLOGIA\EditorSQL\Tela.resx">
+      <DependentUpon>Tela.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="VIEW\MD_SISTEMA\GCep.resx">
       <DependentUpon>GCep.cs</DependentUpon>
