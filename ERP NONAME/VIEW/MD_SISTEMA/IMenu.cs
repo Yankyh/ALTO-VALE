@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using ALTO_VALE.VIEW.MD_SISTEMA;
 using ALTO_VALE.VIEW.PS_PESSOA;
+using ALTO_VALE.VIEW.TR_TAREFA;
 
 namespace ALTO_VALE
 {
@@ -39,16 +40,16 @@ namespace ALTO_VALE
             gCep.ShowDialog();
         }
 
-        private void TESTE(object sender, EventArgs e)
-        {
-
-            System.Diagnostics.Process.Start(@"C:\ALTO_VALE\Documentos\teste.jpg");
-        }
-
         private void button3_Click(object sender, EventArgs e)
         {
             TN_TECNOLOGIA.EditorSQL.Tela Tela = new TN_TECNOLOGIA.EditorSQL.Tela();
             Tela.ShowDialog();
+        }
+
+        private void tarefaButtonOnClick(object sender, EventArgs e)
+        {
+            GTarefa gTarefa = new GTarefa();
+            gTarefa.ShowDialog();
         }
     }
 }
