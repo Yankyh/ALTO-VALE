@@ -28,25 +28,25 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle53 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle54 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle55 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle56 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle49 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle50 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle51 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle52 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle57 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle58 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle59 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle60 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.observacaoTabPage = new System.Windows.Forms.TabPage();
             this.ObservacaoTextBox = new System.Windows.Forms.RichTextBox();
             this.abrangenciaTabPage = new System.Windows.Forms.TabPage();
-            this.checkBox3 = new System.Windows.Forms.CheckBox();
+            this.orgaoPublicoCheckBox = new System.Windows.Forms.CheckBox();
             this.fornecedorCheckBox = new System.Windows.Forms.CheckBox();
-            this.clienteCheckBox = new System.Windows.Forms.CheckBox();
+            this.ClienteCheckBox = new System.Windows.Forms.CheckBox();
             this.contatoTabPage = new System.Windows.Forms.TabPage();
             this.removerContatoButton = new System.Windows.Forms.Button();
             this.adicionarContatoButton = new System.Windows.Forms.Button();
@@ -130,44 +130,47 @@
             // 
             this.abrangenciaTabPage.BackColor = System.Drawing.SystemColors.Window;
             this.abrangenciaTabPage.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.abrangenciaTabPage.Controls.Add(this.checkBox3);
+            this.abrangenciaTabPage.Controls.Add(this.orgaoPublicoCheckBox);
             this.abrangenciaTabPage.Controls.Add(this.fornecedorCheckBox);
-            this.abrangenciaTabPage.Controls.Add(this.clienteCheckBox);
+            this.abrangenciaTabPage.Controls.Add(this.ClienteCheckBox);
             this.abrangenciaTabPage.Location = new System.Drawing.Point(4, 25);
             this.abrangenciaTabPage.Name = "abrangenciaTabPage";
             this.abrangenciaTabPage.Size = new System.Drawing.Size(963, 128);
             this.abrangenciaTabPage.TabIndex = 3;
             this.abrangenciaTabPage.Text = "Abrangência";
             // 
-            // checkBox3
+            // orgaoPublicoCheckBox
             // 
-            this.checkBox3.AutoSize = true;
-            this.checkBox3.Location = new System.Drawing.Point(15, 83);
-            this.checkBox3.Name = "checkBox3";
-            this.checkBox3.Size = new System.Drawing.Size(116, 20);
-            this.checkBox3.TabIndex = 2;
-            this.checkBox3.Text = "Orgão público";
-            this.checkBox3.UseVisualStyleBackColor = true;
+            this.orgaoPublicoCheckBox.AutoSize = true;
+            this.orgaoPublicoCheckBox.Font = new System.Drawing.Font("Arial", 9F);
+            this.orgaoPublicoCheckBox.Location = new System.Drawing.Point(15, 83);
+            this.orgaoPublicoCheckBox.Name = "orgaoPublicoCheckBox";
+            this.orgaoPublicoCheckBox.Size = new System.Drawing.Size(103, 19);
+            this.orgaoPublicoCheckBox.TabIndex = 2;
+            this.orgaoPublicoCheckBox.Text = "Orgão público";
+            this.orgaoPublicoCheckBox.UseVisualStyleBackColor = true;
             // 
             // fornecedorCheckBox
             // 
             this.fornecedorCheckBox.AutoSize = true;
+            this.fornecedorCheckBox.Font = new System.Drawing.Font("Arial", 9F);
             this.fornecedorCheckBox.Location = new System.Drawing.Point(15, 49);
             this.fornecedorCheckBox.Name = "fornecedorCheckBox";
-            this.fornecedorCheckBox.Size = new System.Drawing.Size(101, 20);
+            this.fornecedorCheckBox.Size = new System.Drawing.Size(89, 19);
             this.fornecedorCheckBox.TabIndex = 1;
             this.fornecedorCheckBox.Text = "Fornecedor";
             this.fornecedorCheckBox.UseVisualStyleBackColor = true;
             // 
-            // clienteCheckBox
+            // ClienteCheckBox
             // 
-            this.clienteCheckBox.AutoSize = true;
-            this.clienteCheckBox.Location = new System.Drawing.Point(15, 16);
-            this.clienteCheckBox.Name = "clienteCheckBox";
-            this.clienteCheckBox.Size = new System.Drawing.Size(71, 20);
-            this.clienteCheckBox.TabIndex = 0;
-            this.clienteCheckBox.Text = "Cliente";
-            this.clienteCheckBox.UseVisualStyleBackColor = true;
+            this.ClienteCheckBox.AutoSize = true;
+            this.ClienteCheckBox.Font = new System.Drawing.Font("Arial", 9F);
+            this.ClienteCheckBox.Location = new System.Drawing.Point(15, 16);
+            this.ClienteCheckBox.Name = "ClienteCheckBox";
+            this.ClienteCheckBox.Size = new System.Drawing.Size(65, 19);
+            this.ClienteCheckBox.TabIndex = 0;
+            this.ClienteCheckBox.Text = "Cliente";
+            this.ClienteCheckBox.UseVisualStyleBackColor = true;
             // 
             // contatoTabPage
             // 
@@ -193,7 +196,7 @@
             this.removerContatoButton.TabIndex = 61;
             this.removerContatoButton.Text = "-";
             this.removerContatoButton.UseVisualStyleBackColor = true;
-            this.removerContatoButton.Click += new System.EventHandler(this.removerButtonOnClick);
+            this.removerContatoButton.Click += new System.EventHandler(this.removerContatoButtonOnClick);
             // 
             // adicionarContatoButton
             // 
@@ -211,42 +214,42 @@
             // contatoDataGridView
             // 
             this.contatoDataGridView.AllowUserToAddRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.LightGray;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Arial", 9F);
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.MenuHighlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black;
-            this.contatoDataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle53.BackColor = System.Drawing.Color.LightGray;
+            dataGridViewCellStyle53.Font = new System.Drawing.Font("Arial", 9F);
+            dataGridViewCellStyle53.SelectionBackColor = System.Drawing.SystemColors.MenuHighlight;
+            dataGridViewCellStyle53.SelectionForeColor = System.Drawing.Color.Black;
+            this.contatoDataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle53;
             this.contatoDataGridView.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
             this.contatoDataGridView.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.contatoDataGridView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Arial", 10F);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Transparent;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.contatoDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle54.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle54.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle54.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle54.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle54.SelectionBackColor = System.Drawing.Color.Transparent;
+            dataGridViewCellStyle54.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.contatoDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle54;
             this.contatoDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Arial", 10F);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.MenuHighlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.contatoDataGridView.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle55.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle55.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle55.Font = new System.Drawing.Font("Arial", 9F);
+            dataGridViewCellStyle55.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle55.SelectionBackColor = System.Drawing.SystemColors.MenuHighlight;
+            dataGridViewCellStyle55.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle55.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.contatoDataGridView.DefaultCellStyle = dataGridViewCellStyle55;
             this.contatoDataGridView.Location = new System.Drawing.Point(2, 3);
             this.contatoDataGridView.MultiSelect = false;
             this.contatoDataGridView.Name = "contatoDataGridView";
             this.contatoDataGridView.ReadOnly = true;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Arial", 10F);
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.contatoDataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle56.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle56.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle56.Font = new System.Drawing.Font("Arial", 10F);
+            dataGridViewCellStyle56.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle56.SelectionBackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle56.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle56.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.contatoDataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle56;
             this.contatoDataGridView.RowHeadersVisible = false;
             this.contatoDataGridView.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.contatoDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -279,6 +282,7 @@
             this.button1.TabIndex = 63;
             this.button1.Text = "-";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.removerEnderecoButtonOnClick);
             // 
             // button2
             // 
@@ -296,42 +300,42 @@
             // enderecoDataGridView
             // 
             this.enderecoDataGridView.AllowUserToAddRows = false;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.LightGray;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Arial", 9F);
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.MenuHighlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.Black;
-            this.enderecoDataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle49.BackColor = System.Drawing.Color.LightGray;
+            dataGridViewCellStyle49.Font = new System.Drawing.Font("Arial", 9F);
+            dataGridViewCellStyle49.SelectionBackColor = System.Drawing.SystemColors.MenuHighlight;
+            dataGridViewCellStyle49.SelectionForeColor = System.Drawing.Color.Black;
+            this.enderecoDataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle49;
             this.enderecoDataGridView.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
             this.enderecoDataGridView.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.enderecoDataGridView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Arial", 10F);
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.Transparent;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.enderecoDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle50.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle50.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle50.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle50.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle50.SelectionBackColor = System.Drawing.Color.Transparent;
+            dataGridViewCellStyle50.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.enderecoDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle50;
             this.enderecoDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Arial", 10F);
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.MenuHighlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.enderecoDataGridView.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle51.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle51.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle51.Font = new System.Drawing.Font("Arial", 9F);
+            dataGridViewCellStyle51.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle51.SelectionBackColor = System.Drawing.SystemColors.MenuHighlight;
+            dataGridViewCellStyle51.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle51.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.enderecoDataGridView.DefaultCellStyle = dataGridViewCellStyle51;
             this.enderecoDataGridView.Location = new System.Drawing.Point(0, 2);
             this.enderecoDataGridView.MultiSelect = false;
             this.enderecoDataGridView.Name = "enderecoDataGridView";
             this.enderecoDataGridView.ReadOnly = true;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Arial", 10F);
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.enderecoDataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle52.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle52.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle52.Font = new System.Drawing.Font("Arial", 10F);
+            dataGridViewCellStyle52.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle52.SelectionBackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle52.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle52.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.enderecoDataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle52;
             this.enderecoDataGridView.RowHeadersVisible = false;
             this.enderecoDataGridView.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.enderecoDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -354,42 +358,42 @@
             // anexoDataGridView
             // 
             this.anexoDataGridView.AllowUserToAddRows = false;
-            dataGridViewCellStyle9.BackColor = System.Drawing.Color.LightGray;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Arial", 9F);
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.MenuHighlight;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.Black;
-            this.anexoDataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle57.BackColor = System.Drawing.Color.LightGray;
+            dataGridViewCellStyle57.Font = new System.Drawing.Font("Arial", 9F);
+            dataGridViewCellStyle57.SelectionBackColor = System.Drawing.SystemColors.MenuHighlight;
+            dataGridViewCellStyle57.SelectionForeColor = System.Drawing.Color.Black;
+            this.anexoDataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle57;
             this.anexoDataGridView.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
             this.anexoDataGridView.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.anexoDataGridView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Arial", 10F);
-            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.Transparent;
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.anexoDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle58.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle58.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle58.Font = new System.Drawing.Font("Arial", 10F);
+            dataGridViewCellStyle58.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle58.SelectionBackColor = System.Drawing.Color.Transparent;
+            dataGridViewCellStyle58.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.anexoDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle58;
             this.anexoDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Arial", 10F);
-            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.MenuHighlight;
-            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.anexoDataGridView.DefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle59.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle59.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle59.Font = new System.Drawing.Font("Arial", 9F);
+            dataGridViewCellStyle59.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle59.SelectionBackColor = System.Drawing.SystemColors.MenuHighlight;
+            dataGridViewCellStyle59.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle59.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.anexoDataGridView.DefaultCellStyle = dataGridViewCellStyle59;
             this.anexoDataGridView.Location = new System.Drawing.Point(2, 2);
             this.anexoDataGridView.MultiSelect = false;
             this.anexoDataGridView.Name = "anexoDataGridView";
             this.anexoDataGridView.ReadOnly = true;
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Arial", 10F);
-            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.anexoDataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle60.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle60.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle60.Font = new System.Drawing.Font("Arial", 10F);
+            dataGridViewCellStyle60.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle60.SelectionBackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle60.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle60.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.anexoDataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle60;
             this.anexoDataGridView.RowHeadersVisible = false;
             this.anexoDataGridView.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.anexoDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -701,9 +705,9 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox celularTextBox;
         private System.Windows.Forms.TabPage abrangenciaTabPage;
-        private System.Windows.Forms.CheckBox checkBox3;
+        private System.Windows.Forms.CheckBox orgaoPublicoCheckBox;
         private System.Windows.Forms.CheckBox fornecedorCheckBox;
-        private System.Windows.Forms.CheckBox clienteCheckBox;
+        private System.Windows.Forms.CheckBox ClienteCheckBox;
         private System.Windows.Forms.DataGridView contatoDataGridView;
         private System.Windows.Forms.Button adicionarContatoButton;
         private System.Windows.Forms.Button voltarButton;

@@ -27,7 +27,7 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
             //Preencher o formulário ao abrir
             if (contatoHandle == 0)
             {
-                controleDeStatus();
+                ControleDeStatus();
             }
             else
             {
@@ -127,7 +127,7 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
                                    " WHERE HANDLE = " + contatoHandle;
                     connection.Inserir(query);
                 }
-                controleDeStatus();
+                ControleDeStatus();
             }
         }
 
@@ -168,7 +168,7 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
         }
 
         //Controle de status
-        public void controleDeStatus()
+        public void ControleDeStatus()
         {
             String status = "";
             String query = " SELECT B.NOME" +
@@ -287,7 +287,7 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
             telefoneTextBox.Text = telefone;
             celularTextBox.Text = celular;
             ObservacaoTextBox.Text = observacao;
-            controleDeStatus();
+            ControleDeStatus();
         }
         private void voltarRegistro()
         {
@@ -295,7 +295,7 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
                            " SET STATUS = 2" +
                            " WHERE HANDLE =" + contatoHandle;
             connection.Inserir(query);
-            controleDeStatus();
+            ControleDeStatus();
         }
         private void voltarButtonOnClick(object sender, EventArgs e)
         {
@@ -316,7 +316,7 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
         private void liberarButtonOnClick(object sender, EventArgs e)
         {
             alterarRegistro("Alterar");
-            controleDeStatus();
+            ControleDeStatus();
         }
     }
 }

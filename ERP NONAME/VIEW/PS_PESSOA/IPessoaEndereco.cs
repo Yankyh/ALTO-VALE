@@ -27,6 +27,11 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
             {
                 PreencherFormulario();
             }
+            else
+            {
+                ControleDeStatus();
+            }
+            
         }
 
         private void PreencherFormulario()
@@ -67,7 +72,7 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
             referenciaTextBox.Text = referencia;
             ObservacaoTextBox.Text = observacao;
 
-            controleDeStatus();
+            ControleDeStatus();
         }
 
 
@@ -83,7 +88,15 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
         {
             String cep = "", cidade = "", bairro = "", logradouro = "", numero = "", referencia = "", observacao = "";
             int estado = 0;
-            cep = cepComboBox.SelectedItem.ToString();
+            try
+            {
+                cep = cepComboBox.SelectedItem.ToString();
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.ToString());
+            }
+
             cidade = cidadeTextBox.Text;
             bairro = bairroTextBox.Text;
             logradouro = logradouroTextBox.Text;
@@ -157,14 +170,15 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
                         }
                         else
                         {
-                            if(acao == "Cancelar")
+                            if (acao == "Cancelar")
                             {
                                 int status = 0;
                                 String query = " SELECT STATUS" +
                                                " FROM PS_PESSOAENDERECO" +
                                                " WHERE HANDLE = " + handleEndereco;
                                 SqlDataReader reader = connection.Pesquisa(query);
-                                while (reader.Read()){
+                                while (reader.Read())
+                                {
                                     status = Convert.ToInt32(reader["STATUS"]);
                                 }
                                 reader.Close();
@@ -172,20 +186,20 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
                                 {
                                     String query1 = " UPDATE PS_PESSOAENDERECO" +
                                                     " SET STATUS = 4" +
-                                                    " WHERE HANDLE = "+handleEndereco;
+                                                    " WHERE HANDLE = " + handleEndereco;
                                     connection.Inserir(query1);
                                 }
                                 else
                                 {
                                     MessageBox.Show("Para cancelar o registro do endereço, o endereço deve estar no status Ag. modificações.");
                                 }
-                              
+
                             }
                         }
                     }
                 }
                 //Controle de status
-                controleDeStatus();
+                ControleDeStatus();
             }
         }
 
@@ -240,7 +254,7 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
         //Verificar campos obrigatórios
         public Boolean verificarCamposObrigatorios()
         {
-            /*  if(cepTextBox.Text == "")
+             if(cepComboBox.SelectedValue == "")
               {
                   MessageBox.Show("O campo Cep é obrigatório.");
                   return false;
@@ -280,7 +294,7 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
                           }
                       }
                   }
-              } */
+              } 
             return true;
         }
 
@@ -376,8 +390,14 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
             gravarRegistroEndereco("Cancelar");
         }
 
+        private void enderecoFormClosed(object sender, FormClosedEventArgs e)
+        {
+            handlePessoa = 0;
+            handleEndereco = 0;
+        }
+
         //Controle de status
-        public void controleDeStatus()
+        public void ControleDeStatus()
         {
             String status = "";
             String query = " SELECT B.NOME" +
@@ -385,7 +405,6 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
                            " INNER JOIN MD_STATUS B ON B.HANDLE = A.STATUS" +
                            " WHERE A.HANDLE = " + handleEndereco;
             SqlDataReader reader = connection.Pesquisa(query);
-
             while (reader.Read())
             {
                 status = reader["NOME"].ToString();

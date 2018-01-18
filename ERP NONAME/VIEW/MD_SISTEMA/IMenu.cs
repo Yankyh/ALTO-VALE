@@ -38,11 +38,5 @@ namespace ALTO_VALE
             GCep gCep = new GCep();
             gCep.ShowDialog();
         }
-
-        private void TESTE(object sender, EventArgs e)
-        {
-
-            System.Diagnostics.Process.Start(@"C:\ALTO_VALE\Documentos\teste.jpg");
-        }
     }
 }

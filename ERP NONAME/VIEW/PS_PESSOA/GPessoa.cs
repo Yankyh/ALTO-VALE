@@ -63,7 +63,6 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
         {
             IPessoa iPessoa = new IPessoa();
             iPessoa.ShowDialog();
-        
         }
 
         private void GPessoa_Load(object sender, EventArgs e)
