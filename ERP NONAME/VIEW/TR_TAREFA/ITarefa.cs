@@ -24,11 +24,23 @@ namespace ALTO_VALE.VIEW.TR_TAREFA
             InitializeComponent();
             //abre a conexão
             connection.Conectar();
+
+            if (handleTarefa != 0)
+            {
+                PreencherFormulario();
+            }
+            ControleDeStatus();
         }
 
+        //Preenche formulario
+        private void PreencherFormulario()
+        {
+
+        }
         private void tarefaFormClosed(object sender, FormClosedEventArgs e)
         {
             connection.Desconectar();
+            handleTarefa = 0;
         }
 
         private void gravarButtonOnClick(object sender, EventArgs e)

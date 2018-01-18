@@ -49,10 +49,10 @@
             this.cancelarButton = new System.Windows.Forms.Button();
             this.gravarButton = new System.Windows.Forms.Button();
             this.dataTimePicker = new System.Windows.Forms.DateTimePicker();
-            this.prazoTimePicker = new System.Windows.Forms.DateTimePicker();
             this.label5 = new System.Windows.Forms.Label();
             this.solicitanteComboBox = new System.Windows.Forms.ComboBox();
             this.responsavelComboBox = new System.Windows.Forms.ComboBox();
+            this.prazoTimePicker = new System.Windows.Forms.DateTimePicker();
             this.tabControl1.SuspendLayout();
             this.observacaoTabPage.SuspendLayout();
             this.SuspendLayout();
@@ -220,7 +220,7 @@
             this.label9.AutoSize = true;
             this.label9.BackColor = System.Drawing.Color.Transparent;
             this.label9.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(97, 63);
+            this.label9.Location = new System.Drawing.Point(142, 63);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(42, 16);
             this.label9.TabIndex = 72;
@@ -271,29 +271,20 @@
             // dataTimePicker
             // 
             this.dataTimePicker.CalendarFont = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataTimePicker.CustomFormat = "dd/MM/yyyy HH:mm";
             this.dataTimePicker.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dataTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dataTimePicker.Location = new System.Drawing.Point(8, 82);
             this.dataTimePicker.Name = "dataTimePicker";
-            this.dataTimePicker.Size = new System.Drawing.Size(86, 22);
+            this.dataTimePicker.Size = new System.Drawing.Size(131, 22);
             this.dataTimePicker.TabIndex = 78;
-            // 
-            // prazoTimePicker
-            // 
-            this.prazoTimePicker.CalendarFont = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.prazoTimePicker.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.prazoTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.prazoTimePicker.Location = new System.Drawing.Point(100, 82);
-            this.prazoTimePicker.Name = "prazoTimePicker";
-            this.prazoTimePicker.Size = new System.Drawing.Size(86, 22);
-            this.prazoTimePicker.TabIndex = 79;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.BackColor = System.Drawing.Color.Transparent;
             this.label5.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(189, 63);
+            this.label5.Location = new System.Drawing.Point(285, 63);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(81, 16);
             this.label5.TabIndex = 80;
@@ -315,21 +306,32 @@
             this.responsavelComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.responsavelComboBox.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.responsavelComboBox.FormattingEnabled = true;
-            this.responsavelComboBox.Location = new System.Drawing.Point(192, 81);
+            this.responsavelComboBox.Location = new System.Drawing.Point(288, 81);
             this.responsavelComboBox.Name = "responsavelComboBox";
             this.responsavelComboBox.Size = new System.Drawing.Size(235, 23);
             this.responsavelComboBox.TabIndex = 83;
             this.responsavelComboBox.DropDown += new System.EventHandler(this.ResponsavelDropDown);
+            // 
+            // prazoTimePicker
+            // 
+            this.prazoTimePicker.CalendarFont = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.prazoTimePicker.CustomFormat = "dd/MM/yyyy HH:mm";
+            this.prazoTimePicker.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.prazoTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.prazoTimePicker.Location = new System.Drawing.Point(145, 82);
+            this.prazoTimePicker.Name = "prazoTimePicker";
+            this.prazoTimePicker.Size = new System.Drawing.Size(137, 22);
+            this.prazoTimePicker.TabIndex = 84;
             // 
             // ITarefa
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(983, 411);
+            this.Controls.Add(this.prazoTimePicker);
             this.Controls.Add(this.responsavelComboBox);
             this.Controls.Add(this.solicitanteComboBox);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.prazoTimePicker);
             this.Controls.Add(this.dataTimePicker);
             this.Controls.Add(this.liberarButton);
             this.Controls.Add(this.voltarButton);
@@ -349,6 +351,9 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.tabControl1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "ITarefa";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Tarefa";
@@ -382,9 +387,9 @@
         private System.Windows.Forms.Button gravarButton;
         private System.Windows.Forms.RichTextBox solicitacaoTextBox;
         private System.Windows.Forms.DateTimePicker dataTimePicker;
-        private System.Windows.Forms.DateTimePicker prazoTimePicker;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ComboBox solicitanteComboBox;
         private System.Windows.Forms.ComboBox responsavelComboBox;
+        private System.Windows.Forms.DateTimePicker prazoTimePicker;
     }
 }

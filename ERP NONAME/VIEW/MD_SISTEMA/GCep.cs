@@ -79,5 +79,10 @@ namespace ALTO_VALE.VIEW.MD_SISTEMA
         {
             preencherDataGridView();
         }
+
+        private void CepFormClosed(object sender, FormClosedEventArgs e)
+        {
+            connection.Desconectar();
+        }
     }
 }

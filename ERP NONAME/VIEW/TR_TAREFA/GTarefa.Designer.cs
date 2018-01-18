@@ -28,75 +28,81 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.cepDataGridView = new System.Windows.Forms.DataGridView();
-            this.button1 = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.cepDataGridView)).BeginInit();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            this.tarefaDataGridView = new System.Windows.Forms.DataGridView();
+            this.adcionarButton = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.tarefaDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
-            // cepDataGridView
+            // tarefaDataGridView
             // 
-            this.cepDataGridView.AllowUserToAddRows = false;
-            dataGridViewCellStyle10.BackColor = System.Drawing.Color.LightGray;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.MenuHighlight;
-            this.cepDataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle10;
-            this.cepDataGridView.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.cepDataGridView.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.cepDataGridView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.cepDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle11;
-            this.cepDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.MenuHighlight;
-            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.cepDataGridView.DefaultCellStyle = dataGridViewCellStyle12;
-            this.cepDataGridView.Location = new System.Drawing.Point(2, 58);
-            this.cepDataGridView.MultiSelect = false;
-            this.cepDataGridView.Name = "cepDataGridView";
-            this.cepDataGridView.ReadOnly = true;
-            this.cepDataGridView.RowHeadersVisible = false;
-            this.cepDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.cepDataGridView.Size = new System.Drawing.Size(1896, 937);
-            this.cepDataGridView.TabIndex = 2;
+            this.tarefaDataGridView.AllowUserToAddRows = false;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.LightGray;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.tarefaDataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.tarefaDataGridView.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.tarefaDataGridView.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tarefaDataGridView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.tarefaDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.tarefaDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.MenuHighlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.tarefaDataGridView.DefaultCellStyle = dataGridViewCellStyle3;
+            this.tarefaDataGridView.Location = new System.Drawing.Point(2, 58);
+            this.tarefaDataGridView.MultiSelect = false;
+            this.tarefaDataGridView.Name = "tarefaDataGridView";
+            this.tarefaDataGridView.ReadOnly = true;
+            this.tarefaDataGridView.RowHeadersVisible = false;
+            this.tarefaDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.tarefaDataGridView.Size = new System.Drawing.Size(1896, 937);
+            this.tarefaDataGridView.TabIndex = 2;
+            this.tarefaDataGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.TarefaCellDoubleClick);
             // 
-            // button1
+            // adcionarButton
             // 
-            this.button1.Location = new System.Drawing.Point(4, 4);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(94, 46);
-            this.button1.TabIndex = 3;
-            this.button1.UseVisualStyleBackColor = true;
+            this.adcionarButton.Location = new System.Drawing.Point(4, 4);
+            this.adcionarButton.Name = "adcionarButton";
+            this.adcionarButton.Size = new System.Drawing.Size(94, 46);
+            this.adcionarButton.TabIndex = 3;
+            this.adcionarButton.UseVisualStyleBackColor = true;
+            this.adcionarButton.Click += new System.EventHandler(this.adicionarButtonOnClick);
             // 
             // GTarefa
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1904, 996);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.cepDataGridView);
+            this.Controls.Add(this.adcionarButton);
+            this.Controls.Add(this.tarefaDataGridView);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Name = "GTarefa";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "GTarefa";
-            ((System.ComponentModel.ISupportInitialize)(this.cepDataGridView)).EndInit();
+            this.Activated += new System.EventHandler(this.TarefaActivated);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.TarefaFormClosed);
+            ((System.ComponentModel.ISupportInitialize)(this.tarefaDataGridView)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.DataGridView cepDataGridView;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.DataGridView tarefaDataGridView;
+        private System.Windows.Forms.Button adcionarButton;
     }
 }
