@@ -38,5 +38,15 @@ namespace ALTO_VALE
             GCep gCep = new GCep();
             gCep.ShowDialog();
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
