@@ -28,6 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label4 = new System.Windows.Forms.Label();
             this.assuntoTextBox = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -35,7 +39,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.observacaoTabPage = new System.Windows.Forms.TabPage();
+            this.solicitacaoTabPage = new System.Windows.Forms.TabPage();
             this.solicitacaoTextBox = new System.Windows.Forms.RichTextBox();
             this.tipoComboBox = new System.Windows.Forms.ComboBox();
             this.situacaoComboBox = new System.Windows.Forms.ComboBox();
@@ -53,8 +57,14 @@
             this.solicitanteComboBox = new System.Windows.Forms.ComboBox();
             this.responsavelComboBox = new System.Windows.Forms.ComboBox();
             this.prazoTimePicker = new System.Windows.Forms.DateTimePicker();
+            this.anexoTabPage = new System.Windows.Forms.TabPage();
+            this.documentaoTabPage = new System.Windows.Forms.TabPage();
+            this.adicionarArquivoButton = new System.Windows.Forms.Button();
+            this.anexoDataGridView = new System.Windows.Forms.DataGridView();
             this.tabControl1.SuspendLayout();
-            this.observacaoTabPage.SuspendLayout();
+            this.solicitacaoTabPage.SuspendLayout();
+            this.anexoTabPage.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.anexoDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // label4
@@ -122,7 +132,9 @@
             // 
             // tabControl1
             // 
-            this.tabControl1.Controls.Add(this.observacaoTabPage);
+            this.tabControl1.Controls.Add(this.solicitacaoTabPage);
+            this.tabControl1.Controls.Add(this.documentaoTabPage);
+            this.tabControl1.Controls.Add(this.anexoTabPage);
             this.tabControl1.Font = new System.Drawing.Font("Arial", 10F);
             this.tabControl1.Location = new System.Drawing.Point(8, 170);
             this.tabControl1.Multiline = true;
@@ -131,17 +143,17 @@
             this.tabControl1.Size = new System.Drawing.Size(968, 199);
             this.tabControl1.TabIndex = 8;
             // 
-            // observacaoTabPage
+            // solicitacaoTabPage
             // 
-            this.observacaoTabPage.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.observacaoTabPage.Controls.Add(this.solicitacaoTextBox);
-            this.observacaoTabPage.Location = new System.Drawing.Point(4, 25);
-            this.observacaoTabPage.Name = "observacaoTabPage";
-            this.observacaoTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.observacaoTabPage.Size = new System.Drawing.Size(960, 170);
-            this.observacaoTabPage.TabIndex = 1;
-            this.observacaoTabPage.Text = "Solicitação";
-            this.observacaoTabPage.UseVisualStyleBackColor = true;
+            this.solicitacaoTabPage.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.solicitacaoTabPage.Controls.Add(this.solicitacaoTextBox);
+            this.solicitacaoTabPage.Location = new System.Drawing.Point(4, 25);
+            this.solicitacaoTabPage.Name = "solicitacaoTabPage";
+            this.solicitacaoTabPage.Padding = new System.Windows.Forms.Padding(3);
+            this.solicitacaoTabPage.Size = new System.Drawing.Size(960, 170);
+            this.solicitacaoTabPage.TabIndex = 1;
+            this.solicitacaoTabPage.Text = "Solicitação";
+            this.solicitacaoTabPage.UseVisualStyleBackColor = true;
             // 
             // solicitacaoTextBox
             // 
@@ -220,7 +232,7 @@
             this.label9.AutoSize = true;
             this.label9.BackColor = System.Drawing.Color.Transparent;
             this.label9.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(142, 63);
+            this.label9.Location = new System.Drawing.Point(150, 63);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(42, 16);
             this.label9.TabIndex = 72;
@@ -236,6 +248,7 @@
             this.liberarButton.Text = "Liberar";
             this.liberarButton.UseVisualStyleBackColor = true;
             this.liberarButton.Visible = false;
+            this.liberarButton.Click += new System.EventHandler(this.LiberarButtonOnClick);
             // 
             // voltarButton
             // 
@@ -246,6 +259,7 @@
             this.voltarButton.TabIndex = 9;
             this.voltarButton.Text = "Voltar";
             this.voltarButton.UseVisualStyleBackColor = true;
+            this.voltarButton.Click += new System.EventHandler(this.VoltarButtonOnClick);
             // 
             // cancelarButton
             // 
@@ -256,6 +270,7 @@
             this.cancelarButton.TabIndex = 10;
             this.cancelarButton.Text = "Cancelar";
             this.cancelarButton.UseVisualStyleBackColor = true;
+            this.cancelarButton.Click += new System.EventHandler(this.CancelarButtonOnClick);
             // 
             // gravarButton
             // 
@@ -276,7 +291,7 @@
             this.dataTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dataTimePicker.Location = new System.Drawing.Point(8, 82);
             this.dataTimePicker.Name = "dataTimePicker";
-            this.dataTimePicker.Size = new System.Drawing.Size(131, 22);
+            this.dataTimePicker.Size = new System.Drawing.Size(139, 22);
             this.dataTimePicker.TabIndex = 78;
             // 
             // label5
@@ -284,7 +299,7 @@
             this.label5.AutoSize = true;
             this.label5.BackColor = System.Drawing.Color.Transparent;
             this.label5.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(285, 63);
+            this.label5.Location = new System.Drawing.Point(293, 63);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(81, 16);
             this.label5.TabIndex = 80;
@@ -306,7 +321,7 @@
             this.responsavelComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.responsavelComboBox.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.responsavelComboBox.FormattingEnabled = true;
-            this.responsavelComboBox.Location = new System.Drawing.Point(288, 81);
+            this.responsavelComboBox.Location = new System.Drawing.Point(296, 81);
             this.responsavelComboBox.Name = "responsavelComboBox";
             this.responsavelComboBox.Size = new System.Drawing.Size(235, 23);
             this.responsavelComboBox.TabIndex = 83;
@@ -318,10 +333,89 @@
             this.prazoTimePicker.CustomFormat = "dd/MM/yyyy HH:mm";
             this.prazoTimePicker.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.prazoTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.prazoTimePicker.Location = new System.Drawing.Point(145, 82);
+            this.prazoTimePicker.Location = new System.Drawing.Point(153, 82);
             this.prazoTimePicker.Name = "prazoTimePicker";
             this.prazoTimePicker.Size = new System.Drawing.Size(137, 22);
             this.prazoTimePicker.TabIndex = 84;
+            // 
+            // anexoTabPage
+            // 
+            this.anexoTabPage.Controls.Add(this.anexoDataGridView);
+            this.anexoTabPage.Controls.Add(this.adicionarArquivoButton);
+            this.anexoTabPage.Location = new System.Drawing.Point(4, 25);
+            this.anexoTabPage.Name = "anexoTabPage";
+            this.anexoTabPage.Size = new System.Drawing.Size(960, 170);
+            this.anexoTabPage.TabIndex = 2;
+            this.anexoTabPage.Text = "Anexo";
+            this.anexoTabPage.UseVisualStyleBackColor = true;
+            // 
+            // documentaoTabPage
+            // 
+            this.documentaoTabPage.Location = new System.Drawing.Point(4, 25);
+            this.documentaoTabPage.Name = "documentaoTabPage";
+            this.documentaoTabPage.Size = new System.Drawing.Size(960, 170);
+            this.documentaoTabPage.TabIndex = 3;
+            this.documentaoTabPage.Text = "Documentação";
+            this.documentaoTabPage.UseVisualStyleBackColor = true;
+            // 
+            // adicionarArquivoButton
+            // 
+            this.adicionarArquivoButton.FlatAppearance.BorderSize = 0;
+            this.adicionarArquivoButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.adicionarArquivoButton.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.adicionarArquivoButton.Location = new System.Drawing.Point(933, 3);
+            this.adicionarArquivoButton.Name = "adicionarArquivoButton";
+            this.adicionarArquivoButton.Size = new System.Drawing.Size(24, 25);
+            this.adicionarArquivoButton.TabIndex = 64;
+            this.adicionarArquivoButton.Text = "+";
+            this.adicionarArquivoButton.UseVisualStyleBackColor = true;
+            this.adicionarArquivoButton.Click += new System.EventHandler(this.AdicionarButtonOnClick);
+            // 
+            // anexoDataGridView
+            // 
+            this.anexoDataGridView.AllowUserToAddRows = false;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.LightGray;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Arial", 9F);
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.MenuHighlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black;
+            this.anexoDataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.anexoDataGridView.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
+            this.anexoDataGridView.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.anexoDataGridView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Arial", 10F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Transparent;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.anexoDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.anexoDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Arial", 10F);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.MenuHighlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.anexoDataGridView.DefaultCellStyle = dataGridViewCellStyle3;
+            this.anexoDataGridView.Location = new System.Drawing.Point(4, 3);
+            this.anexoDataGridView.MultiSelect = false;
+            this.anexoDataGridView.Name = "anexoDataGridView";
+            this.anexoDataGridView.ReadOnly = true;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Arial", 10F);
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.anexoDataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            this.anexoDataGridView.RowHeadersVisible = false;
+            this.anexoDataGridView.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.anexoDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.anexoDataGridView.Size = new System.Drawing.Size(927, 163);
+            this.anexoDataGridView.TabIndex = 65;
+            this.anexoDataGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.AnexoDataGridViewDoubleClick);
             // 
             // ITarefa
             // 
@@ -357,9 +451,12 @@
             this.Name = "ITarefa";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Tarefa";
+            this.Activated += new System.EventHandler(this.TarefaFormActivated);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.tarefaFormClosed);
             this.tabControl1.ResumeLayout(false);
-            this.observacaoTabPage.ResumeLayout(false);
+            this.solicitacaoTabPage.ResumeLayout(false);
+            this.anexoTabPage.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.anexoDataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -373,7 +470,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.TabControl tabControl1;
-        private System.Windows.Forms.TabPage observacaoTabPage;
+        private System.Windows.Forms.TabPage solicitacaoTabPage;
         private System.Windows.Forms.ComboBox tipoComboBox;
         private System.Windows.Forms.ComboBox situacaoComboBox;
         private System.Windows.Forms.ComboBox severidadeComboBox;
@@ -391,5 +488,9 @@
         private System.Windows.Forms.ComboBox solicitanteComboBox;
         private System.Windows.Forms.ComboBox responsavelComboBox;
         private System.Windows.Forms.DateTimePicker prazoTimePicker;
+        private System.Windows.Forms.TabPage documentaoTabPage;
+        private System.Windows.Forms.TabPage anexoTabPage;
+        private System.Windows.Forms.Button adicionarArquivoButton;
+        private System.Windows.Forms.DataGridView anexoDataGridView;
     }
 }

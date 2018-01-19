@@ -24,7 +24,7 @@ namespace ALTO_VALE.VIEW.TR_TAREFA
         {
             BindingSource Binding = new BindingSource();
             tarefaDataGridView.AutoGenerateColumns = true;
-            String query = " SELECT A.HANDLE, B.NOME ESTADO, A.DATA, A.PRAZO, C.LOGIN SOLICITANTE, D.LOGIN RESPONSAVEL, E.NOME SEVERIDADE, F.NOME AS SITUAÇÃO, G.NOME TIPO " +
+            String query = " SELECT A.HANDLE, B.NOME ESTADO, A.DATA, A.PRAZO, C.LOGIN SOLICITANTE, D.LOGIN RESPONSAVEL, E.NOME SEVERIDADE, F.NOME AS SITUAÇÃO, G.NOME TIPO, A.ASSUNTO, A.SOLICITACAO " +
                            " FROM TR_TAREFA A" +
                            " INNER JOIN MD_STATUS B ON B.HANDLE = A.STATUS" +
                            " INNER JOIN PS_USUARIO C ON C.HANDLE = A.SOLICITANTE" +
@@ -44,6 +44,8 @@ namespace ALTO_VALE.VIEW.TR_TAREFA
             tarefaDataGridView.Columns[5].Width = 150;
             tarefaDataGridView.Columns[6].Width = 150;
             tarefaDataGridView.Columns[7].Width = 150;
+            tarefaDataGridView.Columns[9].Width = 300;
+            tarefaDataGridView.Columns[10].Width = 450;
 
             tarefaDataGridView.AllowUserToResizeRows = false;
         }

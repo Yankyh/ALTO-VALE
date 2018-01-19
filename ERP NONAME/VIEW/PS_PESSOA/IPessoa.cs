@@ -727,7 +727,7 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
             anexoDataGridView.Columns[1].Width = 200;
             anexoDataGridView.Columns[2].Width = 200;
             anexoDataGridView.Columns[3].Width = 600;
-            enderecoDataGridView.AllowUserToResizeRows = false;
+            anexoDataGridView.AllowUserToResizeRows = false;
         }
 
         private void anexoDataGridViewCellClick(object sender, DataGridViewCellEventArgs e)

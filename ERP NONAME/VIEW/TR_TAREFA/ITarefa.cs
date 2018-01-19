@@ -45,8 +45,9 @@ namespace ALTO_VALE.VIEW.TR_TAREFA
             PreencherComboBoxSituacao();
             PreencherComboBoxSolicitante();
             PreencherComboBoxTipo();
+            PreencherAnexoDataGridView();
 
-            String query = " SELECT A.DATA, A.PRAZO, B.NOME SOLICITANTE, C.NOME RESPONSAVEL, D.NOME SEVERIDADE, E.NOME SITUACAO, F.NOME TIPO" +
+            String query = " SELECT A.DATA, A.PRAZO, B.LOGIN SOLICITANTE, C.LOGIN RESPONSAVEL, D.NOME SEVERIDADE, E.NOME SITUACAO, F.NOME TIPO, A.ASSUNTO, A.SOLICITACAO" +
                            " FROM TR_TAREFA A" +
                            " INNER JOIN PS_USUARIO B ON B.HANDLE = A.SOLICITANTE" +
                            " INNER JOIN PS_USUARIO C ON C.HANDLE = A.RESPONSAVEL" +
@@ -60,13 +61,15 @@ namespace ALTO_VALE.VIEW.TR_TAREFA
                 tipoComboBox.SelectedItem = reader["TIPO"];
                 situacaoComboBox.SelectedItem = reader["SITUACAO"];
                 severidadeComboBox.SelectedItem = reader["SEVERIDADE"];
-                data = dataTimePicker.Value.ToString();
-                prazo = prazoTimePicker.Value.ToString();
-                assunto = assuntoTextBox.Text;
-                solicitacao = solicitacaoTextBox.Text;
-                responsavel = BuscarHandleResponsavel();
+                dataTimePicker.Value = Convert.ToDateTime(reader["DATA"]);
+                prazoTimePicker.Value = Convert.ToDateTime(reader["PRAZO"]);
+                assuntoTextBox.Text = reader["ASSUNTO"].ToString();
+                solicitacaoTextBox.Text = reader["SOLICITACAO"].ToString();
+                responsavelComboBox.SelectedItem = reader["RESPONSAVEL"];
             }
             reader.Close();
+            //preenche o número
+            numeroTextBox.Text = handleTarefa.ToString();
 
         }
         private void tarefaFormClosed(object sender, FormClosedEventArgs e)
@@ -134,6 +137,68 @@ namespace ALTO_VALE.VIEW.TR_TAREFA
                     handleTarefa = Convert.ToInt32(reader["HANDLE"]);
                 }
                 reader.Close();
+                numeroTextBox.Text = handleTarefa.ToString();
+            }
+            else
+            {
+                if (acao == "Liberar")
+                {
+                    if (BuscarHandleStatus() == 2)
+                    {
+                        String query = " UPDATE TR_TAREFA" +
+                                                          " SET " +
+                                                          " STATUS = 3" +
+                                                          ", SOLICITANTE = " + solicitante +
+                                                          ", TIPO = " + tipo +
+                                                          ", SITUACAO = " + situacao +
+                                                          ", SEVERIDADE = " + severidade +
+                                                          ", DATA = '" + data + "'" +
+                                                          ", PRAZO = '" + prazo + "'" +
+                                                          ", ASSUNTO = '" + assunto + "'" +
+                                                          ", SOLICITACAO = '" + solicitacao + "'" +
+                                                          ", RESPONSAVEL = " + responsavel +
+                                                          "  WHERE HANDLE = " + handleTarefa;
+                        connection.Inserir(query);
+                    }
+                    else
+                    {
+                        MessageBox.Show("O registro deve estar na situação aguardando modificações para que possa ser liberado.");
+                    }
+                }
+                else
+                {
+                    if (acao == "Voltar")
+                    {
+                        if (BuscarHandleStatus() == 3)
+                        {
+                            String query = " UPDATE TR_TAREFA" +
+                                           " SET STATUS = 2" +
+                                           " WHERE HANDLE = " + handleTarefa;
+                            connection.Inserir(query);
+                        }
+                        else
+                        {
+                            MessageBox.Show("O registro deve estar na situação liberado para que possa ser voltado.");
+                        }
+                    }
+                    else
+                    {
+                        if (acao == "Cancelar")
+                        {
+                            if (BuscarHandleStatus() == 2)
+                            {
+                                String query = " UPDATE TR_TAREFA" +
+                                               " SET STATUS = 4" +
+                                               " WHERE HANDLE = " + handleTarefa;
+                                connection.Inserir(query);
+                            }
+                            else
+                            {
+                                MessageBox.Show("O registro deve estar na situação aguardando modificações para que possa ser cancelado.");
+                            }
+                        }
+                    }
+                }
             }
 
             ControleDeStatus();
@@ -284,10 +349,80 @@ namespace ALTO_VALE.VIEW.TR_TAREFA
             }
             reader.Close();
         }
+        private void PreencherAnexoDataGridView()
+        {
+            BindingSource Binding = new BindingSource();
+            String query = " SELECT A.HANDLE, A.DESCRICAO DESCRIÇÃO, A.NOMEARQUIVO NOME, A.CAMINHO" +
+                           " FROM TR_TAREFAANEXO A" +
+                           " INNER JOIN TR_TAREFA B ON B.HANDLE = A.TAREFA" +
+                           " WHERE B.HANDLE = " + handleTarefa;
+            Console.WriteLine(query);
+            anexoDataGridView.AutoGenerateColumns = true;
+            Binding.DataSource = connection.DataTable(query);
+            anexoDataGridView.DataSource = Binding;
+            anexoDataGridView.Columns[0].Width = 0;
+            anexoDataGridView.Columns[0].Visible = false;
+            anexoDataGridView.Columns[1].Width = 200;
+            anexoDataGridView.Columns[2].Width = 200;
+            anexoDataGridView.Columns[3].Width = 600;
+            anexoDataGridView.AllowUserToResizeRows = false;
+        }
+
+        private void LiberarButtonOnClick(object sender, EventArgs e)
+        {
+            AlterarRegistro("Liberar");
+        }
+
+        private void VoltarButtonOnClick(object sender, EventArgs e)
+        {
+            AlterarRegistro("Voltar");
+        }
 
         private void SolicitanteDropDown(object sender, EventArgs e)
         {
             PreencherComboBoxSolicitante();
+        }
+
+        private void CancelarButtonOnClick(object sender, EventArgs e)
+        {
+            DialogResult confirmacaoButton = MessageBox.Show("Deseja Continuar?", "Excluir Arquivo", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button2);
+            if (confirmacaoButton.ToString().ToUpper() == "YES")
+            {
+                AlterarRegistro("Cancelar");
+            }
+        }
+
+        private void AdicionarButtonOnClick(object sender, EventArgs e)
+        {
+            ITarefaAnexo.handleTarefa = handleTarefa;
+            ITarefaAnexo iTarefaAnexo = new ITarefaAnexo();
+            iTarefaAnexo.ShowDialog();
+        }
+
+        private void TarefaFormActivated(object sender, EventArgs e)
+        {
+            PreencherAnexoDataGridView();
+        }
+
+        private int BuscarHandleAnexo()
+        {
+            int handleAnexo = 0;
+
+            try
+            {
+                handleAnexo = Convert.ToInt32(anexoDataGridView.CurrentRow.Cells[0].Value.ToString());
+            }
+            catch
+            {
+
+            }
+            return handleAnexo;
+        }
+        private void AnexoDataGridViewDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            ITarefaAnexo.handleAnexo = BuscarHandleAnexo();
+            ITarefaAnexo iTarefaAnexo = new ITarefaAnexo();
+            iTarefaAnexo.ShowDialog();
         }
 
         private void ResponsavelDropDown(object sender, EventArgs e)
@@ -396,7 +531,22 @@ namespace ALTO_VALE.VIEW.TR_TAREFA
                 MessageBox.Show(exception.ToString());
             }
         }
-
+        //Buscar status
+        private int BuscarHandleStatus()
+        {
+            int handleStatus = 0;
+            String query = " SELECT A.STATUS" +
+                           " FROM TR_TAREFA A" +
+                           " INNER JOIN MD_STATUS B ON B.HANDLE = A.STATUS" +
+                           " WHERE A.HANDLE = " + handleTarefa;
+            SqlDataReader reader = connection.Pesquisa(query);
+            while (reader.Read())
+            {
+                handleStatus = Convert.ToInt32(reader["STATUS"]);
+            }
+            reader.Close();
+            return handleStatus;
+        }
         //Controle de status
         private void ControleDeStatus()
         {
@@ -427,6 +577,7 @@ namespace ALTO_VALE.VIEW.TR_TAREFA
                 cancelarButton.Visible = true;
                 voltarButton.Visible = false;
                 liberarButton.Visible = true;
+                adicionarArquivoButton.Visible = true;
                 liberarButton.Location = new Point(770, 286);
                 cancelarButton.Location = new Point(874, 286);
             }
@@ -449,6 +600,7 @@ namespace ALTO_VALE.VIEW.TR_TAREFA
                     cancelarButton.Visible = true;
                     voltarButton.Visible = false;
                     gravarButton.Visible = false;
+                    adicionarArquivoButton.Visible = true;
                     liberarButton.Location = new Point(768, 375);
                     cancelarButton.Location = new Point(872, 375);
                 }
@@ -470,6 +622,7 @@ namespace ALTO_VALE.VIEW.TR_TAREFA
                         cancelarButton.Visible = false;
                         voltarButton.Visible = true;
                         liberarButton.Visible = false;
+                        adicionarArquivoButton.Visible = true;
                         voltarButton.Location = new Point(872, 375);
                     }
                     else
@@ -488,8 +641,9 @@ namespace ALTO_VALE.VIEW.TR_TAREFA
                             //Botões
                             gravarButton.Visible = false;
                             cancelarButton.Visible = false;
-                            voltarButton.Visible = true;
+                            voltarButton.Visible = false;
                             liberarButton.Visible = false;
+                            adicionarArquivoButton.Visible = false;
                             voltarButton.Location = new Point(872, 375);
                         }
                         else
@@ -498,6 +652,7 @@ namespace ALTO_VALE.VIEW.TR_TAREFA
                             cancelarButton.Visible = false;
                             voltarButton.Visible = false;
                             liberarButton.Visible = false;
+                            adicionarArquivoButton.Visible = false;
                             gravarButton.Location = new Point(872, 375);
                         }
                     }

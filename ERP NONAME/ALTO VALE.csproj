@@ -167,6 +167,12 @@
     <Compile Include="VIEW\TR_TAREFA\ITarefa.Designer.cs">
       <DependentUpon>ITarefa.cs</DependentUpon>
     </Compile>
+    <Compile Include="VIEW\TR_TAREFA\ITarefaAnexo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VIEW\TR_TAREFA\ITarefaAnexo.Designer.cs">
+      <DependentUpon>ITarefaAnexo.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="DEFAULT\Formprincipal.resx">
       <DependentUpon>Formprincipal.cs</DependentUpon>
     </EmbeddedResource>
@@ -215,6 +221,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="VIEW\TR_TAREFA\ITarefa.resx">
       <DependentUpon>ITarefa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VIEW\TR_TAREFA\ITarefaAnexo.resx">
+      <DependentUpon>ITarefaAnexo.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
