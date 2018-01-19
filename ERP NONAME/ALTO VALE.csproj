@@ -99,6 +99,7 @@
       <DependentUpon>GiantForm.cs</DependentUpon>
     </Compile>
     <Compile Include="TN_TECNOLOGIA\Controles\Control.cs" />
+    <Compile Include="TN_TECNOLOGIA\Controles\ControleTelasMenu.cs" />
     <Compile Include="TN_TECNOLOGIA\EditorSQL\Tela.cs">
       <SubType>Form</SubType>
     </Compile>

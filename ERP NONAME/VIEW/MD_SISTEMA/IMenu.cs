@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ALTO_VALE.TN_TECNOLOGIA.Controles;
 using ALTO_VALE.VIEW.MD_SISTEMA;
 using ALTO_VALE.VIEW.PS_PESSOA;
 using ALTO_VALE.VIEW.TR_TAREFA;
@@ -19,6 +20,7 @@ namespace ALTO_VALE
         public Form1()
         {
             InitializeComponent();
+            //menuButton.Location = new Point(73, 79);
         }
 
 
@@ -58,6 +60,27 @@ namespace ALTO_VALE
             iTarefa.ShowDialog();
         }
 
-        
+        private void MenuTreeViewDoubleClick(object sender, EventArgs e)
+        {
+            String nodeSelecionado = "";
+
+            try
+            {
+                if (menuTreeView.SelectedNode.IsExpanded == false)
+                {
+                    nodeSelecionado = menuTreeView.SelectedNode.Text;
+                }
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.ToString());
+            }
+
+            if (nodeSelecionado != "")
+            {
+                ControleTelasMenu.ControleTelas(nodeSelecionado);
+            }
+
+        }
     }
 }
