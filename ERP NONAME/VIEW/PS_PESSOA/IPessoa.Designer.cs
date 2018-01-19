@@ -255,7 +255,7 @@
             this.contatoDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.contatoDataGridView.Size = new System.Drawing.Size(933, 119);
             this.contatoDataGridView.TabIndex = 3;
-            this.contatoDataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.cellClick);
+            this.contatoDataGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.cellDoubleClick);
             // 
             // pessoaEnderecoTabpage
             // 
@@ -341,7 +341,7 @@
             this.enderecoDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.enderecoDataGridView.Size = new System.Drawing.Size(933, 119);
             this.enderecoDataGridView.TabIndex = 4;
-            this.enderecoDataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.EnderecoCellClick);
+            this.enderecoDataGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.EnderecoCellDoubleClick);
             // 
             // anexoTabPage
             // 

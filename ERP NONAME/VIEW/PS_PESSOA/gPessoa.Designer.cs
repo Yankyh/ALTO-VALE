@@ -71,8 +71,8 @@
             this.pessoaDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.pessoaDataGridView.Size = new System.Drawing.Size(1896, 937);
             this.pessoaDataGridView.TabIndex = 0;
-            this.pessoaDataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.cellDoubleClick);
             this.pessoaDataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.pessoaDataGridView_CellContentClick);
+            this.pessoaDataGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.cellDoubleClick);
             // 
             // button1
             // 

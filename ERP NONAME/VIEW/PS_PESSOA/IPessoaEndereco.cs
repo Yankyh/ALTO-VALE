@@ -31,7 +31,7 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
             {
                 ControleDeStatus();
             }
-            
+
         }
 
         private void PreencherFormulario()
@@ -108,7 +108,7 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
             {
                 if (acao == "Gravar")
                 {
-                    String query = "INSERT INTO PS_PESSOAENDERECO (STATUS, CEP, CIDADE, BAIRRO, LOGRADOURO, NUMERO, REFERENCIA, OBSERVACAO, ESTADO) VALUES " +
+                    String query = "INSERT INTO PS_PESSOAENDERECO (STATUS, CEP, CIDADE, BAIRRO, LOGRADOURO, NUMERO, REFERENCIA, OBSERVACAO, ESTADO, PESSOA) VALUES " +
                                   " (1, " +
                                   " '" + cep + "', " +
                                   " '" + cidade + "', " +
@@ -117,10 +117,11 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
                                   " '" + numero + "', " +
                                   " '" + referencia + "', " +
                                   " '" + observacao + "', " +
-                                  " " + estado + ")";
+                                  " " + estado + "," +
+                                  " " + handlePessoa + ")";
                     connection.Inserir(query);
 
-                    //Busca o registro para adicionar na fk
+                    //Busca o registro para o controle
                     String query2 = " SELECT MAX(A.HANDLE) AS HANDLE" +
                                     " FROM PS_PESSOAENDERECO A" +
                                     " WHERE CEP = '" + cep + "'" +
@@ -136,12 +137,6 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
                         handleEndereco = Convert.ToInt32(reader["HANDLE"]);
                     }
                     reader.Close();
-                    String query3 = " INSERT INTO PS_PESSOAENDERECOFK" +
-                                    " (PESSOA, ENDERECO)" +
-                                    " VALUES" +
-                                    " (" + handlePessoa + ", " + handleEndereco + ")";
-
-                    connection.Inserir(query3);
                 }
                 else
                 {
@@ -254,47 +249,47 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
         //Verificar campos obrigatórios
         public Boolean verificarCamposObrigatorios()
         {
-             if(cepComboBox.SelectedValue == "")
-              {
-                  MessageBox.Show("O campo Cep é obrigatório.");
-                  return false;
-              }
-              else
-              {
-                  if(cidadeTextBox.Text == "")
-                  {
-                      MessageBox.Show("O campo cidade é obrigatório.");
-                      return false;
-                  }
-                  else
-                  {
-                      if (estadoComboBox.SelectedValue == "")
-                      {
-                          MessageBox.Show("O campo estado é obrigatório.");
-                          return false;
-                      }
-                      else
-                      {
-                          if (bairroTextBox.Text == "")
-                          {
-                              MessageBox.Show("O campo bairro é obrigatório.");
-                              return false;
-                          }
-                          else
-                          {
-                              if (logradouroTextBox.Text == "")
-                              {
-                                  MessageBox.Show("O campo logradouro é obrigatório.");
-                                  return false;
-                              }
-                              else
-                              {
-                                  return true;
-                              }
-                          }
-                      }
-                  }
-              } 
+            if (cepComboBox.SelectedValue == "")
+            {
+                MessageBox.Show("O campo Cep é obrigatório.");
+                return false;
+            }
+            else
+            {
+                if (cidadeTextBox.Text == "")
+                {
+                    MessageBox.Show("O campo cidade é obrigatório.");
+                    return false;
+                }
+                else
+                {
+                    if (estadoComboBox.SelectedValue == "")
+                    {
+                        MessageBox.Show("O campo estado é obrigatório.");
+                        return false;
+                    }
+                    else
+                    {
+                        if (bairroTextBox.Text == "")
+                        {
+                            MessageBox.Show("O campo bairro é obrigatório.");
+                            return false;
+                        }
+                        else
+                        {
+                            if (logradouroTextBox.Text == "")
+                            {
+                                MessageBox.Show("O campo logradouro é obrigatório.");
+                                return false;
+                            }
+                            else
+                            {
+                                return true;
+                            }
+                        }
+                    }
+                }
+            }
             return true;
         }
 

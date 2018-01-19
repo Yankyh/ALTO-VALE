@@ -87,7 +87,7 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
                 //Inserir
                 if (origem == "Gravar")
                 {
-                    String query = "INSERT INTO PS_PESSOACONTATO (STATUS, TIPO, TELEFONE, CELULAR, EMAIL, OBSERVACAO) VALUES (1," + tipo + ", '" + telefone + "', '" + celular + "', '" + email + "', '" + observacao + "')";
+                    String query = "INSERT INTO PS_PESSOACONTATO (STATUS, TIPO, TELEFONE, CELULAR, EMAIL, OBSERVACAO, PESSOA) VALUES (1," + tipo + ", '" + telefone + "', '" + celular + "', '" + email + "', '" + observacao + "', "+pessoaHandle+")";
                     connection.Inserir(query);
 
                     String query1 = " SELECT MAX(A.HANDLE) HANDLE " +
@@ -102,8 +102,7 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
                         contatoHandle = maxHandleContato;
                     }
                     reader.Close();
-                    String query2 = "INSERT INTO PS_PESSOACONTATOFK (PESSOA, CONTATO) VALUES (" + pessoaHandle + ", " + maxHandleContato + ")";
-                    connection.Inserir(query2);
+
                 }
                 //Alterar
                 if (origem == "Alterar")

@@ -9,6 +9,6 @@ namespace ALTO_VALE.DAL
     class CSistema
     {
         //Diretório padrão
-        public static String diretorioPadrao = @"C:\ALTO_VALE\Documentos";
+        public static String diretorioPadrao = @"\\25.68.65.176\alto_vale\Documentos";
     }
 }

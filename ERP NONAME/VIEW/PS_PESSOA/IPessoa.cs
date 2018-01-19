@@ -545,8 +545,7 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
             contatoDataGridView.AutoGenerateColumns = true;
             String query = " SELECT E.NOME SITUAÇÃO, D.NOME TIPO, C.TELEFONE, C.CELULAR, C.EMAIL, C.OBSERVACAO, C.HANDLE" +
                            " FROM PS_PESSOA A" +
-                           " INNER JOIN PS_PESSOACONTATOFK B ON B.PESSOA = A.HANDLE" +
-                           " INNER JOIN PS_PESSOACONTATO C ON C.HANDLE = B.CONTATO" +
+                           " INNER JOIN PS_PESSOACONTATO C ON C.PESSOA = A.HANDLE" +
                            " INNER JOIN PS_PESSOACONTATOTIPO D ON D.HANDLE = C.TIPO" +
                            " INNER JOIN MD_STATUS E ON E.HANDLE = C.STATUS" +
                            " WHERE A.HANDLE = " + buscarHandlePessoa();
@@ -569,8 +568,7 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
             enderecoDataGridView.AutoGenerateColumns = true;
             String query = " SELECT C.HANDLE, D.NOME SITUAÇÃO, C.CEP, C.CIDADE, E.NOME ESTADO, C.BAIRRO, C.LOGRADOURO, C.NUMERO, C.REFERENCIA" +
                            " FROM PS_PESSOA A" +
-                           " INNER JOIN PS_PESSOAENDERECOFK B ON B.PESSOA = A.HANDLE" +
-                           " INNER JOIN PS_PESSOAENDERECO C ON C.HANDLE = B.ENDERECO" +
+                           " INNER JOIN PS_PESSOAENDERECO C ON C.PESSOA = A.HANDLE" +
                            " INNER JOIN MD_STATUS D ON D.HANDLE = C.STATUS" +
                            " INNER JOIN MD_ESTADO E ON E.HANDLE = C.ESTADO" +
                            " WHERE A.HANDLE = " + buscarHandlePessoa();
@@ -601,20 +599,6 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
             preencherContatoPessoa();
             PreencherEndereco();
             PreencherAnexo();
-        }
-
-        private void cellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (pegarHandleContato() == 0)
-            {
-
-            }
-            else
-            {
-                IPessoaContato.contatoHandle = pegarHandleContato();
-                IPessoaContato iPessoaContato = new IPessoaContato();
-                iPessoaContato.ShowDialog();
-            }
         }
 
         private void removerContatoButtonOnClick(object sender, EventArgs e)
@@ -688,19 +672,7 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
             return enderecoHandle;
         }
 
-        private void EnderecoCellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (PegarHandleEndereco() == 0)
-            {
 
-            }
-            else
-            {
-                IPessoaEndereco.handleEndereco = PegarHandleEndereco();
-                IPessoaEndereco iPessoaEndereco = new IPessoaEndereco();
-                iPessoaEndereco.ShowDialog();
-            }
-        }
 
         private void adicionarArquivoButtonOnClick(object sender, EventArgs e)
         {
@@ -782,6 +754,34 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
                     connection.Inserir(query2);
                     PreencherEndereco();
                 }
+            }
+        }
+
+        private void cellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (pegarHandleContato() == 0)
+            {
+
+            }
+            else
+            {
+                IPessoaContato.contatoHandle = pegarHandleContato();
+                IPessoaContato iPessoaContato = new IPessoaContato();
+                iPessoaContato.ShowDialog();
+            }
+        }
+
+        private void EnderecoCellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (PegarHandleEndereco() == 0)
+            {
+
+            }
+            else
+            {
+                IPessoaEndereco.handleEndereco = PegarHandleEndereco();
+                IPessoaEndereco iPessoaEndereco = new IPessoaEndereco();
+                iPessoaEndereco.ShowDialog();
             }
         }
     }
