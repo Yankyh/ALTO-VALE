@@ -28,41 +28,44 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tarefaDataGridView = new System.Windows.Forms.DataGridView();
             this.adcionarButton = new System.Windows.Forms.Button();
+            this.ehEncerradoCheckBox = new System.Windows.Forms.CheckBox();
+            this.ehCanceladoCheckBox = new System.Windows.Forms.CheckBox();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.tarefaDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // tarefaDataGridView
             // 
             this.tarefaDataGridView.AllowUserToAddRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.LightGray;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.MenuHighlight;
-            this.tarefaDataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle13.BackColor = System.Drawing.Color.LightGray;
+            dataGridViewCellStyle13.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.tarefaDataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle13;
             this.tarefaDataGridView.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.tarefaDataGridView.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tarefaDataGridView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.tarefaDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle14.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.tarefaDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle14;
             this.tarefaDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.MenuHighlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.tarefaDataGridView.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle15.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle15.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle15.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.SystemColors.MenuHighlight;
+            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.tarefaDataGridView.DefaultCellStyle = dataGridViewCellStyle15;
             this.tarefaDataGridView.Location = new System.Drawing.Point(2, 58);
             this.tarefaDataGridView.MultiSelect = false;
             this.tarefaDataGridView.Name = "tarefaDataGridView";
@@ -75,28 +78,67 @@
             // 
             // adcionarButton
             // 
+            this.adcionarButton.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.adcionarButton.Location = new System.Drawing.Point(4, 4);
             this.adcionarButton.Name = "adcionarButton";
             this.adcionarButton.Size = new System.Drawing.Size(94, 46);
             this.adcionarButton.TabIndex = 3;
+            this.adcionarButton.Text = "Novo";
             this.adcionarButton.UseVisualStyleBackColor = true;
             this.adcionarButton.Click += new System.EventHandler(this.adicionarButtonOnClick);
+            // 
+            // ehEncerradoCheckBox
+            // 
+            this.ehEncerradoCheckBox.AutoSize = true;
+            this.ehEncerradoCheckBox.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ehEncerradoCheckBox.Location = new System.Drawing.Point(146, 19);
+            this.ehEncerradoCheckBox.Name = "ehEncerradoCheckBox";
+            this.ehEncerradoCheckBox.Size = new System.Drawing.Size(83, 19);
+            this.ehEncerradoCheckBox.TabIndex = 4;
+            this.ehEncerradoCheckBox.Text = "Encerrado";
+            this.ehEncerradoCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // ehCanceladoCheckBox
+            // 
+            this.ehCanceladoCheckBox.AutoSize = true;
+            this.ehCanceladoCheckBox.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ehCanceladoCheckBox.Location = new System.Drawing.Point(235, 19);
+            this.ehCanceladoCheckBox.Name = "ehCanceladoCheckBox";
+            this.ehCanceladoCheckBox.Size = new System.Drawing.Size(86, 19);
+            this.ehCanceladoCheckBox.TabIndex = 5;
+            this.ehCanceladoCheckBox.Text = "Cancelado";
+            this.ehCanceladoCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // button1
+            // 
+            this.button1.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(327, 4);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(94, 46);
+            this.button1.TabIndex = 6;
+            this.button1.Text = "Atualizar";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.AtualizarButtonOnClick);
             // 
             // GTarefa
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1904, 996);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.ehCanceladoCheckBox);
+            this.Controls.Add(this.ehEncerradoCheckBox);
             this.Controls.Add(this.adcionarButton);
             this.Controls.Add(this.tarefaDataGridView);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Name = "GTarefa";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "GTarefa";
+            this.Text = "Tarefa";
             this.Activated += new System.EventHandler(this.TarefaActivated);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.TarefaFormClosed);
             ((System.ComponentModel.ISupportInitialize)(this.tarefaDataGridView)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -104,5 +146,8 @@
 
         private System.Windows.Forms.DataGridView tarefaDataGridView;
         private System.Windows.Forms.Button adcionarButton;
+        private System.Windows.Forms.CheckBox ehEncerradoCheckBox;
+        private System.Windows.Forms.CheckBox ehCanceladoCheckBox;
+        private System.Windows.Forms.Button button1;
     }
 }

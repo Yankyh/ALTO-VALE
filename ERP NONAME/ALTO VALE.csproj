@@ -99,12 +99,7 @@
       <DependentUpon>GiantForm.cs</DependentUpon>
     </Compile>
     <Compile Include="TN_TECNOLOGIA\Controles\Control.cs" />
-    <Compile Include="TN_TECNOLOGIA\Controles\ControleTela.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="TN_TECNOLOGIA\Controles\ControleTela.Designer.cs">
-      <DependentUpon>ControleTela.cs</DependentUpon>
-    </Compile>
+    <Compile Include="TN_TECNOLOGIA\Controles\ControleTelaMenu.cs" />
     <Compile Include="TN_TECNOLOGIA\EditorSQL\Tela.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -190,9 +185,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="DEFAULT\GiantForm.resx">
       <DependentUpon>GiantForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="TN_TECNOLOGIA\Controles\ControleTela.resx">
-      <DependentUpon>ControleTela.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TN_TECNOLOGIA\EditorSQL\Tela.resx">
       <DependentUpon>Tela.cs</DependentUpon>

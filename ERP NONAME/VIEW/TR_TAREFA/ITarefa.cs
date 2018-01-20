@@ -53,7 +53,8 @@ namespace ALTO_VALE.VIEW.TR_TAREFA
                            " INNER JOIN PS_USUARIO C ON C.HANDLE = A.RESPONSAVEL" +
                            " INNER JOIN TR_TAREFASEVERIDADE D ON D.HANDLE = A.SEVERIDADE" +
                            " INNER JOIN TR_TAREFASITUACAO E ON E.HANDLE = A.SITUACAO" +
-                           " INNER JOIN TR_TAREFATIPO F ON F.HANDLE = A.TIPO";
+                           " INNER JOIN TR_TAREFATIPO F ON F.HANDLE = A.TIPO" +
+                           " WHERE A.HANDLE = " + handleTarefa;
             SqlDataReader reader = connection.Pesquisa(query);
             while (reader.Read())
             {
@@ -131,7 +132,6 @@ namespace ALTO_VALE.VIEW.TR_TAREFA
                                    " AND SOLICITACAO = '" + solicitacao + "'" +
                                    " AND RESPONSAVEL = " + responsavel;
                     SqlDataReader reader = connection.Pesquisa(query1);
-                    Console.WriteLine(query1);
                     while (reader.Read())
                     {
                         handleTarefa = Convert.ToInt32(reader["HANDLE"]);
@@ -197,10 +197,26 @@ namespace ALTO_VALE.VIEW.TR_TAREFA
                                     MessageBox.Show("O registro deve estar na situação aguardando modificações para que possa ser cancelado.");
                                 }
                             }
+                            else
+                            {
+                                if (acao == "Encerrar")
+                                {
+                                    if (BuscarHandleStatus() == 3)
+                                    {
+                                        String query = " UPDATE TR_TAREFA" +
+                                                       " SET STATUS = 5" +
+                                                       " WHERE HANDLE = " + handleTarefa;
+                                        connection.Inserir(query);
+                                    }
+                                    else
+                                    {
+                                        MessageBox.Show("O registro deve estar na situação ativo para que possa ser encerrado.");
+                                    }
+                                }
+                            }
                         }
                     }
                 }
-
                 ControleDeStatus();
             }
         }
@@ -356,7 +372,6 @@ namespace ALTO_VALE.VIEW.TR_TAREFA
                            " FROM TR_TAREFAANEXO A" +
                            " INNER JOIN TR_TAREFA B ON B.HANDLE = A.TAREFA" +
                            " WHERE B.HANDLE = " + handleTarefa;
-            Console.WriteLine(query);
             anexoDataGridView.AutoGenerateColumns = true;
             Binding.DataSource = connection.DataTable(query);
             anexoDataGridView.DataSource = Binding;
@@ -385,7 +400,7 @@ namespace ALTO_VALE.VIEW.TR_TAREFA
 
         private void CancelarButtonOnClick(object sender, EventArgs e)
         {
-            DialogResult confirmacaoButton = MessageBox.Show("Deseja Continuar?", "Excluir Arquivo", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button2);
+            DialogResult confirmacaoButton = MessageBox.Show("Deseja Continuar?", "Cancelar tarefa", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button2);
             if (confirmacaoButton.ToString().ToUpper() == "YES")
             {
                 AlterarRegistro("Cancelar");
@@ -423,6 +438,15 @@ namespace ALTO_VALE.VIEW.TR_TAREFA
             ITarefaAnexo.handleAnexo = BuscarHandleAnexo();
             ITarefaAnexo iTarefaAnexo = new ITarefaAnexo();
             iTarefaAnexo.ShowDialog();
+        }
+
+        private void EncerrarButtonOnClick(object sender, EventArgs e)
+        {
+            DialogResult confirmacaoButton = MessageBox.Show("Deseja Continuar?", "Encerrar tarefa", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button2);
+            if (confirmacaoButton.ToString().ToUpper() == "YES")
+            {
+                AlterarRegistro("Encerrar");
+            }
         }
 
         private void ResponsavelDropDown(object sender, EventArgs e)
@@ -577,6 +601,7 @@ namespace ALTO_VALE.VIEW.TR_TAREFA
                 cancelarButton.Visible = true;
                 voltarButton.Visible = false;
                 liberarButton.Visible = true;
+                encerrarButton.Visible = false;
                 adicionarArquivoButton.Visible = true;
                 liberarButton.Location = new Point(770, 286);
                 cancelarButton.Location = new Point(874, 286);
@@ -600,6 +625,7 @@ namespace ALTO_VALE.VIEW.TR_TAREFA
                     cancelarButton.Visible = true;
                     voltarButton.Visible = false;
                     gravarButton.Visible = false;
+                    encerrarButton.Visible = false;
                     adicionarArquivoButton.Enabled = true;
                     liberarButton.Location = new Point(768, 375);
                     cancelarButton.Location = new Point(872, 375);
@@ -622,7 +648,9 @@ namespace ALTO_VALE.VIEW.TR_TAREFA
                         cancelarButton.Visible = false;
                         voltarButton.Visible = true;
                         liberarButton.Visible = false;
+                        encerrarButton.Visible = true;
                         adicionarArquivoButton.Enabled = true;
+                        encerrarButton.Location = new Point(768, 375);
                         voltarButton.Location = new Point(872, 375);
                     }
                     else
@@ -648,12 +676,36 @@ namespace ALTO_VALE.VIEW.TR_TAREFA
                         }
                         else
                         {
-                            gravarButton.Visible = true;
-                            cancelarButton.Visible = false;
-                            voltarButton.Visible = false;
-                            liberarButton.Visible = false;
-                            adicionarArquivoButton.Enabled = false;
-                            gravarButton.Location = new Point(872, 375);
+                            if (status == "Encerrado")
+                            {
+                                solicitanteComboBox.Enabled = false;
+                                severidadeComboBox.Enabled = false;
+                                situacaoComboBox.Enabled = false;
+                                responsavelComboBox.Enabled = false;
+                                tipoComboBox.Enabled = false;
+                                assuntoTextBox.ReadOnly = true;
+                                solicitacaoTextBox.ReadOnly = true;
+                                dataTimePicker.Enabled = false;
+                                prazoTimePicker.Enabled = false;
+                                //Botões
+                                gravarButton.Visible = false;
+                                cancelarButton.Visible = false;
+                                voltarButton.Visible = false;
+                                liberarButton.Visible = false;
+                                encerrarButton.Visible = false;
+                                adicionarArquivoButton.Enabled = false;
+                                voltarButton.Location = new Point(872, 375);
+                            }
+                            else
+                            {
+                                gravarButton.Visible = true;
+                                cancelarButton.Visible = false;
+                                voltarButton.Visible = false;
+                                liberarButton.Visible = false;
+                                encerrarButton.Visible = false;
+                                adicionarArquivoButton.Enabled = false;
+                                gravarButton.Location = new Point(872, 375);
+                            }
                         }
                     }
                 }

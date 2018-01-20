@@ -22,30 +22,44 @@ namespace ALTO_VALE.VIEW.TR_TAREFA
         }
         private void PreencherTarefaDataGridView()
         {
+            //Filtro de baiano
+            String status = "1, 2, 3";
+
+            if(ehEncerradoCheckBox.Checked == true)
+            {
+                status = status + ", 5 ";
+            }
+            if(ehCanceladoCheckBox.Checked == true)
+            {
+                status = status + ", 4 ";
+            }
+
+
             BindingSource Binding = new BindingSource();
             tarefaDataGridView.AutoGenerateColumns = true;
-            String query = " SELECT A.HANDLE, B.NOME ESTADO, A.DATA, A.PRAZO, C.LOGIN SOLICITANTE, D.LOGIN RESPONSAVEL, E.NOME SEVERIDADE, F.NOME AS SITUAÇÃO, G.NOME TIPO, A.ASSUNTO, A.SOLICITACAO " +
+            String query = " SELECT A.HANDLE, B.IMAGEM STA, F.NOME SITUAÇÃO, E.NOME SEVERIDADE, G.NOME TIPO, A.PRAZO, A.ASSUNTO, C.LOGIN SOLICITANTE, D.LOGIN RESPONSAVEL, A.DATA " +
                            " FROM TR_TAREFA A" +
                            " INNER JOIN MD_STATUS B ON B.HANDLE = A.STATUS" +
                            " INNER JOIN PS_USUARIO C ON C.HANDLE = A.SOLICITANTE" +
                            " INNER JOIN PS_USUARIO D ON D.HANDLE = A.RESPONSAVEL" +
                            " INNER JOIN TR_TAREFASEVERIDADE E ON E.HANDLE = A.SEVERIDADE" +
                            " INNER JOIN TR_TAREFASITUACAO F ON F.HANDLE = A.SITUACAO" +
-                           " INNER JOIN TR_TAREFATIPO G ON G.HANDLE = A.TIPO";
+                           " INNER JOIN TR_TAREFATIPO G ON G.HANDLE = A.TIPO" +
+                           " WHERE A.STATUS IN ("+status+")";
             Binding.DataSource = connection.DataTable(query);
             tarefaDataGridView.DataSource = Binding;
 
             tarefaDataGridView.Columns[0].Width = 0;
             tarefaDataGridView.Columns[0].Visible = false;
-            tarefaDataGridView.Columns[1].Width = 150;
-            tarefaDataGridView.Columns[2].Width = 150;
-            tarefaDataGridView.Columns[3].Width = 150;
+            tarefaDataGridView.Columns[1].Width = 50;
+            tarefaDataGridView.Columns[2].Width = 120;
+            tarefaDataGridView.Columns[3].Width = 120;
             tarefaDataGridView.Columns[4].Width = 150;
             tarefaDataGridView.Columns[5].Width = 150;
-            tarefaDataGridView.Columns[6].Width = 150;
-            tarefaDataGridView.Columns[7].Width = 150;
-            tarefaDataGridView.Columns[9].Width = 300;
-            tarefaDataGridView.Columns[10].Width = 450;
+            tarefaDataGridView.Columns[6].Width = 850;
+            tarefaDataGridView.Columns[7].Width = 120;
+            tarefaDataGridView.Columns[8].Width = 130;
+            tarefaDataGridView.Columns[9].Width = 150;
 
             tarefaDataGridView.AllowUserToResizeRows = false;
         }
@@ -81,5 +95,11 @@ namespace ALTO_VALE.VIEW.TR_TAREFA
 
             return handleTarefa;
         }
+
+        private void AtualizarButtonOnClick(object sender, EventArgs e)
+        {
+            PreencherTarefaDataGridView();
+        }
+
     }
 }
