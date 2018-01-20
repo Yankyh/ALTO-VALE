@@ -86,123 +86,123 @@ namespace ALTO_VALE.VIEW.TR_TAREFA
         //Metodo de alteração
         private void AlterarRegistro(String acao)
         {
-            //   if (ValidarCamposObrigatorios() == true)
-            // {
-            solicitante = BuscarHandleSolicitante();
-            tipo = BuscarHandleTipo();
-            situacao = BuscarHandleSituacao();
-            severidade = BuscarHandleSeveridade();
-            data = dataTimePicker.Value.ToString();
-            prazo = prazoTimePicker.Value.ToString();
-            assunto = assuntoTextBox.Text;
-            solicitacao = solicitacaoTextBox.Text;
-            responsavel = BuscarHandleResponsavel();
+            if (ValidarCamposObrigatorios() == true)
+            {
+                solicitante = BuscarHandleSolicitante();
+                tipo = BuscarHandleTipo();
+                situacao = BuscarHandleSituacao();
+                severidade = BuscarHandleSeveridade();
+                data = dataTimePicker.Value.ToString();
+                prazo = prazoTimePicker.Value.ToString();
+                assunto = assuntoTextBox.Text;
+                solicitacao = solicitacaoTextBox.Text;
+                responsavel = BuscarHandleResponsavel();
 
-            if (acao == "Gravar")
-            {
-                String query = " INSERT INTO TR_TAREFA" +
-                              " (STATUS, SOLICITANTE, TIPO, SITUACAO, SEVERIDADE, DATA, PRAZO, ASSUNTO, SOLICITACAO, RESPONSAVEL)" +
-                              " VALUES" +
-                              " (" +
-                              " 2," +
-                              " " + solicitante + "," +
-                              " " + tipo + "," +
-                              " " + situacao + "," +
-                              " " + severidade + "," +
-                              " '" + data + "'," +
-                              " '" + prazo + "'," +
-                              " '" + assunto + "'," +
-                              " '" + solicitacao + "'," +
-                              " " + responsavel + "" +
-                              ")";
-                connection.Inserir(query);
-                //Buscar handle inserido
-                String query1 = " SELECT MAX(HANDLE) HANDLE" +
-                               " FROM TR_TAREFA" +
-                               " WHERE " +
-                               " STATUS = 2" +
-                               " AND SOLICITANTE = " + solicitante +
-                               " AND TIPO = " + tipo +
-                               " AND SITUACAO = " + situacao +
-                               " AND SEVERIDADE = " + severidade +
-                               " AND DATA = '" + data + "'" +
-                               " AND PRAZO = '" + prazo + "'" +
-                               " AND ASSUNTO = '" + assunto + "'" +
-                               " AND SOLICITACAO = '" + solicitacao + "'" +
-                               " AND RESPONSAVEL = " + responsavel;
-                SqlDataReader reader = connection.Pesquisa(query1);
-                Console.WriteLine(query1);
-                while (reader.Read())
+                if (acao == "Gravar")
                 {
-                    handleTarefa = Convert.ToInt32(reader["HANDLE"]);
-                }
-                reader.Close();
-                numeroTextBox.Text = handleTarefa.ToString();
-            }
-            else
-            {
-                if (acao == "Liberar")
-                {
-                    if (BuscarHandleStatus() == 2)
+                    String query = " INSERT INTO TR_TAREFA" +
+                                  " (STATUS, SOLICITANTE, TIPO, SITUACAO, SEVERIDADE, DATA, PRAZO, ASSUNTO, SOLICITACAO, RESPONSAVEL)" +
+                                  " VALUES" +
+                                  " (" +
+                                  " 2," +
+                                  " " + solicitante + "," +
+                                  " " + tipo + "," +
+                                  " " + situacao + "," +
+                                  " " + severidade + "," +
+                                  " '" + data + "'," +
+                                  " '" + prazo + "'," +
+                                  " '" + assunto + "'," +
+                                  " '" + solicitacao + "'," +
+                                  " " + responsavel + "" +
+                                  ")";
+                    connection.Inserir(query);
+                    //Buscar handle inserido
+                    String query1 = " SELECT MAX(HANDLE) HANDLE" +
+                                   " FROM TR_TAREFA" +
+                                   " WHERE " +
+                                   " STATUS = 2" +
+                                   " AND SOLICITANTE = " + solicitante +
+                                   " AND TIPO = " + tipo +
+                                   " AND SITUACAO = " + situacao +
+                                   " AND SEVERIDADE = " + severidade +
+                                   " AND DATA = '" + data + "'" +
+                                   " AND PRAZO = '" + prazo + "'" +
+                                   " AND ASSUNTO = '" + assunto + "'" +
+                                   " AND SOLICITACAO = '" + solicitacao + "'" +
+                                   " AND RESPONSAVEL = " + responsavel;
+                    SqlDataReader reader = connection.Pesquisa(query1);
+                    Console.WriteLine(query1);
+                    while (reader.Read())
                     {
-                        String query = " UPDATE TR_TAREFA" +
-                                                          " SET " +
-                                                          " STATUS = 3" +
-                                                          ", SOLICITANTE = " + solicitante +
-                                                          ", TIPO = " + tipo +
-                                                          ", SITUACAO = " + situacao +
-                                                          ", SEVERIDADE = " + severidade +
-                                                          ", DATA = '" + data + "'" +
-                                                          ", PRAZO = '" + prazo + "'" +
-                                                          ", ASSUNTO = '" + assunto + "'" +
-                                                          ", SOLICITACAO = '" + solicitacao + "'" +
-                                                          ", RESPONSAVEL = " + responsavel +
-                                                          "  WHERE HANDLE = " + handleTarefa;
-                        connection.Inserir(query);
+                        handleTarefa = Convert.ToInt32(reader["HANDLE"]);
                     }
-                    else
-                    {
-                        MessageBox.Show("O registro deve estar na situação aguardando modificações para que possa ser liberado.");
-                    }
+                    reader.Close();
+                    numeroTextBox.Text = handleTarefa.ToString();
                 }
                 else
                 {
-                    if (acao == "Voltar")
+                    if (acao == "Liberar")
                     {
-                        if (BuscarHandleStatus() == 3)
+                        if (BuscarHandleStatus() == 2)
                         {
                             String query = " UPDATE TR_TAREFA" +
-                                           " SET STATUS = 2" +
-                                           " WHERE HANDLE = " + handleTarefa;
+                                                              " SET " +
+                                                              " STATUS = 3" +
+                                                              ", SOLICITANTE = " + solicitante +
+                                                              ", TIPO = " + tipo +
+                                                              ", SITUACAO = " + situacao +
+                                                              ", SEVERIDADE = " + severidade +
+                                                              ", DATA = '" + data + "'" +
+                                                              ", PRAZO = '" + prazo + "'" +
+                                                              ", ASSUNTO = '" + assunto + "'" +
+                                                              ", SOLICITACAO = '" + solicitacao + "'" +
+                                                              ", RESPONSAVEL = " + responsavel +
+                                                              "  WHERE HANDLE = " + handleTarefa;
                             connection.Inserir(query);
                         }
                         else
                         {
-                            MessageBox.Show("O registro deve estar na situação liberado para que possa ser voltado.");
+                            MessageBox.Show("O registro deve estar na situação aguardando modificações para que possa ser liberado.");
                         }
                     }
                     else
                     {
-                        if (acao == "Cancelar")
+                        if (acao == "Voltar")
                         {
-                            if (BuscarHandleStatus() == 2)
+                            if (BuscarHandleStatus() == 3)
                             {
                                 String query = " UPDATE TR_TAREFA" +
-                                               " SET STATUS = 4" +
+                                               " SET STATUS = 2" +
                                                " WHERE HANDLE = " + handleTarefa;
                                 connection.Inserir(query);
                             }
                             else
                             {
-                                MessageBox.Show("O registro deve estar na situação aguardando modificações para que possa ser cancelado.");
+                                MessageBox.Show("O registro deve estar na situação liberado para que possa ser voltado.");
+                            }
+                        }
+                        else
+                        {
+                            if (acao == "Cancelar")
+                            {
+                                if (BuscarHandleStatus() == 2)
+                                {
+                                    String query = " UPDATE TR_TAREFA" +
+                                                   " SET STATUS = 4" +
+                                                   " WHERE HANDLE = " + handleTarefa;
+                                    connection.Inserir(query);
+                                }
+                                else
+                                {
+                                    MessageBox.Show("O registro deve estar na situação aguardando modificações para que possa ser cancelado.");
+                                }
                             }
                         }
                     }
                 }
-            }
 
-            ControleDeStatus();
-            // }
+                ControleDeStatus();
+            }
         }
 
         //Buscar handles

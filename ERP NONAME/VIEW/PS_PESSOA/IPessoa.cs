@@ -42,6 +42,7 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
 
         private void gravarButtonOnClick(object sender, EventArgs e)
         {
+
             //Método para verificar os campos obrigatórios e método para validar se o cpf/cnpj já não foi cadastrado
             if ((validarCpfCnpjCadastrado() == true || buscarHandlePessoa() != 0))
             {
@@ -783,6 +784,13 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
                 IPessoaEndereco iPessoaEndereco = new IPessoaEndereco();
                 iPessoaEndereco.ShowDialog();
             }
+        }
+
+        private void testeOnClick(object sender, EventArgs e)
+        {
+            GPessoa gPessoa = new GPessoa();
+            gPessoa.MdiParent = this;
+            gPessoa.Show();
         }
     }
 }

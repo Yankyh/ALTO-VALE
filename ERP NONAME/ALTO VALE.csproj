@@ -99,7 +99,12 @@
       <DependentUpon>GiantForm.cs</DependentUpon>
     </Compile>
     <Compile Include="TN_TECNOLOGIA\Controles\Control.cs" />
-    <Compile Include="TN_TECNOLOGIA\Controles\ControleTelasMenu.cs" />
+    <Compile Include="TN_TECNOLOGIA\Controles\ControleTela.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TN_TECNOLOGIA\Controles\ControleTela.Designer.cs">
+      <DependentUpon>ControleTela.cs</DependentUpon>
+    </Compile>
     <Compile Include="TN_TECNOLOGIA\EditorSQL\Tela.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -125,6 +130,12 @@
     </Compile>
     <Compile Include="VIEW\MD_SISTEMA\ICep.Designer.cs">
       <DependentUpon>ICep.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VIEW\MD_SISTEMA\TelaPadrao.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VIEW\MD_SISTEMA\TelaPadrao.Designer.cs">
+      <DependentUpon>TelaPadrao.cs</DependentUpon>
     </Compile>
     <Compile Include="VIEW\PS_PESSOA\GPessoa.cs">
       <SubType>Form</SubType>
@@ -180,6 +191,9 @@
     <EmbeddedResource Include="DEFAULT\GiantForm.resx">
       <DependentUpon>GiantForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="TN_TECNOLOGIA\Controles\ControleTela.resx">
+      <DependentUpon>ControleTela.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="TN_TECNOLOGIA\EditorSQL\Tela.resx">
       <DependentUpon>Tela.cs</DependentUpon>
     </EmbeddedResource>
@@ -202,6 +216,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="VIEW\MD_SISTEMA\TelaPadrao.resx">
+      <DependentUpon>TelaPadrao.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="VIEW\PS_PESSOA\GPessoa.resx">
       <DependentUpon>GPessoa.cs</DependentUpon>
     </EmbeddedResource>

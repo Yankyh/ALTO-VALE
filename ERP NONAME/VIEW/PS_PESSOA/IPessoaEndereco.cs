@@ -320,7 +320,6 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
         private void cepDropDownClosed(object sender, EventArgs e)
         {
             PreencherFormularioComCep(BuscarHandleCep(cepComboBox.SelectedItem.ToString()));
-
         }
 
         //Busca o handle do cep selecionado

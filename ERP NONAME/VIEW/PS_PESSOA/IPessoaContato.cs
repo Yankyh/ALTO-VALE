@@ -55,6 +55,23 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
             reader.Close();
         }
 
+        //Preencher pessoa
+        private void PreencherPessoa()
+        {
+            //Limpa a combo box
+            pessoaComboBox.Items.Clear();
+
+            //Lista os tipos
+            String query = "SELECT RAZAOSOCIAL FROM PS_PESSOA WHERE STATUS = 3";
+            SqlDataReader reader = connection.Pesquisa(query);
+
+            while (reader.Read())
+            {
+                pessoaComboBox.Items.Add((reader["RAZAOSOCIAL"].ToString()));
+            }
+            reader.Close();
+        }
+
         private void tipoDropDown(object sender, EventArgs e)
         {
             preencherTipo();
@@ -76,18 +93,19 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
             else
             {
                 String telefone = "", celular = "", email = "", observacao = "";
-                int tipo = 0;
+                int tipo = 0, pessoa = 0;
 
                 telefone = telefoneTextBox.Text;
                 celular = celularTextBox.Text;
                 email = emailTextBox.Text;
                 observacao = ObservacaoTextBox.Text;
                 tipo = buscarHandleTipo();
+                pessoa = BuscarHandlePessoa();
 
                 //Inserir
                 if (origem == "Gravar")
                 {
-                    String query = "INSERT INTO PS_PESSOACONTATO (STATUS, TIPO, TELEFONE, CELULAR, EMAIL, OBSERVACAO, PESSOA) VALUES (1," + tipo + ", '" + telefone + "', '" + celular + "', '" + email + "', '" + observacao + "', "+pessoaHandle+")";
+                    String query = "INSERT INTO PS_PESSOACONTATO (STATUS, TIPO, TELEFONE, CELULAR, EMAIL, OBSERVACAO, PESSOA) VALUES (1," + tipo + ", '" + telefone + "', '" + celular + "', '" + email + "', '" + observacao + "', " + pessoaHandle + ")";
                     connection.Inserir(query);
 
                     String query1 = " SELECT MAX(A.HANDLE) HANDLE " +
@@ -128,6 +146,21 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
                 }
                 ControleDeStatus();
             }
+        }
+        //Busca o handle da pessoa selecionada
+        private int BuscarHandlePessoa()
+        {
+            int handlePessoaSelecionada = 0;
+
+            String query = "SELECT HANDLE FROM PS_PESSOA WHERE RAZAOSOCIAL = '" + pessoaComboBox.SelectedItem.ToString() + "'";
+            SqlDataReader reader = connection.Pesquisa(query);
+            while (reader.Read())
+            {
+                handlePessoaSelecionada = Convert.ToInt32(reader["HANDLE"]);
+            }
+            reader.Close();
+
+            return handlePessoaSelecionada;
         }
 
         //Busca o handle do tipo selecionado
@@ -204,8 +237,8 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
                     cancelarButton.Visible = true;
                     voltarButton.Visible = false;
                     gravarButton.Visible = false;
-                    liberarButton.Location = new Point(564, 228);
-                    cancelarButton.Location = new Point(668, 228);
+                    liberarButton.Location = new Point(564, 269);
+                    cancelarButton.Location = new Point(668, 269);
                 }
                 else
                 {
@@ -222,7 +255,7 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
                         cancelarButton.Visible = false;
                         voltarButton.Visible = true;
                         liberarButton.Visible = false;
-                        voltarButton.Location = new Point(668, 228);
+                        voltarButton.Location = new Point(668, 269);
                     }
                     else
                     {
@@ -239,7 +272,7 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
                             cancelarButton.Visible = false;
                             voltarButton.Visible = true;
                             liberarButton.Visible = false;
-                            voltarButton.Location = new Point(668, 228);
+                            voltarButton.Location = new Point(668, 269);
                         }
                         else
                         {
@@ -247,7 +280,7 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
                             cancelarButton.Visible = false;
                             voltarButton.Visible = false;
                             liberarButton.Visible = false;
-                            gravarButton.Location = new Point(668, 228);
+                            gravarButton.Location = new Point(668, 269);
                         }
                     }
                 }
@@ -310,6 +343,11 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
         private void cancelarButtonOnClick(object sender, EventArgs e)
         {
             alterarRegistro("Cancelar");
+        }
+
+        private void PessoaComboBoxDropDown(object sender, EventArgs e)
+        {
+            PreencherPessoa();
         }
 
         private void liberarButtonOnClick(object sender, EventArgs e)
