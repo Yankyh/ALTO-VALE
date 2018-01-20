@@ -18,6 +18,9 @@ namespace ALTO_VALE.VIEW.TR_TAREFA
         String data = "", prazo = "", assunto = "", solicitacao = "";
         int solicitante = 0, tipo = 0, situacao = 0, severidade = 0, responsavel = 0;
 
+        //Bindings
+        BindingSource Binding = new BindingSource();
+        BindingSource Binding1 = new BindingSource();
         //Variaveis static
         public static int handleTarefa = 0;
 
@@ -46,6 +49,7 @@ namespace ALTO_VALE.VIEW.TR_TAREFA
             PreencherComboBoxSolicitante();
             PreencherComboBoxTipo();
             PreencherAnexoDataGridView();
+            PreencherDocumentacaoDataGridView();
 
             String query = " SELECT A.DATA, A.PRAZO, B.LOGIN SOLICITANTE, C.LOGIN RESPONSAVEL, D.NOME SEVERIDADE, E.NOME SITUACAO, F.NOME TIPO, A.ASSUNTO, A.SOLICITACAO" +
                            " FROM TR_TAREFA A" +
@@ -367,7 +371,6 @@ namespace ALTO_VALE.VIEW.TR_TAREFA
         }
         private void PreencherAnexoDataGridView()
         {
-            BindingSource Binding = new BindingSource();
             String query = " SELECT A.HANDLE, A.DESCRICAO DESCRIÇÃO, A.NOMEARQUIVO NOME, A.CAMINHO" +
                            " FROM TR_TAREFAANEXO A" +
                            " INNER JOIN TR_TAREFA B ON B.HANDLE = A.TAREFA" +
@@ -381,6 +384,24 @@ namespace ALTO_VALE.VIEW.TR_TAREFA
             anexoDataGridView.Columns[2].Width = 200;
             anexoDataGridView.Columns[3].Width = 600;
             anexoDataGridView.AllowUserToResizeRows = false;
+        }
+        private void PreencherDocumentacaoDataGridView()
+        {
+            String query = " SELECT A.HANDLE, D.IMAGEM STA,C.NOME TIPO, A.OBSERVACAO" +
+                           " FROM TR_TAREFADOCUMENTACAO A" +
+                           " INNER JOIN TR_TAREFA B ON B.HANDLE = A.TAREFA" +
+                           " INNER JOIN TR_TAREFADOCUMENTACAOTIPO C ON C.HANDLE = A.TIPO" +
+                           " INNER JOIN MD_STATUS D ON D.HANDLE = A.STATUS" +
+                           " WHERE B.HANDLE = " + handleTarefa;
+            documentacaoDataGridView.AutoGenerateColumns = true;
+            Binding1.DataSource = connection.DataTable(query);
+            documentacaoDataGridView.DataSource = Binding1;
+            documentacaoDataGridView.Columns[0].Width = 0;
+            documentacaoDataGridView.Columns[0].Visible = false;
+            documentacaoDataGridView.Columns[1].Width = 70;
+            documentacaoDataGridView.Columns[2].Width = 200;
+            documentacaoDataGridView.Columns[3].Width = 700;
+            documentacaoDataGridView.AllowUserToResizeRows = false;
         }
 
         private void LiberarButtonOnClick(object sender, EventArgs e)
@@ -417,6 +438,7 @@ namespace ALTO_VALE.VIEW.TR_TAREFA
         private void TarefaFormActivated(object sender, EventArgs e)
         {
             PreencherAnexoDataGridView();
+            PreencherDocumentacaoDataGridView();
         }
 
         private int BuscarHandleAnexo()
@@ -449,9 +471,24 @@ namespace ALTO_VALE.VIEW.TR_TAREFA
             }
         }
 
+        private void AdcionarDocumentacaoButtonOnClick(object sender, EventArgs e)
+        {
+            ITarefaDocumentacao.handleTarefa = BuscarHandleTarefa();
+            ITarefaDocumentacao iTarefaDocumentacao = new ITarefaDocumentacao();
+            iTarefaDocumentacao.ShowDialog();
+        }
+
         private void ResponsavelDropDown(object sender, EventArgs e)
         {
             PreencherComboBoxResponsavel();
+        }
+
+        private void DocumentacaoCellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            ITarefaDocumentacao.handleTarefa = BuscarHandleTarefa();
+            ITarefaDocumentacao.handleDocumentacao = BuscarHandleDocumentacao();
+            ITarefaDocumentacao iTarefaDocumentacao = new ITarefaDocumentacao();
+            iTarefaDocumentacao.ShowDialog();
         }
 
         private void SeveridadeDropDown(object sender, EventArgs e)
@@ -570,6 +607,32 @@ namespace ALTO_VALE.VIEW.TR_TAREFA
             }
             reader.Close();
             return handleStatus;
+        }
+        private int BuscarHandleTarefa()
+        {
+            int handleTarefa = 0;
+            try
+            {
+                handleTarefa = Convert.ToInt32(numeroTextBox.Text);
+            }
+            catch
+            {
+
+            }
+            return handleTarefa;
+        }
+        private int BuscarHandleDocumentacao()
+        {
+            int handleDocumentacao = 0;
+            try
+            {
+                handleDocumentacao = Convert.ToInt32(documentacaoDataGridView.CurrentRow.Cells[0].Value.ToString());
+            }
+            catch(Exception exception)
+            {
+                MessageBox.Show(exception.ToString());
+            }
+            return handleDocumentacao;
         }
         //Controle de status
         private void ControleDeStatus()

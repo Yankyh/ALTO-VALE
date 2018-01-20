@@ -183,6 +183,18 @@
     <Compile Include="VIEW\TR_TAREFA\ITarefaAnexo.Designer.cs">
       <DependentUpon>ITarefaAnexo.cs</DependentUpon>
     </Compile>
+    <Compile Include="VIEW\TR_TAREFA\ITarefaDocumentacao.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VIEW\TR_TAREFA\ITarefaDocumentacao.Designer.cs">
+      <DependentUpon>ITarefaDocumentacao.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VIEW\TR_TAREFA\ITarefaEncaminhamento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VIEW\TR_TAREFA\ITarefaEncaminhamento.Designer.cs">
+      <DependentUpon>ITarefaEncaminhamento.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="DEFAULT\Formprincipal.resx">
       <DependentUpon>Formprincipal.cs</DependentUpon>
     </EmbeddedResource>
@@ -238,7 +250,9 @@
     <EmbeddedResource Include="VIEW\TR_TAREFA\ITarefaAnexo.resx">
       <DependentUpon>ITarefaAnexo.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="bin\Debug\ALTO VALE.exe.config" />
+    <EmbeddedResource Include="VIEW\TR_TAREFA\ITarefaDocumentacao.resx">
+      <DependentUpon>ITarefaDocumentacao.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -276,10 +290,6 @@
   <ItemGroup>
     <Folder Include="bin\Release\" />
     <Folder Include="obj\Debug\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="bin\Debug\ALTO VALE.exe" />
-    <Content Include="bin\Debug\ALTO VALE.pdb" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
