@@ -6,9 +6,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace ALTO_VALE.TN_TECNOLOGIA.EditorSQL
+namespace ALTO_VALE.TN_TECNOLOGIA.Controles
 {
-    static class Control
+    class Control
     {
 
         public static int BuscarHandleRegistro(String tabela, String campo, String valorCampo)
@@ -41,6 +41,27 @@ namespace ALTO_VALE.TN_TECNOLOGIA.EditorSQL
             }
 
             return handle;
+        }
+        public static Boolean retornaBoolean(String texto)
+        {
+            Boolean valida= false;
+            if (texto.Equals("S"))
+            {
+                valida = true;
+                return valida;
+            }
+            else if (texto.Equals("N"))
+            {
+                valida = false;
+                return valida;
+            }
+            else
+            {
+                MessageBox.Show("Não foi possível atribuir o booleano");
+                return valida;
+            }
+            
+
         }
     }
 }

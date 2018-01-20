@@ -42,12 +42,7 @@ namespace ALTO_VALE
             gCep.ShowDialog();
         }
 
-        private void button3_Click(object sender, EventArgs e)
-        {
-            TN_TECNOLOGIA.EditorSQL.Tela Tela = new TN_TECNOLOGIA.EditorSQL.Tela();
-            Tela.ShowDialog();
-        }
-
+     
         private void tarefaButtonOnClick(object sender, EventArgs e)
         {
             GTarefa gTarefa = new GTarefa();
@@ -81,6 +76,12 @@ namespace ALTO_VALE
                 ControleTelasMenu.ControleTelas(nodeSelecionado);
             }
 
+        }
+
+        private void JOHANN_Click(object sender, EventArgs e)
+        {
+            TN_TECNOLOGIA.EditorSQL.Tela Tela = new TN_TECNOLOGIA.EditorSQL.Tela();
+            Tela.ShowDialog();
         }
     }
 }

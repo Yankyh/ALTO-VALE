@@ -25,10 +25,17 @@ namespace ALTO_VALE.DAL
 
         public SqlDataReader Pesquisa(String query)
         {
-            
-            this.cmd = new SqlCommand(query, this.conexao);
-            this.resultSet = cmd.ExecuteReader();
-            
+            try
+            {
+
+                this.cmd = new SqlCommand(query, this.conexao);
+                this.resultSet = cmd.ExecuteReader();
+
+            }catch(SqlException e)
+            {
+                MessageBox.Show(e.Message);
+            }
+
             return resultSet;
         }
         

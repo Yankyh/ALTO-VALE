@@ -140,6 +140,7 @@
             this.JOHANN.TabIndex = 13;
             this.JOHANN.Text = "JOHANN";
             this.JOHANN.UseVisualStyleBackColor = true;
+            this.JOHANN.Click += new System.EventHandler(this.JOHANN_Click);
             // 
             // panel1
             // 
