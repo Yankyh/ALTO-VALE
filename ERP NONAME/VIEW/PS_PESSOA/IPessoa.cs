@@ -80,7 +80,6 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
             //Verifica se o registro já foi gravado alguma vez
             if (situacao == "Alterar")
             {
-                //BOTAR O TIPO DA PESSOA
                 String query = "UPDATE PS_PESSOA SET STATUS = 3, APELIDO = '" + apelido + "', RAZAOSOCIAL = '" + razaoSocial + "'," +
                                      " EMAIL = '" + email + "', CPFCNPJ = '" + cpfCnpj + "', TIPO = " + tipoPessoaHandle() + ", " +
                                      " TELEFONE = '" + telefone + "', CELULAR = '" + celular + "', OBSERVACAO = '" + observacao + "'," +
@@ -90,13 +89,13 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
                 //Ativar Endereço
                 String query1 = " UPDATE PS_PESSOAENDERECO" +
                                 " SET STATUS = 3" +
-                                " WHERE HANDLE IN (SELECT ENDERECO FROM PS_PESSOAENDERECOFK WHERE PESSOA = " + handlePessoa + ")";
+                                " WHERE PESSOA = " + handlePessoa + "";
                 connection.Inserir(query1);
 
                 //Ativar Contato
                 String query2 = " UPDATE PS_PESSOACONTATO" +
                                 " SET STATUS = 3" +
-                                " WHERE HANDLE IN (SELECT CONTATO FROM PS_PESSOACONTATOFK WHERE PESSOA = " + handlePessoa + ")";
+                                " WHERE PESSOA =  " + handlePessoa + "";
                 connection.Inserir(query2);
 
             }
@@ -115,13 +114,13 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
                         //Cancelar Endereço
                         String query1 = " UPDATE PS_PESSOAENDERECO" +
                                         " SET STATUS = 4" +
-                                        " WHERE HANDLE IN (SELECT ENDERECO FROM PS_PESSOAENDERECOFK WHERE PESSOA = " + handlePessoa + ")";
+                                        " WHERE PESSOA = " + handlePessoa + "";
                         connection.Inserir(query1);
 
                         //Cancelar Contato
                         String query2 = " UPDATE PS_PESSOACONTATO" +
                                         " SET STATUS = 4" +
-                                        " WHERE HANDLE IN (SELECT CONTATO FROM PS_PESSOACONTATOFK WHERE PESSOA = " + handlePessoa + ")";
+                                        " WHERE PESSOA = " + handlePessoa + "";
                         connection.Inserir(query2);
                     }
                     else
@@ -434,7 +433,10 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
                 voltarButton.Visible = false;
                 liberarButton.Visible = true;
                 adicionarContatoButton.Visible = true;
+                adicionarArquivoButton.Visible = true;
+                adicionarEnderecoButton.Visible = true;
                 removerContatoButton.Visible = true;
+                removerEnderecoButton.Visible = true;
                 liberarButton.Location = new Point(770, 286);
                 cancelarButton.Location = new Point(874, 286);
             }
@@ -460,6 +462,11 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
                     liberarButton.Visible = true;
                     cancelarButton.Visible = true;
                     voltarButton.Visible = false;
+                    adicionarArquivoButton.Visible = true;
+                    adicionarContatoButton.Visible = true;
+                    adicionarEnderecoButton.Visible = true;
+                    removerContatoButton.Visible = true;
+                    removerEnderecoButton.Visible = true;
                     gravarButton.Visible = false;
                     liberarButton.Location = new Point(770, 286);
                     cancelarButton.Location = new Point(874, 286);
@@ -485,6 +492,11 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
                         gravarButton.Visible = false;
                         cancelarButton.Visible = false;
                         voltarButton.Visible = true;
+                        adicionarArquivoButton.Visible = true;
+                        adicionarContatoButton.Visible = true;
+                        adicionarEnderecoButton.Visible = true;
+                        removerContatoButton.Visible = true;
+                        removerEnderecoButton.Visible = true;
                         liberarButton.Visible = false;
                         voltarButton.Location = new Point(874, 286);
                     }
@@ -510,6 +522,11 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
                             cancelarButton.Visible = false;
                             voltarButton.Visible = true;
                             liberarButton.Visible = false;
+                            adicionarArquivoButton.Visible = false;
+                            adicionarContatoButton.Visible = false;
+                            adicionarEnderecoButton.Visible = false;
+                            removerContatoButton.Visible = false;
+                            removerEnderecoButton.Visible = false;
                             voltarButton.Location = new Point(874, 286);
                         }
                         else
@@ -518,6 +535,11 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
                             cancelarButton.Visible = false;
                             voltarButton.Visible = false;
                             liberarButton.Visible = false;
+                            adicionarArquivoButton.Visible = false;
+                            adicionarContatoButton.Visible = false;
+                            adicionarEnderecoButton.Visible = false;
+                            removerContatoButton.Visible = false;
+                            removerEnderecoButton.Visible = false;
                             gravarButton.Location = new Point(874, 286);
                             adicionarContatoButton.Visible = false;
                             removerContatoButton.Visible = false;
@@ -590,8 +612,6 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
         //Botão adicionar dos contatos
         private void adicionarButtonOnClick(object sender, EventArgs e)
         {
-            //Passa o handle da pessoa pro contato
-            IPessoaContato.pessoaHandle = buscarHandlePessoa();
             IPessoaContato iPessoaContato = new IPessoaContato();
             iPessoaContato.ShowDialog();
         }
@@ -627,10 +647,6 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
                 }
                 else
                 {
-                    String query1 = " DELETE " +
-                                    " FROM PS_PESSOACONTATOFK" +
-                                    " WHERE CONTATO = " + pegarHandleContato();
-                    connection.Inserir(query1);
                     String query2 = " DELETE" +
                                     " FROM PS_PESSOACONTATO" +
                                     " WHERE HANDLE = " + pegarHandleContato();
@@ -746,10 +762,6 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
                 }
                 else
                 {
-                    String query1 = " DELETE " +
-                                    " FROM PS_PESSOAENDERECOFK" +
-                                    " WHERE ENDERECO = " + PegarHandleEndereco();
-                    connection.Inserir(query1);
                     String query2 = " DELETE" +
                                     " FROM PS_PESSOAENDERECO" +
                                     " WHERE HANDLE = " + PegarHandleEndereco();
@@ -785,13 +797,6 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
                 IPessoaEndereco iPessoaEndereco = new IPessoaEndereco();
                 iPessoaEndereco.ShowDialog();
             }
-        }
-
-        private void testeOnClick(object sender, EventArgs e)
-        {
-            GPessoa gPessoa = new GPessoa();
-            gPessoa.MdiParent = this;
-            gPessoa.Show();
         }
     }
 }

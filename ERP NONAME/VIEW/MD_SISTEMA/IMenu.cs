@@ -95,5 +95,10 @@ namespace ALTO_VALE
             }
         }
 
+        private void MenuFormDeactivate(object sender, EventArgs e)
+        {
+            menuButton.Location = new Point(1,46);
+            menuTreeView.Visible = false;
+        }
     }
 }

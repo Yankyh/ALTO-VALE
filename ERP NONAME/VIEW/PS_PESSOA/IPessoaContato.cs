@@ -17,7 +17,7 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
     {
         Connection connection = new Connection();
         //Handle statico
-        public static int pessoaHandle = 0, contatoHandle = 0;
+        public static int contatoHandle = 0;
 
         public IPessoaContato()
         {
@@ -62,7 +62,10 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
             pessoaComboBox.Items.Clear();
 
             //Lista os tipos
-            String query = "SELECT RAZAOSOCIAL FROM PS_PESSOA WHERE STATUS = 3";
+            String query = " SELECT A.RAZAOSOCIAL " +
+                           " FROM PS_PESSOA A " +
+                           " INNER JOIN PS_PESSOACONTATO B ON B.PESSOA = A.HANDLE"+
+                           " WHERE A.STATUS = 3 OR B.PESSOA = (SELECT PESSOA FROM PS_PESSOACONTATO WHERE HANDLE = "+contatoHandle+") ";
             SqlDataReader reader = connection.Pesquisa(query);
 
             while (reader.Read())
@@ -105,7 +108,7 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
                 //Inserir
                 if (origem == "Gravar")
                 {
-                    String query = "INSERT INTO PS_PESSOACONTATO (STATUS, TIPO, TELEFONE, CELULAR, EMAIL, OBSERVACAO, PESSOA) VALUES (1," + tipo + ", '" + telefone + "', '" + celular + "', '" + email + "', '" + observacao + "', " + pessoaHandle + ")";
+                    String query = "INSERT INTO PS_PESSOACONTATO (STATUS, TIPO, TELEFONE, CELULAR, EMAIL, OBSERVACAO, PESSOA) VALUES (1," + tipo + ", '" + telefone + "', '" + celular + "', '" + email + "', '" + observacao + "', " + pessoa + ")";
                     connection.Inserir(query);
 
                     String query1 = " SELECT MAX(A.HANDLE) HANDLE " +
@@ -132,7 +135,8 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
                                    " CELULAR = '" + celular + "'," +
                                    " EMAIL = '" + email + "'," +
                                    " OBSERVACAO = '" + observacao + "'," +
-                                   " TIPO = " + tipo + "" +
+                                   " TIPO = " + tipo + "," +
+                                   " PESSOA = " + pessoa + "" +
                                    " WHERE HANDLE = " + contatoHandle;
                     connection.Inserir(query);
                 }
@@ -152,14 +156,21 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
         {
             int handlePessoaSelecionada = 0;
 
-            String query = "SELECT HANDLE FROM PS_PESSOA WHERE RAZAOSOCIAL = '" + pessoaComboBox.SelectedItem.ToString() + "'";
-            SqlDataReader reader = connection.Pesquisa(query);
-            while (reader.Read())
+            try
             {
-                handlePessoaSelecionada = Convert.ToInt32(reader["HANDLE"]);
-            }
-            reader.Close();
+                String query = "SELECT HANDLE FROM PS_PESSOA WHERE RAZAOSOCIAL = '" + pessoaComboBox.SelectedItem.ToString() + "'";
+                SqlDataReader reader = connection.Pesquisa(query);
 
+                while (reader.Read())
+                {
+                    handlePessoaSelecionada = Convert.ToInt32(reader["HANDLE"]);
+                }
+                reader.Close();
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.ToString());
+            }
             return handlePessoaSelecionada;
         }
 
@@ -198,7 +209,22 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
             }
 
         }
+        //Buscar status da pessoa
+        private int BuscarStatusPessoa()
+        {
+            int statusPessoa = 0;
+            String query = " SELECT A.STATUS" +
+                           " FROM PS_PESSOA A" +
+                           " WHERE HANDLE = " + BuscarHandlePessoa();
+            SqlDataReader reader = connection.Pesquisa(query);
+            while (reader.Read())
+            {
+                statusPessoa = Convert.ToInt32(reader["STATUS"]);
+            }
+            reader.Close();
 
+            return statusPessoa;
+        }
         //Controle de status
         public void ControleDeStatus()
         {
@@ -219,8 +245,8 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
                 cancelarButton.Visible = true;
                 voltarButton.Visible = false;
                 liberarButton.Visible = true;
-                liberarButton.Location = new Point(564, 228);
-                cancelarButton.Location = new Point(668, 228);
+                liberarButton.Location = new Point(564, 269);
+                cancelarButton.Location = new Point(668, 269);
             }
             else
             {
@@ -232,6 +258,7 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
                     telefoneTextBox.Enabled = true;
                     celularTextBox.Enabled = true;
                     ObservacaoTextBox.Enabled = true;
+                    pessoaComboBox.Enabled = true;
                     //Controle de botões (Criar classe para isso)
                     liberarButton.Visible = true;
                     cancelarButton.Visible = true;
@@ -250,6 +277,7 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
                         telefoneTextBox.Enabled = false;
                         celularTextBox.Enabled = false;
                         ObservacaoTextBox.Enabled = false;
+                        pessoaComboBox.Enabled = false;
                         //Controle de botões (Criar classe para isso)
                         gravarButton.Visible = false;
                         cancelarButton.Visible = false;
@@ -267,6 +295,7 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
                             telefoneTextBox.Enabled = false;
                             celularTextBox.Enabled = false;
                             ObservacaoTextBox.Enabled = false;
+                            pessoaComboBox.Enabled = false;
                             //Controle de botões (Criar classe para isso)
                             gravarButton.Visible = false;
                             cancelarButton.Visible = false;
@@ -292,13 +321,15 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
         {
             //Preenche o combo box tipo
             preencherTipo();
+            PreencherPessoa();
 
             //Preenche o form com as informações da pessoa selecionada
-            String telefone = "", celular = "", email = "", observacao = "", tipoContato = "", situacao = "";
-            String query = " SELECT  A.TELEFONE, A.CELULAR, A.EMAIL, A.OBSERVACAO, B.NOME TIPO, C.NOME SITUACAO" +
+            String telefone = "", celular = "", email = "", observacao = "", tipoContato = "", situacao = "", pessoa = "";
+            String query = " SELECT D.RAZAOSOCIAL, A.TELEFONE, A.CELULAR, A.EMAIL, A.OBSERVACAO, B.NOME TIPO, C.NOME SITUACAO" +
                            " FROM PS_PESSOACONTATO A" +
                            " INNER JOIN PS_PESSOACONTATOTIPO B ON B.HANDLE = A.TIPO" +
                            " INNER JOIN MD_STATUS C ON C.HANDLE = A.STATUS" +
+                           " INNER JOIN PS_PESSOA D ON D.HANDLE = A.PESSOA" +
                            " WHERE A.HANDLE = " + contatoHandle;
             SqlDataReader reader = connection.Pesquisa(query);
             while (reader.Read())
@@ -309,6 +340,7 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
                 celular = (reader["CELULAR"].ToString());
                 observacao = (reader["OBSERVACAO"].ToString());
                 situacao = (reader["SITUACAO"].ToString());
+                pessoa = (reader["RAZAOSOCIAL"].ToString());
             }
             reader.Close();
             //Preenche o status do form
@@ -319,6 +351,7 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
             telefoneTextBox.Text = telefone;
             celularTextBox.Text = celular;
             ObservacaoTextBox.Text = observacao;
+            pessoaComboBox.SelectedItem = pessoa;
             ControleDeStatus();
         }
         private void voltarRegistro()
@@ -331,12 +364,18 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
         }
         private void voltarButtonOnClick(object sender, EventArgs e)
         {
-            voltarRegistro();
+            if (BuscarStatusPessoa() == 4)
+            {
+                MessageBox.Show("O cadastro da pessoa não pode estar cancelado para voltar o contato.");
+            }
+            else
+            {
+                voltarRegistro();
+            }
         }
 
         private void contatoFormClosed(object sender, FormClosedEventArgs e)
         {
-            pessoaHandle = 0;
             contatoHandle = 0;
         }
 
@@ -352,8 +391,16 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
 
         private void liberarButtonOnClick(object sender, EventArgs e)
         {
-            alterarRegistro("Alterar");
-            ControleDeStatus();
+            if (BuscarStatusPessoa() == 4)
+            {
+                MessageBox.Show("O cadastro da pessoa não pode estar cancelado para liberar o contato.");
+            }
+            else
+            {
+                alterarRegistro("Alterar");
+                ControleDeStatus();
+            }
+
         }
     }
 }

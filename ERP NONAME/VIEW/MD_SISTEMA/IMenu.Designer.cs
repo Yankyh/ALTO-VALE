@@ -146,6 +146,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Menu";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Deactivate += new System.EventHandler(this.MenuFormDeactivate);
             this.Click += new System.EventHandler(this.MenuButtonOnClick);
             this.ResumeLayout(false);
             this.PerformLayout();
