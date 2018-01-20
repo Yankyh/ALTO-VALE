@@ -142,6 +142,8 @@
             this.Controls.Add(this.label1);
             this.DoubleBuffered = true;
             this.KeyPreview = true;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Menu";

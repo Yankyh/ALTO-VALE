@@ -238,6 +238,7 @@
     <EmbeddedResource Include="VIEW\TR_TAREFA\ITarefaAnexo.resx">
       <DependentUpon>ITarefaAnexo.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="bin\Debug\ALTO VALE.exe.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -275,6 +276,10 @@
   <ItemGroup>
     <Folder Include="bin\Release\" />
     <Folder Include="obj\Debug\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="bin\Debug\ALTO VALE.exe" />
+    <Content Include="bin\Debug\ALTO VALE.pdb" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
