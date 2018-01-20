@@ -106,6 +106,9 @@
     <Compile Include="TN_TECNOLOGIA\EditorSQL\Tela.Designer.cs">
       <DependentUpon>Tela.cs</DependentUpon>
     </Compile>
+    <Compile Include="TN_TECNOLOGIA\Email\EnviaEmail.cs" />
+    <Compile Include="TN_TECNOLOGIA\Email\TEmail.cs" />
+    <Compile Include="TN_TECNOLOGIA\Logins\TLoginInfo.cs" />
     <Compile Include="VIEW\MD_SISTEMA\GCep.cs">
       <SubType>Form</SubType>
     </Compile>
