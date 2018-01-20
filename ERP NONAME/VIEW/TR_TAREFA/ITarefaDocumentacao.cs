@@ -27,7 +27,7 @@ namespace ALTO_VALE.VIEW.TR_TAREFA
             connection.Conectar();
             PreencherTipo();
             tarefaTextBox.ReadOnly = true;
-            if(handleDocumentacao != 0)
+            if (handleDocumentacao != 0)
             {
                 PreencherFormulario();
             }
@@ -37,12 +37,13 @@ namespace ALTO_VALE.VIEW.TR_TAREFA
             }
         }
         //Preencher formulario
-        private void PreencherFormulario(){
+        private void PreencherFormulario()
+        {
             PreencherTipo();
             String query = " SELECT B.NOME TIPO, A.OBSERVACAO, A.TAREFA" +
                            " FROM TR_TAREFADOCUMENTACAO A" +
                            " INNER JOIN TR_TAREFADOCUMENTACAOTIPO B ON B.HANDLE = A.TIPO" +
-                           " WHERE A.HANDLE = "+handleDocumentacao;
+                           " WHERE A.HANDLE = " + handleDocumentacao;
             SqlDataReader reader = connection.Pesquisa(query);
             while (reader.Read())
             {
@@ -57,7 +58,6 @@ namespace ALTO_VALE.VIEW.TR_TAREFA
         //Alterar Registro
         private void AlterarRegistro(String acao)
         {
-
             tipo = BuscarHandleTipo();
             observacao = ObservacaoTextBox.Text;
 
@@ -84,11 +84,51 @@ namespace ALTO_VALE.VIEW.TR_TAREFA
                                 " AND TIPO = " + tipo +
                                 " AND OBSERVACAO = '" + observacao + "'";
                 SqlDataReader reader = connection.Pesquisa(query1);
-                while (reader.Read()){
+                while (reader.Read())
+                {
                     handleDocumentacao = Convert.ToInt32(reader["HANDLE"]);
                 }
                 reader.Close();
-
+            }
+            else
+            {
+                if (acao == "Liberar")
+                {
+                    String query = " UPDATE TR_TAREFADOCUMENTACAO" +
+                                   " SET STATUS = 3" +
+                                   " WHERE HANDLE = " + handleDocumentacao;
+                    connection.Inserir(query);
+                }
+                else
+                {
+                    if (acao == "Cancelar")
+                    {
+                        String query = " UPDATE TR_TAREFADOCUMENTACAO" +
+                                       " SET STATUS = 4" +
+                                       " WHERE HANDLE = " + handleDocumentacao;
+                        connection.Inserir(query);
+                    }
+                    else
+                    {
+                        if (acao == "Excluir")
+                        {
+                            String query = " DELETE TR_TAREFADOCUMENTACAO" +
+                                           " WHERE HANDLE = " + handleDocumentacao;
+                            connection.Inserir(query);
+                            this.Close();
+                        }
+                        else
+                        {
+                            if (acao == "Voltar")
+                            {
+                                String query = " UPDATE TR_TAREFADOCUMENTACAO" +
+                                       " SET STATUS = 2" +
+                                       " WHERE HANDLE = " + handleDocumentacao;
+                                connection.Inserir(query);
+                            }
+                        }
+                    }
+                }
             }
 
 
@@ -109,7 +149,11 @@ namespace ALTO_VALE.VIEW.TR_TAREFA
 
         private void CancelarButtonOnClick(object sender, EventArgs e)
         {
-            AlterarRegistro("Cancelar");
+            DialogResult confirmacaoButton = MessageBox.Show("Deseja Continuar?", "Cancelar tarefa", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button2);
+            if (confirmacaoButton.ToString().ToUpper() == "YES")
+            {
+                AlterarRegistro("Cancelar");
+            }
         }
 
         private void VoltarButtonOnClick(object sender, EventArgs e)
@@ -157,6 +201,16 @@ namespace ALTO_VALE.VIEW.TR_TAREFA
             reader.Close();
         }
 
+        private void ExcluirButtonOnClick(object sender, EventArgs e)
+        {
+            DialogResult confirmacaoButton = MessageBox.Show("Deseja Continuar?", "Cancelar tarefa", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button2);
+            if (confirmacaoButton.ToString().ToUpper() == "YES")
+            {
+                AlterarRegistro("Excluir");
+            }
+
+        }
+
 
         //Controle de status
         public void ControleDeStatus()
@@ -165,7 +219,7 @@ namespace ALTO_VALE.VIEW.TR_TAREFA
             String query = " SELECT B.NOME" +
                            " FROM TR_TAREFADOCUMENTACAO A" +
                            " INNER JOIN MD_STATUS B ON B.HANDLE = A.STATUS" +
-                           " WHERE A.HANDLE = " + handleTarefa;
+                           " WHERE A.HANDLE = " + handleDocumentacao;
             SqlDataReader reader = connection.Pesquisa(query);
             while (reader.Read())
             {
@@ -187,12 +241,13 @@ namespace ALTO_VALE.VIEW.TR_TAREFA
                 {
                     //Controle de status
                     tipoComboBox.Enabled = true;
-                    ObservacaoTextBox.ReadOnly = true;
+                    ObservacaoTextBox.ReadOnly = false;
                     //Controle de botões (Criar classe para isso)
                     liberarButton.Visible = true;
                     cancelarButton.Visible = true;
                     voltarButton.Visible = false;
                     gravarButton.Visible = false;
+                    excluirButton.Visible = false;
                     liberarButton.Location = new Point(564, 269);
                     cancelarButton.Location = new Point(668, 269);
                 }
@@ -207,6 +262,7 @@ namespace ALTO_VALE.VIEW.TR_TAREFA
                         gravarButton.Visible = false;
                         cancelarButton.Visible = false;
                         voltarButton.Visible = true;
+                        excluirButton.Visible = false;
                         liberarButton.Visible = false;
                         voltarButton.Location = new Point(668, 269);
                     }
@@ -216,12 +272,14 @@ namespace ALTO_VALE.VIEW.TR_TAREFA
                         {
                             //Caso esteja ativo, não permite alterar antes de voltar o registro
                             tipoComboBox.Enabled = false;
-                            ObservacaoTextBox.ReadOnly = false;
+                            ObservacaoTextBox.ReadOnly = true;
                             //Controle de botões (Criar classe para isso)
                             gravarButton.Visible = false;
                             cancelarButton.Visible = false;
                             voltarButton.Visible = true;
                             liberarButton.Visible = false;
+                            excluirButton.Visible = true;
+                            excluirButton.Location = new Point(564, 269);
                             voltarButton.Location = new Point(668, 269);
                         }
                         else
@@ -229,6 +287,7 @@ namespace ALTO_VALE.VIEW.TR_TAREFA
                             gravarButton.Visible = true;
                             cancelarButton.Visible = false;
                             voltarButton.Visible = false;
+                            excluirButton.Visible = false;
                             liberarButton.Visible = false;
                             gravarButton.Location = new Point(668, 269);
                         }

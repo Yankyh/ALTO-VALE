@@ -39,6 +39,7 @@
             this.tipoComboBox = new System.Windows.Forms.ComboBox();
             this.label12 = new System.Windows.Forms.Label();
             this.tarefaTextBox = new System.Windows.Forms.TextBox();
+            this.excluirButton = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.observacaoTabPage.SuspendLayout();
             this.SuspendLayout();
@@ -161,11 +162,24 @@
             this.tarefaTextBox.Size = new System.Drawing.Size(69, 23);
             this.tarefaTextBox.TabIndex = 70;
             // 
+            // excluirButton
+            // 
+            this.excluirButton.Font = new System.Drawing.Font("Arial", 10F);
+            this.excluirButton.Location = new System.Drawing.Point(251, 269);
+            this.excluirButton.Name = "excluirButton";
+            this.excluirButton.Size = new System.Drawing.Size(103, 32);
+            this.excluirButton.TabIndex = 82;
+            this.excluirButton.Text = "Excluir";
+            this.excluirButton.UseVisualStyleBackColor = true;
+            this.excluirButton.Visible = false;
+            this.excluirButton.Click += new System.EventHandler(this.ExcluirButtonOnClick);
+            // 
             // ITarefaDocumentacao
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(780, 308);
+            this.Controls.Add(this.excluirButton);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.liberarButton);
             this.Controls.Add(this.voltarButton);
@@ -200,5 +214,6 @@
         private System.Windows.Forms.ComboBox tipoComboBox;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.TextBox tarefaTextBox;
+        private System.Windows.Forms.Button excluirButton;
     }
 }
