@@ -91,7 +91,7 @@ namespace ALTO_VALE
             else
             {
                 menuTreeView.Visible = true;
-                menuButton.Location = new Point(281, 55);
+                menuButton.Location = new Point(213, 55);
             }
         }
 

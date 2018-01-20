@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Pessoa", 1, 1);
             System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Endereço", 1, 1);
             System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Contato", 1, 1);
@@ -42,11 +43,10 @@
             System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("Cep", 1, 1);
             System.Windows.Forms.TreeNode treeNode8 = new System.Windows.Forms.TreeNode("Sistema", 0, 2, new System.Windows.Forms.TreeNode[] {
             treeNode7});
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.label1 = new System.Windows.Forms.Label();
-            this.menuTreeView = new System.Windows.Forms.TreeView();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.menuButton = new System.Windows.Forms.Button();
+            this.menuTreeView = new System.Windows.Forms.TreeView();
             this.SuspendLayout();
             // 
             // label1
@@ -59,14 +59,33 @@
             this.label1.TabIndex = 4;
             this.label1.Text = "Alfa 0.01";
             // 
+            // imageList1
+            // 
+            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
+            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageList1.Images.SetKeyName(0, "folderMenuIcon.png");
+            this.imageList1.Images.SetKeyName(1, "fileMenuIcon.png");
+            this.imageList1.Images.SetKeyName(2, "openFolderMenuIcon.png");
+            // 
+            // menuButton
+            // 
+            this.menuButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.menuButton.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.menuButton.Location = new System.Drawing.Point(213, 55);
+            this.menuButton.Name = "menuButton";
+            this.menuButton.Size = new System.Drawing.Size(38, 732);
+            this.menuButton.TabIndex = 17;
+            this.menuButton.Text = "Menu";
+            this.menuButton.UseVisualStyleBackColor = false;
+            this.menuButton.Click += new System.EventHandler(this.MenuButtonOnClick);
+            // 
             // menuTreeView
             // 
-            this.menuTreeView.BackColor = System.Drawing.SystemColors.MenuBar;
-            this.menuTreeView.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.menuTreeView.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.menuTreeView.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.menuTreeView.ImageIndex = 0;
             this.menuTreeView.ImageList = this.imageList1;
-            this.menuTreeView.Location = new System.Drawing.Point(68, 55);
+            this.menuTreeView.Location = new System.Drawing.Point(0, 55);
             this.menuTreeView.Name = "menuTreeView";
             treeNode1.ImageIndex = 1;
             treeNode1.Name = "pessoaPessoaNode";
@@ -111,25 +130,6 @@
             this.menuTreeView.TabIndex = 9;
             this.menuTreeView.DoubleClick += new System.EventHandler(this.MenuTreeViewDoubleClick);
             // 
-            // imageList1
-            // 
-            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
-            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
-            this.imageList1.Images.SetKeyName(0, "folderMenuIcon.png");
-            this.imageList1.Images.SetKeyName(1, "fileMenuIcon.png");
-            this.imageList1.Images.SetKeyName(2, "openFolderMenuIcon.png");
-            // 
-            // menuButton
-            // 
-            this.menuButton.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.menuButton.Location = new System.Drawing.Point(281, 55);
-            this.menuButton.Name = "menuButton";
-            this.menuButton.Size = new System.Drawing.Size(38, 732);
-            this.menuButton.TabIndex = 17;
-            this.menuButton.Text = "Menu";
-            this.menuButton.UseVisualStyleBackColor = false;
-            this.menuButton.Click += new System.EventHandler(this.MenuButtonOnClick);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -137,8 +137,8 @@
             this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
             this.CausesValidation = false;
             this.ClientSize = new System.Drawing.Size(1604, 882);
-            this.Controls.Add(this.menuButton);
             this.Controls.Add(this.menuTreeView);
+            this.Controls.Add(this.menuButton);
             this.Controls.Add(this.label1);
             this.DoubleBuffered = true;
             this.KeyPreview = true;
@@ -157,9 +157,9 @@
 
         #endregion
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TreeView menuTreeView;
         private System.Windows.Forms.ImageList imageList1;
         private System.Windows.Forms.Button menuButton;
+        private System.Windows.Forms.TreeView menuTreeView;
     }
 }
 
