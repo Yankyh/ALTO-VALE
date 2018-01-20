@@ -52,44 +52,35 @@ namespace ALTO_VALE
 
         }
 
-        //Controle de tela
-        public void ControleTelas(String form)
+        id pessoaButtonOnClick(object sender, EventArgs e)
         {
-            //Pessoa
-            if (form == "Pessoa")
-            {
-                GPessoa gPessoa = new GPessoa();
-                gPessoa.MdiParent = this;
-                gPessoa.Show();
-            }
-            //Endereço
-            if (form == "Endereço")
-            {
-                IPessoaEndereco iPessoaEndereco = new IPessoaEndereco();
-                iPessoaEndereco.MdiParent = this;
-                iPessoaEndereco.Show();
-            }
-            //Contato
-            if (form == "Contato")
-            {
-                IPessoaContato iPessoaContato = new IPessoaContato();
-                iPessoaContato.MdiParent = this;
-                iPessoaContato.Show();
-            }
-            //Tarefa
-            if (form == "Tarefa")
-            {
-                GTarefa gTarefa = new GTarefa();
-                gTarefa.MdiParent = this;
-                gTarefa.Show();
-            }
-            //Cep
-            if (form == "Cep")
-            {
-                GCep gCep = new GCep();
-                gCep.MdiParent = this;
-                gCep.Show();
-            }
+            GPessoa gPessoa = new GPessoa();
+            gPessoa.ShowDialog();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            GCep gCep = new GCep();
+            gCep.ShowDialog();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            TN_TECNOLOGIA.EditorSQL.Tela Tela = new TN_TECNOLOGIA.EditorSQL.Tela();
+            Tela.ShowDialog();
+        }
+
+        private void tarefaButtonOnClick(object sender, EventArgs e)
+        {
+            GTarefa gTarefa = new GTarefa();
+            gTarefa.ShowDialog();
+        }
+
+        private void TarefaDiretoOnClick(object sender, EventArgs e)
+        {
+            ITarefa iTarefa = new ITarefa();
+            iTarefa.ShowDialog();
+        }
 
 
         }
@@ -120,6 +111,12 @@ namespace ALTO_VALE
         private void Form1_Click(object sender, EventArgs e)
         {
             MessageBox.Show("s");
+        }
+
+        private void JOHANN_Click(object sender, EventArgs e)
+        {
+            TN_TECNOLOGIA.EditorSQL.Tela Tela = new TN_TECNOLOGIA.EditorSQL.Tela();
+            Tela.ShowDialog();
         }
     }
 }

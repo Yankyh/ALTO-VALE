@@ -118,8 +118,29 @@
             this.imageList1.Images.SetKeyName(0, "folderMenuIcon.png");
             this.imageList1.Images.SetKeyName(1, "fileMenuIcon.png");
             this.imageList1.Images.SetKeyName(2, "openFolderMenuIcon.png");
+          
+            
             // 
-            // menuButton
+            // panel4
+            // 
+            this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel4.Controls.Add(this.JOHANN);
+            this.panel4.Location = new System.Drawing.Point(325, 55);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(1230, 787);
+            this.panel4.TabIndex = 14;
+            // 
+            // JOHANN
+            // 
+            this.JOHANN.Location = new System.Drawing.Point(447, 374);
+            this.JOHANN.Name = "JOHANN";
+            this.JOHANN.Size = new System.Drawing.Size(81, 106);
+            this.JOHANN.TabIndex = 13;
+            this.JOHANN.Text = "JOHANN";
+            this.JOHANN.UseVisualStyleBackColor = true;
+            this.JOHANN.Click += new System.EventHandler(this.JOHANN_Click);
+            // 
+            // panel1
             // 
             this.menuButton.Location = new System.Drawing.Point(281, 55);
             this.menuButton.Name = "menuButton";
