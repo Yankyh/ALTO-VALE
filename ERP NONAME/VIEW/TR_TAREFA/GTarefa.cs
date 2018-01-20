@@ -13,6 +13,7 @@ namespace ALTO_VALE.VIEW.TR_TAREFA
 {
     public partial class GTarefa : Form
     {
+        BindingSource Binding = new BindingSource();
         Connection connection = new Connection();
         public GTarefa()
         {
@@ -33,9 +34,6 @@ namespace ALTO_VALE.VIEW.TR_TAREFA
             {
                 status = status + ", 4 ";
             }
-
-
-            BindingSource Binding = new BindingSource();
             tarefaDataGridView.AutoGenerateColumns = true;
             String query = " SELECT A.HANDLE, B.IMAGEM STA, F.NOME SITUAÇÃO, E.NOME SEVERIDADE, G.NOME TIPO, A.PRAZO, A.ASSUNTO, C.LOGIN SOLICITANTE, D.LOGIN RESPONSAVEL, A.DATA " +
                            " FROM TR_TAREFA A" +

@@ -14,7 +14,7 @@ namespace ALTO_VALE.VIEW.MD_SISTEMA
     public partial class GCep : Form
     {
         Connection connection = new Connection();
-
+        BindingSource Binding = new BindingSource();
         public GCep()
         {
             InitializeComponent();
@@ -25,7 +25,6 @@ namespace ALTO_VALE.VIEW.MD_SISTEMA
         //Preenche o datagridview
         private void preencherDataGridView()
         {
-            BindingSource Binding = new BindingSource();
             cepDataGridView.AutoGenerateColumns = true;
             String query = " SELECT B.NOME, A.CEP, A.PAIS, A.ESTADO, A.CIDADE, A.BAIRRO, A.LOGRADOURO, A.HANDLE" +
                            " FROM MD_CEP A" +

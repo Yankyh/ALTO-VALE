@@ -17,7 +17,7 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
     public partial class GPessoa : Form
     {
         Connection connection = new Connection();
-        
+        BindingSource Binding = new BindingSource();
         //Handle da pessoa selecionada
         public static int handlePessoa = 0;
 
@@ -35,7 +35,6 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
         //Configurações do datagridview
         private void configurarDataGridView()
         {
-            BindingSource Binding = new BindingSource();
             pessoaDataGridView.AutoGenerateColumns = true;
             String query = " SELECT B.NOME SITUAÇÃO, A.RAZAOSOCIAL AS 'RAZÃO SOCIAL', A.APELIDO, A.CPFCNPJ AS 'CPF/CNPJ', A.TELEFONE, C.CIDADE, D.SIGLA ESTADO, C.LOGRADOURO" +
                            " FROM PS_PESSOA A" +

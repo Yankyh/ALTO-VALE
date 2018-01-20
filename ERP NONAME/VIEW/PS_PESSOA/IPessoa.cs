@@ -18,6 +18,11 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
         Connection connection = new Connection();
         StatusFilter statusFilter = new StatusFilter();
 
+        //Datagrid view binding
+        BindingSource Binding = new BindingSource();
+        BindingSource Binding1 = new BindingSource();
+        BindingSource Binding2 = new BindingSource();
+
         //verifica se foi aberto pelo datagridview
         public static int pessoaHandle = 0;
 
@@ -542,7 +547,6 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
         //Contato da pessoa
         private void preencherContatoPessoa()
         {
-            BindingSource Binding = new BindingSource();
             contatoDataGridView.AutoGenerateColumns = true;
             String query = " SELECT E.NOME SITUAÇÃO, D.NOME TIPO, C.TELEFONE, C.CELULAR, C.EMAIL, C.OBSERVACAO, C.HANDLE" +
                            " FROM PS_PESSOA A" +
@@ -565,7 +569,6 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
         //Preencher endereço da pessoa
         private void PreencherEndereco()
         {
-            BindingSource Binding = new BindingSource();
             enderecoDataGridView.AutoGenerateColumns = true;
             String query = " SELECT C.HANDLE, D.NOME SITUAÇÃO, C.CEP, C.CIDADE, E.NOME ESTADO, C.BAIRRO, C.LOGRADOURO, C.NUMERO, C.REFERENCIA" +
                            " FROM PS_PESSOA A" +
@@ -573,8 +576,8 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
                            " INNER JOIN MD_STATUS D ON D.HANDLE = C.STATUS" +
                            " INNER JOIN MD_ESTADO E ON E.HANDLE = C.ESTADO" +
                            " WHERE A.HANDLE = " + buscarHandlePessoa();
-            Binding.DataSource = connection.DataTable(query);
-            enderecoDataGridView.DataSource = Binding;
+            Binding1.DataSource = connection.DataTable(query);
+            enderecoDataGridView.DataSource = Binding1;
             enderecoDataGridView.Columns[7].Width = 150;
             enderecoDataGridView.Columns[1].Width = 150;
             enderecoDataGridView.Columns[2].Width = 150;
@@ -686,15 +689,13 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
         //Preencher a tabela de anexo
         private void PreencherAnexo()
         {
-            BindingSource Binding = new BindingSource();
             String query = " SELECT A.HANDLE, A.DESCRICAO DESCRIÇÃO, A.NOMEARQUIVO NOME, A.CAMINHO" +
                            " FROM PS_PESSOAANEXO A" +
                            " INNER JOIN PS_PESSOA B ON B.HANDLE = A.PESSOA" +
                            " WHERE B.HANDLE = " + buscarHandlePessoa();
-            Console.WriteLine(query);
             anexoDataGridView.AutoGenerateColumns = true;
-            Binding.DataSource = connection.DataTable(query);
-            anexoDataGridView.DataSource = Binding;
+            Binding2.DataSource = connection.DataTable(query);
+            anexoDataGridView.DataSource = Binding2;
             anexoDataGridView.Columns[0].Width = 0;
             anexoDataGridView.Columns[0].Visible = false;
             anexoDataGridView.Columns[1].Width = 200;
