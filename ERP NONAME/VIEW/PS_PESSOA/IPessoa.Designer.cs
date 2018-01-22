@@ -79,6 +79,7 @@
             this.celularTextBox = new System.Windows.Forms.TextBox();
             this.voltarButton = new System.Windows.Forms.Button();
             this.liberarButton = new System.Windows.Forms.Button();
+            this.Email = new System.Windows.Forms.TabPage();
             this.tabControl.SuspendLayout();
             this.observacaoTabPage.SuspendLayout();
             this.abrangenciaTabPage.SuspendLayout();
@@ -96,6 +97,7 @@
             this.tabControl.Controls.Add(this.abrangenciaTabPage);
             this.tabControl.Controls.Add(this.contatoTabPage);
             this.tabControl.Controls.Add(this.pessoaEnderecoTabpage);
+            this.tabControl.Controls.Add(this.Email);
             this.tabControl.Controls.Add(this.anexoTabPage);
             this.tabControl.Font = new System.Drawing.Font("Arial", 10F);
             this.tabControl.Location = new System.Drawing.Point(6, 126);
@@ -232,7 +234,7 @@
             this.contatoDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Arial", 9F);
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Arial", 10F);
             dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.MenuHighlight;
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.WindowText;
@@ -276,7 +278,7 @@
             this.removerEnderecoButton.FlatAppearance.BorderSize = 0;
             this.removerEnderecoButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.removerEnderecoButton.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.removerEnderecoButton.Location = new System.Drawing.Point(935, 26);
+            this.removerEnderecoButton.Location = new System.Drawing.Point(934, 24);
             this.removerEnderecoButton.Name = "removerEnderecoButton";
             this.removerEnderecoButton.Size = new System.Drawing.Size(24, 25);
             this.removerEnderecoButton.TabIndex = 63;
@@ -289,7 +291,7 @@
             this.adicionarEnderecoButton.FlatAppearance.BorderSize = 0;
             this.adicionarEnderecoButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.adicionarEnderecoButton.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.adicionarEnderecoButton.Location = new System.Drawing.Point(935, 0);
+            this.adicionarEnderecoButton.Location = new System.Drawing.Point(934, -2);
             this.adicionarEnderecoButton.Name = "adicionarEnderecoButton";
             this.adicionarEnderecoButton.Size = new System.Drawing.Size(24, 25);
             this.adicionarEnderecoButton.TabIndex = 62;
@@ -318,7 +320,7 @@
             this.enderecoDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Arial", 9F);
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Arial", 10F);
             dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.MenuHighlight;
             dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.WindowText;
@@ -627,6 +629,15 @@
             this.liberarButton.Visible = false;
             this.liberarButton.Click += new System.EventHandler(this.liberarButtonOnClick);
             // 
+            // Email
+            // 
+            this.Email.Location = new System.Drawing.Point(4, 25);
+            this.Email.Name = "Email";
+            this.Email.Size = new System.Drawing.Size(963, 128);
+            this.Email.TabIndex = 5;
+            this.Email.Text = "E-mail";
+            this.Email.UseVisualStyleBackColor = true;
+            // 
             // IPessoa
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -720,5 +731,6 @@
         private System.Windows.Forms.TabPage anexoTabPage;
         private System.Windows.Forms.DataGridView anexoDataGridView;
         private System.Windows.Forms.Button adicionarArquivoButton;
+        private System.Windows.Forms.TabPage Email;
     }
 }
