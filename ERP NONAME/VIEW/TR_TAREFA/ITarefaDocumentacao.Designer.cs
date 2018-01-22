@@ -189,6 +189,7 @@
             this.Controls.Add(this.tipoComboBox);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.tarefaTextBox);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "ITarefaDocumentacao";
