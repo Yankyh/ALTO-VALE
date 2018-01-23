@@ -99,5 +99,38 @@ namespace ALTO_VALE
             menuButton.Location = new Point(1,46);
             menuTreeView.Visible = false;
         }
+
+        private void AbreEditorSql(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.F11)
+            {
+                TN_TECNOLOGIA.EditorSQL.Tela tela = new TN_TECNOLOGIA.EditorSQL.Tela();
+                tela.ShowDialog();
+            }
+        }
+
+        private void ActiveOnEnter(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                String nodeSelecionado = "";
+                try
+                {
+                    if (menuTreeView.SelectedNode.IsExpanded == false)
+                    {
+                        nodeSelecionado = menuTreeView.SelectedNode.Text;
+                    }
+                }
+                catch (Exception exception)
+                {
+                    MessageBox.Show(exception.ToString());
+                }
+
+                if (nodeSelecionado != "")
+                {
+                    ControleTelas(nodeSelecionado);
+                }
+            }
+        }
     }
 }

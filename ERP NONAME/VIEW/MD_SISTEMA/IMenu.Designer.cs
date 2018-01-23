@@ -41,8 +41,10 @@
             System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("Tarefa", 0, 2, new System.Windows.Forms.TreeNode[] {
             treeNode5});
             System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("Cep", 1, 1);
-            System.Windows.Forms.TreeNode treeNode8 = new System.Windows.Forms.TreeNode("Sistema", 0, 2, new System.Windows.Forms.TreeNode[] {
-            treeNode7});
+            System.Windows.Forms.TreeNode treeNode8 = new System.Windows.Forms.TreeNode("Servidor de Email", 1, 1);
+            System.Windows.Forms.TreeNode treeNode9 = new System.Windows.Forms.TreeNode("Sistema", 0, 2, new System.Windows.Forms.TreeNode[] {
+            treeNode7,
+            treeNode8});
             this.label1 = new System.Windows.Forms.Label();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.menuButton = new System.Windows.Forms.Button();
@@ -115,20 +117,25 @@
             treeNode7.Name = "sistemaCepNode";
             treeNode7.SelectedImageIndex = 1;
             treeNode7.Text = "Cep";
-            treeNode8.ImageIndex = 0;
-            treeNode8.Name = "sistemaNode";
-            treeNode8.SelectedImageIndex = 2;
-            treeNode8.Text = "Sistema";
+            treeNode8.ImageIndex = 1;
+            treeNode8.Name = "ServidorEmail";
+            treeNode8.SelectedImageIndex = 1;
+            treeNode8.Text = "Servidor de Email";
+            treeNode9.ImageIndex = 0;
+            treeNode9.Name = "sistemaNode";
+            treeNode9.SelectedImageIndex = 2;
+            treeNode9.Text = "Sistema";
             this.menuTreeView.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
             treeNode4,
             treeNode6,
-            treeNode8});
+            treeNode9});
             this.menuTreeView.SelectedImageIndex = 0;
             this.menuTreeView.ShowLines = false;
             this.menuTreeView.ShowPlusMinus = false;
             this.menuTreeView.Size = new System.Drawing.Size(214, 732);
             this.menuTreeView.TabIndex = 9;
             this.menuTreeView.DoubleClick += new System.EventHandler(this.MenuTreeViewDoubleClick);
+            this.menuTreeView.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ActiveOnEnter);
             // 
             // Form1
             // 
@@ -150,6 +157,7 @@
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Deactivate += new System.EventHandler(this.MenuFormDeactivate);
             this.Click += new System.EventHandler(this.MenuButtonOnClick);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.AbreEditorSql);
             this.ResumeLayout(false);
             this.PerformLayout();
 

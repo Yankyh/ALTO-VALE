@@ -16,5 +16,10 @@ namespace ALTO_VALE.VIEW.TN_EMAIL
         {
             InitializeComponent();
         }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

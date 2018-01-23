@@ -798,5 +798,10 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
                 iPessoaEndereco.ShowDialog();
             }
         }
+
+        private void NovoEmailOnClick(object sender, EventArgs e)
+        {
+
+        }
     }
 }

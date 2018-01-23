@@ -55,6 +55,7 @@
             this.removerEnderecoButton = new System.Windows.Forms.Button();
             this.adicionarEnderecoButton = new System.Windows.Forms.Button();
             this.enderecoDataGridView = new System.Windows.Forms.DataGridView();
+            this.Email = new System.Windows.Forms.TabPage();
             this.anexoTabPage = new System.Windows.Forms.TabPage();
             this.anexoDataGridView = new System.Windows.Forms.DataGridView();
             this.adicionarArquivoButton = new System.Windows.Forms.Button();
@@ -79,7 +80,7 @@
             this.celularTextBox = new System.Windows.Forms.TextBox();
             this.voltarButton = new System.Windows.Forms.Button();
             this.liberarButton = new System.Windows.Forms.Button();
-            this.Email = new System.Windows.Forms.TabPage();
+            this.button1 = new System.Windows.Forms.Button();
             this.tabControl.SuspendLayout();
             this.observacaoTabPage.SuspendLayout();
             this.abrangenciaTabPage.SuspendLayout();
@@ -87,6 +88,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.contatoDataGridView)).BeginInit();
             this.pessoaEnderecoTabpage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.enderecoDataGridView)).BeginInit();
+            this.Email.SuspendLayout();
             this.anexoTabPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.anexoDataGridView)).BeginInit();
             this.SuspendLayout();
@@ -344,6 +346,16 @@
             this.enderecoDataGridView.Size = new System.Drawing.Size(933, 119);
             this.enderecoDataGridView.TabIndex = 4;
             this.enderecoDataGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.EnderecoCellDoubleClick);
+            // 
+            // Email
+            // 
+            this.Email.Controls.Add(this.button1);
+            this.Email.Location = new System.Drawing.Point(4, 25);
+            this.Email.Name = "Email";
+            this.Email.Size = new System.Drawing.Size(963, 128);
+            this.Email.TabIndex = 5;
+            this.Email.Text = "E-mail";
+            this.Email.UseVisualStyleBackColor = true;
             // 
             // anexoTabPage
             // 
@@ -629,14 +641,18 @@
             this.liberarButton.Visible = false;
             this.liberarButton.Click += new System.EventHandler(this.liberarButtonOnClick);
             // 
-            // Email
+            // button1
             // 
-            this.Email.Location = new System.Drawing.Point(4, 25);
-            this.Email.Name = "Email";
-            this.Email.Size = new System.Drawing.Size(963, 128);
-            this.Email.TabIndex = 5;
-            this.Email.Text = "E-mail";
-            this.Email.UseVisualStyleBackColor = true;
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(934, 3);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(24, 25);
+            this.button1.TabIndex = 63;
+            this.button1.Text = "+";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.NovoEmailOnClick);
             // 
             // IPessoa
             // 
@@ -682,6 +698,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.contatoDataGridView)).EndInit();
             this.pessoaEnderecoTabpage.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.enderecoDataGridView)).EndInit();
+            this.Email.ResumeLayout(false);
             this.anexoTabPage.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.anexoDataGridView)).EndInit();
             this.ResumeLayout(false);
@@ -732,5 +749,6 @@
         private System.Windows.Forms.DataGridView anexoDataGridView;
         private System.Windows.Forms.Button adicionarArquivoButton;
         private System.Windows.Forms.TabPage Email;
+        private System.Windows.Forms.Button button1;
     }
 }

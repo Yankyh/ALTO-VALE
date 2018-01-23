@@ -37,6 +37,11 @@ namespace ALTO_VALE.TN_TECNOLOGIA.Controles
                 GTarefa gTarefa = new GTarefa();
                 gTarefa.ShowDialog();
             }
+            if (tela == "Servidor de Email")
+            {
+                VIEW.TN_EMAIL.IServidorEmail servidor = new VIEW.TN_EMAIL.IServidorEmail();
+                servidor.ShowDialog();
+            }
             //Cep
             if (tela == "Cep")
             {
