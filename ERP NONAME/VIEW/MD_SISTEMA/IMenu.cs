@@ -25,9 +25,7 @@ namespace ALTO_VALE
         public Form1()
         {
             InitializeComponent();
-            menuButton.Location = new Point(1, 46);
             menuTreeView.Visible = false;
-
         }
 
         private void MenuTreeViewDoubleClick(object sender, EventArgs e)
@@ -85,12 +83,10 @@ namespace ALTO_VALE
             if (menuTreeView.Visible == true)
             {
                 menuTreeView.Visible = false;
-                menuButton.Location = new Point(1, 46);
             }
             else
             {
                 menuTreeView.Visible = true;
-                menuButton.Location = new Point(213, 55);
             }
         }
 
@@ -134,6 +130,12 @@ namespace ALTO_VALE
         {
             PADRONIZACAO.Form1 teste = new PADRONIZACAO.Form1();
             teste.ShowDialog();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            ControleDadosMenu controleDadosMenu = new ControleDadosMenu();
+           // controleDadosMenu.GerenciarMenuDataGridView();
         }
     }
 }
