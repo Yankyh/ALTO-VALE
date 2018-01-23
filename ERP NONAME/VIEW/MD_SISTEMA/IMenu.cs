@@ -140,7 +140,7 @@ namespace ALTO_VALE
 
         private void button3_Click_1(object sender, EventArgs e)
         {
-            PADRONIZACAO.Form1 form = new PADRONIZACAO.Form1();
+            PADRONIZACAO.FormPadrao form = new PADRONIZACAO.FormPadrao();
             form.ShowDialog();
         }
     }
