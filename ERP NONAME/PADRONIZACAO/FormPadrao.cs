@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace ALTO_VALE.TN_TECNOLOGIA
+namespace ALTO_VALE.PADRONIZACAO
 {
-    public partial class FormTecnologia : Form
+    public partial class FormPadrao : Form
     {
-        public FormTecnologia()
+        public FormPadrao()
         {
             InitializeComponent();
         }
@@ -23,23 +23,19 @@ namespace ALTO_VALE.TN_TECNOLOGIA
             {
                 this.Close();
             }
-        }
-
-        private void EditorSqlOnClcik(object sender, KeyEventArgs e)
-        {
-            if(e.KeyCode == Keys.F11)
+            else if (e.KeyCode == Keys.F11)
             {
-                TN_TECNOLOGIA.EditorSQL.Tela editor = new EditorSQL.Tela();
+                TN_TECNOLOGIA.EditorSQL.Tela editor = new TN_TECNOLOGIA.EditorSQL.Tela();
                 editor.ShowDialog();
             }
         }
 
         private void RightClick(object sender, MouseEventArgs e)
         {
-            if (e.Button == MouseButtons.Right)
+            if(e.Button == MouseButtons.Right)
             {
-                contextMenuStripPadrao.Enabled = true;
-                contextMenuStripPadrao.Visible = true;
+                contextMenuStripPrincipal.Enabled = true;
+                contextMenuStripPrincipal.Visible = true;
             }
         }
     }

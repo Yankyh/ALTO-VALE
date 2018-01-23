@@ -169,7 +169,7 @@
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Deactivate += new System.EventHandler(this.MenuFormDeactivate);
             this.Click += new System.EventHandler(this.MenuButtonOnClick);
-            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.AbreEditorSql);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ActiveOnEnter);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace ALTO_VALE.VIEW.TN_EMAIL
+namespace ALTO_VALE.PADRONIZACAO
 {
-    public partial class FormTeste : TN_TECNOLOGIA.FormTecnologia
+    public partial class Form1 : FormPadrao
     {
-        public FormTeste()
+        public Form1()
         {
             InitializeComponent();
         }
