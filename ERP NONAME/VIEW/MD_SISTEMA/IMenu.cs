@@ -132,5 +132,11 @@ namespace ALTO_VALE
                 }
             }
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            VIEW.TN_EMAIL.FormTeste teste = new VIEW.TN_EMAIL.FormTeste();
+            teste.ShowDialog();
+        }
     }
 }

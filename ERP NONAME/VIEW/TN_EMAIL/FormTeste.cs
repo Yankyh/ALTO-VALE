@@ -8,18 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace ALTO_VALE.Pasta
+namespace ALTO_VALE.VIEW.TN_EMAIL
 {
-    public partial class Formprincipal : Form
+    public partial class FormTeste : TN_TECNOLOGIA.FormTecnologia
     {
-        public Formprincipal()
+        public FormTeste()
         {
             InitializeComponent();
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }
