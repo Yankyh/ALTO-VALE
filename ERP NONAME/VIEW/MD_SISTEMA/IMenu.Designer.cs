@@ -50,6 +50,9 @@
             this.menuButton = new System.Windows.Forms.Button();
             this.menuTreeView = new System.Windows.Forms.TreeView();
             this.button1 = new System.Windows.Forms.Button();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.button2 = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -74,7 +77,7 @@
             // 
             this.menuButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.menuButton.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.menuButton.Location = new System.Drawing.Point(213, 55);
+            this.menuButton.Location = new System.Drawing.Point(0, 55);
             this.menuButton.Name = "menuButton";
             this.menuButton.Size = new System.Drawing.Size(38, 732);
             this.menuButton.TabIndex = 17;
@@ -88,7 +91,7 @@
             this.menuTreeView.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.menuTreeView.ImageIndex = 0;
             this.menuTreeView.ImageList = this.imageList1;
-            this.menuTreeView.Location = new System.Drawing.Point(0, 55);
+            this.menuTreeView.Location = new System.Drawing.Point(38, 55);
             this.menuTreeView.Name = "menuTreeView";
             treeNode1.ImageIndex = 1;
             treeNode1.Name = "pessoaPessoaNode";
@@ -140,13 +143,31 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(760, 147);
+            this.button1.Location = new System.Drawing.Point(1360, 12);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 18;
             this.button1.Text = "button1";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(258, 55);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(1103, 732);
+            this.dataGridView1.TabIndex = 19;
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(351, 12);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 20;
+            this.button2.Text = "button2";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // Form1
             // 
@@ -155,6 +176,8 @@
             this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
             this.CausesValidation = false;
             this.ClientSize = new System.Drawing.Size(1604, 882);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.menuTreeView);
             this.Controls.Add(this.menuButton);
@@ -170,6 +193,7 @@
             this.Deactivate += new System.EventHandler(this.MenuFormDeactivate);
             this.Click += new System.EventHandler(this.MenuButtonOnClick);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.AbreEditorSql);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -181,6 +205,8 @@
         private System.Windows.Forms.Button menuButton;
         private System.Windows.Forms.TreeView menuTreeView;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Button button2;
     }
 }
 
