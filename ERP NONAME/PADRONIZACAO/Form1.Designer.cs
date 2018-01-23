@@ -1,6 +1,6 @@
-﻿namespace ALTO_VALE.VIEW.TN_EMAIL
+﻿namespace ALTO_VALE.PADRONIZACAO
 {
-    partial class FormTeste
+    partial class Form1
     {
         /// <summary>
         /// Required designer variable.
@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Text = "FormTeste";
+            this.Text = "Form1";
         }
 
         #endregion

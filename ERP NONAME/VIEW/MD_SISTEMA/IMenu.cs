@@ -98,11 +98,7 @@ namespace ALTO_VALE
 
         private void AbreEditorSql(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.F11)
-            {
-                TN_TECNOLOGIA.EditorSQL.Tela tela = new TN_TECNOLOGIA.EditorSQL.Tela();
-                tela.ShowDialog();
-            }
+
         }
 
         private void ActiveOnEnter(object sender, KeyEventArgs e)
@@ -117,6 +113,7 @@ namespace ALTO_VALE
                         nodeSelecionado = menuTreeView.SelectedNode.Text;
                     }
                 }
+                //
                 catch (Exception exception)
                 {
                     MessageBox.Show(exception.ToString());
@@ -131,7 +128,7 @@ namespace ALTO_VALE
 
         private void button1_Click(object sender, EventArgs e)
         {
-            VIEW.TN_EMAIL.FormTeste teste = new VIEW.TN_EMAIL.FormTeste();
+            PADRONIZACAO.Form1 teste = new PADRONIZACAO.Form1();
             teste.ShowDialog();
         }
 

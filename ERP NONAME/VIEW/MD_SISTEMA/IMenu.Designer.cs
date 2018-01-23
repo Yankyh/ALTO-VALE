@@ -194,6 +194,7 @@
             this.Click += new System.EventHandler(this.MenuButtonOnClick);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.AbreEditorSql);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ActiveOnEnter);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -66,7 +66,7 @@
             this.labelSmtptext.Size = new System.Drawing.Size(31, 13);
             this.labelSmtptext.TabIndex = 2;
             this.labelSmtptext.Text = "Smtp";
-            this.labelSmtptext.Click += new System.EventHandler(this.label1_Click);
+           
             // 
             // labelPop
             // 
