@@ -20,8 +20,7 @@ namespace ALTO_VALE.TN_TECNOLOGIA.Controles
             //Pessoa
             if (tela == "Pessoa")
             {
-                GPessoa gPessoa = new GPessoa();
-                gPessoa.ShowDialog();
+                query = "";
             }
             if (tela == "Endereço")
             {
