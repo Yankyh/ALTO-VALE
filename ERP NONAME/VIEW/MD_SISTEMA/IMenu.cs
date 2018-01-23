@@ -137,5 +137,11 @@ namespace ALTO_VALE
             ControleDadosMenu controleDadosMenu = new ControleDadosMenu();
            // controleDadosMenu.GerenciarMenuDataGridView();
         }
+
+        private void button3_Click_1(object sender, EventArgs e)
+        {
+            PADRONIZACAO.Form1 form = new PADRONIZACAO.Form1();
+            form.ShowDialog();
+        }
     }
 }

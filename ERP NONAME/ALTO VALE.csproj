@@ -214,6 +214,9 @@
     <Compile Include="VIEW\TR_TAREFA\ITarefaEncaminhamento.Designer.cs">
       <DependentUpon>ITarefaEncaminhamento.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="PADRONIZACAO\Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="PADRONIZACAO\FormPadrao.resx">
       <DependentUpon>FormPadrao.cs</DependentUpon>
     </EmbeddedResource>
