@@ -17,18 +17,23 @@ namespace ALTO_VALE.PADRONIZACAO
             InitializeComponent();
         }
 
-        private void EscOnClick(object sender, KeyEventArgs e)
+      
+
+        protected override bool ProcessDialogKey(Keys keyData)
         {
-            if (e.KeyCode == Keys.Escape)
+            switch (keyData)
             {
-                this.Close();
+                case Keys.F11:
+                    TN_TECNOLOGIA.EditorSQL.Tela editor = new TN_TECNOLOGIA.EditorSQL.Tela();
+                    editor.ShowDialog();
+                    return true;
+                case Keys.Escape:
+                    this.Close();
+                    return true;
             }
-            else if (e.KeyCode == Keys.F11)
-            {
-                TN_TECNOLOGIA.EditorSQL.Tela editor = new TN_TECNOLOGIA.EditorSQL.Tela();
-                editor.ShowDialog();
-            }
+            return base.ProcessDialogKey(keyData);
         }
+
 
         private void RightClick(object sender, MouseEventArgs e)
         {
