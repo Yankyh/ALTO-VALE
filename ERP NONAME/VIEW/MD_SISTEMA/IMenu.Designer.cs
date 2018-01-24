@@ -56,6 +56,7 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.menuDataGridView = new System.Windows.Forms.DataGridView();
+            this.adicionarButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.menuDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -157,7 +158,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(351, 12);
+            this.button2.Location = new System.Drawing.Point(830, 12);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 20;
@@ -167,7 +168,7 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(432, 12);
+            this.button3.Location = new System.Drawing.Point(911, 12);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(75, 23);
             this.button3.TabIndex = 21;
@@ -211,6 +212,16 @@
             this.menuDataGridView.TabIndex = 22;
             this.menuDataGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.MenuDataGridViewCellDoubleClick);
             // 
+            // adicionarButton
+            // 
+            this.adicionarButton.Location = new System.Drawing.Point(275, 5);
+            this.adicionarButton.Name = "adicionarButton";
+            this.adicionarButton.Size = new System.Drawing.Size(104, 47);
+            this.adicionarButton.TabIndex = 23;
+            this.adicionarButton.Text = "Adicionar";
+            this.adicionarButton.UseVisualStyleBackColor = true;
+            this.adicionarButton.Click += new System.EventHandler(this.AdicionarButtonOnClick);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -218,6 +229,7 @@
             this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
             this.CausesValidation = false;
             this.ClientSize = new System.Drawing.Size(1904, 1041);
+            this.Controls.Add(this.adicionarButton);
             this.Controls.Add(this.menuDataGridView);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
@@ -252,6 +264,7 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.DataGridView menuDataGridView;
+        private System.Windows.Forms.Button adicionarButton;
     }
 }
 

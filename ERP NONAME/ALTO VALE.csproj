@@ -111,7 +111,7 @@
       <DependentUpon>GiantForm.cs</DependentUpon>
     </Compile>
     <Compile Include="TN_TECNOLOGIA\Controles\Control.cs" />
-    <Compile Include="TN_TECNOLOGIA\Controles\ControleDadosMenu.cs" />
+    <Compile Include="TN_TECNOLOGIA\Controles\ControleTelaMenuAdicionar.cs" />
     <Compile Include="TN_TECNOLOGIA\Controles\ControleTelaMenu.cs" />
     <Compile Include="TN_TECNOLOGIA\EditorSQL\Tela.cs">
       <SubType>Form</SubType>
@@ -122,12 +122,6 @@
     <Compile Include="TN_TECNOLOGIA\Email\EnviaEmail.cs" />
     <Compile Include="TN_TECNOLOGIA\Email\TEmail.cs" />
     <Compile Include="TN_TECNOLOGIA\Logins\TLoginInfo.cs" />
-    <Compile Include="VIEW\MD_SISTEMA\GCep.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="VIEW\MD_SISTEMA\GCep.Designer.cs">
-      <DependentUpon>GCep.cs</DependentUpon>
-    </Compile>
     <Compile Include="VIEW\MD_SISTEMA\IMenu.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -147,12 +141,6 @@
     </Compile>
     <Compile Include="VIEW\MD_SISTEMA\TelaPadrao.Designer.cs">
       <DependentUpon>TelaPadrao.cs</DependentUpon>
-    </Compile>
-    <Compile Include="VIEW\PS_PESSOA\GPessoa.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="VIEW\PS_PESSOA\GPessoa.Designer.cs">
-      <DependentUpon>GPessoa.cs</DependentUpon>
     </Compile>
     <Compile Include="VIEW\PS_PESSOA\IPessoa.cs">
       <SubType>Form</SubType>
@@ -183,12 +171,6 @@
     </Compile>
     <Compile Include="VIEW\TN_EMAIL\IServidorEmail.Designer.cs">
       <DependentUpon>IServidorEmail.cs</DependentUpon>
-    </Compile>
-    <Compile Include="VIEW\TR_TAREFA\GTarefa.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="VIEW\TR_TAREFA\GTarefa.Designer.cs">
-      <DependentUpon>GTarefa.cs</DependentUpon>
     </Compile>
     <Compile Include="VIEW\TR_TAREFA\ITarefa.cs">
       <SubType>Form</SubType>
@@ -229,9 +211,6 @@
     <EmbeddedResource Include="TN_TECNOLOGIA\EditorSQL\Tela.resx">
       <DependentUpon>Tela.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="VIEW\MD_SISTEMA\GCep.resx">
-      <DependentUpon>GCep.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="VIEW\MD_SISTEMA\ICep.resx">
       <DependentUpon>ICep.cs</DependentUpon>
     </EmbeddedResource>
@@ -251,9 +230,6 @@
     <EmbeddedResource Include="VIEW\MD_SISTEMA\TelaPadrao.resx">
       <DependentUpon>TelaPadrao.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="VIEW\PS_PESSOA\GPessoa.resx">
-      <DependentUpon>GPessoa.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="VIEW\PS_PESSOA\IPessoa.resx">
       <DependentUpon>IPessoa.cs</DependentUpon>
     </EmbeddedResource>
@@ -268,9 +244,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="VIEW\TN_EMAIL\IServidorEmail.resx">
       <DependentUpon>IServidorEmail.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="VIEW\TR_TAREFA\GTarefa.resx">
-      <DependentUpon>GTarefa.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="VIEW\TR_TAREFA\ITarefa.resx">
       <DependentUpon>ITarefa.cs</DependentUpon>

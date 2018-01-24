@@ -31,17 +31,20 @@ namespace ALTO_VALE
         {
             InitializeComponent();
             connection.Conectar();
+            adicionarButton.Visible = false;
             menuTreeView.Visible = false;
         }
 
         private void MenuTreeViewDoubleClick(object sender, EventArgs e)
         {
             String nodeSelecionado = "";
+ 
             try
             {
                 if (menuTreeView.SelectedNode.IsExpanded == false)
                 {
                     nodeSelecionado = menuTreeView.SelectedNode.Text;
+                    adicionarButton.Visible = true;
                 }
             }
             catch (Exception exception)
@@ -63,9 +66,6 @@ namespace ALTO_VALE
             controleTelaMenu.ControleTela(tela);
         }
 
-
-
-
         private void button3_Click(object sender, EventArgs e)
         {
             TN_TECNOLOGIA.EditorSQL.Tela Tela = new TN_TECNOLOGIA.EditorSQL.Tela();
@@ -74,8 +74,8 @@ namespace ALTO_VALE
 
         private void tarefaButtonOnClick(object sender, EventArgs e)
         {
-            GTarefa gTarefa = new GTarefa();
-            gTarefa.ShowDialog();
+            //GTarefa gTarefa = new GTarefa();
+            //gTarefa.ShowDialog();
         }
 
         private void TarefaDiretoOnClick(object sender, EventArgs e)
@@ -140,7 +140,7 @@ namespace ALTO_VALE
 
         private void button2_Click(object sender, EventArgs e)
         {
-            ControleDadosMenu controleDadosMenu = new ControleDadosMenu();
+            ControleTelaMenuAdicionar controleDadosMenu = new ControleTelaMenuAdicionar();
             // controleDadosMenu.GerenciarMenuDataGridView();
         }
 
@@ -149,18 +149,6 @@ namespace ALTO_VALE
             PADRONIZACAO.FormPadrao form = new PADRONIZACAO.FormPadrao();
             form.ShowDialog();
         }
-
-
-
-
-
-
-
-
-
-
-
-
         
         //Controle do datagridview
         private void GerenciarMenuDataGridView(String tela)
@@ -280,6 +268,12 @@ namespace ALTO_VALE
             ControleTelaMenu.handleOrigem = BuscarHandleDataGridView();
             ControleTelaMenu controleTelaMenu = new ControleTelaMenu();
             controleTelaMenu.ControleTela(telaSelecionada);
+        }
+
+        private void AdicionarButtonOnClick(object sender, EventArgs e)
+        {
+            ControleTelaMenuAdicionar controleTelaMenuAdicionar = new ControleTelaMenuAdicionar();
+            controleTelaMenuAdicionar.ControleTelaAdicionar(telaSelecionada);
         }
     }
 }
