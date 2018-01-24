@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace ALTO_VALE.VIEW.TN_EMAIL
 {
-    public partial class IServidorEmail : Form
+    public partial class IServidorEmail : PADRONIZACAO.FormPadrao
     {
         public IServidorEmail()
         {

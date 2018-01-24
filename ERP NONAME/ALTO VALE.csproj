@@ -86,12 +86,6 @@
     <Compile Include="DAL\Connection.cs" />
     <Compile Include="DAL\CSistema.cs" />
     <Compile Include="DAL\StatusFilter.cs" />
-    <Compile Include="PADRONIZACAO\Form1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="PADRONIZACAO\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </Compile>
     <Compile Include="PADRONIZACAO\FormPadrao.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -214,9 +208,6 @@
     <Compile Include="VIEW\TR_TAREFA\ITarefaEncaminhamento.Designer.cs">
       <DependentUpon>ITarefaEncaminhamento.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="PADRONIZACAO\Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="PADRONIZACAO\FormPadrao.resx">
       <DependentUpon>FormPadrao.cs</DependentUpon>
     </EmbeddedResource>

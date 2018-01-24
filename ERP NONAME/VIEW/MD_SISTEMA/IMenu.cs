@@ -128,11 +128,7 @@ namespace ALTO_VALE
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            PADRONIZACAO.Form1 teste = new PADRONIZACAO.Form1();
-            teste.ShowDialog();
-        }
+     
 
         private void button2_Click(object sender, EventArgs e)
         {
@@ -140,24 +136,32 @@ namespace ALTO_VALE
             // controleDadosMenu.GerenciarMenuDataGridView();
         }
 
-        private void button3_Click_1(object sender, EventArgs e)
+    
+
+        // Esse método é responsável pelos key events, ( precisa dar override no processdialog pois o c# é bugado )
+        protected override bool ProcessDialogKey(Keys keyData)
         {
-            PADRONIZACAO.FormPadrao form = new PADRONIZACAO.FormPadrao();
-            form.ShowDialog();
+            switch (keyData)
+            {
+                case Keys.F11:
+                    TN_TECNOLOGIA.EditorSQL.Tela editor = new TN_TECNOLOGIA.EditorSQL.Tela();
+                    editor.ShowDialog();
+                    return true;
+            }
+            return base.ProcessDialogKey(keyData);
         }
 
-
-
-
-
-
-
-
-
-
-
-
         
+
+
+
+
+
+
+
+
+
+
         //Controle do datagridview
         private void GerenciarMenuDataGridView(String tela)
         {
@@ -252,6 +256,22 @@ namespace ALTO_VALE
         private void MenuFormClosed(object sender, FormClosedEventArgs e)
         {
             connection.Desconectar();
+        }
+        
+
+        private void editorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            TN_TECNOLOGIA.EditorSQL.Tela tela = new Tela();
+            tela.ShowDialog();
+        }
+
+        private void ContextOnRightClick(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                contextMenuStripPadrao.Enabled = true;
+                contextMenuStripPadrao.Visible = true;
+            }
         }
     }
 }
