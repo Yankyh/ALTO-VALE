@@ -179,6 +179,7 @@
             this.menuDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.menuDataGridView.Size = new System.Drawing.Size(1617, 732);
             this.menuDataGridView.TabIndex = 22;
+            this.menuDataGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.MenuDataGridViewCellDoubleClick);
             // 
             // contextMenuStripPadrao
             // 

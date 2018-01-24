@@ -77,7 +77,6 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
             cpfCnpjSelecionado = pessoaDataGridView.CurrentRow.Cells[3].Value.ToString();
             //Chama a função de busca
             buscarHandlePessoa(cpfCnpjSelecionado);
-            
         }
 
         //Busca o handle da pessoa clicada
