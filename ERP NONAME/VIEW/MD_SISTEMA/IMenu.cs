@@ -23,6 +23,10 @@ namespace ALTO_VALE
     {
         // ControleTelaMenu controleTelaMenu = new ControleTelaMenu();
         Connection connection = new Connection();
+
+        //Serve para saber qual datagridview esta selecionado
+        String telaSelecionada = "";
+
         public Form1()
         {
             InitializeComponent();
@@ -161,6 +165,7 @@ namespace ALTO_VALE
         //Controle do datagridview
         private void GerenciarMenuDataGridView(String tela)
         {
+            telaSelecionada = tela;
             String query = "";
             BindingSource Binding = new BindingSource();
 
@@ -168,7 +173,7 @@ namespace ALTO_VALE
             if (tela == "Pessoa")
             {
                 menuDataGridView.AutoGenerateColumns = true;
-                query = " SELECT B.NOME SITUAÇÃO, A.RAZAOSOCIAL AS 'RAZÃO SOCIAL', A.APELIDO, A.CPFCNPJ AS 'CPF/CNPJ', A.TELEFONE, C.CIDADE, D.SIGLA ESTADO, C.LOGRADOURO" +
+                query = " SELECT A.HANDLE, B.NOME SITUAÇÃO, A.RAZAOSOCIAL AS 'RAZÃO SOCIAL', A.APELIDO, A.CPFCNPJ AS 'CPF/CNPJ', A.TELEFONE, C.CIDADE, D.SIGLA ESTADO, C.LOGRADOURO" +
                                " FROM PS_PESSOA A" +
                                " INNER JOIN MD_STATUS B ON B.HANDLE = A.STATUS " +
                                " LEFT JOIN PS_PESSOAENDERECO C ON C.HANDLE = A.ENDERECO" +
@@ -176,12 +181,13 @@ namespace ALTO_VALE
                 Binding.DataSource = connection.DataTable(query);
                 menuDataGridView.DataSource = Binding;
 
-                menuDataGridView.Columns[0].Width = 150;
-                menuDataGridView.Columns[1].Width = 300;
+                menuDataGridView.Columns[0].Visible = false;
+                menuDataGridView.Columns[1].Width = 150;
                 menuDataGridView.Columns[2].Width = 300;
-                menuDataGridView.Columns[3].Width = 150;
-                menuDataGridView.Columns[4].Width = 130;
-                menuDataGridView.Columns[7].Width = 230;
+                menuDataGridView.Columns[3].Width = 300;
+                menuDataGridView.Columns[4].Width = 150;
+                menuDataGridView.Columns[5].Width = 130;
+                menuDataGridView.Columns[8].Width = 230;
                 menuDataGridView.AllowUserToResizeRows = false;
             }
             if (tela == "Endereço")
@@ -232,19 +238,19 @@ namespace ALTO_VALE
             if (tela == "Cep")
             {
                 menuDataGridView.AutoGenerateColumns = true;
-                query = " SELECT B.NOME, A.CEP, A.PAIS, A.ESTADO, A.CIDADE, A.BAIRRO, A.LOGRADOURO, A.HANDLE" +
+                query = " SELECT A.HANDLE, B.NOME, A.CEP, A.PAIS, A.ESTADO, A.CIDADE, A.BAIRRO, A.LOGRADOURO" +
                                " FROM MD_CEP A" +
                                " INNER JOIN MD_STATUS B ON B.HANDLE = A.STATUS";
                 Binding.DataSource = connection.DataTable(query);
                 menuDataGridView.DataSource = Binding;
 
-                menuDataGridView.Columns[0].Width = 150;
                 menuDataGridView.Columns[1].Width = 150;
                 menuDataGridView.Columns[2].Width = 150;
                 menuDataGridView.Columns[3].Width = 150;
-                menuDataGridView.Columns[4].Width = 200;
-                menuDataGridView.Columns[6].Width = 300;
-                menuDataGridView.Columns[7].Visible = false;
+                menuDataGridView.Columns[4].Width = 150;
+                menuDataGridView.Columns[5].Width = 200;
+                menuDataGridView.Columns[7].Width = 300;
+                menuDataGridView.Columns[0].Visible = false;
                 menuDataGridView.AllowUserToResizeRows = false;
             }
         }
@@ -252,6 +258,28 @@ namespace ALTO_VALE
         private void MenuFormClosed(object sender, FormClosedEventArgs e)
         {
             connection.Desconectar();
+        }
+
+        private int BuscarHandleDataGridView()
+        {
+           int handleRegistroSelecionado = 0;
+
+            try
+            {
+                handleRegistroSelecionado = Convert.ToInt32(menuDataGridView.CurrentRow.Cells[0].Value);
+            }
+            catch(Exception e)
+            {
+                MessageBox.Show(e.ToString());
+            }
+            return handleRegistroSelecionado;
+        }
+        private void MenuDataGridViewCellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            //Passa um handle de origem para abrir o formulário
+            ControleTelaMenu.handleOrigem = BuscarHandleDataGridView();
+            ControleTelaMenu controleTelaMenu = new ControleTelaMenu();
+            controleTelaMenu.ControleTela(telaSelecionada);
         }
     }
 }

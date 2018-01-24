@@ -1,4 +1,5 @@
-﻿using ALTO_VALE.VIEW.MD_SISTEMA;
+﻿using ALTO_VALE.DAL;
+using ALTO_VALE.VIEW.MD_SISTEMA;
 using ALTO_VALE.VIEW.PS_PESSOA;
 using ALTO_VALE.VIEW.TR_TAREFA;
 using System;
@@ -6,20 +7,23 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace ALTO_VALE.TN_TECNOLOGIA.Controles
 {
     class ControleTelaMenu
     {
-
+        Connection connection = new Connection();
+        public static int handleOrigem = 0;
 
         public void ControleTela(String tela)
         {
+            connection.Conectar();
+
             //Pessoa
             if (tela == "Pessoa")
             {
-                GPessoa gPessoa = new GPessoa();
-                gPessoa.ShowDialog();
+                PSPessoaFormulario(handleOrigem);
             }
             if (tela == "Endereço")
             {
@@ -48,10 +52,19 @@ namespace ALTO_VALE.TN_TECNOLOGIA.Controles
                 GCep gCep = new GCep();
                 gCep.ShowDialog();
             }
+            connection.Desconectar();
         }
 
 
-
+        //Controla as informações enviadas para as telas 
+        //Pessoa
+        private void PSPessoaFormulario(int handle)
+        {
+            //Envia para a outra tela o registro
+            IPessoa.pessoaHandle = handle;
+            IPessoa iPessoa = new IPessoa();
+            iPessoa.ShowDialog();
+        }
 
 
 
