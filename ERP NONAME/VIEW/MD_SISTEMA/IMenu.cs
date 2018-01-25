@@ -155,17 +155,6 @@ namespace ALTO_VALE
             return base.ProcessDialogKey(keyData);
         }
 
-        
-
-
-
-
-
-
-
-
-
-
         //Controle do datagridview
         private void GerenciarMenuDataGridView(String tela)
         {
@@ -308,6 +297,9 @@ namespace ALTO_VALE
             controleTelaMenuAdicionar.ControleTelaAdicionar(telaSelecionada);
         }
 
-
+        private void MenuFormActivated(object sender, EventArgs e)
+        {
+            GerenciarMenuDataGridView(telaSelecionada);
+        }
     }
 }

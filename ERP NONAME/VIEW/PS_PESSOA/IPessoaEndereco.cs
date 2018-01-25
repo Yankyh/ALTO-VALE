@@ -419,13 +419,13 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
                 {
                     //Controle de status
                     cepComboBox.Enabled = true;
-                    cidadeTextBox.Enabled = true;
+                    cidadeTextBox.ReadOnly = false;
                     estadoComboBox.Enabled = true;
-                    bairroTextBox.Enabled = true;
-                    logradouroTextBox.Enabled = true;
-                    numeroTextBox.Enabled = true;
-                    referenciaTextBox.Enabled = true;
-                    ObservacaoTextBox.Enabled = true;
+                    bairroTextBox.ReadOnly = false;
+                    logradouroTextBox.ReadOnly = false;
+                    numeroTextBox.ReadOnly = false;
+                    referenciaTextBox.ReadOnly = false;
+                    ObservacaoTextBox.ReadOnly = false;
                     //Controle de botões (Criar classe para isso)
                     liberarButton.Visible = true;
                     cancelarButton.Visible = true;
@@ -440,13 +440,13 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
                     {
                         //Caso esteja ativo, não permite alterar antes de voltar o registro
                         cepComboBox.Enabled = false;
-                        cidadeTextBox.Enabled = false;
+                        cidadeTextBox.ReadOnly = true;
                         estadoComboBox.Enabled = false;
-                        bairroTextBox.Enabled = false;
-                        logradouroTextBox.Enabled = false;
-                        numeroTextBox.Enabled = false;
-                        referenciaTextBox.Enabled = false;
-                        ObservacaoTextBox.Enabled = false;
+                        bairroTextBox.ReadOnly = true;
+                        logradouroTextBox.ReadOnly = true; 
+                        numeroTextBox.ReadOnly = true;
+                        referenciaTextBox.ReadOnly = true;
+                        ObservacaoTextBox.ReadOnly = true;
                         //Controle de botões (Criar classe para isso)
                         gravarButton.Visible = false;
                         cancelarButton.Visible = false;
@@ -460,13 +460,13 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
                         {
                             //Caso esteja cancelado, não permite alterar antes de voltar o registro
                             cepComboBox.Enabled = false;
-                            cidadeTextBox.Enabled = false;
+                            cidadeTextBox.ReadOnly = true;
                             estadoComboBox.Enabled = false;
-                            bairroTextBox.Enabled = false;
-                            logradouroTextBox.Enabled = false;
-                            numeroTextBox.Enabled = false;
-                            referenciaTextBox.Enabled = false;
-                            ObservacaoTextBox.Enabled = false;
+                            bairroTextBox.ReadOnly = true;
+                            logradouroTextBox.ReadOnly = true;
+                            numeroTextBox.ReadOnly = true;
+                            referenciaTextBox.ReadOnly = true;
+                            ObservacaoTextBox.ReadOnly = true;
                             //Controle de botões (Criar classe para isso)
                             gravarButton.Visible = false;
                             cancelarButton.Visible = false;

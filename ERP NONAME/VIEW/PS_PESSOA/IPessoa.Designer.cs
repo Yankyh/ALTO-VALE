@@ -56,6 +56,7 @@
             this.adicionarEnderecoButton = new System.Windows.Forms.Button();
             this.enderecoDataGridView = new System.Windows.Forms.DataGridView();
             this.Email = new System.Windows.Forms.TabPage();
+            this.button1 = new System.Windows.Forms.Button();
             this.anexoTabPage = new System.Windows.Forms.TabPage();
             this.anexoDataGridView = new System.Windows.Forms.DataGridView();
             this.adicionarArquivoButton = new System.Windows.Forms.Button();
@@ -80,7 +81,7 @@
             this.celularTextBox = new System.Windows.Forms.TextBox();
             this.voltarButton = new System.Windows.Forms.Button();
             this.liberarButton = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.funcionarioCheckBox = new System.Windows.Forms.CheckBox();
             this.tabControl.SuspendLayout();
             this.observacaoTabPage.SuspendLayout();
             this.abrangenciaTabPage.SuspendLayout();
@@ -134,6 +135,7 @@
             // 
             this.abrangenciaTabPage.BackColor = System.Drawing.SystemColors.Window;
             this.abrangenciaTabPage.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.abrangenciaTabPage.Controls.Add(this.funcionarioCheckBox);
             this.abrangenciaTabPage.Controls.Add(this.orgaoPublicoCheckBox);
             this.abrangenciaTabPage.Controls.Add(this.fornecedorCheckBox);
             this.abrangenciaTabPage.Controls.Add(this.ClienteCheckBox);
@@ -357,6 +359,19 @@
             this.Email.Text = "E-mail";
             this.Email.UseVisualStyleBackColor = true;
             // 
+            // button1
+            // 
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(934, 3);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(24, 25);
+            this.button1.TabIndex = 63;
+            this.button1.Text = "+";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.NovoEmailOnClick);
+            // 
             // anexoTabPage
             // 
             this.anexoTabPage.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
@@ -390,7 +405,7 @@
             this.anexoDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Arial", 10F);
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Arial", 9F);
             dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.MenuHighlight;
             dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.WindowText;
@@ -641,18 +656,16 @@
             this.liberarButton.Visible = false;
             this.liberarButton.Click += new System.EventHandler(this.liberarButtonOnClick);
             // 
-            // button1
+            // funcionarioCheckBox
             // 
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(934, 3);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(24, 25);
-            this.button1.TabIndex = 63;
-            this.button1.Text = "+";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.NovoEmailOnClick);
+            this.funcionarioCheckBox.AutoSize = true;
+            this.funcionarioCheckBox.Font = new System.Drawing.Font("Arial", 9F);
+            this.funcionarioCheckBox.Location = new System.Drawing.Point(119, 16);
+            this.funcionarioCheckBox.Name = "funcionarioCheckBox";
+            this.funcionarioCheckBox.Size = new System.Drawing.Size(91, 19);
+            this.funcionarioCheckBox.TabIndex = 3;
+            this.funcionarioCheckBox.Text = "Funcionário";
+            this.funcionarioCheckBox.UseVisualStyleBackColor = true;
             // 
             // IPessoa
             // 
@@ -750,5 +763,6 @@
         private System.Windows.Forms.Button adicionarArquivoButton;
         private System.Windows.Forms.TabPage Email;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.CheckBox funcionarioCheckBox;
     }
 }

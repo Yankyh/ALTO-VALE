@@ -61,7 +61,7 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
         private void alterarRegistroPessoa(String situacao)
         {
             String apelido = "", razaoSocial = "", email = "", cpfCnpj = "", telefone = "", celular = "", observacao = "";
-            Boolean ehCliente = false, ehFornecedor = false, ehOrgaoPublico = false;
+            Boolean ehCliente = false, ehFornecedor = false, ehOrgaoPublico = false, ehFuncionario = false;
             int tipoPessoa = 0, cepSelecionadoHandle = 0;
             apelido = apelidoTextBox.Text;
             razaoSocial = razaoSocialTextBox.Text;
@@ -75,6 +75,7 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
             ehCliente = ClienteCheckBox.Checked;
             ehFornecedor = fornecedorCheckBox.Checked;
             ehOrgaoPublico = orgaoPublicoCheckBox.Checked;
+            ehFuncionario = funcionarioCheckBox.Checked;
             int handlePessoa = 0;
             handlePessoa = buscarHandlePessoa();
             //Verifica se o registro já foi gravado alguma vez
@@ -83,7 +84,7 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
                 String query = "UPDATE PS_PESSOA SET STATUS = 3, APELIDO = '" + apelido + "', RAZAOSOCIAL = '" + razaoSocial + "'," +
                                      " EMAIL = '" + email + "', CPFCNPJ = '" + cpfCnpj + "', TIPO = " + tipoPessoaHandle() + ", " +
                                      " TELEFONE = '" + telefone + "', CELULAR = '" + celular + "', OBSERVACAO = '" + observacao + "'," +
-                                     " EHCLIENTE = '" + ehCliente + "', EHFORNECEDOR = '" + ehFornecedor + "', EHORGAOPUBLICO = '" + ehOrgaoPublico + "'" +
+                                     " EHCLIENTE = '" + ehCliente + "', EHFORNECEDOR = '" + ehFornecedor + "', EHORGAOPUBLICO = '" + ehOrgaoPublico + "', EHFUNCIONARIO = '"+ehFuncionario+"'" +
                                      " WHERE HANDLE = " + buscarHandlePessoa();
                 connection.Inserir(query);
                 //Ativar Endereço
@@ -320,8 +321,10 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
 
             //Preenche o form com as informações da pessoa selecionada
             String apelido = "", razaoSocial = "", email = "", cpfCnpj = "", telefone = "", celular = "", observacao = "", tipo = "", situacao = "", cep = "";
+            //Abrangencia
+            String ehFuncionario = "", ehFornecedor = "", ehOrgaoPublico = "", ehCliente = "";
 
-            String query = " SELECT C.NOME SITUACAO, A.APELIDO, A.RAZAOSOCIAL, B.NOME TIPO, A.CPFCNPJ, A.TELEFONE, A.CELULAR, A.EMAIL, A.OBSERVACAO, D.CEP" +
+            String query = " SELECT C.NOME SITUACAO, A.APELIDO, A.RAZAOSOCIAL, B.NOME TIPO, A.CPFCNPJ, A.TELEFONE, A.CELULAR, A.EMAIL, A.OBSERVACAO, D.CEP, A.EHCLIENTE, A.EHFUNCIONARIO, A.EHFORNECEDOR, A.EHORGAOPUBLICO" +
                            " FROM PS_PESSOA A" +
                            " INNER JOIN PS_PESSOATIPO B ON B.HANDLE = A.TIPO" +
                            " INNER JOIN MD_STATUS C ON C.HANDLE = A.STATUS" +
@@ -341,6 +344,12 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
                 observacao = (reader["OBSERVACAO"].ToString());
                 situacao = (reader["SITUACAO"].ToString());
                 cep = (reader["CEP"].ToString());
+
+                //Abrangencia
+                ehCliente = (reader["EHCLIENTE"].ToString());
+                ehFuncionario = (reader["EHFUNCIONARIO"].ToString());
+                ehOrgaoPublico = (reader["EHORGAOPUBLICO"].ToString());
+                ehFornecedor = (reader["EHFORNECEDOR"].ToString());
             }
             reader.Close();
 
@@ -355,11 +364,26 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
             telefoneTextBox.Text = telefone;
             celularTextBox.Text = celular;
             ObservacaoTextBox.Text = observacao;
-            //Preenche o endereço
+            //Preenche a abrangência
+            ClienteCheckBox.Checked = VerificaFlags(ehCliente);
+            funcionarioCheckBox.Checked = VerificaFlags(ehFuncionario);
+            fornecedorCheckBox.Checked = VerificaFlags(ehFornecedor);
+            orgaoPublicoCheckBox.Checked = VerificaFlags(ehOrgaoPublico);
             //Preenche o contato
             preencherContatoPessoa();
 
             ControleDeStatus();
+        }
+        private Boolean VerificaFlags(String texto)
+        {
+            if (texto  == "True")
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         private void voltarButtonOnClick(object sender, EventArgs e)
@@ -457,6 +481,7 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
                     ClienteCheckBox.Enabled = true;
                     fornecedorCheckBox.Enabled = true;
                     orgaoPublicoCheckBox.Enabled = true;
+                    funcionarioCheckBox.Enabled = true;
 
                     //Controle de botões (Criar classe para isso)
                     liberarButton.Visible = true;
@@ -488,6 +513,7 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
                         ClienteCheckBox.Enabled = false;
                         fornecedorCheckBox.Enabled = false;
                         orgaoPublicoCheckBox.Enabled = false;
+                        funcionarioCheckBox.Enabled = false;
                         //Controle de botões (Criar classe para isso)
                         gravarButton.Visible = false;
                         cancelarButton.Visible = false;
@@ -517,6 +543,7 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
                             ClienteCheckBox.Enabled = false;
                             fornecedorCheckBox.Enabled = false;
                             orgaoPublicoCheckBox.Enabled = false;
+                            funcionarioCheckBox.Enabled = false;
                             //Controle de botões (Criar classe para isso)
                             gravarButton.Visible = false;
                             cancelarButton.Visible = false;
