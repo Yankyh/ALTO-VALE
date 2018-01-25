@@ -109,27 +109,7 @@ namespace ALTO_VALE
 
         private void ActiveOnEnter(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter)
-            {
-                String nodeSelecionado = "";
-                try
-                {
-                    if (menuTreeView.SelectedNode.IsExpanded == false)
-                    {
-                        nodeSelecionado = menuTreeView.SelectedNode.Text;
-                    }
-                }
-                //
-                catch (Exception exception)
-                {
-                    MessageBox.Show(exception.ToString());
-                }
-
-                if (nodeSelecionado != "")
-                {
-                    ControleTelas(nodeSelecionado);
-                }
-            }
+          
         }
 
      
@@ -160,12 +140,13 @@ namespace ALTO_VALE
         {
             telaSelecionada = tela;
             String query = "";
+            menuDataGridView.DataSource = null;
             BindingSource Binding = new BindingSource();
+            
 
             //Pessoa
             if (tela == "Pessoa")
             {
-                menuDataGridView.AutoGenerateColumns = true;
                 query = " SELECT A.HANDLE, B.NOME SITUAÇÃO, A.RAZAOSOCIAL AS 'RAZÃO SOCIAL', A.APELIDO, A.CPFCNPJ AS 'CPF/CNPJ', A.TELEFONE, C.CIDADE, D.SIGLA ESTADO, C.LOGRADOURO" +
                                " FROM PS_PESSOA A" +
                                " INNER JOIN MD_STATUS B ON B.HANDLE = A.STATUS " +
@@ -219,8 +200,6 @@ namespace ALTO_VALE
                 menuDataGridView.Columns[7].Width = 120;
                 menuDataGridView.Columns[8].Width = 130;
                 menuDataGridView.Columns[9].Width = 150;
-
-                menuDataGridView.AllowUserToResizeRows = false;
             }
             if (tela == "Servidor de Email")
             {
@@ -244,7 +223,6 @@ namespace ALTO_VALE
                 menuDataGridView.Columns[5].Width = 200;
                 menuDataGridView.Columns[7].Width = 300;
                 menuDataGridView.Columns[0].Visible = false;
-                menuDataGridView.AllowUserToResizeRows = false;
             }
         }
 
