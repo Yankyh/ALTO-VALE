@@ -461,8 +461,8 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
                 adicionarEnderecoButton.Visible = true;
                 removerContatoButton.Visible = true;
                 removerEnderecoButton.Visible = true;
-                liberarButton.Location = new Point(770, 286);
-                cancelarButton.Location = new Point(874, 286);
+                liberarButton.Location = new Point(767, 271);
+                cancelarButton.Location = new Point(871, 271);
             }
             else
             {
@@ -493,8 +493,8 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
                     removerContatoButton.Visible = true;
                     removerEnderecoButton.Visible = true;
                     gravarButton.Visible = false;
-                    liberarButton.Location = new Point(770, 286);
-                    cancelarButton.Location = new Point(874, 286);
+                    liberarButton.Location = new Point(767, 271);
+                    cancelarButton.Location = new Point(871, 271);
                 }
                 else
                 {
@@ -524,7 +524,7 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
                         removerContatoButton.Visible = true;
                         removerEnderecoButton.Visible = true;
                         liberarButton.Visible = false;
-                        voltarButton.Location = new Point(874, 286);
+                        voltarButton.Location = new Point(871, 271);
                     }
                     else
                     {
@@ -554,7 +554,7 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
                             adicionarEnderecoButton.Visible = false;
                             removerContatoButton.Visible = false;
                             removerEnderecoButton.Visible = false;
-                            voltarButton.Location = new Point(874, 286);
+                            voltarButton.Location = new Point(871, 271);
                         }
                         else
                         {
@@ -567,7 +567,7 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
                             adicionarEnderecoButton.Visible = false;
                             removerContatoButton.Visible = false;
                             removerEnderecoButton.Visible = false;
-                            gravarButton.Location = new Point(874, 286);
+                            gravarButton.Location = new Point(871, 271);
                             adicionarContatoButton.Visible = false;
                             removerContatoButton.Visible = false;
                         }
