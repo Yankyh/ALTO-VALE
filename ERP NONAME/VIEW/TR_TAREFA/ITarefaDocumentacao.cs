@@ -33,6 +33,7 @@ namespace ALTO_VALE.VIEW.TR_TAREFA
             }
             else
             {
+                tarefaTextBox.Text = handleTarefa.ToString();
                 ControleDeStatus();
             }
         }
@@ -42,7 +43,7 @@ namespace ALTO_VALE.VIEW.TR_TAREFA
             PreencherTipo();
             String query = " SELECT B.NOME TIPO, A.OBSERVACAO, A.TAREFA" +
                            " FROM TR_TAREFADOCUMENTACAO A" +
-                           " INNER JOIN TR_TAREFADOCUMENTACAOTIPO B ON B.HANDLE = A.TIPO" +
+                           " LEFT JOIN TR_TAREFADOCUMENTACAOTIPO B ON B.HANDLE = A.TIPO" +
                            " WHERE A.HANDLE = " + handleDocumentacao;
             SqlDataReader reader = connection.Pesquisa(query);
             while (reader.Read())
