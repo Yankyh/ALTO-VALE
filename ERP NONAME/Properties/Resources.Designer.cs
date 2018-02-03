@@ -63,6 +63,16 @@ namespace ALTO_VALE.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _2560x1600_light_sky_blue_solid_color_background {
+            get {
+                object obj = ResourceManager.GetObject("2560x1600-light-sky-blue-solid-color-background", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap backGround {
             get {
                 object obj = ResourceManager.GetObject("backGround", resourceCulture);
@@ -86,6 +96,26 @@ namespace ALTO_VALE.Properties {
         internal static System.Drawing.Bitmap backGround3 {
             get {
                 object obj = ResourceManager.GetObject("backGround3", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap blue_2 {
+            get {
+                object obj = ResourceManager.GetObject("blue-2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap tumblr_static_2od7ytzi5y0w8cwsc0wcg84ck_640_v2 {
+            get {
+                object obj = ResourceManager.GetObject("tumblr_static_2od7ytzi5y0w8cwsc0wcg84ck_640_v2", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

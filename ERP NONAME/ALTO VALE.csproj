@@ -282,5 +282,14 @@
     <Folder Include="bin\Release\" />
     <Folder Include="obj\Debug\" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\blue-2.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\2560x1600-light-sky-blue-solid-color-background.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tumblr_static_2od7ytzi5y0w8cwsc0wcg84ck_640_v2.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
