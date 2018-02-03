@@ -19,7 +19,6 @@ namespace ALTO_VALE.TN_TECNOLOGIA.Controles
         public void ControleTela(String tela)
         {
             connection.Conectar();
-
             //Pessoa
             if (tela == "Pessoa")
             {
@@ -32,8 +31,7 @@ namespace ALTO_VALE.TN_TECNOLOGIA.Controles
             }
             if (tela == "Contato")
             {
-                IPessoaContato iPessoaContato = new IPessoaContato();
-                iPessoaContato.ShowDialog();
+                PSPessoaContatoFormulario();
             }
             //Tarefa
             if (tela == "Tarefa")
@@ -78,6 +76,11 @@ namespace ALTO_VALE.TN_TECNOLOGIA.Controles
             ICep.cepHandle = handle;
             ICep iCep = new ICep();
             iCep.ShowDialog();
+        }
+        private void PSPessoaContatoFormulario()
+        {
+            IPessoaContato iPessoaContato = new IPessoaContato();
+            iPessoaContato.ShowDialog();
         }
 
 

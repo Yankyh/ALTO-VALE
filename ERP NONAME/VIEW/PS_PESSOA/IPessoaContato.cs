@@ -33,10 +33,7 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
             {
                 preencherFormulario(contatoHandle);
             }
-
         }
-
-
 
         //Preencher o tipo
         private void preencherTipo()

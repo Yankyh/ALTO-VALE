@@ -17,8 +17,8 @@ namespace ALTO_VALE.VIEW.MD_SISTEMA
             InitializeComponent();
             Form1 iMenu = new Form1();
             this.Enabled = false;
-            iMenu.MdiParent = this;
-            iMenu.Show();
+         //   iMenu.MdiParent = this;
+           // iMenu.Show();
       
         }
     }

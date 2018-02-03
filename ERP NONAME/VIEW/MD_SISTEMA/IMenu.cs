@@ -31,20 +31,19 @@ namespace ALTO_VALE
         {
             InitializeComponent();
             connection.Conectar();
-            adicionarButton.Visible = false;
+            adicionarButton.Enabled = false;
             menuTreeView.Visible = false;
         }
 
         private void MenuTreeViewDoubleClick(object sender, EventArgs e)
         {
             String nodeSelecionado = "";
- 
             try
             {
                 if (menuTreeView.SelectedNode.IsExpanded == false)
                 {
                     nodeSelecionado = menuTreeView.SelectedNode.Text;
-                    adicionarButton.Visible = true;
+                    adicionarButton.Enabled = true;
                 }
             }
             catch (Exception exception)
@@ -59,30 +58,12 @@ namespace ALTO_VALE
 
         }
 
-
         private void ControleTelas(String tela)
         {
             ControleTelaMenu controleTelaMenu = new ControleTelaMenu();
             controleTelaMenu.ControleTela(tela);
         }
 
-        private void button3_Click(object sender, EventArgs e)
-        {
-            TN_TECNOLOGIA.EditorSQL.Tela Tela = new TN_TECNOLOGIA.EditorSQL.Tela();
-            Tela.ShowDialog();
-        }
-
-        private void tarefaButtonOnClick(object sender, EventArgs e)
-        {
-            //GTarefa gTarefa = new GTarefa();
-            //gTarefa.ShowDialog();
-        }
-
-        private void TarefaDiretoOnClick(object sender, EventArgs e)
-        {
-            ITarefa iTarefa = new ITarefa();
-            iTarefa.ShowDialog();
-        }
 
         private void MenuButtonOnClick(object sender, EventArgs e)
         {
@@ -102,28 +83,8 @@ namespace ALTO_VALE
             menuTreeView.Visible = false;
         }
 
-        private void AbreEditorSql(object sender, KeyEventArgs e)
-        {
-
-        }
-
-        private void ActiveOnEnter(object sender, KeyEventArgs e)
-        {
-          
-        }
-
-     
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            ControleTelaMenuAdicionar controleDadosMenu = new ControleTelaMenuAdicionar();
-            // controleDadosMenu.GerenciarMenuDataGridView();
-        }
-
-    
-
-        // Esse método é responsável pelos key events, ( precisa dar override no processdialog pois o c# é bugado )
-        protected override bool ProcessDialogKey(Keys keyData)
+      // Esse método é responsável pelos key events, ( precisa dar override no processdialog pois o c# é bugado )
+      /*  protected override bool ProcessDialogKey(Keys keyData)
         {
             switch (keyData)
             {
@@ -133,21 +94,22 @@ namespace ALTO_VALE
                     return true;
             }
             return base.ProcessDialogKey(keyData);
-        }
+        }*/
 
         //Controle do datagridview
+     
         private void GerenciarMenuDataGridView(String tela)
         {
             telaSelecionada = tela;
             String query = "";
             menuDataGridView.DataSource = null;
             BindingSource Binding = new BindingSource();
-            
+            ControleTelaMenu controleTelaMenu = new ControleTelaMenu();
 
             //Pessoa
             if (tela == "Pessoa")
             {
-                query = " SELECT A.HANDLE, B.NOME SITUAÇÃO, A.RAZAOSOCIAL AS 'RAZÃO SOCIAL', A.APELIDO, A.CPFCNPJ AS 'CPF/CNPJ', A.TELEFONE, C.CIDADE, D.SIGLA ESTADO, C.LOGRADOURO" +
+                query = " SELECT A.HANDLE, B.IMAGEM SIT, A.RAZAOSOCIAL AS 'RAZÃO SOCIAL', A.APELIDO, A.CPFCNPJ AS 'CPF/CNPJ', A.TELEFONE, C.CIDADE, D.SIGLA ESTADO, C.LOGRADOURO" +
                                " FROM PS_PESSOA A" +
                                " INNER JOIN MD_STATUS B ON B.HANDLE = A.STATUS " +
                                " LEFT JOIN PS_PESSOAENDERECO C ON C.HANDLE = A.ENDERECO" +
@@ -156,7 +118,7 @@ namespace ALTO_VALE
                 menuDataGridView.DataSource = Binding;
 
                 menuDataGridView.Columns[0].Visible = false;
-                menuDataGridView.Columns[1].Width = 150;
+                menuDataGridView.Columns[1].Width = 50;
                 menuDataGridView.Columns[2].Width = 300;
                 menuDataGridView.Columns[3].Width = 300;
                 menuDataGridView.Columns[4].Width = 150;
@@ -164,20 +126,10 @@ namespace ALTO_VALE
                 menuDataGridView.Columns[8].Width = 230;
                 menuDataGridView.AllowUserToResizeRows = false;
             }
-            if (tela == "Endereço")
-            {
-                IPessoaEndereco iPessaEndereco = new IPessoaEndereco();
-                iPessaEndereco.ShowDialog();
-            }
-            if (tela == "Contato")
-            {
-                IPessoaContato iPessoaContato = new IPessoaContato();
-                iPessoaContato.ShowDialog();
-            }
             //Tarefa
             if (tela == "Tarefa")
             {
-                query = " SELECT A.HANDLE, B.IMAGEM STA, F.NOME SITUAÇÃO, E.NOME SEVERIDADE, G.NOME TIPO, A.PRAZO, A.ASSUNTO, C.LOGIN SOLICITANTE, D.LOGIN RESPONSAVEL, A.DATA " +
+                query = " SELECT A.HANDLE, B.IMAGEM SIT, F.NOME SITUAÇÃO, E.NOME SEVERIDADE, G.NOME TIPO, A.PRAZO, A.ASSUNTO, C.LOGIN SOLICITANTE, D.LOGIN RESPONSAVEL, A.DATA " +
                         " FROM TR_TAREFA A" +
                         " INNER JOIN MD_STATUS B ON B.HANDLE = A.STATUS" +
                         " INNER JOIN PS_USUARIO C ON C.HANDLE = A.SOLICITANTE" +
@@ -190,6 +142,7 @@ namespace ALTO_VALE
                 menuDataGridView.DataSource = Binding;
 
                 menuDataGridView.Columns[0].Width = 0;
+                
                 menuDataGridView.Columns[0].Visible = false;
                 menuDataGridView.Columns[1].Width = 50;
                 menuDataGridView.Columns[2].Width = 120;
@@ -210,13 +163,13 @@ namespace ALTO_VALE
             if (tela == "Cep")
             {
                 menuDataGridView.AutoGenerateColumns = true;
-                query = " SELECT A.HANDLE, B.NOME, A.CEP, A.PAIS, A.ESTADO, A.CIDADE, A.BAIRRO, A.LOGRADOURO" +
+                query = " SELECT A.HANDLE, B.IMAGEM, A.CEP, A.PAIS, A.ESTADO, A.CIDADE, A.BAIRRO, A.LOGRADOURO" +
                                " FROM MD_CEP A" +
                                " INNER JOIN MD_STATUS B ON B.HANDLE = A.STATUS";
                 Binding.DataSource = connection.DataTable(query);
                 menuDataGridView.DataSource = Binding;
 
-                menuDataGridView.Columns[1].Width = 150;
+                menuDataGridView.Columns[1].Width = 50;
                 menuDataGridView.Columns[2].Width = 150;
                 menuDataGridView.Columns[3].Width = 150;
                 menuDataGridView.Columns[4].Width = 150;
@@ -224,13 +177,8 @@ namespace ALTO_VALE
                 menuDataGridView.Columns[7].Width = 300;
                 menuDataGridView.Columns[0].Visible = false;
             }
+          
         }
-
-        private void MenuFormClosed(object sender, FormClosedEventArgs e)
-        {
-            connection.Desconectar();
-        }
-
         private int BuscarHandleDataGridView()
         {
            int handleRegistroSelecionado = 0;
@@ -253,13 +201,6 @@ namespace ALTO_VALE
             controleTelaMenu.ControleTela(telaSelecionada);
         }
         
-
-        private void editorToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            TN_TECNOLOGIA.EditorSQL.Tela tela = new Tela();
-            tela.ShowDialog();
-        }
-
         private void ContextOnRightClick(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Right)
@@ -271,13 +212,20 @@ namespace ALTO_VALE
 
         private void AdicionarButtonOnClick(object sender, EventArgs e)
         {
-            ControleTelaMenuAdicionar controleTelaMenuAdicionar = new ControleTelaMenuAdicionar();
-            controleTelaMenuAdicionar.ControleTelaAdicionar(telaSelecionada);
+            ControleTelaMenu.handleOrigem = 0;
+            ControleTelaMenu controleTelaMenu = new ControleTelaMenu();
+            controleTelaMenu.ControleTela(telaSelecionada);
         }
 
         private void MenuFormActivated(object sender, EventArgs e)
         {
             GerenciarMenuDataGridView(telaSelecionada);
+        }
+
+
+        private void MenuFormClosed(object sender, FormClosedEventArgs e)
+        {
+            connection.Desconectar();
         }
     }
 }

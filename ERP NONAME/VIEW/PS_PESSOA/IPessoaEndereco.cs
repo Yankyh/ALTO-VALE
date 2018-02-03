@@ -249,7 +249,7 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
         //Verificar campos obrigatórios
         public Boolean verificarCamposObrigatorios()
         {
-            if (cepComboBox.SelectedValue == "")
+            if (cepComboBox.SelectedValue.ToString() == "")
             {
                 MessageBox.Show("O campo Cep é obrigatório.");
                 return false;
@@ -263,7 +263,7 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
                 }
                 else
                 {
-                    if (estadoComboBox.SelectedValue == "")
+                    if (estadoComboBox.SelectedValue.ToString() == "")
                     {
                         MessageBox.Show("O campo estado é obrigatório.");
                         return false;
@@ -289,8 +289,7 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
                         }
                     }
                 }
-            }
-            return true;
+            }            
         }
 
 

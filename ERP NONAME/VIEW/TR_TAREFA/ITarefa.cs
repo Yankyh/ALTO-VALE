@@ -588,8 +588,8 @@ namespace ALTO_VALE.VIEW.TR_TAREFA
             }
             catch (Exception exception)
             {
-                return false;
                 MessageBox.Show(exception.ToString());
+                return false;
             }
         }
         //Buscar status
