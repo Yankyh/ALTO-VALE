@@ -90,7 +90,7 @@
             // menuTreeView
             // 
             this.menuTreeView.BackColor = System.Drawing.SystemColors.ScrollBar;
-            this.menuTreeView.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.menuTreeView.Font = new System.Drawing.Font("Trebuchet MS", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.menuTreeView.ImageIndex = 0;
             this.menuTreeView.ImageList = this.imageList1;
             this.menuTreeView.Location = new System.Drawing.Point(38, 55);
@@ -138,7 +138,7 @@
             // 
             this.menuDataGridView.AllowUserToAddRows = false;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.LightGray;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Arial", 8.5F);
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Trebuchet MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.MenuHighlight;
             this.menuDataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.menuDataGridView.BackgroundColor = System.Drawing.SystemColors.ControlLight;
@@ -147,7 +147,7 @@
             this.menuDataGridView.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Arial", 9F);
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -156,7 +156,7 @@
             this.menuDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Arial", 8.5F);
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Trebuchet MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.MenuHighlight;
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -196,13 +196,19 @@
             // 
             // adicionarButton
             // 
+            this.adicionarButton.BackColor = System.Drawing.Color.Transparent;
+            this.adicionarButton.BackgroundImage = global::ALTO_VALE.Properties.Resources.ic_launcher2;
+            this.adicionarButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.adicionarButton.Enabled = false;
-            this.adicionarButton.Location = new System.Drawing.Point(275, 5);
+            this.adicionarButton.FlatAppearance.BorderSize = 0;
+            this.adicionarButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.adicionarButton.Font = new System.Drawing.Font("Trebuchet MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.adicionarButton.Location = new System.Drawing.Point(270, -9);
+            this.adicionarButton.Margin = new System.Windows.Forms.Padding(0);
             this.adicionarButton.Name = "adicionarButton";
-            this.adicionarButton.Size = new System.Drawing.Size(104, 47);
+            this.adicionarButton.Size = new System.Drawing.Size(73, 61);
             this.adicionarButton.TabIndex = 23;
-            this.adicionarButton.Text = "Adicionar";
-            this.adicionarButton.UseVisualStyleBackColor = true;
+            this.adicionarButton.UseVisualStyleBackColor = false;
             this.adicionarButton.Click += new System.EventHandler(this.AdicionarButtonOnClick);
             // 
             // Form1
@@ -218,6 +224,7 @@
             this.Controls.Add(this.menuButton);
             this.Controls.Add(this.label1);
             this.DoubleBuffered = true;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.MaximizeBox = false;
             this.MinimizeBox = false;

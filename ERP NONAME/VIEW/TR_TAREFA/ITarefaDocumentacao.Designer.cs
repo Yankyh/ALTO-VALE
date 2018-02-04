@@ -32,9 +32,13 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ITarefaDocumentacao));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.observacaoTabPage = new System.Windows.Forms.TabPage();
             this.ObservacaoTextBox = new System.Windows.Forms.RichTextBox();
+            this.anexoTabPage = new System.Windows.Forms.TabPage();
+            this.adicionarAnexoButton = new System.Windows.Forms.Button();
+            this.anexoDataGridView = new System.Windows.Forms.DataGridView();
             this.liberarButton = new System.Windows.Forms.Button();
             this.voltarButton = new System.Windows.Forms.Button();
             this.cancelarButton = new System.Windows.Forms.Button();
@@ -49,14 +53,11 @@
             this.dataTextBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.assuntoTextBox = new System.Windows.Forms.TextBox();
-            this.anexoTabPage = new System.Windows.Forms.TabPage();
-            this.anexoDataGridView = new System.Windows.Forms.DataGridView();
-            this.adicionarAnexoButton = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.observacaoTabPage.SuspendLayout();
-            this.panel1.SuspendLayout();
             this.anexoTabPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.anexoDataGridView)).BeginInit();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -92,6 +93,76 @@
             this.ObservacaoTextBox.Size = new System.Drawing.Size(753, 123);
             this.ObservacaoTextBox.TabIndex = 5;
             this.ObservacaoTextBox.Text = "";
+            // 
+            // anexoTabPage
+            // 
+            this.anexoTabPage.Controls.Add(this.adicionarAnexoButton);
+            this.anexoTabPage.Controls.Add(this.anexoDataGridView);
+            this.anexoTabPage.Location = new System.Drawing.Point(4, 24);
+            this.anexoTabPage.Name = "anexoTabPage";
+            this.anexoTabPage.Size = new System.Drawing.Size(763, 129);
+            this.anexoTabPage.TabIndex = 2;
+            this.anexoTabPage.Text = "Anexo";
+            this.anexoTabPage.UseVisualStyleBackColor = true;
+            // 
+            // adicionarAnexoButton
+            // 
+            this.adicionarAnexoButton.FlatAppearance.BorderSize = 0;
+            this.adicionarAnexoButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.adicionarAnexoButton.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.adicionarAnexoButton.Location = new System.Drawing.Point(737, 2);
+            this.adicionarAnexoButton.Name = "adicionarAnexoButton";
+            this.adicionarAnexoButton.Size = new System.Drawing.Size(24, 25);
+            this.adicionarAnexoButton.TabIndex = 67;
+            this.adicionarAnexoButton.Text = "+";
+            this.adicionarAnexoButton.UseVisualStyleBackColor = false;
+            this.adicionarAnexoButton.Click += new System.EventHandler(this.adicionarAnexoButtonOnClick);
+            // 
+            // anexoDataGridView
+            // 
+            this.anexoDataGridView.AllowUserToAddRows = false;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.LightGray;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Arial", 9F);
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.MenuHighlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black;
+            this.anexoDataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.anexoDataGridView.BackgroundColor = System.Drawing.SystemColors.InactiveCaption;
+            this.anexoDataGridView.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.anexoDataGridView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Arial", 9F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Transparent;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.anexoDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.anexoDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Arial", 9F);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.MenuHighlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.anexoDataGridView.DefaultCellStyle = dataGridViewCellStyle3;
+            this.anexoDataGridView.Location = new System.Drawing.Point(2, 2);
+            this.anexoDataGridView.MultiSelect = false;
+            this.anexoDataGridView.Name = "anexoDataGridView";
+            this.anexoDataGridView.ReadOnly = true;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Arial", 9F);
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.anexoDataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            this.anexoDataGridView.RowHeadersVisible = false;
+            this.anexoDataGridView.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.anexoDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.anexoDataGridView.Size = new System.Drawing.Size(733, 126);
+            this.anexoDataGridView.TabIndex = 66;
+            this.anexoDataGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.AnexoDataGridViewDoubleClick);
             // 
             // liberarButton
             // 
@@ -246,76 +317,6 @@
             this.assuntoTextBox.Size = new System.Drawing.Size(303, 23);
             this.assuntoTextBox.TabIndex = 85;
             // 
-            // anexoTabPage
-            // 
-            this.anexoTabPage.Controls.Add(this.adicionarAnexoButton);
-            this.anexoTabPage.Controls.Add(this.anexoDataGridView);
-            this.anexoTabPage.Location = new System.Drawing.Point(4, 24);
-            this.anexoTabPage.Name = "anexoTabPage";
-            this.anexoTabPage.Size = new System.Drawing.Size(763, 129);
-            this.anexoTabPage.TabIndex = 2;
-            this.anexoTabPage.Text = "Anexo";
-            this.anexoTabPage.UseVisualStyleBackColor = true;
-            // 
-            // anexoDataGridView
-            // 
-            this.anexoDataGridView.AllowUserToAddRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.LightGray;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Arial", 9F);
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.MenuHighlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black;
-            this.anexoDataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.anexoDataGridView.BackgroundColor = System.Drawing.SystemColors.InactiveCaption;
-            this.anexoDataGridView.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.anexoDataGridView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Arial", 9F);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Transparent;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.anexoDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            this.anexoDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Arial", 9F);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.MenuHighlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.anexoDataGridView.DefaultCellStyle = dataGridViewCellStyle3;
-            this.anexoDataGridView.Location = new System.Drawing.Point(2, 2);
-            this.anexoDataGridView.MultiSelect = false;
-            this.anexoDataGridView.Name = "anexoDataGridView";
-            this.anexoDataGridView.ReadOnly = true;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Arial", 9F);
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.anexoDataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
-            this.anexoDataGridView.RowHeadersVisible = false;
-            this.anexoDataGridView.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.anexoDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.anexoDataGridView.Size = new System.Drawing.Size(733, 126);
-            this.anexoDataGridView.TabIndex = 66;
-            this.anexoDataGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.AnexoDataGridViewDoubleClick);
-            // 
-            // adicionarAnexoButton
-            // 
-            this.adicionarAnexoButton.FlatAppearance.BorderSize = 0;
-            this.adicionarAnexoButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.adicionarAnexoButton.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.adicionarAnexoButton.Location = new System.Drawing.Point(737, 2);
-            this.adicionarAnexoButton.Name = "adicionarAnexoButton";
-            this.adicionarAnexoButton.Size = new System.Drawing.Size(24, 25);
-            this.adicionarAnexoButton.TabIndex = 67;
-            this.adicionarAnexoButton.Text = "+";
-            this.adicionarAnexoButton.UseVisualStyleBackColor = false;
-            this.adicionarAnexoButton.Click += new System.EventHandler(this.adicionarAnexoButtonOnClick);
-            // 
             // ITarefaDocumentacao
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -329,6 +330,7 @@
             this.Controls.Add(this.gravarButton);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "ITarefaDocumentacao";
@@ -338,10 +340,10 @@
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.DocumentacaoFormClosed);
             this.tabControl1.ResumeLayout(false);
             this.observacaoTabPage.ResumeLayout(false);
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             this.anexoTabPage.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.anexoDataGridView)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
 
         }

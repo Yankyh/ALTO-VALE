@@ -84,7 +84,7 @@ namespace ALTO_VALE.VIEW.MD_SISTEMA
                         String query1 = " SELECT " +
                                         " MAX(HANDLE) HANDLE" +
                                         " FROM MD_CEP" +
-                                        " WHERE CEP = '" + cep + "'"+
+                                        " WHERE CEP = '" + cep + "'" +
                                         " AND PAIS = '" + pais + "' " +
                                         " AND ESTADO = '" + estado + "' " +
                                         " AND CIDADE = '" + cidade + "' " +
@@ -123,7 +123,7 @@ namespace ALTO_VALE.VIEW.MD_SISTEMA
                 {
                     String query = " UPDATE MD_CEP" +
                                    " SET STATUS = 4" +
-                                   " WHERE HANDLE = "+cepHandle;
+                                   " WHERE HANDLE = " + cepHandle;
                     connection.Inserir(query);
                 }
                 else
@@ -153,7 +153,11 @@ namespace ALTO_VALE.VIEW.MD_SISTEMA
 
         private void cancelarButtonOnClick(object sender, EventArgs e)
         {
-            AlterarRegistro("Cancelar");
+            DialogResult confirmacaoButton = MessageBox.Show("Deseja Continuar?", "Cancelar cep", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button2);
+            if (confirmacaoButton.ToString().ToUpper() == "YES")
+            {
+                AlterarRegistro("Cancelar");
+            }
         }
 
         //verifica se os campos obrigatorios foram preenchidos
@@ -242,8 +246,8 @@ namespace ALTO_VALE.VIEW.MD_SISTEMA
                 cancelarButton.Visible = true;
                 voltarButton.Visible = false;
                 liberarButton.Visible = true;
-                liberarButton.Location = new Point(515, 114);
-                cancelarButton.Location = new Point(619, 114);
+                liberarButton.Location = new Point(439, 108);
+                cancelarButton.Location = new Point(543, 108);
             }
             else
             {
@@ -261,8 +265,8 @@ namespace ALTO_VALE.VIEW.MD_SISTEMA
                     cancelarButton.Visible = true;
                     voltarButton.Visible = false;
                     gravarButton.Visible = false;
-                    liberarButton.Location = new Point(515, 114);
-                    cancelarButton.Location = new Point(619, 114);
+                    liberarButton.Location = new Point(439, 108);
+                    cancelarButton.Location = new Point(543, 108);
                 }
                 else
                 {
@@ -280,7 +284,7 @@ namespace ALTO_VALE.VIEW.MD_SISTEMA
                         cancelarButton.Visible = false;
                         voltarButton.Visible = true;
                         liberarButton.Visible = false;
-                        voltarButton.Location = new Point(619, 114);
+                        voltarButton.Location = new Point(543, 108);
                     }
                     else
                     {
@@ -298,7 +302,7 @@ namespace ALTO_VALE.VIEW.MD_SISTEMA
                             cancelarButton.Visible = false;
                             voltarButton.Visible = true;
                             liberarButton.Visible = false;
-                            voltarButton.Location = new Point(619, 114);
+                            voltarButton.Location = new Point(543, 108);
                         }
                         else
                         {
@@ -306,7 +310,7 @@ namespace ALTO_VALE.VIEW.MD_SISTEMA
                             cancelarButton.Visible = false;
                             voltarButton.Visible = false;
                             liberarButton.Visible = false;
-                            gravarButton.Location = new Point(619, 114);
+                            gravarButton.Location = new Point(543, 108);
                         }
                     }
                 }
@@ -314,5 +318,19 @@ namespace ALTO_VALE.VIEW.MD_SISTEMA
             this.Text = "Endereço - " + status;
         }
 
+        private void ICep_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void bairroTextBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

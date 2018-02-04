@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(IAnexoPadrao));
             this.excluirButton = new System.Windows.Forms.Button();
             this.exibirButton = new System.Windows.Forms.Button();
             this.descricaoTextBox = new System.Windows.Forms.TextBox();
@@ -160,6 +161,7 @@
             this.Controls.Add(this.gravarButton);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "IAnexoPadrao";

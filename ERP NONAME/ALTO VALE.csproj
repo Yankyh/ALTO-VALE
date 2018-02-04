@@ -1,5 +1,13 @@
 ﻿<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup Label="Globals" />
+  <PropertyGroup>
+    <Win32Resource>
+    </Win32Resource>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>favicon.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -104,6 +112,11 @@
     <Compile Include="PADRONIZACAO\GiantForm.Designer.cs">
       <DependentUpon>GiantForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="TN_TECNOLOGIA\Controles\Control.cs" />
     <Compile Include="TN_TECNOLOGIA\Controles\ControleTelaMenu.cs" />
     <Compile Include="TN_TECNOLOGIA\EditorSQL\Tela.cs">
@@ -147,12 +160,6 @@
     <Compile Include="VIEW\PS_PESSOA\IPessoa.Designer.cs">
       <DependentUpon>IPessoa.cs</DependentUpon>
     </Compile>
-    <Compile Include="VIEW\PS_PESSOA\IPessoaAnexo.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="VIEW\PS_PESSOA\IPessoaAnexo.Designer.cs">
-      <DependentUpon>IPessoaAnexo.cs</DependentUpon>
-    </Compile>
     <Compile Include="VIEW\PS_PESSOA\IPessoaContato.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -176,12 +183,6 @@
     </Compile>
     <Compile Include="VIEW\TR_TAREFA\ITarefa.Designer.cs">
       <DependentUpon>ITarefa.cs</DependentUpon>
-    </Compile>
-    <Compile Include="VIEW\TR_TAREFA\ITarefaAnexo.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="VIEW\TR_TAREFA\ITarefaAnexo.Designer.cs">
-      <DependentUpon>ITarefaAnexo.cs</DependentUpon>
     </Compile>
     <Compile Include="VIEW\TR_TAREFA\ITarefaDocumentacao.cs">
       <SubType>Form</SubType>
@@ -218,22 +219,14 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <EmbeddedResource Include="VIEW\MD_SISTEMA\TelaPadrao.resx">
       <DependentUpon>TelaPadrao.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="VIEW\PS_PESSOA\IPessoa.resx">
       <DependentUpon>IPessoa.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="VIEW\PS_PESSOA\IPessoaAnexo.resx">
-      <DependentUpon>IPessoaAnexo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="VIEW\PS_PESSOA\IPessoaContato.resx">
       <DependentUpon>IPessoaContato.cs</DependentUpon>
@@ -247,11 +240,11 @@
     <EmbeddedResource Include="VIEW\TR_TAREFA\ITarefa.resx">
       <DependentUpon>ITarefa.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="VIEW\TR_TAREFA\ITarefaAnexo.resx">
-      <DependentUpon>ITarefaAnexo.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="VIEW\TR_TAREFA\ITarefaDocumentacao.resx">
       <DependentUpon>ITarefaDocumentacao.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VIEW\TR_TAREFA\ITarefaEncaminhamento.resx">
+      <DependentUpon>ITarefaEncaminhamento.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -265,15 +258,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\backGround.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\backGround2.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\backGround3.jpg" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.6.1">
@@ -295,10 +279,13 @@
     <None Include="Resources\blue-2.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\2560x1600-light-sky-blue-solid-color-background.jpg" />
+    <None Include="Resources\adicionarIcone.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\tumblr_static_2od7ytzi5y0w8cwsc0wcg84ck_640_v2.png" />
+    <None Include="Resources\ic_launcher2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="favicon.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

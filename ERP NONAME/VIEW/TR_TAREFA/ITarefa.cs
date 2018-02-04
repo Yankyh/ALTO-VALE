@@ -669,6 +669,7 @@ namespace ALTO_VALE.VIEW.TR_TAREFA
                 status = reader["NOME"].ToString();
                 dataTextBox.Text = reader["DATA"].ToString();
                 prazoTextBox.Text = reader["PRAZO"].ToString();
+
             }
             reader.Close();
             if (status == "Cadastrado")

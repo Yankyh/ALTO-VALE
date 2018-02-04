@@ -111,10 +111,10 @@ namespace ALTO_VALE
             //Pessoa
             if (tela == "Pessoa")
             {
-                query = " SELECT A.HANDLE, B.IMAGEM SIT, A.RAZAOSOCIAL AS 'RAZÃO SOCIAL', A.APELIDO, A.CPFCNPJ AS 'CPF/CNPJ', A.TELEFONE, C.CIDADE, D.SIGLA ESTADO, C.LOGRADOURO" +
+                query = " SELECT A.HANDLE, B.IMAGEM SIT, A.RAZAOSOCIAL AS 'RAZÃO SOCIAL', A.APELIDO APELIDO, A.CPFCNPJ AS 'CPF/CNPJ', A.TELEFONE, C.CIDADE, D.SIGLA ESTADO, C.LOGRADOURO" +
                                " FROM PS_PESSOA A" +
                                " INNER JOIN MD_STATUS B ON B.HANDLE = A.STATUS " +
-                               " LEFT JOIN PS_PESSOAENDERECO C ON C.HANDLE = A.ENDERECO" +
+                               " LEFT JOIN PS_PESSOAENDERECO C ON C.HANDLE = (SELECT MAX(HANDLE) FROM PS_PESSOAENDERECO WHERE PESSOA = A.HANDLE)" +
                                " LEFT JOIN MD_ESTADO D ON D.HANDLE = C.ESTADO";
                 Binding.DataSource = connection.DataTable(query);
                 menuDataGridView.DataSource = Binding;
