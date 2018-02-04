@@ -26,6 +26,8 @@ namespace ALTO_VALE
 
         //Serve para saber qual datagridview esta selecionado
         String telaSelecionada = "";
+        //Variaveis de configuração dos datagridviews que são padrão
+        int SITUACAOWIDTH = 32;
 
         public Form1()
         {
@@ -118,7 +120,7 @@ namespace ALTO_VALE
                 menuDataGridView.DataSource = Binding;
 
                 menuDataGridView.Columns[0].Visible = false;
-                menuDataGridView.Columns[1].Width = 50;
+                menuDataGridView.Columns[1].Width = SITUACAOWIDTH;
                 menuDataGridView.Columns[2].Width = 300;
                 menuDataGridView.Columns[3].Width = 300;
                 menuDataGridView.Columns[4].Width = 150;
@@ -144,12 +146,12 @@ namespace ALTO_VALE
                 menuDataGridView.Columns[0].Width = 0;
                 
                 menuDataGridView.Columns[0].Visible = false;
-                menuDataGridView.Columns[1].Width = 50;
+                menuDataGridView.Columns[1].Width = SITUACAOWIDTH;
                 menuDataGridView.Columns[2].Width = 120;
                 menuDataGridView.Columns[3].Width = 120;
                 menuDataGridView.Columns[4].Width = 150;
                 menuDataGridView.Columns[5].Width = 150;
-                menuDataGridView.Columns[6].Width = 850;
+                menuDataGridView.Columns[6].Width = 650;
                 menuDataGridView.Columns[7].Width = 120;
                 menuDataGridView.Columns[8].Width = 130;
                 menuDataGridView.Columns[9].Width = 150;
@@ -163,13 +165,13 @@ namespace ALTO_VALE
             if (tela == "Cep")
             {
                 menuDataGridView.AutoGenerateColumns = true;
-                query = " SELECT A.HANDLE, B.IMAGEM, A.CEP, A.PAIS, A.ESTADO, A.CIDADE, A.BAIRRO, A.LOGRADOURO" +
+                query = " SELECT A.HANDLE, B.IMAGEM SIT, A.CEP, A.PAIS, A.ESTADO, A.CIDADE, A.BAIRRO, A.LOGRADOURO" +
                                " FROM MD_CEP A" +
                                " INNER JOIN MD_STATUS B ON B.HANDLE = A.STATUS";
                 Binding.DataSource = connection.DataTable(query);
                 menuDataGridView.DataSource = Binding;
 
-                menuDataGridView.Columns[1].Width = 50;
+                menuDataGridView.Columns[1].Width = SITUACAOWIDTH;
                 menuDataGridView.Columns[2].Width = 150;
                 menuDataGridView.Columns[3].Width = 150;
                 menuDataGridView.Columns[4].Width = 150;
