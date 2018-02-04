@@ -1,4 +1,5 @@
 ﻿using ALTO_VALE.DAL;
+using ALTO_VALE.VIEW.MD_SISTEMA;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -18,7 +19,7 @@ namespace ALTO_VALE.VIEW.TR_TAREFA
         Connection connection = new Connection();
 
         //Variaveis
-        String observacao = "";
+        String observacao = "", assunto = "", data = "";
         int tipo = 0;
 
         public ITarefaDocumentacao()
@@ -41,7 +42,8 @@ namespace ALTO_VALE.VIEW.TR_TAREFA
         private void PreencherFormulario()
         {
             PreencherTipo();
-            String query = " SELECT B.NOME TIPO, A.OBSERVACAO, A.TAREFA" +
+            PreencherAnexoDataGridView();
+            String query = " SELECT B.NOME TIPO, A.OBSERVACAO, A.TAREFA, A.ASSUNTO, A.DATA" +
                            " FROM TR_TAREFADOCUMENTACAO A" +
                            " LEFT JOIN TR_TAREFADOCUMENTACAOTIPO B ON B.HANDLE = A.TIPO" +
                            " WHERE A.HANDLE = " + handleDocumentacao;
@@ -51,6 +53,8 @@ namespace ALTO_VALE.VIEW.TR_TAREFA
                 tipoComboBox.SelectedItem = reader["TIPO"];
                 ObservacaoTextBox.Text = reader["OBSERVACAO"].ToString();
                 tarefaTextBox.Text = reader["TAREFA"].ToString();
+                assuntoTextBox.Text = reader["ASSUNTO"].ToString();
+                dataTextBox.Text = reader["DATA"].ToString();
             }
             reader.Close();
 
@@ -61,7 +65,8 @@ namespace ALTO_VALE.VIEW.TR_TAREFA
         {
             tipo = BuscarHandleTipo();
             observacao = ObservacaoTextBox.Text;
-
+            assunto = assuntoTextBox.Text;
+            data = dataTextBox.Text.ToString();
             //campos obrigatorios
 
             //if(VerificarCamposObrigatorios == true){
@@ -69,12 +74,14 @@ namespace ALTO_VALE.VIEW.TR_TAREFA
             if (acao == "Gravar")
             {
                 String query = " INSERT INTO TR_TAREFADOCUMENTACAO" +
-                               " (STATUS, TAREFA, TIPO, OBSERVACAO)" +
+                               " (STATUS, TAREFA, TIPO, OBSERVACAO, ASSUNTO, DATA)" +
                                " VALUES" +
                                " (2" +
                                ", " + handleTarefa +
                                ", " + tipo +
-                               ", '" + observacao + "')";
+                               ", '" + observacao + "'" +
+                               ", '" + assunto + "'" +
+                               ", GETDATE())";
                 connection.Inserir(query);
 
                 //Buscar novo handle
@@ -90,13 +97,16 @@ namespace ALTO_VALE.VIEW.TR_TAREFA
                     handleDocumentacao = Convert.ToInt32(reader["HANDLE"]);
                 }
                 reader.Close();
+                //Preenche o campo data com a data atual
             }
             else
             {
                 if (acao == "Liberar")
                 {
                     String query = " UPDATE TR_TAREFADOCUMENTACAO" +
-                                   " SET STATUS = 3" +
+                                   " SET STATUS = 3," +
+                                   " TIPO = " + tipo + "," +
+                                   " ASSUNTO = '" + assunto + "'" +
                                    " WHERE HANDLE = " + handleDocumentacao;
                     connection.Inserir(query);
                 }
@@ -116,6 +126,9 @@ namespace ALTO_VALE.VIEW.TR_TAREFA
                             String query = " DELETE TR_TAREFADOCUMENTACAO" +
                                            " WHERE HANDLE = " + handleDocumentacao;
                             connection.Inserir(query);
+                            String query1 = " DELETE MD_ANEXO" +
+                                            " WHERE HANDLEORIGEM = " + handleDocumentacao;
+                            connection.Inserir(query1);
                             this.Close();
                         }
                         else
@@ -138,6 +151,26 @@ namespace ALTO_VALE.VIEW.TR_TAREFA
             ControleDeStatus();
         }
 
+        //Preenche o datagridview do anexo
+        private void PreencherAnexoDataGridView()
+        {
+            BindingSource Binding = new BindingSource();
+
+            String query = " SELECT A.HANDLE, A.DESCRICAO DESCRIÇÃO, A.NOMEARQUIVO NOME, A.CAMINHO" +
+                          " FROM MD_ANEXO A" +
+                          " INNER JOIN TR_TAREFADOCUMENTACAO B ON B.HANDLE = A.HANDLEORIGEM" +
+                          " WHERE B.HANDLE = " + handleDocumentacao +
+                          " AND A.TABELAORIGEM = 2";
+            anexoDataGridView.AutoGenerateColumns = true;
+            Binding.DataSource = connection.DataTable(query);
+            anexoDataGridView.DataSource = Binding;
+            anexoDataGridView.Columns[0].Width = 0;
+            anexoDataGridView.Columns[0].Visible = false;
+            anexoDataGridView.Columns[1].Width = 200;
+            anexoDataGridView.Columns[2].Width = 200;
+            anexoDataGridView.Columns[3].Width = 600;
+            anexoDataGridView.AllowUserToResizeRows = false;
+        }
         private void GravarButtonOnClick(object sender, EventArgs e)
         {
             AlterarRegistro("Gravar");
@@ -185,6 +218,42 @@ namespace ALTO_VALE.VIEW.TR_TAREFA
             handleDocumentacao = 0;
         }
 
+        private void adicionarAnexoButtonOnClick(object sender, EventArgs e)
+        {
+            IAnexoPadrao.handleOrigem = handleDocumentacao;
+            IAnexoPadrao.handleTabelaOrigem = 2;
+            IAnexoPadrao iAnexoPadrao = new IAnexoPadrao();
+            iAnexoPadrao.ShowDialog();
+        }
+
+        private void DocumentacaoOnFocus(object sender, EventArgs e)
+        {
+            PreencherAnexoDataGridView();
+        }
+
+        private void AnexoDataGridViewDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            IAnexoPadrao.handleAnexo = BuscarHandleAnexo();
+            IAnexoPadrao anexoPadrao = new IAnexoPadrao();
+            anexoPadrao.ShowDialog();
+        }
+
+        //Busca o handle do anexo
+        private int BuscarHandleAnexo()
+        {
+            int handleAnexo = 0;
+
+            try
+            {
+                handleAnexo = Convert.ToInt32(anexoDataGridView.CurrentRow.Cells[0].Value.ToString());
+            }
+            catch
+            {
+
+            }
+            return handleAnexo;
+        }
+
         //Preencher campos
         private void PreencherTipo()
         {
@@ -217,7 +286,7 @@ namespace ALTO_VALE.VIEW.TR_TAREFA
         public void ControleDeStatus()
         {
             String status = "";
-            String query = " SELECT B.NOME" +
+            String query = " SELECT B.NOME, A.DATA" +
                            " FROM TR_TAREFADOCUMENTACAO A" +
                            " INNER JOIN MD_STATUS B ON B.HANDLE = A.STATUS" +
                            " WHERE A.HANDLE = " + handleDocumentacao;
@@ -225,6 +294,8 @@ namespace ALTO_VALE.VIEW.TR_TAREFA
             while (reader.Read())
             {
                 status = reader["NOME"].ToString();
+                //preenche com a data que foi salvo a documentação
+                dataTextBox.Text = reader["DATA"].ToString();
             }
             reader.Close();
             if (status == "Cadastrado")
@@ -233,8 +304,8 @@ namespace ALTO_VALE.VIEW.TR_TAREFA
                 cancelarButton.Visible = true;
                 voltarButton.Visible = false;
                 liberarButton.Visible = true;
-                liberarButton.Location = new Point(564, 269);
-                cancelarButton.Location = new Point(668, 269);
+                liberarButton.Location = new Point(569, 235);
+                cancelarButton.Location = new Point(673, 235);
             }
             else
             {
@@ -243,14 +314,15 @@ namespace ALTO_VALE.VIEW.TR_TAREFA
                     //Controle de status
                     tipoComboBox.Enabled = true;
                     ObservacaoTextBox.ReadOnly = false;
+                    assuntoTextBox.ReadOnly = false;
                     //Controle de botões (Criar classe para isso)
                     liberarButton.Visible = true;
                     cancelarButton.Visible = true;
                     voltarButton.Visible = false;
                     gravarButton.Visible = false;
                     excluirButton.Visible = false;
-                    liberarButton.Location = new Point(564, 269);
-                    cancelarButton.Location = new Point(668, 269);
+                    liberarButton.Location = new Point(569, 235);
+                    cancelarButton.Location = new Point(673, 235);
                 }
                 else
                 {
@@ -258,14 +330,15 @@ namespace ALTO_VALE.VIEW.TR_TAREFA
                     {
                         //Caso esteja ativo, não permite alterar antes de voltar o registro
                         tipoComboBox.Enabled = false;
-                        ObservacaoTextBox.ReadOnly = false;
+                        ObservacaoTextBox.ReadOnly = true;
+                        assuntoTextBox.ReadOnly = true;
                         //Controle de botões (Criar classe para isso)
                         gravarButton.Visible = false;
                         cancelarButton.Visible = false;
                         voltarButton.Visible = true;
                         excluirButton.Visible = false;
                         liberarButton.Visible = false;
-                        voltarButton.Location = new Point(668, 269);
+                        voltarButton.Location = new Point(673, 235);
                     }
                     else
                     {
@@ -274,14 +347,15 @@ namespace ALTO_VALE.VIEW.TR_TAREFA
                             //Caso esteja ativo, não permite alterar antes de voltar o registro
                             tipoComboBox.Enabled = false;
                             ObservacaoTextBox.ReadOnly = true;
+                            assuntoTextBox.ReadOnly = true;
                             //Controle de botões (Criar classe para isso)
                             gravarButton.Visible = false;
                             cancelarButton.Visible = false;
                             voltarButton.Visible = true;
                             liberarButton.Visible = false;
                             excluirButton.Visible = true;
-                            excluirButton.Location = new Point(564, 269);
-                            voltarButton.Location = new Point(668, 269);
+                            excluirButton.Location = new Point(569, 235);
+                            voltarButton.Location = new Point(673, 235);
                         }
                         else
                         {
@@ -290,7 +364,7 @@ namespace ALTO_VALE.VIEW.TR_TAREFA
                             voltarButton.Visible = false;
                             excluirButton.Visible = false;
                             liberarButton.Visible = false;
-                            gravarButton.Location = new Point(668, 269);
+                            gravarButton.Location = new Point(673, 235);
                         }
                     }
                 }

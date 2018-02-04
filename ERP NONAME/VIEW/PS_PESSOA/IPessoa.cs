@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using ALTO_VALE.DAL;
 using System.Data.SqlClient;
 using System.IO;
+using ALTO_VALE.VIEW.MD_SISTEMA;
 
 namespace ALTO_VALE.VIEW.PS_PESSOA
 {
@@ -723,9 +724,10 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
 
         private void adicionarArquivoButtonOnClick(object sender, EventArgs e)
         {
-            IPessoaAnexo.handlePessoa = buscarHandlePessoa();
-            IPessoaAnexo ipessoaAnexo = new IPessoaAnexo();
-            ipessoaAnexo.ShowDialog();
+            IAnexoPadrao.handleTabelaOrigem = 3;
+            IAnexoPadrao.handleOrigem = buscarHandlePessoa();
+            IAnexoPadrao iAnexoPadrao = new IAnexoPadrao();
+            iAnexoPadrao.ShowDialog();
         }
 
 
@@ -733,8 +735,8 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
         private void PreencherAnexo()
         {
             String query = " SELECT A.HANDLE, A.DESCRICAO DESCRIÇÃO, A.NOMEARQUIVO NOME, A.CAMINHO" +
-                           " FROM PS_PESSOAANEXO A" +
-                           " INNER JOIN PS_PESSOA B ON B.HANDLE = A.PESSOA" +
+                           " FROM MD_ANEXO A" +
+                           " INNER JOIN PS_PESSOA B ON B.HANDLE = A.HANDLEORIGEM" +
                            " WHERE B.HANDLE = " + buscarHandlePessoa();
             anexoDataGridView.AutoGenerateColumns = true;
             Binding2.DataSource = connection.DataTable(query);
@@ -749,9 +751,9 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
 
         private void anexoDataGridViewCellClick(object sender, DataGridViewCellEventArgs e)
         {
-            IPessoaAnexo.handleAnexo = PegarHandleAnexo();
-            IPessoaAnexo iPessoaAnexo = new IPessoaAnexo();
-            iPessoaAnexo.ShowDialog();
+            IAnexoPadrao.handleAnexo = PegarHandleAnexo();
+            IAnexoPadrao iAnexoPadrao = new IAnexoPadrao();
+            iAnexoPadrao.ShowDialog();
         }
         private int PegarHandleAnexo()
         {

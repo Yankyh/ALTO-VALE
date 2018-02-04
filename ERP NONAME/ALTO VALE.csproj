@@ -115,6 +115,12 @@
     <Compile Include="TN_TECNOLOGIA\Email\EnviaEmail.cs" />
     <Compile Include="TN_TECNOLOGIA\Email\TEmail.cs" />
     <Compile Include="TN_TECNOLOGIA\Logins\TLoginInfo.cs" />
+    <Compile Include="VIEW\MD_SISTEMA\IAnexoPadrao.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VIEW\MD_SISTEMA\IAnexoPadrao.Designer.cs">
+      <DependentUpon>IAnexoPadrao.cs</DependentUpon>
+    </Compile>
     <Compile Include="VIEW\MD_SISTEMA\IMenu.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -200,6 +206,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="TN_TECNOLOGIA\EditorSQL\Tela.resx">
       <DependentUpon>Tela.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VIEW\MD_SISTEMA\IAnexoPadrao.resx">
+      <DependentUpon>IAnexoPadrao.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="VIEW\MD_SISTEMA\ICep.resx">
       <DependentUpon>ICep.cs</DependentUpon>

@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ALTO_VALE.DAL;
+using ALTO_VALE.VIEW.MD_SISTEMA;
 
 namespace ALTO_VALE.VIEW.TR_TAREFA
 {
@@ -372,9 +373,10 @@ namespace ALTO_VALE.VIEW.TR_TAREFA
         private void PreencherAnexoDataGridView()
         {
             String query = " SELECT A.HANDLE, A.DESCRICAO DESCRIÇÃO, A.NOMEARQUIVO NOME, A.CAMINHO" +
-                           " FROM TR_TAREFAANEXO A" +
-                           " INNER JOIN TR_TAREFA B ON B.HANDLE = A.TAREFA" +
-                           " WHERE B.HANDLE = " + handleTarefa;
+                           " FROM MD_ANEXO A" +
+                           " INNER JOIN TR_TAREFA B ON B.HANDLE = A.HANDLEORIGEM" +
+                           " WHERE B.HANDLE = " + handleTarefa +
+                           " AND A.TABELAORIGEM = 1";
             anexoDataGridView.AutoGenerateColumns = true;
             Binding.DataSource = connection.DataTable(query);
             anexoDataGridView.DataSource = Binding;
@@ -387,7 +389,7 @@ namespace ALTO_VALE.VIEW.TR_TAREFA
         }
         private void PreencherDocumentacaoDataGridView()
         {
-            String query = " SELECT A.HANDLE, D.IMAGEM STA,C.NOME TIPO, A.OBSERVACAO" +
+            String query = " SELECT A.HANDLE, D.IMAGEM SIT, B.DATA,C.NOME TIPO, A.ASSUNTO" +
                            " FROM TR_TAREFADOCUMENTACAO A" +
                            " INNER JOIN TR_TAREFA B ON B.HANDLE = A.TAREFA" +
                            " INNER JOIN TR_TAREFADOCUMENTACAOTIPO C ON C.HANDLE = A.TIPO" +
@@ -398,9 +400,10 @@ namespace ALTO_VALE.VIEW.TR_TAREFA
             documentacaoDataGridView.DataSource = Binding1;
             documentacaoDataGridView.Columns[0].Width = 0;
             documentacaoDataGridView.Columns[0].Visible = false;
-            documentacaoDataGridView.Columns[1].Width = 70;
-            documentacaoDataGridView.Columns[2].Width = 200;
-            documentacaoDataGridView.Columns[3].Width = 700;
+            documentacaoDataGridView.Columns[1].Width = 50;
+            documentacaoDataGridView.Columns[2].Width = 130;
+            documentacaoDataGridView.Columns[3].Width = 200;
+            documentacaoDataGridView.Columns[4].Width = 700;
             documentacaoDataGridView.AllowUserToResizeRows = false;
         }
 
@@ -430,9 +433,10 @@ namespace ALTO_VALE.VIEW.TR_TAREFA
 
         private void AdicionarButtonOnClick(object sender, EventArgs e)
         {
-            ITarefaAnexo.handleTarefa = handleTarefa;
-            ITarefaAnexo iTarefaAnexo = new ITarefaAnexo();
-            iTarefaAnexo.ShowDialog();
+            IAnexoPadrao.handleOrigem = handleTarefa;
+            IAnexoPadrao.handleTabelaOrigem = 1;
+            IAnexoPadrao iAnexoPadrao = new IAnexoPadrao();
+            iAnexoPadrao.ShowDialog();
         }
 
         private void TarefaFormActivated(object sender, EventArgs e)
@@ -457,9 +461,9 @@ namespace ALTO_VALE.VIEW.TR_TAREFA
         }
         private void AnexoDataGridViewDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            ITarefaAnexo.handleAnexo = BuscarHandleAnexo();
-            ITarefaAnexo iTarefaAnexo = new ITarefaAnexo();
-            iTarefaAnexo.ShowDialog();
+            IAnexoPadrao.handleAnexo = BuscarHandleAnexo();
+            IAnexoPadrao iAnexoPadrao = new IAnexoPadrao();
+            iAnexoPadrao.ShowDialog();
         }
 
         private void EncerrarButtonOnClick(object sender, EventArgs e)
