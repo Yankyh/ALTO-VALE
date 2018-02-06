@@ -60,7 +60,7 @@
             this.adicionarDocumentacaoButton = new System.Windows.Forms.Button();
             this.documentacaoDataGridView = new System.Windows.Forms.DataGridView();
             this.encaminhamentoTabPage = new System.Windows.Forms.TabPage();
-            this.button2 = new System.Windows.Forms.Button();
+            this.adicionarEncaminhamentoButtonOnClick = new System.Windows.Forms.Button();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.anexoTabPage = new System.Windows.Forms.TabPage();
             this.anexoDataGridView = new System.Windows.Forms.DataGridView();
@@ -296,7 +296,7 @@
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.MenuHighlight;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black;
             this.documentacaoDataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.documentacaoDataGridView.BackgroundColor = System.Drawing.SystemColors.InactiveCaption;
+            this.documentacaoDataGridView.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
             this.documentacaoDataGridView.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.documentacaoDataGridView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -336,7 +336,7 @@
             // 
             // encaminhamentoTabPage
             // 
-            this.encaminhamentoTabPage.Controls.Add(this.button2);
+            this.encaminhamentoTabPage.Controls.Add(this.adicionarEncaminhamentoButtonOnClick);
             this.encaminhamentoTabPage.Controls.Add(this.dataGridView2);
             this.encaminhamentoTabPage.Location = new System.Drawing.Point(4, 27);
             this.encaminhamentoTabPage.Name = "encaminhamentoTabPage";
@@ -345,17 +345,18 @@
             this.encaminhamentoTabPage.Text = "Encaminhamento";
             this.encaminhamentoTabPage.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // adicionarEncaminhamentoButtonOnClick
             // 
-            this.button2.FlatAppearance.BorderSize = 0;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(933, 2);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(24, 25);
-            this.button2.TabIndex = 68;
-            this.button2.Text = "+";
-            this.button2.UseVisualStyleBackColor = true;
+            this.adicionarEncaminhamentoButtonOnClick.FlatAppearance.BorderSize = 0;
+            this.adicionarEncaminhamentoButtonOnClick.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.adicionarEncaminhamentoButtonOnClick.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.adicionarEncaminhamentoButtonOnClick.Location = new System.Drawing.Point(933, 2);
+            this.adicionarEncaminhamentoButtonOnClick.Name = "adicionarEncaminhamentoButtonOnClick";
+            this.adicionarEncaminhamentoButtonOnClick.Size = new System.Drawing.Size(24, 25);
+            this.adicionarEncaminhamentoButtonOnClick.TabIndex = 68;
+            this.adicionarEncaminhamentoButtonOnClick.Text = "+";
+            this.adicionarEncaminhamentoButtonOnClick.UseVisualStyleBackColor = true;
+            this.adicionarEncaminhamentoButtonOnClick.Click += new System.EventHandler(this.AdicionarEncaminhamentoButtonOnClick);
             // 
             // dataGridView2
             // 
@@ -365,7 +366,7 @@
             dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.MenuHighlight;
             dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.Black;
             this.dataGridView2.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
-            this.dataGridView2.BackgroundColor = System.Drawing.SystemColors.InactiveCaption;
+            this.dataGridView2.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
             this.dataGridView2.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridView2.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
             dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -530,6 +531,7 @@
             // 
             // numeroTextBox
             // 
+            this.numeroTextBox.BackColor = System.Drawing.Color.LightGray;
             this.numeroTextBox.Enabled = false;
             this.numeroTextBox.Font = new System.Drawing.Font("Trebuchet MS", 9.5F);
             this.numeroTextBox.Location = new System.Drawing.Point(862, 23);
@@ -723,7 +725,7 @@
         private System.Windows.Forms.DataGridView documentacaoDataGridView;
         private System.Windows.Forms.DataGridView dataGridView2;
         private System.Windows.Forms.Button adicionarDocumentacaoButton;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button adicionarEncaminhamentoButtonOnClick;
         private System.Windows.Forms.TabPage complementoTabPage;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;

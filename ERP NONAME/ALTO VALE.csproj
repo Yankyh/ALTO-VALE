@@ -117,6 +117,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="TN_TECNOLOGIA\ComboBoxDataGridView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TN_TECNOLOGIA\ComboBoxDataGridView.Designer.cs">
+      <DependentUpon>ComboBoxDataGridView.cs</DependentUpon>
+    </Compile>
     <Compile Include="TN_TECNOLOGIA\Controles\Control.cs" />
     <Compile Include="TN_TECNOLOGIA\Controles\ControleTelaMenu.cs" />
     <Compile Include="TN_TECNOLOGIA\EditorSQL\Tela.cs">
@@ -206,6 +212,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="PADRONIZACAO\GiantForm.resx">
       <DependentUpon>GiantForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TN_TECNOLOGIA\ComboBoxDataGridView.resx">
+      <DependentUpon>ComboBoxDataGridView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TN_TECNOLOGIA\EditorSQL\Tela.resx">
       <DependentUpon>Tela.cs</DependentUpon>

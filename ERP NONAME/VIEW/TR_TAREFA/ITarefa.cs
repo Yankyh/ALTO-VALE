@@ -533,6 +533,12 @@ namespace ALTO_VALE.VIEW.TR_TAREFA
             PreencherComboBoxSeveridade();
         }
 
+        private void AdicionarEncaminhamentoButtonOnClick(object sender, EventArgs e)
+        {
+            ITarefaEncaminhamento iTarefaDocumentacao = new ITarefaEncaminhamento();
+            iTarefaDocumentacao.ShowDialog();
+        }
+
         private void TipoDropDown(object sender, EventArgs e)
         {
             PreencherComboBoxTipo();
