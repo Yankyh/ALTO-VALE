@@ -38,8 +38,11 @@
             this.richTextBoxPopPorta = new System.Windows.Forms.RichTextBox();
             this.checkBoxSslSmtp = new System.Windows.Forms.CheckBox();
             this.checkBoxSslPop = new System.Windows.Forms.CheckBox();
-            this.buttonCancelar = new System.Windows.Forms.Button();
-            this.buttonGravar = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.buttonFechar = new System.Windows.Forms.Button();
+            this.richTextBoxNome = new System.Windows.Forms.RichTextBox();
+            this.labelNome = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // richTextBoxSmtp
@@ -66,7 +69,6 @@
             this.labelSmtptext.Size = new System.Drawing.Size(31, 13);
             this.labelSmtptext.TabIndex = 2;
             this.labelSmtptext.Text = "Smtp";
-           
             // 
             // labelPop
             // 
@@ -131,31 +133,63 @@
             this.checkBoxSslPop.Text = "Ssl";
             this.checkBoxSslPop.UseVisualStyleBackColor = true;
             // 
-            // buttonCancelar
+            // button2
             // 
-            this.buttonCancelar.Location = new System.Drawing.Point(379, 377);
-            this.buttonCancelar.Name = "buttonCancelar";
-            this.buttonCancelar.Size = new System.Drawing.Size(75, 23);
-            this.buttonCancelar.TabIndex = 11;
-            this.buttonCancelar.Text = "Cancelar";
-            this.buttonCancelar.UseVisualStyleBackColor = true;
+            this.button2.Location = new System.Drawing.Point(281, 377);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 11;
+            this.button2.Text = "Cancelar";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2OnClick);
             // 
-            // buttonGravar
+            // button1
             // 
-            this.buttonGravar.Location = new System.Drawing.Point(281, 377);
-            this.buttonGravar.Name = "buttonGravar";
-            this.buttonGravar.Size = new System.Drawing.Size(75, 23);
-            this.buttonGravar.TabIndex = 12;
-            this.buttonGravar.Text = "Gravar";
-            this.buttonGravar.UseVisualStyleBackColor = true;
+            this.button1.Location = new System.Drawing.Point(172, 377);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 12;
+            this.button1.Text = "Liberar";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.Button1OnClick);
+            // 
+            // buttonFechar
+            // 
+            this.buttonFechar.Location = new System.Drawing.Point(379, 377);
+            this.buttonFechar.Name = "buttonFechar";
+            this.buttonFechar.Size = new System.Drawing.Size(75, 23);
+            this.buttonFechar.TabIndex = 13;
+            this.buttonFechar.Text = "Fechar";
+            this.buttonFechar.UseVisualStyleBackColor = true;
+            this.buttonFechar.Click += new System.EventHandler(this.buttonFechar_Click);
+            // 
+            // richTextBoxNome
+            // 
+            this.richTextBoxNome.Location = new System.Drawing.Point(53, 170);
+            this.richTextBoxNome.Name = "richTextBoxNome";
+            this.richTextBoxNome.Size = new System.Drawing.Size(332, 21);
+            this.richTextBoxNome.TabIndex = 14;
+            this.richTextBoxNome.Text = "";
+            // 
+            // labelNome
+            // 
+            this.labelNome.AutoSize = true;
+            this.labelNome.Location = new System.Drawing.Point(7, 173);
+            this.labelNome.Name = "labelNome";
+            this.labelNome.Size = new System.Drawing.Size(46, 13);
+            this.labelNome.TabIndex = 15;
+            this.labelNome.Text = "Servidor";
             // 
             // IServidorEmail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(496, 453);
-            this.Controls.Add(this.buttonGravar);
-            this.Controls.Add(this.buttonCancelar);
+            this.Controls.Add(this.labelNome);
+            this.Controls.Add(this.richTextBoxNome);
+            this.Controls.Add(this.buttonFechar);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.checkBoxSslPop);
             this.Controls.Add(this.checkBoxSslSmtp);
             this.Controls.Add(this.richTextBoxPopPorta);
@@ -185,7 +219,10 @@
         private System.Windows.Forms.RichTextBox richTextBoxPopPorta;
         private System.Windows.Forms.CheckBox checkBoxSslSmtp;
         private System.Windows.Forms.CheckBox checkBoxSslPop;
-        private System.Windows.Forms.Button buttonCancelar;
-        private System.Windows.Forms.Button buttonGravar;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button buttonFechar;
+        private System.Windows.Forms.RichTextBox richTextBoxNome;
+        private System.Windows.Forms.Label labelNome;
     }
 }

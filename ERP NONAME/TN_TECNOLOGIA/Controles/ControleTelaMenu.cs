@@ -43,7 +43,7 @@ namespace ALTO_VALE.TN_TECNOLOGIA.Controles
             }
             if (tela == "Servidor de Email")
             {
-                VIEW.TN_EMAIL.IServidorEmail servidor = new VIEW.TN_EMAIL.IServidorEmail();
+                VIEW.TN_EMAIL.IServidorEmail servidor = new VIEW.TN_EMAIL.IServidorEmail(0);
                 servidor.ShowDialog();
             }
             //Cep
