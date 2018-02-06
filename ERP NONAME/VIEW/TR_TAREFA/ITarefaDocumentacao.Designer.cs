@@ -64,7 +64,7 @@
             // 
             this.tabControl1.Controls.Add(this.observacaoTabPage);
             this.tabControl1.Controls.Add(this.anexoTabPage);
-            this.tabControl1.Font = new System.Drawing.Font("Arial", 9F);
+            this.tabControl1.Font = new System.Drawing.Font("Trebuchet MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tabControl1.Location = new System.Drawing.Point(5, 78);
             this.tabControl1.Multiline = true;
             this.tabControl1.Name = "tabControl1";
@@ -76,10 +76,10 @@
             // 
             this.observacaoTabPage.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.observacaoTabPage.Controls.Add(this.ObservacaoTextBox);
-            this.observacaoTabPage.Location = new System.Drawing.Point(4, 24);
+            this.observacaoTabPage.Location = new System.Drawing.Point(4, 25);
             this.observacaoTabPage.Name = "observacaoTabPage";
             this.observacaoTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.observacaoTabPage.Size = new System.Drawing.Size(763, 129);
+            this.observacaoTabPage.Size = new System.Drawing.Size(763, 128);
             this.observacaoTabPage.TabIndex = 1;
             this.observacaoTabPage.Text = "Observação";
             this.observacaoTabPage.UseVisualStyleBackColor = true;
@@ -98,9 +98,9 @@
             // 
             this.anexoTabPage.Controls.Add(this.adicionarAnexoButton);
             this.anexoTabPage.Controls.Add(this.anexoDataGridView);
-            this.anexoTabPage.Location = new System.Drawing.Point(4, 24);
+            this.anexoTabPage.Location = new System.Drawing.Point(4, 25);
             this.anexoTabPage.Name = "anexoTabPage";
-            this.anexoTabPage.Size = new System.Drawing.Size(763, 129);
+            this.anexoTabPage.Size = new System.Drawing.Size(763, 128);
             this.anexoTabPage.TabIndex = 2;
             this.anexoTabPage.Text = "Anexo";
             this.anexoTabPage.UseVisualStyleBackColor = true;
@@ -126,12 +126,12 @@
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.MenuHighlight;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black;
             this.anexoDataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.anexoDataGridView.BackgroundColor = System.Drawing.SystemColors.InactiveCaption;
+            this.anexoDataGridView.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
             this.anexoDataGridView.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.anexoDataGridView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Arial", 9F);
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Trebuchet MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Transparent;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
@@ -139,7 +139,7 @@
             this.anexoDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Arial", 9F);
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Trebuchet MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.MenuHighlight;
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.WindowText;
@@ -151,7 +151,7 @@
             this.anexoDataGridView.ReadOnly = true;
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Arial", 9F);
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Trebuchet MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black;
@@ -166,7 +166,7 @@
             // 
             // liberarButton
             // 
-            this.liberarButton.Font = new System.Drawing.Font("Arial", 9F);
+            this.liberarButton.Font = new System.Drawing.Font("Trebuchet MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.liberarButton.Location = new System.Drawing.Point(362, 235);
             this.liberarButton.Name = "liberarButton";
             this.liberarButton.Size = new System.Drawing.Size(103, 32);
@@ -178,7 +178,7 @@
             // 
             // voltarButton
             // 
-            this.voltarButton.Font = new System.Drawing.Font("Arial", 9F);
+            this.voltarButton.Font = new System.Drawing.Font("Trebuchet MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.voltarButton.Location = new System.Drawing.Point(466, 235);
             this.voltarButton.Name = "voltarButton";
             this.voltarButton.Size = new System.Drawing.Size(103, 32);
@@ -189,7 +189,7 @@
             // 
             // cancelarButton
             // 
-            this.cancelarButton.Font = new System.Drawing.Font("Arial", 9F);
+            this.cancelarButton.Font = new System.Drawing.Font("Trebuchet MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cancelarButton.Location = new System.Drawing.Point(569, 235);
             this.cancelarButton.Name = "cancelarButton";
             this.cancelarButton.Size = new System.Drawing.Size(103, 32);
@@ -200,7 +200,7 @@
             // 
             // gravarButton
             // 
-            this.gravarButton.Font = new System.Drawing.Font("Arial", 9F);
+            this.gravarButton.Font = new System.Drawing.Font("Trebuchet MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gravarButton.Location = new System.Drawing.Point(673, 235);
             this.gravarButton.Name = "gravarButton";
             this.gravarButton.Size = new System.Drawing.Size(103, 32);
@@ -212,18 +212,18 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.label3.Font = new System.Drawing.Font("Arial", 10F);
+            this.label3.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.label3.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(3, 3);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(35, 16);
+            this.label3.Size = new System.Drawing.Size(33, 18);
             this.label3.TabIndex = 78;
             this.label3.Text = "Tipo";
             // 
             // tipoComboBox
             // 
             this.tipoComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.tipoComboBox.Font = new System.Drawing.Font("Arial", 10F);
+            this.tipoComboBox.Font = new System.Drawing.Font("Trebuchet MS", 8F);
             this.tipoComboBox.FormattingEnabled = true;
             this.tipoComboBox.Location = new System.Drawing.Point(6, 20);
             this.tipoComboBox.Name = "tipoComboBox";
@@ -233,25 +233,25 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.label12.Font = new System.Drawing.Font("Arial", 10F);
+            this.label12.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.label12.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label12.Location = new System.Drawing.Point(675, 2);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(48, 16);
+            this.label12.Size = new System.Drawing.Size(45, 18);
             this.label12.TabIndex = 77;
             this.label12.Text = "Tarefa";
             // 
             // tarefaTextBox
             // 
-            this.tarefaTextBox.Font = new System.Drawing.Font("Arial", 10F);
-            this.tarefaTextBox.Location = new System.Drawing.Point(678, 21);
+            this.tarefaTextBox.Font = new System.Drawing.Font("Trebuchet MS", 9F);
+            this.tarefaTextBox.Location = new System.Drawing.Point(678, 22);
             this.tarefaTextBox.Name = "tarefaTextBox";
-            this.tarefaTextBox.Size = new System.Drawing.Size(85, 23);
+            this.tarefaTextBox.Size = new System.Drawing.Size(85, 21);
             this.tarefaTextBox.TabIndex = 70;
             // 
             // excluirButton
             // 
-            this.excluirButton.Font = new System.Drawing.Font("Arial", 9F);
+            this.excluirButton.Font = new System.Drawing.Font("Trebuchet MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.excluirButton.Location = new System.Drawing.Point(253, 235);
             this.excluirButton.Name = "excluirButton";
             this.excluirButton.Size = new System.Drawing.Size(103, 32);
@@ -264,17 +264,17 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.label8.Font = new System.Drawing.Font("Arial", 10F);
-            this.label8.Location = new System.Drawing.Point(518, 2);
+            this.label8.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.label8.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(514, 2);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(38, 16);
+            this.label8.Size = new System.Drawing.Size(35, 18);
             this.label8.TabIndex = 84;
             this.label8.Text = "Data";
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.panel1.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel1.Controls.Add(this.dataTextBox);
             this.panel1.Controls.Add(this.label1);
@@ -284,6 +284,7 @@
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.label12);
             this.panel1.Controls.Add(this.tarefaTextBox);
+            this.panel1.Font = new System.Drawing.Font("Trebuchet MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panel1.Location = new System.Drawing.Point(5, 3);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(771, 62);
@@ -292,29 +293,29 @@
             // dataTextBox
             // 
             this.dataTextBox.Enabled = false;
-            this.dataTextBox.Font = new System.Drawing.Font("Arial", 10F);
-            this.dataTextBox.Location = new System.Drawing.Point(517, 21);
+            this.dataTextBox.Font = new System.Drawing.Font("Trebuchet MS", 9F);
+            this.dataTextBox.Location = new System.Drawing.Point(517, 22);
             this.dataTextBox.Name = "dataTextBox";
-            this.dataTextBox.Size = new System.Drawing.Size(157, 23);
+            this.dataTextBox.Size = new System.Drawing.Size(157, 21);
             this.dataTextBox.TabIndex = 87;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.label1.Font = new System.Drawing.Font("Arial", 10F);
-            this.label1.Location = new System.Drawing.Point(209, 2);
+            this.label1.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.label1.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(208, 3);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(59, 16);
+            this.label1.Size = new System.Drawing.Size(54, 18);
             this.label1.TabIndex = 86;
             this.label1.Text = "Assunto";
             // 
             // assuntoTextBox
             // 
-            this.assuntoTextBox.Font = new System.Drawing.Font("Arial", 10F);
-            this.assuntoTextBox.Location = new System.Drawing.Point(211, 21);
+            this.assuntoTextBox.Font = new System.Drawing.Font("Trebuchet MS", 9F);
+            this.assuntoTextBox.Location = new System.Drawing.Point(211, 22);
             this.assuntoTextBox.Name = "assuntoTextBox";
-            this.assuntoTextBox.Size = new System.Drawing.Size(303, 23);
+            this.assuntoTextBox.Size = new System.Drawing.Size(303, 21);
             this.assuntoTextBox.TabIndex = 85;
             // 
             // ITarefaDocumentacao

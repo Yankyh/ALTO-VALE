@@ -112,6 +112,11 @@
     <Compile Include="PADRONIZACAO\GiantForm.Designer.cs">
       <DependentUpon>GiantForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="TN_TECNOLOGIA\Controles\Control.cs" />
     <Compile Include="TN_TECNOLOGIA\Controles\ControleTelaMenu.cs" />
     <Compile Include="TN_TECNOLOGIA\EditorSQL\Tela.cs">
@@ -283,6 +288,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="favicon.ico" />
+    <None Include="Resources\ic_launcher1.png" />
     <None Include="Resources\ic_launcher.png" />
   </ItemGroup>
   <ItemGroup>
