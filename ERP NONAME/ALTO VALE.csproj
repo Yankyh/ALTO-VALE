@@ -112,11 +112,6 @@
     <Compile Include="PADRONIZACAO\GiantForm.Designer.cs">
       <DependentUpon>GiantForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
     <Compile Include="TN_TECNOLOGIA\Controles\Control.cs" />
     <Compile Include="TN_TECNOLOGIA\Controles\ControleTelaMenu.cs" />
     <Compile Include="TN_TECNOLOGIA\EditorSQL\Tela.cs">
@@ -154,12 +149,6 @@
     <Compile Include="VIEW\MD_SISTEMA\TelaPadrao.Designer.cs">
       <DependentUpon>TelaPadrao.cs</DependentUpon>
     </Compile>
-    <Compile Include="VIEW\PS_PESSOA\GPessoa.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="VIEW\PS_PESSOA\GPessoa.Designer.cs">
-      <DependentUpon>GPessoa.cs</DependentUpon>
-    </Compile>
     <Compile Include="VIEW\PS_PESSOA\IPessoa.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -186,12 +175,6 @@
     </Compile>
     <Compile Include="VIEW\TN_EMAIL\StatusServidorEmail.cs" />
     <Compile Include="VIEW\TN_EMAIL\UServidorEmail.cs" />
-    <Compile Include="VIEW\TR_TAREFA\GTarefa.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="VIEW\TR_TAREFA\GTarefa.Designer.cs">
-      <DependentUpon>GTarefa.cs</DependentUpon>
-    </Compile>
     <Compile Include="VIEW\TR_TAREFA\ITarefa.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -235,14 +218,6 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
-    <EmbeddedResource Include="VIEW\PS_PESSOA\GPessoa.resx">
-      <DependentUpon>GPessoa.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="VIEW\MD_SISTEMA\TelaPadrao.resx">
       <DependentUpon>TelaPadrao.cs</DependentUpon>

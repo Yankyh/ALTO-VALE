@@ -102,8 +102,8 @@ namespace ALTO_VALE.VIEW.TN_EMAIL
                     servidor.Popporta = Convert.ToInt32(richTextBoxPopPorta.Text);
                     servidor.Smtp = richTextBoxSmtp.Text;
                     servidor.Smtpporta = Convert.ToInt32(richTextBoxSmtpPorta.Text);
-                    servidor.Sslsmtp = 
-                    servidor.Sslpop = 
+                    servidor.Sslsmtp = "1";
+                    servidor.Sslpop = "2";
                     if (VerificaCamposObrigatorios(servidor) == true)
                     {
                         tentaInserirRegistro(servidor);
