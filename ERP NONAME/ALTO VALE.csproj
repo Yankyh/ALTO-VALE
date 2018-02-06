@@ -112,11 +112,6 @@
     <Compile Include="PADRONIZACAO\GiantForm.Designer.cs">
       <DependentUpon>GiantForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
     <Compile Include="TN_TECNOLOGIA\Controles\Control.cs" />
     <Compile Include="TN_TECNOLOGIA\Controles\ControleTelaMenu.cs" />
     <Compile Include="TN_TECNOLOGIA\EditorSQL\Tela.cs">
@@ -178,6 +173,8 @@
     <Compile Include="VIEW\TN_EMAIL\IServidorEmail.Designer.cs">
       <DependentUpon>IServidorEmail.cs</DependentUpon>
     </Compile>
+    <Compile Include="VIEW\TN_EMAIL\StatusServidorEmail.cs" />
+    <Compile Include="VIEW\TN_EMAIL\UServidorEmail.cs" />
     <Compile Include="VIEW\TR_TAREFA\ITarefa.cs">
       <SubType>Form</SubType>
     </Compile>

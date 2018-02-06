@@ -44,7 +44,7 @@ namespace ALTO_VALE.TN_TECNOLOGIA.Controles
         }
         public static Boolean retornaBoolean(String texto)
         {
-            Boolean valida= false;
+            Boolean valida = false;
             if (texto.Equals("S"))
             {
                 valida = true;
@@ -60,8 +60,25 @@ namespace ALTO_VALE.TN_TECNOLOGIA.Controles
                 MessageBox.Show("Não foi possível atribuir o booleano");
                 return valida;
             }
-            
 
+        }
+        public static String retornaBoolToString(Boolean texto)
+        {
+            String retorno = "";
+            if(texto == true)
+            {
+                retorno = "S";
+                return retorno;
+            }else if (texto == false)
+            {
+                retorno = "N";
+                return retorno;
+            }
+            else
+            {
+                MessageBox.Show("Não há boolean para ser tratado");
+                return "";
+            }
         }
     }
 }
