@@ -19,7 +19,6 @@ namespace ALTO_VALE.TN_TECNOLOGIA.Controles
         public void ControleTela(String tela)
         {
             connection.Conectar();
-
             //Pessoa
             if (tela == "Pessoa")
             {
@@ -32,14 +31,12 @@ namespace ALTO_VALE.TN_TECNOLOGIA.Controles
             }
             if (tela == "Contato")
             {
-                IPessoaContato iPessoaContato = new IPessoaContato();
-                iPessoaContato.ShowDialog();
+                PSPessoaContatoFormulario();
             }
             //Tarefa
             if (tela == "Tarefa")
             {
-                GTarefa gTarefa = new GTarefa();
-                gTarefa.ShowDialog();
+                TRTarefaFormulario(handleOrigem);
             }
             if (tela == "Servidor de Email")
             {
@@ -49,8 +46,7 @@ namespace ALTO_VALE.TN_TECNOLOGIA.Controles
             //Cep
             if (tela == "Cep")
             {
-                GCep gCep = new GCep();
-                gCep.ShowDialog();
+                MDCepFormulario(handleOrigem);
             }
             connection.Desconectar();
         }
@@ -64,6 +60,27 @@ namespace ALTO_VALE.TN_TECNOLOGIA.Controles
             IPessoa.pessoaHandle = handle;
             IPessoa iPessoa = new IPessoa();
             iPessoa.ShowDialog();
+        }
+        //Tarefa
+        private void TRTarefaFormulario(int handle)
+        {
+            //Envia para a outra tela o registro
+            ITarefa.handleTarefa = handle;
+            ITarefa iTarefa = new ITarefa();
+            iTarefa.ShowDialog();
+        }
+        //Cep
+        private void MDCepFormulario(int handle)
+        {
+            //Envia para a outra tela o registro
+            ICep.cepHandle = handle;
+            ICep iCep = new ICep();
+            iCep.ShowDialog();
+        }
+        private void PSPessoaContatoFormulario()
+        {
+            IPessoaContato iPessoaContato = new IPessoaContato();
+            iPessoaContato.ShowDialog();
         }
 
 

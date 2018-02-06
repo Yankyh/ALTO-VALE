@@ -11,7 +11,7 @@ namespace ALTO_VALE.DAL
 {
     class Connection
     {
-        protected String stringConexao = "Data Source=25.68.65.176;Initial Catalog=ALTO_VALE;Persist Security Info=True;User ID=sa;Password=33226655;";
+        protected String stringConexao = "Data Source=25.1.119.80;Initial Catalog=ALTO_VALE;Persist Security Info=True;User ID=sa;Password=33226655;";
         protected SqlConnection conexao;
         protected SqlCommand cmd;
         protected SqlDataReader resultSet;
@@ -27,10 +27,8 @@ namespace ALTO_VALE.DAL
         {
             try
             {
-
                 this.cmd = new SqlCommand(query, this.conexao);
                 this.resultSet = cmd.ExecuteReader();
-
             }catch(SqlException e)
             {
                 MessageBox.Show(e.Message);

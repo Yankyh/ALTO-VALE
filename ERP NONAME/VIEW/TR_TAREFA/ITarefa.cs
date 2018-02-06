@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ALTO_VALE.DAL;
+using ALTO_VALE.VIEW.MD_SISTEMA;
 
 namespace ALTO_VALE.VIEW.TR_TAREFA
 {
@@ -66,8 +67,8 @@ namespace ALTO_VALE.VIEW.TR_TAREFA
                 tipoComboBox.SelectedItem = reader["TIPO"];
                 situacaoComboBox.SelectedItem = reader["SITUACAO"];
                 severidadeComboBox.SelectedItem = reader["SEVERIDADE"];
-                dataTimePicker.Value = Convert.ToDateTime(reader["DATA"]);
-                prazoTimePicker.Value = Convert.ToDateTime(reader["PRAZO"]);
+                dataTextBox.Text = (reader["DATA"]).ToString();
+                prazoTextBox.Text = reader["PRAZO"].ToString();
                 assuntoTextBox.Text = reader["ASSUNTO"].ToString();
                 solicitacaoTextBox.Text = reader["SOLICITACAO"].ToString();
                 responsavelComboBox.SelectedItem = reader["RESPONSAVEL"];
@@ -97,10 +98,10 @@ namespace ALTO_VALE.VIEW.TR_TAREFA
                 tipo = BuscarHandleTipo();
                 situacao = BuscarHandleSituacao();
                 severidade = BuscarHandleSeveridade();
-                data = dataTimePicker.Value.ToString();
-                prazo = prazoTimePicker.Value.ToString();
+                prazo = BuscarPrazoSeveridade(severidadeComboBox.SelectedItem.ToString());
                 assunto = assuntoTextBox.Text;
                 solicitacao = solicitacaoTextBox.Text;
+                data = dataTextBox.Text;
                 responsavel = BuscarHandleResponsavel();
 
                 if (acao == "Gravar")
@@ -114,8 +115,8 @@ namespace ALTO_VALE.VIEW.TR_TAREFA
                                   " " + tipo + "," +
                                   " " + situacao + "," +
                                   " " + severidade + "," +
-                                  " '" + data + "'," +
-                                  " '" + prazo + "'," +
+                                  " GETDATE()," +
+                                  " " + prazo + "," +
                                   " '" + assunto + "'," +
                                   " '" + solicitacao + "'," +
                                   " " + responsavel + "" +
@@ -130,8 +131,6 @@ namespace ALTO_VALE.VIEW.TR_TAREFA
                                    " AND TIPO = " + tipo +
                                    " AND SITUACAO = " + situacao +
                                    " AND SEVERIDADE = " + severidade +
-                                   " AND DATA = '" + data + "'" +
-                                   " AND PRAZO = '" + prazo + "'" +
                                    " AND ASSUNTO = '" + assunto + "'" +
                                    " AND SOLICITACAO = '" + solicitacao + "'" +
                                    " AND RESPONSAVEL = " + responsavel;
@@ -156,8 +155,6 @@ namespace ALTO_VALE.VIEW.TR_TAREFA
                                                               ", TIPO = " + tipo +
                                                               ", SITUACAO = " + situacao +
                                                               ", SEVERIDADE = " + severidade +
-                                                              ", DATA = '" + data + "'" +
-                                                              ", PRAZO = '" + prazo + "'" +
                                                               ", ASSUNTO = '" + assunto + "'" +
                                                               ", SOLICITACAO = '" + solicitacao + "'" +
                                                               ", RESPONSAVEL = " + responsavel +
@@ -224,7 +221,44 @@ namespace ALTO_VALE.VIEW.TR_TAREFA
                 ControleDeStatus();
             }
         }
-
+        //Busca o tempo para o prazo
+        private String BuscarPrazoSeveridade(String severidade)
+        {
+            String prazo = "";
+            if (severidade == "Crítica")
+            {
+                prazo = "DATEADD(HOUR, 3, GETDATE ())";
+            }
+            else
+            {
+                if (severidade == "Urgente")
+                {
+                    prazo = "GETDATE () + 1";
+                }
+                else
+                {
+                    if (severidade == "Alta")
+                    {
+                        prazo = "GETDATE () + 3";
+                    }
+                    else
+                    {
+                        if (severidade == "Normal")
+                        {
+                            prazo = "GETDATE () + 7";
+                        }
+                        else
+                        {
+                            if (severidade == "Baixa")
+                            {
+                                prazo = "GETDATE () + 14";
+                            }
+                        }
+                    }
+                }
+            }
+            return prazo;
+        }
         //Buscar handles
         private int BuscarHandleSolicitante()
         {
@@ -372,9 +406,10 @@ namespace ALTO_VALE.VIEW.TR_TAREFA
         private void PreencherAnexoDataGridView()
         {
             String query = " SELECT A.HANDLE, A.DESCRICAO DESCRIÇÃO, A.NOMEARQUIVO NOME, A.CAMINHO" +
-                           " FROM TR_TAREFAANEXO A" +
-                           " INNER JOIN TR_TAREFA B ON B.HANDLE = A.TAREFA" +
-                           " WHERE B.HANDLE = " + handleTarefa;
+                           " FROM MD_ANEXO A" +
+                           " INNER JOIN TR_TAREFA B ON B.HANDLE = A.HANDLEORIGEM" +
+                           " WHERE B.HANDLE = " + handleTarefa +
+                           " AND A.TABELAORIGEM = 1";
             anexoDataGridView.AutoGenerateColumns = true;
             Binding.DataSource = connection.DataTable(query);
             anexoDataGridView.DataSource = Binding;
@@ -387,7 +422,7 @@ namespace ALTO_VALE.VIEW.TR_TAREFA
         }
         private void PreencherDocumentacaoDataGridView()
         {
-            String query = " SELECT A.HANDLE, D.IMAGEM STA,C.NOME TIPO, A.OBSERVACAO" +
+            String query = " SELECT A.HANDLE, D.IMAGEM SIT, B.DATA,C.NOME TIPO, A.ASSUNTO" +
                            " FROM TR_TAREFADOCUMENTACAO A" +
                            " INNER JOIN TR_TAREFA B ON B.HANDLE = A.TAREFA" +
                            " INNER JOIN TR_TAREFADOCUMENTACAOTIPO C ON C.HANDLE = A.TIPO" +
@@ -398,9 +433,10 @@ namespace ALTO_VALE.VIEW.TR_TAREFA
             documentacaoDataGridView.DataSource = Binding1;
             documentacaoDataGridView.Columns[0].Width = 0;
             documentacaoDataGridView.Columns[0].Visible = false;
-            documentacaoDataGridView.Columns[1].Width = 70;
-            documentacaoDataGridView.Columns[2].Width = 200;
-            documentacaoDataGridView.Columns[3].Width = 700;
+            documentacaoDataGridView.Columns[1].Width = 50;
+            documentacaoDataGridView.Columns[2].Width = 130;
+            documentacaoDataGridView.Columns[3].Width = 200;
+            documentacaoDataGridView.Columns[4].Width = 700;
             documentacaoDataGridView.AllowUserToResizeRows = false;
         }
 
@@ -430,9 +466,10 @@ namespace ALTO_VALE.VIEW.TR_TAREFA
 
         private void AdicionarButtonOnClick(object sender, EventArgs e)
         {
-            ITarefaAnexo.handleTarefa = handleTarefa;
-            ITarefaAnexo iTarefaAnexo = new ITarefaAnexo();
-            iTarefaAnexo.ShowDialog();
+            IAnexoPadrao.handleOrigem = handleTarefa;
+            IAnexoPadrao.handleTabelaOrigem = 1;
+            IAnexoPadrao iAnexoPadrao = new IAnexoPadrao();
+            iAnexoPadrao.ShowDialog();
         }
 
         private void TarefaFormActivated(object sender, EventArgs e)
@@ -457,9 +494,9 @@ namespace ALTO_VALE.VIEW.TR_TAREFA
         }
         private void AnexoDataGridViewDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            ITarefaAnexo.handleAnexo = BuscarHandleAnexo();
-            ITarefaAnexo iTarefaAnexo = new ITarefaAnexo();
-            iTarefaAnexo.ShowDialog();
+            IAnexoPadrao.handleAnexo = BuscarHandleAnexo();
+            IAnexoPadrao iAnexoPadrao = new IAnexoPadrao();
+            iAnexoPadrao.ShowDialog();
         }
 
         private void EncerrarButtonOnClick(object sender, EventArgs e)
@@ -522,37 +559,21 @@ namespace ALTO_VALE.VIEW.TR_TAREFA
                             {
                                 if (responsavelComboBox.SelectedItem != null)
                                 {
-                                    if (dataTimePicker.Value.ToString() != "")
+                                    if (assuntoTextBox.Text != "")
                                     {
-                                        if (prazoTimePicker.Value.ToString() != "")
+                                        if (solicitacaoTextBox.Text != "")
                                         {
-                                            if (assuntoTextBox.Text != "")
-                                            {
-                                                if (solicitacaoTextBox.Text != "")
-                                                {
-                                                    return true;
-                                                }
-                                                else
-                                                {
-                                                    MessageBox.Show("O campo solicitação é obrigatório");
-                                                    return false;
-                                                }
-                                            }
-                                            else
-                                            {
-                                                MessageBox.Show("O campo assunto é obrigatório");
-                                                return false;
-                                            }
+                                            return true;
                                         }
                                         else
                                         {
-                                            MessageBox.Show("O campo prazo é obrigatório");
+                                            MessageBox.Show("O campo solicitação é obrigatório");
                                             return false;
                                         }
                                     }
                                     else
                                     {
-                                        MessageBox.Show("O campo data é obrigatório");
+                                        MessageBox.Show("O campo assunto é obrigatório");
                                         return false;
                                     }
                                 }
@@ -588,8 +609,8 @@ namespace ALTO_VALE.VIEW.TR_TAREFA
             }
             catch (Exception exception)
             {
-                return false;
                 MessageBox.Show(exception.ToString());
+                return false;
             }
         }
         //Buscar status
@@ -628,7 +649,7 @@ namespace ALTO_VALE.VIEW.TR_TAREFA
             {
                 handleDocumentacao = Convert.ToInt32(documentacaoDataGridView.CurrentRow.Cells[0].Value.ToString());
             }
-            catch(Exception exception)
+            catch (Exception exception)
             {
                 MessageBox.Show(exception.ToString());
             }
@@ -638,7 +659,7 @@ namespace ALTO_VALE.VIEW.TR_TAREFA
         private void ControleDeStatus()
         {
             String status = "";
-            String query = " SELECT B.NOME" +
+            String query = " SELECT B.NOME, A.DATA, A.PRAZO" +
                            " FROM TR_TAREFA A" +
                            " INNER JOIN MD_STATUS B ON B.HANDLE = A.STATUS" +
                            " WHERE A.HANDLE = " + handleTarefa;
@@ -646,6 +667,9 @@ namespace ALTO_VALE.VIEW.TR_TAREFA
             while (reader.Read())
             {
                 status = reader["NOME"].ToString();
+                dataTextBox.Text = reader["DATA"].ToString();
+                prazoTextBox.Text = reader["PRAZO"].ToString();
+
             }
             reader.Close();
             if (status == "Cadastrado")
@@ -657,8 +681,7 @@ namespace ALTO_VALE.VIEW.TR_TAREFA
                 tipoComboBox.Enabled = true;
                 assuntoTextBox.ReadOnly = true;
                 solicitacaoTextBox.ReadOnly = true;
-                dataTimePicker.Enabled = true;
-                prazoTimePicker.Enabled = true;
+                //dataDateTimePicker.Enabled = true;
 
                 gravarButton.Visible = false;
                 cancelarButton.Visible = true;
@@ -666,8 +689,9 @@ namespace ALTO_VALE.VIEW.TR_TAREFA
                 liberarButton.Visible = true;
                 encerrarButton.Visible = false;
                 adicionarArquivoButton.Visible = true;
-                liberarButton.Location = new Point(770, 286);
-                cancelarButton.Location = new Point(874, 286);
+                adicionarDocumentacaoButton.Enabled = true;
+                liberarButton.Location = new Point(765, 331);
+                cancelarButton.Location = new Point(869, 331);
             }
             else
             {
@@ -681,8 +705,7 @@ namespace ALTO_VALE.VIEW.TR_TAREFA
                     tipoComboBox.Enabled = true;
                     assuntoTextBox.ReadOnly = false;
                     solicitacaoTextBox.ReadOnly = false;
-                    dataTimePicker.Enabled = true;
-                    prazoTimePicker.Enabled = true;
+                    //  dataDateTimePicker.Enabled = true;
                     //Controle de botões (Criar classe para isso)
                     liberarButton.Visible = true;
                     cancelarButton.Visible = true;
@@ -690,8 +713,9 @@ namespace ALTO_VALE.VIEW.TR_TAREFA
                     gravarButton.Visible = false;
                     encerrarButton.Visible = false;
                     adicionarArquivoButton.Enabled = true;
-                    liberarButton.Location = new Point(768, 375);
-                    cancelarButton.Location = new Point(872, 375);
+                    adicionarDocumentacaoButton.Enabled = true;
+                    liberarButton.Location = new Point(765, 331);
+                    cancelarButton.Location = new Point(869, 331);
                 }
                 else
                 {
@@ -704,8 +728,7 @@ namespace ALTO_VALE.VIEW.TR_TAREFA
                         tipoComboBox.Enabled = false;
                         assuntoTextBox.ReadOnly = true;
                         solicitacaoTextBox.ReadOnly = true;
-                        dataTimePicker.Enabled = false;
-                        prazoTimePicker.Enabled = false;
+                        //   dataDateTimePicker.Enabled = false;
                         //Controle de botões (Criar classe para isso)
                         gravarButton.Visible = false;
                         cancelarButton.Visible = false;
@@ -713,8 +736,9 @@ namespace ALTO_VALE.VIEW.TR_TAREFA
                         liberarButton.Visible = false;
                         encerrarButton.Visible = true;
                         adicionarArquivoButton.Enabled = true;
-                        encerrarButton.Location = new Point(768, 375);
-                        voltarButton.Location = new Point(872, 375);
+                        adicionarDocumentacaoButton.Enabled = true;
+                        encerrarButton.Location = new Point(765, 331);
+                        voltarButton.Location = new Point(869, 331);
                     }
                     else
                     {
@@ -727,15 +751,15 @@ namespace ALTO_VALE.VIEW.TR_TAREFA
                             tipoComboBox.Enabled = false;
                             assuntoTextBox.ReadOnly = true;
                             solicitacaoTextBox.ReadOnly = true;
-                            dataTimePicker.Enabled = false;
-                            prazoTimePicker.Enabled = false;
+                            //     dataDateTimePicker.Enabled = false;
                             //Botões
                             gravarButton.Visible = false;
                             cancelarButton.Visible = false;
                             voltarButton.Visible = false;
                             liberarButton.Visible = false;
                             adicionarArquivoButton.Enabled = false;
-                            voltarButton.Location = new Point(872, 375);
+                            adicionarDocumentacaoButton.Enabled = false;
+                            voltarButton.Location = new Point(869, 331);
                         }
                         else
                         {
@@ -748,8 +772,7 @@ namespace ALTO_VALE.VIEW.TR_TAREFA
                                 tipoComboBox.Enabled = false;
                                 assuntoTextBox.ReadOnly = true;
                                 solicitacaoTextBox.ReadOnly = true;
-                                dataTimePicker.Enabled = false;
-                                prazoTimePicker.Enabled = false;
+                                //      dataDateTimePicker.Enabled = false;
                                 //Botões
                                 gravarButton.Visible = false;
                                 cancelarButton.Visible = false;
@@ -757,7 +780,8 @@ namespace ALTO_VALE.VIEW.TR_TAREFA
                                 liberarButton.Visible = false;
                                 encerrarButton.Visible = false;
                                 adicionarArquivoButton.Enabled = false;
-                                voltarButton.Location = new Point(872, 375);
+                                adicionarDocumentacaoButton.Enabled = false;
+                                voltarButton.Location = new Point(869, 331);
                             }
                             else
                             {
@@ -767,7 +791,9 @@ namespace ALTO_VALE.VIEW.TR_TAREFA
                                 liberarButton.Visible = false;
                                 encerrarButton.Visible = false;
                                 adicionarArquivoButton.Enabled = false;
-                                gravarButton.Location = new Point(872, 375);
+                                //
+                                adicionarDocumentacaoButton.Enabled = false;
+                                gravarButton.Location = new Point(869, 331);
                             }
                         }
                     }

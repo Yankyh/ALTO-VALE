@@ -63,9 +63,9 @@ namespace ALTO_VALE.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap backGround {
+        internal static System.Drawing.Bitmap adicionarIcone {
             get {
-                object obj = ResourceManager.GetObject("backGround", resourceCulture);
+                object obj = ResourceManager.GetObject("adicionarIcone", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -73,9 +73,9 @@ namespace ALTO_VALE.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap backGround2 {
+        internal static System.Drawing.Bitmap ic_launcher {
             get {
-                object obj = ResourceManager.GetObject("backGround2", resourceCulture);
+                object obj = ResourceManager.GetObject("ic_launcher", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -83,9 +83,9 @@ namespace ALTO_VALE.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap backGround3 {
+        internal static System.Drawing.Bitmap ic_launcher2 {
             get {
-                object obj = ResourceManager.GetObject("backGround3", resourceCulture);
+                object obj = ResourceManager.GetObject("ic_launcher2", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

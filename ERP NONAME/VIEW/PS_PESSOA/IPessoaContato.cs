@@ -33,10 +33,7 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
             {
                 preencherFormulario(contatoHandle);
             }
-
         }
-
-
 
         //Preencher o tipo
         private void preencherTipo()
@@ -64,7 +61,7 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
             //Lista os tipos
             String query = " SELECT A.RAZAOSOCIAL " +
                            " FROM PS_PESSOA A " +
-                           " INNER JOIN PS_PESSOACONTATO B ON B.PESSOA = A.HANDLE"+
+                           " LEFT JOIN PS_PESSOACONTATO B ON B.PESSOA = A.HANDLE"+
                            " WHERE A.STATUS = 3 OR B.PESSOA = (SELECT PESSOA FROM PS_PESSOACONTATO WHERE HANDLE = "+contatoHandle+") ";
             SqlDataReader reader = connection.Pesquisa(query);
 
@@ -82,11 +79,11 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
 
         private void gravarButtonOnClick(object sender, EventArgs e)
         {
-            alterarRegistro("Gravar");
+            AlterarRegistro("Gravar");
         }
 
         //Inserir informações com o gravar
-        private void alterarRegistro(String origem)
+        private void AlterarRegistro(String origem)
         {
             //Verifica se os campos obrigatorios foram preenchidos
             if (verificarCamposObrigatorios() == false)
@@ -253,11 +250,11 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
                 if (status == "Ag. modificações")
                 {
                     //Controle de status
-                    emailTextBox.Enabled = true;
+                    emailTextBox.ReadOnly = false;
                     tipoComboBox.Enabled = true;
-                    telefoneTextBox.Enabled = true;
-                    celularTextBox.Enabled = true;
-                    ObservacaoTextBox.Enabled = true;
+                    telefoneTextBox.ReadOnly = false;
+                    celularTextBox.ReadOnly = false;
+                    ObservacaoTextBox.ReadOnly = false;
                     pessoaComboBox.Enabled = true;
                     //Controle de botões (Criar classe para isso)
                     liberarButton.Visible = true;
@@ -272,11 +269,11 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
                     if (status == "Ativo")
                     {
                         //Caso esteja ativo, não permite alterar antes de voltar o registro
-                        emailTextBox.Enabled = false;
+                        emailTextBox.ReadOnly = true;
                         tipoComboBox.Enabled = false;
-                        telefoneTextBox.Enabled = false;
-                        celularTextBox.Enabled = false;
-                        ObservacaoTextBox.Enabled = false;
+                        telefoneTextBox.ReadOnly = true;
+                        celularTextBox.ReadOnly = true;
+                        ObservacaoTextBox.ReadOnly = true;
                         pessoaComboBox.Enabled = false;
                         //Controle de botões (Criar classe para isso)
                         gravarButton.Visible = false;
@@ -290,11 +287,11 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
                         if (status == "Cancelado")
                         {
                             //Caso esteja ativo, não permite alterar antes de voltar o registro
-                            emailTextBox.Enabled = false;
+                            emailTextBox.ReadOnly = true;
                             tipoComboBox.Enabled = false;
-                            telefoneTextBox.Enabled = false;
-                            celularTextBox.Enabled = false;
-                            ObservacaoTextBox.Enabled = false;
+                            telefoneTextBox.ReadOnly = true;
+                            celularTextBox.ReadOnly = true;
+                            ObservacaoTextBox.ReadOnly = true;
                             pessoaComboBox.Enabled = false;
                             //Controle de botões (Criar classe para isso)
                             gravarButton.Visible = false;
@@ -381,7 +378,7 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
 
         private void cancelarButtonOnClick(object sender, EventArgs e)
         {
-            alterarRegistro("Cancelar");
+            AlterarRegistro("Cancelar");
         }
 
         private void PessoaComboBoxDropDown(object sender, EventArgs e)
@@ -397,7 +394,7 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
             }
             else
             {
-                alterarRegistro("Alterar");
+                AlterarRegistro("Alterar");
                 ControleDeStatus();
             }
 

@@ -80,11 +80,11 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
         {
             if (verificarCamposObrigatorios() == true)
             {
-                gravarRegistroEndereco("Gravar");
+                AlterarRegistro("Gravar");
             }
         }
 
-        public void gravarRegistroEndereco(String acao)
+        public void AlterarRegistro(String acao)
         {
             String cep = "", cidade = "", bairro = "", logradouro = "", numero = "", referencia = "", observacao = "";
             int estado = 0;
@@ -249,48 +249,55 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
         //Verificar campos obrigatórios
         public Boolean verificarCamposObrigatorios()
         {
-            if (cepComboBox.SelectedValue == "")
+            try
             {
-                MessageBox.Show("O campo Cep é obrigatório.");
-                return false;
-            }
-            else
-            {
-                if (cidadeTextBox.Text == "")
+                if (cepComboBox.SelectedItem.ToString() == "")
                 {
-                    MessageBox.Show("O campo cidade é obrigatório.");
+                    MessageBox.Show("O campo Cep é obrigatório.");
                     return false;
                 }
                 else
                 {
-                    if (estadoComboBox.SelectedValue == "")
+                    if (cidadeTextBox.Text == "")
                     {
-                        MessageBox.Show("O campo estado é obrigatório.");
+                        MessageBox.Show("O campo cidade é obrigatório.");
                         return false;
                     }
                     else
                     {
-                        if (bairroTextBox.Text == "")
+                        if (estadoComboBox.SelectedItem.ToString() == "")
                         {
-                            MessageBox.Show("O campo bairro é obrigatório.");
+                            MessageBox.Show("O campo estado é obrigatório.");
                             return false;
                         }
                         else
                         {
-                            if (logradouroTextBox.Text == "")
+                            if (bairroTextBox.Text == "")
                             {
-                                MessageBox.Show("O campo logradouro é obrigatório.");
+                                MessageBox.Show("O campo bairro é obrigatório.");
                                 return false;
                             }
                             else
                             {
-                                return true;
+                                if (logradouroTextBox.Text == "")
+                                {
+                                    MessageBox.Show("O campo logradouro é obrigatório.");
+                                    return false;
+                                }
+                                else
+                                {
+                                    return true;
+                                }
                             }
                         }
                     }
                 }
             }
-            return true;
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.ToString());
+                return false;
+            }
         }
 
 
@@ -371,17 +378,17 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
 
         private void liberarButtonOnClick(object sender, EventArgs e)
         {
-            gravarRegistroEndereco("Liberar");
+            AlterarRegistro("Liberar");
         }
 
         private void voltarButtonOnClick(object sender, EventArgs e)
         {
-            gravarRegistroEndereco("Voltar");
+            AlterarRegistro("Voltar");
         }
 
         private void cancelarButtonOnClick(object sender, EventArgs e)
         {
-            gravarRegistroEndereco("Cancelar");
+            AlterarRegistro("Cancelar");
         }
 
         private void enderecoFormClosed(object sender, FormClosedEventArgs e)
@@ -410,8 +417,8 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
                 cancelarButton.Visible = true;
                 voltarButton.Visible = false;
                 liberarButton.Visible = true;
-                liberarButton.Location = new Point(770, 286);
-                cancelarButton.Location = new Point(874, 286);
+                liberarButton.Location = new Point(770, 255);
+                cancelarButton.Location = new Point(874, 255);
             }
             else
             {
@@ -419,20 +426,20 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
                 {
                     //Controle de status
                     cepComboBox.Enabled = true;
-                    cidadeTextBox.Enabled = true;
+                    cidadeTextBox.ReadOnly = false;
                     estadoComboBox.Enabled = true;
-                    bairroTextBox.Enabled = true;
-                    logradouroTextBox.Enabled = true;
-                    numeroTextBox.Enabled = true;
-                    referenciaTextBox.Enabled = true;
-                    ObservacaoTextBox.Enabled = true;
+                    bairroTextBox.ReadOnly = false;
+                    logradouroTextBox.ReadOnly = false;
+                    numeroTextBox.ReadOnly = false;
+                    referenciaTextBox.ReadOnly = false;
+                    ObservacaoTextBox.ReadOnly = false;
                     //Controle de botões (Criar classe para isso)
                     liberarButton.Visible = true;
                     cancelarButton.Visible = true;
                     voltarButton.Visible = false;
                     gravarButton.Visible = false;
-                    liberarButton.Location = new Point(770, 286);
-                    cancelarButton.Location = new Point(874, 286);
+                    liberarButton.Location = new Point(770, 255);
+                    cancelarButton.Location = new Point(874, 255);
                 }
                 else
                 {
@@ -440,19 +447,19 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
                     {
                         //Caso esteja ativo, não permite alterar antes de voltar o registro
                         cepComboBox.Enabled = false;
-                        cidadeTextBox.Enabled = false;
+                        cidadeTextBox.ReadOnly = true;
                         estadoComboBox.Enabled = false;
-                        bairroTextBox.Enabled = false;
-                        logradouroTextBox.Enabled = false;
-                        numeroTextBox.Enabled = false;
-                        referenciaTextBox.Enabled = false;
-                        ObservacaoTextBox.Enabled = false;
+                        bairroTextBox.ReadOnly = true;
+                        logradouroTextBox.ReadOnly = true;
+                        numeroTextBox.ReadOnly = true;
+                        referenciaTextBox.ReadOnly = true;
+                        ObservacaoTextBox.ReadOnly = true;
                         //Controle de botões (Criar classe para isso)
                         gravarButton.Visible = false;
                         cancelarButton.Visible = false;
                         voltarButton.Visible = true;
                         liberarButton.Visible = false;
-                        voltarButton.Location = new Point(874, 286);
+                        voltarButton.Location = new Point(874, 255);
                     }
                     else
                     {
@@ -460,19 +467,19 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
                         {
                             //Caso esteja cancelado, não permite alterar antes de voltar o registro
                             cepComboBox.Enabled = false;
-                            cidadeTextBox.Enabled = false;
+                            cidadeTextBox.ReadOnly = true;
                             estadoComboBox.Enabled = false;
-                            bairroTextBox.Enabled = false;
-                            logradouroTextBox.Enabled = false;
-                            numeroTextBox.Enabled = false;
-                            referenciaTextBox.Enabled = false;
-                            ObservacaoTextBox.Enabled = false;
+                            bairroTextBox.ReadOnly = true;
+                            logradouroTextBox.ReadOnly = true;
+                            numeroTextBox.ReadOnly = true;
+                            referenciaTextBox.ReadOnly = true;
+                            ObservacaoTextBox.ReadOnly = true;
                             //Controle de botões (Criar classe para isso)
                             gravarButton.Visible = false;
                             cancelarButton.Visible = false;
                             voltarButton.Visible = true;
                             liberarButton.Visible = false;
-                            voltarButton.Location = new Point(874, 286);
+                            voltarButton.Location = new Point(874, 255);
                         }
                         else
                         {
@@ -480,7 +487,7 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
                             cancelarButton.Visible = false;
                             voltarButton.Visible = false;
                             liberarButton.Visible = false;
-                            gravarButton.Location = new Point(874, 286);
+                            gravarButton.Location = new Point(874, 255);
                         }
                     }
                 }

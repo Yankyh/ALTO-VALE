@@ -26,11 +26,14 @@ namespace ALTO_VALE
 
         //Serve para saber qual datagridview esta selecionado
         String telaSelecionada = "";
+        //Variaveis de configuração dos datagridviews que são padrão
+        int SITUACAOWIDTH = 32;
 
         public Form1()
         {
             InitializeComponent();
             connection.Conectar();
+            adicionarButton.Enabled = false;
             menuTreeView.Visible = false;
         }
 
@@ -42,6 +45,7 @@ namespace ALTO_VALE
                 if (menuTreeView.SelectedNode.IsExpanded == false)
                 {
                     nodeSelecionado = menuTreeView.SelectedNode.Text;
+                    adicionarButton.Enabled = true;
                 }
             }
             catch (Exception exception)
@@ -56,33 +60,12 @@ namespace ALTO_VALE
 
         }
 
-
         private void ControleTelas(String tela)
         {
             ControleTelaMenu controleTelaMenu = new ControleTelaMenu();
             controleTelaMenu.ControleTela(tela);
         }
 
-
-
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-            TN_TECNOLOGIA.EditorSQL.Tela Tela = new TN_TECNOLOGIA.EditorSQL.Tela();
-            Tela.ShowDialog();
-        }
-
-        private void tarefaButtonOnClick(object sender, EventArgs e)
-        {
-            GTarefa gTarefa = new GTarefa();
-            gTarefa.ShowDialog();
-        }
-
-        private void TarefaDiretoOnClick(object sender, EventArgs e)
-        {
-            ITarefa iTarefa = new ITarefa();
-            iTarefa.ShowDialog();
-        }
 
         private void MenuButtonOnClick(object sender, EventArgs e)
         {
@@ -102,91 +85,42 @@ namespace ALTO_VALE
             menuTreeView.Visible = false;
         }
 
-        private void AbreEditorSql(object sender, KeyEventArgs e)
-        {
-
-        }
-
-        private void ActiveOnEnter(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                String nodeSelecionado = "";
-                try
-                {
-                    if (menuTreeView.SelectedNode.IsExpanded == false)
-                    {
-                        nodeSelecionado = menuTreeView.SelectedNode.Text;
-                    }
-                }
-                //
-                catch (Exception exception)
-                {
-                    MessageBox.Show(exception.ToString());
-                }
-
-                if (nodeSelecionado != "")
-                {
-                    ControleTelas(nodeSelecionado);
-                }
-            }
-        }
-
-     
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            ControleDadosMenu controleDadosMenu = new ControleDadosMenu();
-            // controleDadosMenu.GerenciarMenuDataGridView();
-        }
-
-    
-
         // Esse método é responsável pelos key events, ( precisa dar override no processdialog pois o c# é bugado )
-        protected override bool ProcessDialogKey(Keys keyData)
-        {
-            switch (keyData)
-            {
-                case Keys.F11:
-                    TN_TECNOLOGIA.EditorSQL.Tela editor = new TN_TECNOLOGIA.EditorSQL.Tela();
-                    editor.ShowDialog();
-                    return true;
-            }
-            return base.ProcessDialogKey(keyData);
-        }
-
-        
-
-
-
-
-
-
-
-
-
+        /*  protected override bool ProcessDialogKey(Keys keyData)
+          {
+              switch (keyData)
+              {
+                  case Keys.F11:
+                      TN_TECNOLOGIA.EditorSQL.Tela editor = new TN_TECNOLOGIA.EditorSQL.Tela();
+                      editor.ShowDialog();
+                      return true;
+              }
+              return base.ProcessDialogKey(keyData);
+          }*/
 
         //Controle do datagridview
+
         private void GerenciarMenuDataGridView(String tela)
         {
             telaSelecionada = tela;
             String query = "";
+            menuDataGridView.DataSource = null;
             BindingSource Binding = new BindingSource();
+            ControleTelaMenu controleTelaMenu = new ControleTelaMenu();
 
             //Pessoa
             if (tela == "Pessoa")
             {
-                menuDataGridView.AutoGenerateColumns = true;
-                query = " SELECT A.HANDLE, B.NOME SITUAÇÃO, A.RAZAOSOCIAL AS 'RAZÃO SOCIAL', A.APELIDO, A.CPFCNPJ AS 'CPF/CNPJ', A.TELEFONE, C.CIDADE, D.SIGLA ESTADO, C.LOGRADOURO" +
+                query = " SELECT A.HANDLE, B.IMAGEM SIT, A.RAZAOSOCIAL AS 'RAZÃO SOCIAL', A.APELIDO APELIDO, A.CPFCNPJ AS 'CPF/CNPJ', A.TELEFONE, C.CIDADE, D.SIGLA ESTADO, C.LOGRADOURO" +
                                " FROM PS_PESSOA A" +
                                " INNER JOIN MD_STATUS B ON B.HANDLE = A.STATUS " +
-                               " LEFT JOIN PS_PESSOAENDERECO C ON C.HANDLE = A.ENDERECO" +
+                               " LEFT JOIN PS_PESSOAENDERECO C ON C.HANDLE = (SELECT MAX(HANDLE) FROM PS_PESSOAENDERECO WHERE PESSOA = A.HANDLE)" +
                                " LEFT JOIN MD_ESTADO D ON D.HANDLE = C.ESTADO";
                 Binding.DataSource = connection.DataTable(query);
                 menuDataGridView.DataSource = Binding;
 
                 menuDataGridView.Columns[0].Visible = false;
-                menuDataGridView.Columns[1].Width = 150;
+                menuDataGridView.Columns[1].Width = SITUACAOWIDTH;
                 menuDataGridView.Columns[2].Width = 300;
                 menuDataGridView.Columns[3].Width = 300;
                 menuDataGridView.Columns[4].Width = 150;
@@ -194,44 +128,38 @@ namespace ALTO_VALE
                 menuDataGridView.Columns[8].Width = 230;
                 menuDataGridView.AllowUserToResizeRows = false;
             }
-            if (tela == "Endereço")
-            {
-                IPessoaEndereco iPessaEndereco = new IPessoaEndereco();
-                iPessaEndereco.ShowDialog();
-            }
-            if (tela == "Contato")
-            {
-                IPessoaContato iPessoaContato = new IPessoaContato();
-                iPessoaContato.ShowDialog();
-            }
             //Tarefa
             if (tela == "Tarefa")
             {
-                query = " SELECT A.HANDLE, B.IMAGEM STA, F.NOME SITUAÇÃO, E.NOME SEVERIDADE, G.NOME TIPO, A.PRAZO, A.ASSUNTO, C.LOGIN SOLICITANTE, D.LOGIN RESPONSAVEL, A.DATA " +
+
+
+
+                query = " SELECT A.HANDLE, B.IMAGEM SIT, F.NOME SITUAÇÃO, E.NOME SEVERIDADE, G.NOME TIPO, A.PRAZO, A.ASSUNTO, C.LOGIN SOLICITANTE, D.LOGIN RESPONSAVEL, A.DATA " +
                         " FROM TR_TAREFA A" +
                         " INNER JOIN MD_STATUS B ON B.HANDLE = A.STATUS" +
                         " INNER JOIN PS_USUARIO C ON C.HANDLE = A.SOLICITANTE" +
                         " INNER JOIN PS_USUARIO D ON D.HANDLE = A.RESPONSAVEL" +
                         " INNER JOIN TR_TAREFASEVERIDADE E ON E.HANDLE = A.SEVERIDADE" +
                         " INNER JOIN TR_TAREFASITUACAO F ON F.HANDLE = A.SITUACAO" +
-                        " INNER JOIN TR_TAREFATIPO G ON G.HANDLE = A.TIPO";
-                       //  " WHERE A.STATUS IN (" + status + ")";
+                        " INNER JOIN TR_TAREFATIPO G ON G.HANDLE = A.TIPO" +
+                        " WHERE 1=1" +
+                        " " + filtroStatus() + "";
+                //  " WHERE A.STATUS IN (" + status + ")";
                 Binding.DataSource = connection.DataTable(query);
                 menuDataGridView.DataSource = Binding;
 
                 menuDataGridView.Columns[0].Width = 0;
+
                 menuDataGridView.Columns[0].Visible = false;
-                menuDataGridView.Columns[1].Width = 50;
+                menuDataGridView.Columns[1].Width = SITUACAOWIDTH;
                 menuDataGridView.Columns[2].Width = 120;
                 menuDataGridView.Columns[3].Width = 120;
                 menuDataGridView.Columns[4].Width = 150;
                 menuDataGridView.Columns[5].Width = 150;
-                menuDataGridView.Columns[6].Width = 850;
+                menuDataGridView.Columns[6].Width = 650;
                 menuDataGridView.Columns[7].Width = 120;
                 menuDataGridView.Columns[8].Width = 130;
                 menuDataGridView.Columns[9].Width = 150;
-
-                menuDataGridView.AllowUserToResizeRows = false;
             }
             if (tela == "Servidor de Email")
             {
@@ -242,37 +170,31 @@ namespace ALTO_VALE
             if (tela == "Cep")
             {
                 menuDataGridView.AutoGenerateColumns = true;
-                query = " SELECT A.HANDLE, B.NOME, A.CEP, A.PAIS, A.ESTADO, A.CIDADE, A.BAIRRO, A.LOGRADOURO" +
+                query = " SELECT A.HANDLE, B.IMAGEM SIT, A.CEP, A.PAIS, A.ESTADO, A.CIDADE, A.BAIRRO, A.LOGRADOURO" +
                                " FROM MD_CEP A" +
                                " INNER JOIN MD_STATUS B ON B.HANDLE = A.STATUS";
                 Binding.DataSource = connection.DataTable(query);
                 menuDataGridView.DataSource = Binding;
 
-                menuDataGridView.Columns[1].Width = 150;
+                menuDataGridView.Columns[1].Width = SITUACAOWIDTH;
                 menuDataGridView.Columns[2].Width = 150;
                 menuDataGridView.Columns[3].Width = 150;
                 menuDataGridView.Columns[4].Width = 150;
                 menuDataGridView.Columns[5].Width = 200;
                 menuDataGridView.Columns[7].Width = 300;
                 menuDataGridView.Columns[0].Visible = false;
-                menuDataGridView.AllowUserToResizeRows = false;
             }
-        }
 
-        private void MenuFormClosed(object sender, FormClosedEventArgs e)
-        {
-            connection.Desconectar();
         }
-
         private int BuscarHandleDataGridView()
         {
-           int handleRegistroSelecionado = 0;
+            int handleRegistroSelecionado = 0;
 
             try
             {
                 handleRegistroSelecionado = Convert.ToInt32(menuDataGridView.CurrentRow.Cells[0].Value);
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 MessageBox.Show(e.ToString());
             }
@@ -285,13 +207,6 @@ namespace ALTO_VALE
             ControleTelaMenu controleTelaMenu = new ControleTelaMenu();
             controleTelaMenu.ControleTela(telaSelecionada);
         }
-        
-
-        private void editorToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            TN_TECNOLOGIA.EditorSQL.Tela tela = new Tela();
-            tela.ShowDialog();
-        }
 
         private void ContextOnRightClick(object sender, MouseEventArgs e)
         {
@@ -300,6 +215,100 @@ namespace ALTO_VALE
                 contextMenuStripPadrao.Enabled = true;
                 contextMenuStripPadrao.Visible = true;
             }
+        }
+
+        private void AdicionarButtonOnClick(object sender, EventArgs e)
+        {
+            ControleTelaMenu.handleOrigem = 0;
+            ControleTelaMenu controleTelaMenu = new ControleTelaMenu();
+            controleTelaMenu.ControleTela(telaSelecionada);
+        }
+
+        private void MenuFormActivated(object sender, EventArgs e)
+        {
+            GerenciarMenuDataGridView(telaSelecionada);
+        }
+
+
+        private void MenuFormClosed(object sender, FormClosedEventArgs e)
+        {
+            connection.Desconectar();
+        }
+
+
+        //Filtro temporário pro avi
+        private String filtroStatus()
+        {
+            String situacoes = "", filtro = "AND B.NOME IN (";
+
+            //Filtro de baiano
+            if (ativoCheckBox.Checked)
+            {
+                if (situacoes == "")
+                {
+                    situacoes = "'Ativo'";
+                }
+                else
+                {
+                    situacoes = situacoes + ", 'Ativo'";
+                }
+            }
+            if (canceladoCheckBox.Checked)
+            {
+                if (situacoes == "")
+                {
+                    situacoes = "'Cancelado'";
+                }
+                else
+                {
+                    situacoes = situacoes + ", 'Cancelado'";
+                }
+            }
+            if (encerradoCheckBox.Checked)
+            {
+                if (situacoes == "")
+                {
+                    situacoes = "'Encerrado'";
+                }
+                else
+                {
+                    situacoes = situacoes + ", 'Encerrado'";
+                }
+            }
+            if (AgmodificacoesCheckBox.Checked)
+            {
+                if (situacoes == "")
+                {
+                    situacoes = "'Ag. modificações'";
+                }
+                else
+                {
+                    situacoes = situacoes + ", 'Ag. modificações'";
+                }
+            }
+            if (cadastradoCheckBox.Checked)
+            {
+                if (situacoes == "")
+                {
+                    situacoes = "'Cadastrado'";
+                }
+                else
+                {
+                    situacoes = situacoes + ", 'Cadastrado'";
+                }
+            }
+            filtro = filtro + situacoes + ")";
+
+            if(situacoes == "")
+            {
+                return null;
+            }
+            return filtro;
+        }
+
+        private void atualizarDataGridViewButtonOnClick(object sender, EventArgs e)
+        {
+            GerenciarMenuDataGridView(telaSelecionada);
         }
     }
 }

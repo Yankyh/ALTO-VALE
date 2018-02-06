@@ -10,11 +10,14 @@ using System.Windows.Forms;
 using ALTO_VALE.DAL;
 using System.Data.SqlClient;
 using System.IO;
+using ALTO_VALE.VIEW.MD_SISTEMA;
 
 namespace ALTO_VALE.VIEW.PS_PESSOA
 {
     public partial class IPessoa : Form
     {
+        static int tipoPessoa = 0;
+
         Connection connection = new Connection();
         StatusFilter statusFilter = new StatusFilter();
 
@@ -31,7 +34,7 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
             InitializeComponent();
             connection.Conectar();
             cpfcnpjTextBox.Enabled = false;
-            //preenche o formulario caso seja diferente de 0
+
             if (pessoaHandle == 0)
             {
                 ControleDeStatus();
@@ -39,121 +42,148 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
             else
             {
                 preencherFormulario(pessoaHandle);
-                pessoaHandle = 0;
             }
         }
-
-
 
         private void gravarButtonOnClick(object sender, EventArgs e)
         {
-
-            //Método para verificar os campos obrigatórios e método para validar se o cpf/cnpj já não foi cadastrado
-            if ((validarCpfCnpjCadastrado() == true || buscarHandlePessoa() != 0))
-            {
-                //.Gravar o registro
-                alterarRegistroPessoa("Gravar");
-                ControleDeStatus();
-            }
+            AlterarRegistro("Gravar");
         }
 
         //Metodos
-        private void alterarRegistroPessoa(String situacao)
+        private void AlterarRegistro(String situacao)
         {
             String apelido = "", razaoSocial = "", email = "", cpfCnpj = "", telefone = "", celular = "", observacao = "";
-            Boolean ehCliente = false, ehFornecedor = false, ehOrgaoPublico = false;
+            Boolean ehCliente = false, ehFornecedor = false, ehOrgaoPublico = false, ehFuncionario = false;
             int tipoPessoa = 0, cepSelecionadoHandle = 0;
             apelido = apelidoTextBox.Text;
             razaoSocial = razaoSocialTextBox.Text;
             email = emailTextBox.Text;
             cpfCnpj = cpfcnpjTextBox.Text;
             telefone = telefoneTextBox.Text;
-            tipoPessoa = tipoPessoaHandle();
+            tipoPessoa = BuscarHandleTipoPessoa();
             celular = celularTextBox.Text;
             observacao = ObservacaoTextBox.Text;
             //booleans
             ehCliente = ClienteCheckBox.Checked;
             ehFornecedor = fornecedorCheckBox.Checked;
             ehOrgaoPublico = orgaoPublicoCheckBox.Checked;
+            ehFuncionario = funcionarioCheckBox.Checked;
             int handlePessoa = 0;
-            handlePessoa = buscarHandlePessoa();
-            //Verifica se o registro já foi gravado alguma vez
-            if (situacao == "Alterar")
+
+            try
             {
-                String query = "UPDATE PS_PESSOA SET STATUS = 3, APELIDO = '" + apelido + "', RAZAOSOCIAL = '" + razaoSocial + "'," +
-                                     " EMAIL = '" + email + "', CPFCNPJ = '" + cpfCnpj + "', TIPO = " + tipoPessoaHandle() + ", " +
-                                     " TELEFONE = '" + telefone + "', CELULAR = '" + celular + "', OBSERVACAO = '" + observacao + "'," +
-                                     " EHCLIENTE = '" + ehCliente + "', EHFORNECEDOR = '" + ehFornecedor + "', EHORGAOPUBLICO = '" + ehOrgaoPublico + "'" +
-                                     " WHERE HANDLE = " + buscarHandlePessoa();
-                connection.Inserir(query);
-                //Ativar Endereço
-                String query1 = " UPDATE PS_PESSOAENDERECO" +
-                                " SET STATUS = 3" +
-                                " WHERE PESSOA = " + handlePessoa + "";
-                connection.Inserir(query1);
-
-                //Ativar Contato
-                String query2 = " UPDATE PS_PESSOACONTATO" +
-                                " SET STATUS = 3" +
-                                " WHERE PESSOA =  " + handlePessoa + "";
-                connection.Inserir(query2);
-
-            }
-            else
-            {
-                if (situacao == "Cancelar")
-
+                //Envia a situação para o verificador, pois, caso seja cadastro, o sistema não valida se existe endereço, somente na hora de liberar
+                if (VerificaCamposObrigatorios(situacao) == true)
                 {
-                    DialogResult confirmacaoButton = MessageBox.Show("Deseja Continuar?", "Cancelar pessoa", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button2);
-                    if (confirmacaoButton.ToString().ToUpper() == "YES")
+                    if (situacao == "Liberar")
                     {
-                        String query = " UPDATE PS_PESSOA" +
-                                   " SET STATUS = 4" +
-                                   " WHERE HANDLE = " + handlePessoa;
+                        handlePessoa = BuscarHandlePessoa();
+
+                        String query = "UPDATE PS_PESSOA SET STATUS = 3, APELIDO = '" + apelido + "', RAZAOSOCIAL = '" + razaoSocial + "'," +
+                                             " EMAIL = '" + email + "', CPFCNPJ = '" + cpfCnpj + "', TIPO = " + tipoPessoa + ", " +
+                                             " TELEFONE = '" + telefone + "', CELULAR = '" + celular + "', OBSERVACAO = '" + observacao + "'," +
+                                             " EHCLIENTE = '" + ehCliente + "', EHFORNECEDOR = '" + ehFornecedor + "', EHORGAOPUBLICO = '" + ehOrgaoPublico + "', EHFUNCIONARIO = '" + ehFuncionario + "'" +
+                                             " WHERE HANDLE = " + pessoaHandle;
                         connection.Inserir(query);
-                        //Cancelar Endereço
+                        //Ativar Endereço
                         String query1 = " UPDATE PS_PESSOAENDERECO" +
-                                        " SET STATUS = 4" +
+                                        " SET STATUS = 3" +
                                         " WHERE PESSOA = " + handlePessoa + "";
                         connection.Inserir(query1);
 
-                        //Cancelar Contato
+                        //Ativar Contato
                         String query2 = " UPDATE PS_PESSOACONTATO" +
-                                        " SET STATUS = 4" +
-                                        " WHERE PESSOA = " + handlePessoa + "";
+                                        " SET STATUS = 3" +
+                                        " WHERE PESSOA =  " + handlePessoa + "";
                         connection.Inserir(query2);
                     }
                     else
                     {
-                        //Caso não exista ele insere
-                        //Query principal de insert
-                        String queryInsert = " INSERT INTO PS_PESSOA (STATUS, APELIDO, RAZAOSOCIAL, EMAIL,CPFCNPJSEMMASCARA, CPFCNPJ, TELEFONE, CELULAR, TIPO, ENDERECO, OBSERVACAO, EHCLIENTE, EHFORNECEDOR, EHORGAOPUBLICO) VALUES" +
-                                             " ( " + 1 + ",'" + apelido + "', '" + razaoSocial + "','" + email + "','" + cpfCnpj.Replace(".", "").Replace("-", "").Replace("/", "") + "', " +
-                                             " '" + cpfCnpj + "', '" + telefone + "', '" + celular + "', '" + tipoPessoa + "', " + cepSelecionadoHandle + ", '" + observacao + "'," +
-                                             " '" + ehCliente + "', '" + ehFornecedor + "',  '" + ehOrgaoPublico + "')";
-                        connection.Inserir(queryInsert);
+                        if (situacao == "Gravar" && VerificaDuplicidadeCpfCnpj() == false)
+                        {
+                            String query = " INSERT INTO PS_PESSOA (STATUS, APELIDO, RAZAOSOCIAL, EMAIL,CPFCNPJSEMMASCARA, CPFCNPJ, TELEFONE, CELULAR, TIPO, ENDERECO, OBSERVACAO, EHCLIENTE, EHFORNECEDOR, EHORGAOPUBLICO)" +
+                                           " VALUES" +
+                                           " ( " + 1 + "," +
+                                           "'" + apelido + "'," +
+                                           "'" + razaoSocial + "'," +
+                                           "'" + email + "'," +
+                                           "'" + cpfCnpj.Replace(".", "").Replace("-", "").Replace("/", "") + "'," +
+                                           "'" + cpfCnpj + "', " +
+                                           "'" + telefone + "', " +
+                                           "'" + celular + "', " +
+                                           "'" + tipoPessoa + "', " +
+                                           "" + cepSelecionadoHandle + ", " +
+                                           "'" + observacao + "'," +
+                                           "'" + ehCliente + "', " +
+                                           "'" + ehFornecedor + "',  " +
+                                           "'" + ehOrgaoPublico + "')";
+                            connection.Inserir(query);
+
+                            String query1 = " SELECT MAX(HANDLE) HANDLE" +
+                                            " FROM PS_PESSOA" +
+                                            " WHERE CPFCNPJ = '" + cpfCnpj + "'";
+                            SqlDataReader reader = connection.Pesquisa(query1);
+                            while (reader.Read())
+                            {
+                                pessoaHandle = Convert.ToInt32(reader["HANDLE"]);
+                            }
+                            reader.Close();
+                        }
                     }
                 }
+                if (situacao == "Cancelar")
+                {
+                    String query = " UPDATE PS_PESSOA" +
+                                   " SET STATUS = 4" +
+                                   " WHERE HANDLE = " + handlePessoa;
+                    connection.Inserir(query);
+                    //Cancelar Endereço
+                    String query1 = " UPDATE PS_PESSOAENDERECO" +
+                                    " SET STATUS = 4" +
+                                    " WHERE PESSOA = " + handlePessoa + "";
+                    connection.Inserir(query1);
+
+                    //Cancelar Contato
+                    String query2 = " UPDATE PS_PESSOACONTATO" +
+                                    " SET STATUS = 4" +
+                                    " WHERE PESSOA = " + handlePessoa + "";
+                    connection.Inserir(query2);
+                }
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.ToString());
             }
             ControleDeStatus();
+            AtualizarInformacoesDoFormulario();
         }
 
         //Metodos de busca de handle
-        private int tipoPessoaHandle()
+        private int BuscarHandleTipoPessoa()
         {
-            int tipoPessoaHandle = 0;
+            int BuscarHandleTipoPessoa = 0;
             String tipoPessoaSelecionado = "";
-            tipoPessoaSelecionado = tipoComboBox.SelectedItem.ToString();
 
-            String query = "SELECT HANDLE FROM PS_PESSOATIPO WHERE NOME = '" + tipoPessoaSelecionado + "'";
-            SqlDataReader reader = connection.Pesquisa(query);
-            while (reader.Read())
+            try
             {
-                tipoPessoaHandle = Convert.ToInt32((reader["HANDLE"]));
-            }
-            reader.Close();
+                tipoPessoaSelecionado = tipoComboBox.SelectedItem.ToString();
 
-            return tipoPessoaHandle;
+                String query = "SELECT HANDLE FROM PS_PESSOATIPO WHERE NOME = '" + tipoPessoaSelecionado + "'";
+                SqlDataReader reader = connection.Pesquisa(query);
+
+                while (reader.Read())
+                {
+                    BuscarHandleTipoPessoa = Convert.ToInt32((reader["HANDLE"]));
+                }
+                reader.Close();
+            }
+            catch
+            {
+                //Faz nada
+            }
+
+            return BuscarHandleTipoPessoa;
         }
 
         //--------------------
@@ -191,6 +221,7 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
                 t.SelectionStart = t.Text.Length + 1;
             }
         }
+
         //Metodo que chama o conversor de CNPJ
         private void cpfCnpjKeyPress(object sender, KeyPressEventArgs e)
         {
@@ -199,10 +230,6 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
             {
                 e.Handled = true;
             }
-
-            int tipoPessoa = 0;
-            tipoPessoa = tipoPessoaHandle();
-
             if (tipoPessoa == 1)
             {
                 converterCpf(sender, e);
@@ -247,7 +274,7 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
         {
             int tipoPessoa = 0;
 
-            tipoPessoa = tipoPessoaHandle();
+            tipoPessoa = BuscarHandleTipoPessoa();
 
             if (tipoPessoa == 1)
             {
@@ -276,32 +303,31 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
             {
                 cpfcnpjTextBox.Enabled = true;
             }
+            tipoPessoa = BuscarHandleTipoPessoa();
         }
         //Verifica se o CPF ou CNPJ já foi cadastrado
-        private Boolean validarCpfCnpjCadastrado()
+        private Boolean VerificaDuplicidadeCpfCnpj()
         {
-
-            String cpfCnpj = "";
+            String cpfCnpj = "", razaoSocial = "";
+            Boolean existeCpfCnpj = false;
             cpfCnpj = cpfcnpjTextBox.Text;
-            int count = 0;
 
-            String query = "SELECT HANDLE FROM PS_PESSOA WHERE CPFCNPJ = '" + cpfCnpj + "'";
+
+            String query = "SELECT CPFCNPJ, RAZAOSOCIAL FROM PS_PESSOA WHERE CPFCNPJ = '" + cpfCnpj + "'";
             SqlDataReader reader = connection.Pesquisa(query);
+            existeCpfCnpj = reader.HasRows;
 
-            while (reader.Read())
+            if (existeCpfCnpj == true)
             {
-                count++;
+                while (reader.Read())
+                {
+                    cpfCnpj = reader["CPFCNPJ"].ToString();
+                    razaoSocial = reader["RAZAOSOCIAL"].ToString();
+                    MessageBox.Show("O CPF/CNPJ '" + cpfCnpj + "' já está cadastrado para a pessoa " + razaoSocial);
+                }
             }
-            if (count > 0)
-            {
-                reader.Close();
-                return false;
-            }
-            else
-            {
-                reader.Close();
-                return true;
-            }
+            reader.Close();
+            return existeCpfCnpj;
         }
 
         //Metodo para encerrar a conexão ao fechar o form
@@ -320,8 +346,10 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
 
             //Preenche o form com as informações da pessoa selecionada
             String apelido = "", razaoSocial = "", email = "", cpfCnpj = "", telefone = "", celular = "", observacao = "", tipo = "", situacao = "", cep = "";
+            //Abrangencia
+            String ehFuncionario = "", ehFornecedor = "", ehOrgaoPublico = "", ehCliente = "";
 
-            String query = " SELECT C.NOME SITUACAO, A.APELIDO, A.RAZAOSOCIAL, B.NOME TIPO, A.CPFCNPJ, A.TELEFONE, A.CELULAR, A.EMAIL, A.OBSERVACAO, D.CEP" +
+            String query = " SELECT C.NOME SITUACAO, A.APELIDO, A.RAZAOSOCIAL, B.NOME TIPO, A.CPFCNPJ, A.TELEFONE, A.CELULAR, A.EMAIL, A.OBSERVACAO, D.CEP, A.EHCLIENTE, A.EHFUNCIONARIO, A.EHFORNECEDOR, A.EHORGAOPUBLICO" +
                            " FROM PS_PESSOA A" +
                            " INNER JOIN PS_PESSOATIPO B ON B.HANDLE = A.TIPO" +
                            " INNER JOIN MD_STATUS C ON C.HANDLE = A.STATUS" +
@@ -341,6 +369,12 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
                 observacao = (reader["OBSERVACAO"].ToString());
                 situacao = (reader["SITUACAO"].ToString());
                 cep = (reader["CEP"].ToString());
+
+                //Abrangencia
+                ehCliente = (reader["EHCLIENTE"].ToString());
+                ehFuncionario = (reader["EHFUNCIONARIO"].ToString());
+                ehOrgaoPublico = (reader["EHORGAOPUBLICO"].ToString());
+                ehFornecedor = (reader["EHFORNECEDOR"].ToString());
             }
             reader.Close();
 
@@ -355,11 +389,26 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
             telefoneTextBox.Text = telefone;
             celularTextBox.Text = celular;
             ObservacaoTextBox.Text = observacao;
-            //Preenche o endereço
+            //Preenche a abrangência
+            ClienteCheckBox.Checked = VerificaFlags(ehCliente);
+            funcionarioCheckBox.Checked = VerificaFlags(ehFuncionario);
+            fornecedorCheckBox.Checked = VerificaFlags(ehFornecedor);
+            orgaoPublicoCheckBox.Checked = VerificaFlags(ehOrgaoPublico);
             //Preenche o contato
             preencherContatoPessoa();
 
             ControleDeStatus();
+        }
+        private Boolean VerificaFlags(String texto)
+        {
+            if (texto == "True")
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         private void voltarButtonOnClick(object sender, EventArgs e)
@@ -368,7 +417,7 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
             if (buscarStatusRegistro() == 3 || buscarStatusRegistro() == 4)
             {
                 //Altera o status
-                String query1 = "UPDATE PS_PESSOA SET STATUS  = 2 WHERE HANDLE = " + buscarHandlePessoa();
+                String query1 = "UPDATE PS_PESSOA SET STATUS  = 2 WHERE HANDLE = " + BuscarHandlePessoa();
                 SqlDataReader reader = connection.Pesquisa(query1);
                 reader.Close();
                 ControleDeStatus();
@@ -381,13 +430,12 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
         }
 
 
-        private int buscarHandlePessoa()
+        private int BuscarHandlePessoa()
         {
-            //Busca o handle do registro a ser voltado
-            String query = "SELECT HANDLE FROM PS_PESSOA WHERE CPFCNPJ = '" + cpfcnpjTextBox.Text + "'";
-            SqlDataReader reader = connection.Pesquisa(query);
             int handlePessoaModificar = 0;
 
+            String query = "SELECT HANDLE FROM PS_PESSOA WHERE CPFCNPJ = '" + cpfcnpjTextBox.Text + "'";
+            SqlDataReader reader = connection.Pesquisa(query); ;
             while (reader.Read())
             {
                 handlePessoaModificar = Convert.ToInt32(reader["HANDLE"]);
@@ -403,8 +451,7 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
             if (buscarStatusRegistro() == 1 || buscarStatusRegistro() == 2)
             {
                 //Grava o registro
-                alterarRegistroPessoa("Alterar");
-                ControleDeStatus();
+                AlterarRegistro("Liberar");
             }
             else
             {
@@ -419,7 +466,7 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
             String query = " SELECT B.NOME" +
                            " FROM PS_PESSOA A" +
                            " INNER JOIN MD_STATUS B ON B.HANDLE = A.STATUS" +
-                           " WHERE A.HANDLE = " + buscarHandlePessoa();
+                           " WHERE A.HANDLE = " + pessoaHandle;
             SqlDataReader reader = connection.Pesquisa(query);
             while (reader.Read())
             {
@@ -437,8 +484,8 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
                 adicionarEnderecoButton.Visible = true;
                 removerContatoButton.Visible = true;
                 removerEnderecoButton.Visible = true;
-                liberarButton.Location = new Point(770, 286);
-                cancelarButton.Location = new Point(874, 286);
+                liberarButton.Location = new Point(767, 271);
+                cancelarButton.Location = new Point(871, 271);
             }
             else
             {
@@ -457,6 +504,7 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
                     ClienteCheckBox.Enabled = true;
                     fornecedorCheckBox.Enabled = true;
                     orgaoPublicoCheckBox.Enabled = true;
+                    funcionarioCheckBox.Enabled = true;
 
                     //Controle de botões (Criar classe para isso)
                     liberarButton.Visible = true;
@@ -468,8 +516,8 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
                     removerContatoButton.Visible = true;
                     removerEnderecoButton.Visible = true;
                     gravarButton.Visible = false;
-                    liberarButton.Location = new Point(770, 286);
-                    cancelarButton.Location = new Point(874, 286);
+                    liberarButton.Location = new Point(767, 271);
+                    cancelarButton.Location = new Point(871, 271);
                 }
                 else
                 {
@@ -488,6 +536,7 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
                         ClienteCheckBox.Enabled = false;
                         fornecedorCheckBox.Enabled = false;
                         orgaoPublicoCheckBox.Enabled = false;
+                        funcionarioCheckBox.Enabled = false;
                         //Controle de botões (Criar classe para isso)
                         gravarButton.Visible = false;
                         cancelarButton.Visible = false;
@@ -498,7 +547,7 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
                         removerContatoButton.Visible = true;
                         removerEnderecoButton.Visible = true;
                         liberarButton.Visible = false;
-                        voltarButton.Location = new Point(874, 286);
+                        voltarButton.Location = new Point(871, 271);
                     }
                     else
                     {
@@ -517,6 +566,7 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
                             ClienteCheckBox.Enabled = false;
                             fornecedorCheckBox.Enabled = false;
                             orgaoPublicoCheckBox.Enabled = false;
+                            funcionarioCheckBox.Enabled = false;
                             //Controle de botões (Criar classe para isso)
                             gravarButton.Visible = false;
                             cancelarButton.Visible = false;
@@ -527,7 +577,7 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
                             adicionarEnderecoButton.Visible = false;
                             removerContatoButton.Visible = false;
                             removerEnderecoButton.Visible = false;
-                            voltarButton.Location = new Point(874, 286);
+                            voltarButton.Location = new Point(871, 271);
                         }
                         else
                         {
@@ -540,7 +590,7 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
                             adicionarEnderecoButton.Visible = false;
                             removerContatoButton.Visible = false;
                             removerEnderecoButton.Visible = false;
-                            gravarButton.Location = new Point(874, 286);
+                            gravarButton.Location = new Point(871, 271);
                             adicionarContatoButton.Visible = false;
                             removerContatoButton.Visible = false;
                         }
@@ -554,7 +604,7 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
         public int buscarStatusRegistro()
         {
             int statusDoRegistro = 0;
-            String query = "SELECT STATUS FROM PS_PESSOA WHERE HANDLE = " + buscarHandlePessoa();
+            String query = "SELECT STATUS FROM PS_PESSOA WHERE HANDLE = " + pessoaHandle;
             SqlDataReader reader = connection.Pesquisa(query);
 
             while (reader.Read())
@@ -575,7 +625,7 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
                            " INNER JOIN PS_PESSOACONTATO C ON C.PESSOA = A.HANDLE" +
                            " INNER JOIN PS_PESSOACONTATOTIPO D ON D.HANDLE = C.TIPO" +
                            " INNER JOIN MD_STATUS E ON E.HANDLE = C.STATUS" +
-                           " WHERE A.HANDLE = " + buscarHandlePessoa();
+                           " WHERE A.HANDLE = " + BuscarHandlePessoa();
             Binding.DataSource = connection.DataTable(query);
 
             contatoDataGridView.DataSource = Binding;
@@ -597,7 +647,7 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
                            " INNER JOIN PS_PESSOAENDERECO C ON C.PESSOA = A.HANDLE" +
                            " INNER JOIN MD_STATUS D ON D.HANDLE = C.STATUS" +
                            " INNER JOIN MD_ESTADO E ON E.HANDLE = C.ESTADO" +
-                           " WHERE A.HANDLE = " + buscarHandlePessoa();
+                           " WHERE A.HANDLE = " + BuscarHandlePessoa();
             Binding1.DataSource = connection.DataTable(query);
             enderecoDataGridView.DataSource = Binding1;
             enderecoDataGridView.Columns[7].Width = 150;
@@ -618,7 +668,7 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
 
 
 
-        private void atualizarInformacoesDoFormulario(object sender, EventArgs e)
+        private void AtualizarInformacoesDoFormulario()
         {
             preencherContatoPessoa();
             PreencherEndereco();
@@ -668,12 +718,16 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
 
         private void cancelarButtonOnClick(object sender, EventArgs e)
         {
-            alterarRegistroPessoa("Cancelar");
+            DialogResult confirmacaoButton = MessageBox.Show("Deseja Continuar?", "Cancelar pessoa", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button2);
+            if (confirmacaoButton.ToString().ToUpper() == "YES")
+            {
+                AlterarRegistro("Cancelar");
+            }
         }
 
         private void adicionarEnderecoButtonOnClick(object sender, EventArgs e)
         {
-            IPessoaEndereco.handlePessoa = buscarHandlePessoa();
+            IPessoaEndereco.handlePessoa = BuscarHandlePessoa();
             IPessoaEndereco iPessoaEndereco = new IPessoaEndereco();
             iPessoaEndereco.ShowDialog();
         }
@@ -696,9 +750,10 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
 
         private void adicionarArquivoButtonOnClick(object sender, EventArgs e)
         {
-            IPessoaAnexo.handlePessoa = buscarHandlePessoa();
-            IPessoaAnexo ipessoaAnexo = new IPessoaAnexo();
-            ipessoaAnexo.ShowDialog();
+            IAnexoPadrao.handleTabelaOrigem = 3;
+            IAnexoPadrao.handleOrigem = BuscarHandlePessoa();
+            IAnexoPadrao iAnexoPadrao = new IAnexoPadrao();
+            iAnexoPadrao.ShowDialog();
         }
 
 
@@ -706,9 +761,9 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
         private void PreencherAnexo()
         {
             String query = " SELECT A.HANDLE, A.DESCRICAO DESCRIÇÃO, A.NOMEARQUIVO NOME, A.CAMINHO" +
-                           " FROM PS_PESSOAANEXO A" +
-                           " INNER JOIN PS_PESSOA B ON B.HANDLE = A.PESSOA" +
-                           " WHERE B.HANDLE = " + buscarHandlePessoa();
+                           " FROM MD_ANEXO A" +
+                           " INNER JOIN PS_PESSOA B ON B.HANDLE = A.HANDLEORIGEM" +
+                           " WHERE B.HANDLE = " + BuscarHandlePessoa();
             anexoDataGridView.AutoGenerateColumns = true;
             Binding2.DataSource = connection.DataTable(query);
             anexoDataGridView.DataSource = Binding2;
@@ -722,9 +777,9 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
 
         private void anexoDataGridViewCellClick(object sender, DataGridViewCellEventArgs e)
         {
-            IPessoaAnexo.handleAnexo = PegarHandleAnexo();
-            IPessoaAnexo iPessoaAnexo = new IPessoaAnexo();
-            iPessoaAnexo.ShowDialog();
+            IAnexoPadrao.handleAnexo = PegarHandleAnexo();
+            IAnexoPadrao iAnexoPadrao = new IAnexoPadrao();
+            iAnexoPadrao.ShowDialog();
         }
         private int PegarHandleAnexo()
         {
@@ -799,9 +854,95 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
             }
         }
 
-        private void NovoEmailOnClick(object sender, EventArgs e)
+        //Verfica campos obrigatórios
+        private Boolean VerificaCamposObrigatorios(String situacao)
         {
-
+            try
+            {
+                if (razaoSocialTextBox.Text != "")
+                {
+                    if (apelidoTextBox.Text != "")
+                    {
+                        if (tipoComboBox.SelectedIndex > -1)
+                        {
+                            if (cpfcnpjTextBox.Text != "")
+                            {
+                                if (VerificaSeExisteUmaAbrangenciaSelecionada() == true)
+                                {
+                                    if (VerificaSeExisteUmEndereco() == true || situacao == "Gravar")
+                                    {
+                                        return true;
+                                    }
+                                    else
+                                    {
+                                        MessageBox.Show("É necessário adicionar pelo menos um endereço ao cadastro da pessoa.");
+                                        return false;
+                                    }
+                                }
+                                else
+                                {
+                                    MessageBox.Show("É necessário selecionar pelo menos uma abrangência.");
+                                    return false;
+                                }
+                            }
+                            else
+                            {
+                                MessageBox.Show("O campo cpf/cnpj é obrigatório.");
+                                return false;
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("O campo tipo é obrigatório.");
+                            return false;
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("O campo apelido é obrigatório.");
+                        return false;
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("O campo razão social é obrigatório.");
+                    return false;
+                }
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.ToString());
+                return false;
+            }
         }
+
+        private Boolean VerificaSeExisteUmaAbrangenciaSelecionada()
+        {
+            if (ClienteCheckBox.Checked == true || fornecedorCheckBox.Checked == true || orgaoPublicoCheckBox.Checked == true || funcionarioCheckBox.Checked == true)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        private Boolean VerificaSeExisteUmEndereco()
+        {
+            Boolean existeEndereco = false;
+
+            String query = " SELECT A.HANDLE" +
+                           " FROM PS_PESSOA A" +
+                           " INNER JOIN PS_PESSOAENDERECO B ON B.HANDLE = A.ENDERECO" +
+                           " WHERE A.HANDLE = " + pessoaHandle;
+            SqlDataReader reader = connection.Pesquisa(query);
+            existeEndereco = reader.HasRows;
+            reader.Close();
+
+            return existeEndereco;
+        }
+
+
     }
 }
