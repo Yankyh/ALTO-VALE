@@ -79,11 +79,11 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
 
         private void gravarButtonOnClick(object sender, EventArgs e)
         {
-            alterarRegistro("Gravar");
+            AlterarRegistro("Gravar");
         }
 
         //Inserir informações com o gravar
-        private void alterarRegistro(String origem)
+        private void AlterarRegistro(String origem)
         {
             //Verifica se os campos obrigatorios foram preenchidos
             if (verificarCamposObrigatorios() == false)
@@ -378,7 +378,7 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
 
         private void cancelarButtonOnClick(object sender, EventArgs e)
         {
-            alterarRegistro("Cancelar");
+            AlterarRegistro("Cancelar");
         }
 
         private void PessoaComboBoxDropDown(object sender, EventArgs e)
@@ -394,7 +394,7 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
             }
             else
             {
-                alterarRegistro("Alterar");
+                AlterarRegistro("Alterar");
                 ControleDeStatus();
             }
 

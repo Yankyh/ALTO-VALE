@@ -27,10 +27,8 @@ namespace ALTO_VALE.DAL
         {
             try
             {
-
                 this.cmd = new SqlCommand(query, this.conexao);
                 this.resultSet = cmd.ExecuteReader();
-
             }catch(SqlException e)
             {
                 MessageBox.Show(e.Message);

@@ -80,11 +80,11 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
         {
             if (verificarCamposObrigatorios() == true)
             {
-                gravarRegistroEndereco("Gravar");
+                AlterarRegistro("Gravar");
             }
         }
 
-        public void gravarRegistroEndereco(String acao)
+        public void AlterarRegistro(String acao)
         {
             String cep = "", cidade = "", bairro = "", logradouro = "", numero = "", referencia = "", observacao = "";
             int estado = 0;
@@ -378,17 +378,17 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
 
         private void liberarButtonOnClick(object sender, EventArgs e)
         {
-            gravarRegistroEndereco("Liberar");
+            AlterarRegistro("Liberar");
         }
 
         private void voltarButtonOnClick(object sender, EventArgs e)
         {
-            gravarRegistroEndereco("Voltar");
+            AlterarRegistro("Voltar");
         }
 
         private void cancelarButtonOnClick(object sender, EventArgs e)
         {
-            gravarRegistroEndereco("Cancelar");
+            AlterarRegistro("Cancelar");
         }
 
         private void enderecoFormClosed(object sender, FormClosedEventArgs e)

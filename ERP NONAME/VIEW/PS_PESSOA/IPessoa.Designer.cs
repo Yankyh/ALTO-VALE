@@ -365,9 +365,9 @@
             // Email
             // 
             this.Email.Controls.Add(this.button1);
-            this.Email.Location = new System.Drawing.Point(4, 25);
+            this.Email.Location = new System.Drawing.Point(4, 27);
             this.Email.Name = "Email";
-            this.Email.Size = new System.Drawing.Size(961, 125);
+            this.Email.Size = new System.Drawing.Size(961, 123);
             this.Email.TabIndex = 5;
             this.Email.Text = "E-mail";
             this.Email.UseVisualStyleBackColor = true;
@@ -383,7 +383,6 @@
             this.button1.TabIndex = 63;
             this.button1.Text = "+";
             this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.NovoEmailOnClick);
             // 
             // anexoTabPage
             // 
@@ -704,7 +703,6 @@
             this.Name = "IPessoa";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Pessoa";
-            this.Activated += new System.EventHandler(this.atualizarInformacoesDoFormulario);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.IPessoa_FormClosed);
             this.tabControl.ResumeLayout(false);
             this.observacaoTabPage.ResumeLayout(false);
