@@ -143,6 +143,8 @@
             // menuDataGridView
             // 
             this.menuDataGridView.AllowUserToAddRows = false;
+            this.menuDataGridView.AllowUserToDeleteRows = false;
+            this.menuDataGridView.AllowUserToResizeRows = false;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.LightGray;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Trebuchet MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.MenuHighlight;

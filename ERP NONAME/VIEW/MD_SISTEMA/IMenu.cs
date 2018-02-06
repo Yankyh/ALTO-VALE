@@ -126,7 +126,6 @@ namespace ALTO_VALE
                 menuDataGridView.Columns[4].Width = 150;
                 menuDataGridView.Columns[5].Width = 130;
                 menuDataGridView.Columns[8].Width = 230;
-                menuDataGridView.AllowUserToResizeRows = false;
             }
             //Tarefa
             if (tela == "Tarefa")
