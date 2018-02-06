@@ -604,7 +604,11 @@
             // 
             // tipoComboBox
             // 
-            this.tipoComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.tipoComboBox.AutoCompleteCustomSource.AddRange(new string[] {
+            "Física",
+            "Júridica"});
+            this.tipoComboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.tipoComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.tipoComboBox.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tipoComboBox.FormattingEnabled = true;
             this.tipoComboBox.Location = new System.Drawing.Point(671, 21);

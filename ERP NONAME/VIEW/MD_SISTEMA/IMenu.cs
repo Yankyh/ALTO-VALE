@@ -85,21 +85,21 @@ namespace ALTO_VALE
             menuTreeView.Visible = false;
         }
 
-      // Esse método é responsável pelos key events, ( precisa dar override no processdialog pois o c# é bugado )
-      /*  protected override bool ProcessDialogKey(Keys keyData)
-        {
-            switch (keyData)
-            {
-                case Keys.F11:
-                    TN_TECNOLOGIA.EditorSQL.Tela editor = new TN_TECNOLOGIA.EditorSQL.Tela();
-                    editor.ShowDialog();
-                    return true;
-            }
-            return base.ProcessDialogKey(keyData);
-        }*/
+        // Esse método é responsável pelos key events, ( precisa dar override no processdialog pois o c# é bugado )
+        /*  protected override bool ProcessDialogKey(Keys keyData)
+          {
+              switch (keyData)
+              {
+                  case Keys.F11:
+                      TN_TECNOLOGIA.EditorSQL.Tela editor = new TN_TECNOLOGIA.EditorSQL.Tela();
+                      editor.ShowDialog();
+                      return true;
+              }
+              return base.ProcessDialogKey(keyData);
+          }*/
 
         //Controle do datagridview
-     
+
         private void GerenciarMenuDataGridView(String tela)
         {
             telaSelecionada = tela;
@@ -131,14 +131,8 @@ namespace ALTO_VALE
             //Tarefa
             if (tela == "Tarefa")
             {
-               
-                foreach (ListItem lista in filtroCheckBox.Items)
-                {
-                    if (lista.Selected)
-                    {
-                        Console.Write("" + lista.Value + ",");
-                    }
-                }
+
+
 
                 query = " SELECT A.HANDLE, B.IMAGEM SIT, F.NOME SITUAÇÃO, E.NOME SEVERIDADE, G.NOME TIPO, A.PRAZO, A.ASSUNTO, C.LOGIN SOLICITANTE, D.LOGIN RESPONSAVEL, A.DATA " +
                         " FROM TR_TAREFA A" +
@@ -147,13 +141,15 @@ namespace ALTO_VALE
                         " INNER JOIN PS_USUARIO D ON D.HANDLE = A.RESPONSAVEL" +
                         " INNER JOIN TR_TAREFASEVERIDADE E ON E.HANDLE = A.SEVERIDADE" +
                         " INNER JOIN TR_TAREFASITUACAO F ON F.HANDLE = A.SITUACAO" +
-                        " INNER JOIN TR_TAREFATIPO G ON G.HANDLE = A.TIPO";
-                       //  " WHERE A.STATUS IN (" + status + ")";
+                        " INNER JOIN TR_TAREFATIPO G ON G.HANDLE = A.TIPO" +
+                        " WHERE 1=1" +
+                        " " + filtroStatus() + "";
+                //  " WHERE A.STATUS IN (" + status + ")";
                 Binding.DataSource = connection.DataTable(query);
                 menuDataGridView.DataSource = Binding;
 
                 menuDataGridView.Columns[0].Width = 0;
-                
+
                 menuDataGridView.Columns[0].Visible = false;
                 menuDataGridView.Columns[1].Width = SITUACAOWIDTH;
                 menuDataGridView.Columns[2].Width = 120;
@@ -188,17 +184,17 @@ namespace ALTO_VALE
                 menuDataGridView.Columns[7].Width = 300;
                 menuDataGridView.Columns[0].Visible = false;
             }
-          
+
         }
         private int BuscarHandleDataGridView()
         {
-           int handleRegistroSelecionado = 0;
+            int handleRegistroSelecionado = 0;
 
             try
             {
                 handleRegistroSelecionado = Convert.ToInt32(menuDataGridView.CurrentRow.Cells[0].Value);
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 MessageBox.Show(e.ToString());
             }
@@ -211,7 +207,7 @@ namespace ALTO_VALE
             ControleTelaMenu controleTelaMenu = new ControleTelaMenu();
             controleTelaMenu.ControleTela(telaSelecionada);
         }
-        
+
         private void ContextOnRightClick(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Right)
@@ -237,6 +233,82 @@ namespace ALTO_VALE
         private void MenuFormClosed(object sender, FormClosedEventArgs e)
         {
             connection.Desconectar();
+        }
+
+
+        //Filtro temporário pro avi
+        private String filtroStatus()
+        {
+            String situacoes = "", filtro = "AND B.NOME IN (";
+
+            //Filtro de baiano
+            if (ativoCheckBox.Checked)
+            {
+                if (situacoes == "")
+                {
+                    situacoes = "'Ativo'";
+                }
+                else
+                {
+                    situacoes = situacoes + ", 'Ativo'";
+                }
+            }
+            if (canceladoCheckBox.Checked)
+            {
+                if (situacoes == "")
+                {
+                    situacoes = "'Cancelado'";
+                }
+                else
+                {
+                    situacoes = situacoes + ", 'Cancelado'";
+                }
+            }
+            if (encerradoCheckBox.Checked)
+            {
+                if (situacoes == "")
+                {
+                    situacoes = "'Encerrado'";
+                }
+                else
+                {
+                    situacoes = situacoes + ", 'Encerrado'";
+                }
+            }
+            if (AgmodificacoesCheckBox.Checked)
+            {
+                if (situacoes == "")
+                {
+                    situacoes = "'Ag. modificações'";
+                }
+                else
+                {
+                    situacoes = situacoes + ", 'Ag. modificações'";
+                }
+            }
+            if (cadastradoCheckBox.Checked)
+            {
+                if (situacoes == "")
+                {
+                    situacoes = "'Cadastrado'";
+                }
+                else
+                {
+                    situacoes = situacoes + ", 'Cadastrado'";
+                }
+            }
+            filtro = filtro + situacoes + ")";
+
+            if(situacoes == "")
+            {
+                return null;
+            }
+            return filtro;
+        }
+
+        private void atualizarDataGridViewButtonOnClick(object sender, EventArgs e)
+        {
+            GerenciarMenuDataGridView(telaSelecionada);
         }
     }
 }
