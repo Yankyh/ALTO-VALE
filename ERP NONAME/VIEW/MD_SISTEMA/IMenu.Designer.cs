@@ -255,7 +255,7 @@
             // atualizarDataGridViewButton
             // 
             this.atualizarDataGridViewButton.BackColor = System.Drawing.Color.Transparent;
-          //  this.atualizarDataGridViewButton.BackgroundImage = global::ALTO_VALE.Properties.Resources.ic_launcher;
+            this.atualizarDataGridViewButton.BackgroundImage = global::ALTO_VALE.Properties.Resources.ic_launcher;
             this.atualizarDataGridViewButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.atualizarDataGridViewButton.FlatAppearance.BorderSize = 0;
             this.atualizarDataGridViewButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -271,7 +271,7 @@
             // adicionarButton
             // 
             this.adicionarButton.BackColor = System.Drawing.Color.Transparent;
-           // this.adicionarButton.BackgroundImage = global::ALTO_VALE.Properties.Resources.ic_launcher2;
+            this.adicionarButton.BackgroundImage = global::ALTO_VALE.Properties.Resources.ic_launcher2;
             this.adicionarButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.adicionarButton.Enabled = false;
             this.adicionarButton.FlatAppearance.BorderSize = 0;
