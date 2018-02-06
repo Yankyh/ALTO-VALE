@@ -110,6 +110,7 @@
             this.assuntoTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.assuntoTextBox.Font = new System.Drawing.Font("Trebuchet MS", 9.5F);
             this.assuntoTextBox.Location = new System.Drawing.Point(10, 77);
+            this.assuntoTextBox.MaxLength = 500;
             this.assuntoTextBox.Name = "assuntoTextBox";
             this.assuntoTextBox.Size = new System.Drawing.Size(796, 22);
             this.assuntoTextBox.TabIndex = 5;
@@ -257,6 +258,7 @@
             // solicitacaoTextBox
             // 
             this.solicitacaoTextBox.Location = new System.Drawing.Point(1, 0);
+            this.solicitacaoTextBox.MaxLength = 8000;
             this.solicitacaoTextBox.Name = "solicitacaoTextBox";
             this.solicitacaoTextBox.Size = new System.Drawing.Size(955, 166);
             this.solicitacaoTextBox.TabIndex = 0;

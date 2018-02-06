@@ -689,6 +689,7 @@ namespace ALTO_VALE.VIEW.TR_TAREFA
                 liberarButton.Visible = true;
                 encerrarButton.Visible = false;
                 adicionarArquivoButton.Visible = true;
+                adicionarDocumentacaoButton.Enabled = true;
                 liberarButton.Location = new Point(765, 331);
                 cancelarButton.Location = new Point(869, 331);
             }
@@ -712,6 +713,7 @@ namespace ALTO_VALE.VIEW.TR_TAREFA
                     gravarButton.Visible = false;
                     encerrarButton.Visible = false;
                     adicionarArquivoButton.Enabled = true;
+                    adicionarDocumentacaoButton.Enabled = true;
                     liberarButton.Location = new Point(765, 331);
                     cancelarButton.Location = new Point(869, 331);
                 }
@@ -734,6 +736,7 @@ namespace ALTO_VALE.VIEW.TR_TAREFA
                         liberarButton.Visible = false;
                         encerrarButton.Visible = true;
                         adicionarArquivoButton.Enabled = true;
+                        adicionarDocumentacaoButton.Enabled = true;
                         encerrarButton.Location = new Point(765, 331);
                         voltarButton.Location = new Point(869, 331);
                     }
@@ -755,6 +758,7 @@ namespace ALTO_VALE.VIEW.TR_TAREFA
                             voltarButton.Visible = false;
                             liberarButton.Visible = false;
                             adicionarArquivoButton.Enabled = false;
+                            adicionarDocumentacaoButton.Enabled = false;
                             voltarButton.Location = new Point(869, 331);
                         }
                         else
@@ -776,6 +780,7 @@ namespace ALTO_VALE.VIEW.TR_TAREFA
                                 liberarButton.Visible = false;
                                 encerrarButton.Visible = false;
                                 adicionarArquivoButton.Enabled = false;
+                                adicionarDocumentacaoButton.Enabled = false;
                                 voltarButton.Location = new Point(869, 331);
                             }
                             else
@@ -786,6 +791,8 @@ namespace ALTO_VALE.VIEW.TR_TAREFA
                                 liberarButton.Visible = false;
                                 encerrarButton.Visible = false;
                                 adicionarArquivoButton.Enabled = false;
+                                //
+                                adicionarDocumentacaoButton.Enabled = false;
                                 gravarButton.Location = new Point(869, 331);
                             }
                         }

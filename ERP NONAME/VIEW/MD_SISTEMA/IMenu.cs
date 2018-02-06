@@ -131,6 +131,15 @@ namespace ALTO_VALE
             //Tarefa
             if (tela == "Tarefa")
             {
+               
+                foreach (ListItem lista in filtroCheckBox.Items)
+                {
+                    if (lista.Selected)
+                    {
+                        Console.Write("" + lista.Value + ",");
+                    }
+                }
+
                 query = " SELECT A.HANDLE, B.IMAGEM SIT, F.NOME SITUAÇÃO, E.NOME SEVERIDADE, G.NOME TIPO, A.PRAZO, A.ASSUNTO, C.LOGIN SOLICITANTE, D.LOGIN RESPONSAVEL, A.DATA " +
                         " FROM TR_TAREFA A" +
                         " INNER JOIN MD_STATUS B ON B.HANDLE = A.STATUS" +
