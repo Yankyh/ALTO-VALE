@@ -79,7 +79,7 @@ namespace ALTO_VALE.VIEW.TN_EMAIL
                         button1.Text = "Liberar";
                         button2.Text = "Limpar";
                     }
-                    else if (Convert.ToInt32(reader["STATUS"]) == StatusServidorEmail.Encerrado || Convert.ToInt32(reader["STATUS"]) == StatusServidorEmail.Ativo)
+                    else if (Convert.ToInt32(reader["STATUS"]) == StatusServidorEmail.Encerrado)
                     {
                         button1.Text = "Voltar";
                         button2.Text = "Cancelar";
@@ -102,73 +102,12 @@ namespace ALTO_VALE.VIEW.TN_EMAIL
                     servidor.Popporta = Convert.ToInt32(richTextBoxPopPorta.Text);
                     servidor.Smtp = richTextBoxSmtp.Text;
                     servidor.Smtpporta = Convert.ToInt32(richTextBoxSmtpPorta.Text);
-                    if (checkBoxSslSmtp.Checked == true)
-                    {
-                        servidor.Sslsmtp = "S";
-                    }
-                    else
-                    {
-                        servidor.Sslsmtp = "N";
-                    }
-                    if (checkBoxSslPop.Checked == true)
-                    {
-                        servidor.Sslpop = "S";
-                    }
-                    else
-                    {
-                        servidor.Sslpop = "N";
-                    }
+                    servidor.Sslsmtp = "1";
+                    servidor.Sslpop = "2";
                     if (VerificaCamposObrigatorios(servidor) == true)
                     {
                         tentaInserirRegistro(servidor);
                     }
-                }
-                else
-                {
-                    UServidorEmail servidor = new UServidorEmail();
-                    servidor.Nome = richTextBoxNome.Text;
-                    servidor.Pop = richTextBoxPop.Text;
-                    servidor.Popporta = Convert.ToInt32(richTextBoxPopPorta.Text);
-                    servidor.Smtp = richTextBoxSmtp.Text;
-                    servidor.Smtpporta = Convert.ToInt32(richTextBoxSmtpPorta.Text);
-                    if (checkBoxSslSmtp.Checked == true)
-                    {
-                        servidor.Sslsmtp = "S";
-                    }
-                    else
-                    {
-                        servidor.Sslsmtp = "N";
-                    }
-                    if (checkBoxSslPop.Checked == true)
-                    {
-                        servidor.Sslpop = "S";
-                    }
-                    else
-                    {
-                        servidor.Sslpop = "N";
-                    }
-                    if (VerificaCamposObrigatorios(servidor) == true)
-                    {
-
-                        String query = "UPDATE TN_SERVIDOREMAIL SET STATUS =" + StatusServidorEmail.Ativo + "WHERE HANDLE = " + internalHandle;
-                        DAL.Connection conexao = new DAL.Connection();
-                        conexao.Conectar();
-                        SqlDataReader reader = conexao.Pesquisa(query);
-                        verificaStatus(internalHandle);
-
-                    }
-                }
-            }
-            else if (button1.Text == "Voltar")
-            {
-                DialogResult confirmacaoButton = MessageBox.Show("Deseja Continuar?", "Voltar", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button2);
-                if (confirmacaoButton.ToString().ToUpper() == "YES")
-                {
-                    String query = "UPDATE TN_SERVIDOREMAIL SET STATUS = 1 WHERE HANDLE = " + internalHandle;
-                    DAL.Connection conexao = new DAL.Connection();
-                    conexao.Conectar();
-                    SqlDataReader reader = conexao.Pesquisa(query);
-                    verificaStatus(internalHandle);
                 }
             }
         }
@@ -184,17 +123,6 @@ namespace ALTO_VALE.VIEW.TN_EMAIL
             {
                 SqlDataReader reader = conexao.Pesquisa(query);
                 MessageBox.Show("Inserido com sucesso!");
-                reader.Close();
-                conexao.Desconectar();
-                conexao.Conectar();
-                String atualizaHandle = "SELECT MAX(HANDLE) HANDLE FROM TN_SERVIDOREMAIL";
-                SqlDataReader reader2 = conexao.Pesquisa(atualizaHandle);
-                while (reader2.Read())
-                {
-                    internalHandle = Convert.ToInt32(reader2["HANDLE"]);
-                }
-                reader2.Close();
-                conexao.Desconectar();
                 verificaStatus(internalHandle);
             }
             catch (SqlException e)

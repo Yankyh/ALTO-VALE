@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace ALTO_VALE.TN_TECNOLOGIA.Email
 {
@@ -33,7 +34,7 @@ namespace ALTO_VALE.TN_TECNOLOGIA.Email
             }
             catch (System.Exception erro)
             {
-                //trata erro
+                MessageBox.Show(erro.Message);
             }
             finally
             {
