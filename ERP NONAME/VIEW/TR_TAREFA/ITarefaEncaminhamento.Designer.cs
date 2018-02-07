@@ -91,7 +91,7 @@
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(778, 134);
-            this.tabControl1.TabIndex = 90;
+            this.tabControl1.TabIndex = 7;
             // 
             // observacaoTabPage
             // 
@@ -181,7 +181,7 @@
             this.anexoDataGridView.RowHeadersVisible = false;
             this.anexoDataGridView.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.anexoDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.anexoDataGridView.Size = new System.Drawing.Size(733, 126);
+            this.anexoDataGridView.Size = new System.Drawing.Size(733, 103);
             this.anexoDataGridView.TabIndex = 66;
             // 
             // liberarButton
@@ -296,6 +296,7 @@
             this.tipoEncaminhamentoComboBox.Name = "tipoEncaminhamentoComboBox";
             this.tipoEncaminhamentoComboBox.Size = new System.Drawing.Size(158, 24);
             this.tipoEncaminhamentoComboBox.TabIndex = 1;
+            this.tipoEncaminhamentoComboBox.SelectedIndexChanged += new System.EventHandler(this.TipoEncaminhamentoIndexChanged);
             // 
             // label3
             // 
@@ -352,6 +353,7 @@
             this.situacaoComboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.situacaoComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.situacaoComboBox.BackColor = System.Drawing.Color.LightGray;
+            this.situacaoComboBox.Enabled = false;
             this.situacaoComboBox.Font = new System.Drawing.Font("Trebuchet MS", 8F);
             this.situacaoComboBox.FormattingEnabled = true;
             this.situacaoComboBox.Location = new System.Drawing.Point(214, 25);
@@ -375,6 +377,7 @@
             this.severidadeComboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.severidadeComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.severidadeComboBox.BackColor = System.Drawing.Color.LightGray;
+            this.severidadeComboBox.Enabled = false;
             this.severidadeComboBox.Font = new System.Drawing.Font("Trebuchet MS", 8F);
             this.severidadeComboBox.FormattingEnabled = true;
             this.severidadeComboBox.Location = new System.Drawing.Point(6, 71);
@@ -398,6 +401,7 @@
             this.tipoComboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.tipoComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.tipoComboBox.BackColor = System.Drawing.Color.LightGray;
+            this.tipoComboBox.Enabled = false;
             this.tipoComboBox.Font = new System.Drawing.Font("Trebuchet MS", 8F);
             this.tipoComboBox.FormattingEnabled = true;
             this.tipoComboBox.Location = new System.Drawing.Point(471, 25);
@@ -421,14 +425,14 @@
             this.responsavelComboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.responsavelComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.responsavelComboBox.BackColor = System.Drawing.Color.LightGray;
-            this.responsavelComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.responsavelComboBox.Enabled = false;
             this.responsavelComboBox.Font = new System.Drawing.Font("Trebuchet MS", 8F);
             this.responsavelComboBox.FormattingEnabled = true;
             this.responsavelComboBox.Location = new System.Drawing.Point(6, 25);
             this.responsavelComboBox.Name = "responsavelComboBox";
             this.responsavelComboBox.Size = new System.Drawing.Size(202, 24);
             this.responsavelComboBox.TabIndex = 3;
-            this.responsavelComboBox.DropDown += new System.EventHandler(this.ResponsavelOnDropDown);
+            this.responsavelComboBox.TextUpdate += new System.EventHandler(this.TipoEncaminhamentoIndexChanged);
             // 
             // label10
             // 

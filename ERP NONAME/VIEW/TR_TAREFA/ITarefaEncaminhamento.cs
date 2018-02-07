@@ -22,11 +22,11 @@ namespace ALTO_VALE.VIEW.TR_TAREFA
         {
             InitializeComponent();
             connection.Conectar();
-            if(handleEncaminhamento != 0)
+            if (handleEncaminhamento != 0)
             {
                 PreencherFormulario(handleEncaminhamento);
             }
-            PreencherComboBoxItem();
+            PreencherComboBoxTipoEncaminhamento();
             PreencherComboBoxResponsavel();
             PreencherComboBoxSeveridade();
             PreencherComboBoxSituacao();
@@ -40,12 +40,13 @@ namespace ALTO_VALE.VIEW.TR_TAREFA
 
 
         //Metódos que preenchem os combo box's
-        private void PreencherComboBoxItem()
+        private void PreencherComboBoxTipoEncaminhamento()
         {
             //Limpa a combo box
             tipoEncaminhamentoComboBox.Items.Clear();
             String query = " SELECT A.NOME" +
-                           " FROM TR_TAREFATIPO A";
+                           " FROM TR_TAREFAENCAMINHAMENTOTIPO A" +
+                           " WHERE A.STATUS = 3";
             SqlDataReader reader = connection.Pesquisa(query);
             while (reader.Read())
             {
@@ -108,12 +109,63 @@ namespace ALTO_VALE.VIEW.TR_TAREFA
             reader.Close();
         }
 
-        private void ResponsavelOnDropDown(object sender, EventArgs e)
+        private void ResponsavelOnKeyPress(object sender, KeyEventArgs e)
         {
-            String campo = "LOGIN", tabela = "PS_USUARIO";
 
-            ComboBoxDataGridView comboBoxDataGridView = new ComboBoxDataGridView();
-            comboBoxDataGridView.BuscarValor(campo, tabela);
+        }
+
+        private void TipoEncaminhamentoIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                responsavelComboBox.SelectedIndex = -1;
+                situacaoComboBox.SelectedIndex = -1;
+                tipoComboBox.SelectedIndex = -1;
+                severidadeComboBox.SelectedIndex = -1;
+                if (tipoEncaminhamentoComboBox.SelectedItem.ToString() == "Alterar severidade")
+                {
+                    responsavelComboBox.Enabled = false;
+                    situacaoComboBox.Enabled = false;
+                    tipoComboBox.Enabled = false;
+                    severidadeComboBox.Enabled = true;
+                }
+                else
+                {
+                    if (tipoEncaminhamentoComboBox.SelectedItem.ToString() == "Alterar responsável")
+                    {
+                        responsavelComboBox.Enabled = true;
+                        situacaoComboBox.Enabled = false;
+                        tipoComboBox.Enabled = false;
+                        severidadeComboBox.Enabled = false;
+                    }
+                    else
+                    {
+                        if (tipoEncaminhamentoComboBox.SelectedItem.ToString() == "Alterar situação")
+                        {
+                            responsavelComboBox.Enabled = false;
+                            situacaoComboBox.Enabled = true;
+                            tipoComboBox.Enabled = false;
+                            severidadeComboBox.Enabled = false;
+                        }
+                        else
+                        {
+                            if (tipoEncaminhamentoComboBox.SelectedItem.ToString() == "Alterar tipo")
+                            {
+                                responsavelComboBox.Enabled = false;
+                                situacaoComboBox.Enabled = false;
+                                tipoComboBox.Enabled = true;
+                                severidadeComboBox.Enabled = false;
+                            }
+                        }
+                    }
+                }
+
+            }
+            catch
+            {
+
+            }
+
         }
 
         //

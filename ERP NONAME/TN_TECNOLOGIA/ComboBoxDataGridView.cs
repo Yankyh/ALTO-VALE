@@ -15,6 +15,7 @@ namespace ALTO_VALE.TN_TECNOLOGIA
     {
         Connection connection = new Connection();
         BindingSource Binding = new BindingSource();
+        private static String valorSelecionado = "";
         public ComboBoxDataGridView()
         {
             InitializeComponent();
@@ -23,7 +24,7 @@ namespace ALTO_VALE.TN_TECNOLOGIA
         public String BuscarValor(String campo, String tabela)
         {
             connection.Conectar();
-            String valor = "", query = "";
+            String query = "";
 
             query = " SELECT " + campo + " FROM "+tabela+"";
 
@@ -34,7 +35,20 @@ namespace ALTO_VALE.TN_TECNOLOGIA
             this.ShowDialog();
 
             connection.Desconectar();
-            return valor;
+            return valorSelecionado;
+        }
+
+        private void CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                valorSelecionado = (menuDataGridView.CurrentRow.Cells[0].Value).ToString();
+                this.Close();
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.ToString());
+            }
         }
     }
 }
