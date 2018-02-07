@@ -99,5 +99,15 @@ namespace ALTO_VALE.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ic_launcher3 {
+            get {
+                object obj = ResourceManager.GetObject("ic_launcher3", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }

@@ -167,7 +167,235 @@ namespace ALTO_VALE.VIEW.TR_TAREFA
             }
 
         }
+        private void AlterarRegistro(String acao)
+        {
+            if (VerificaCamposObrigatorios() == true)
+            {
+                int tipoEncaminhamento = BuscarHandleTipoEncaminhamento();
+                String responsavel = BuscarHandleResponsavel();
+                String situacao = BuscarHandleSituacao();
+                String tipo = BuscarHandleTipo();
+                String severidade = BuscarHandleSeveridade();
+                String assunto = assuntoTextBox.Text;
+                String descricao = descricaoTextBox.Text;
 
+                if (acao == "Gravar")
+                {
+                    String query = " INSERT INTO TR_TAREFAENCAMINHAMENTO" +
+                                   " (STATUS, TIPOENCAMINHAMENTO, RESPONSAVEL, SITUACAO, TIPO, SEVERIDADE, ASSUNTO, DATA, DESCRICAO, TAREFA) " +
+                                   " VALUES" +
+                                   " (1," +
+                                   " " + tipoEncaminhamento + "," +
+                                   " " + responsavel + "," +
+                                   " " + situacao + "," +
+                                   " " + tipo + "," +
+                                   " " + severidade + "," +
+                                   " '" + assunto + "'," +
+                                   " GETDATE()," +
+                                   " '" + descricao + "'," +
+                                   " " + handleTarefa + ")";
+                    connection.Inserir(query);
+
+                    String query1 = " SELECT MAX(HANDLE) HANDLE" +
+                                    " FROM TR_TAREFAENCAMINHAMENTO" +
+                                    " WHERE STATUS = 1" +
+                                    " AND TIPOENCAMINHAMENTO =" + tipoEncaminhamento + "" +
+                                    " AND TAREFA =" + handleTarefa;
+                    SqlDataReader reader = connection.Pesquisa(query1);
+                    while (reader.Read())
+                    {
+                        handleEncaminhamento = Convert.ToInt32(reader["HANDLE"]);
+                    }
+                    reader.Close();
+                }
+                else
+                {
+                    if (acao == "Liberar")
+                    {
+
+                    }
+                }
+            }
+            ControleDeStatus();
+        }
+        private int BuscarHandleTipoEncaminhamento()
+        {
+            int handleTipoEncaminhamento = 0;
+            String query = " SELECT A.HANDLE" +
+                           " FROM TR_TAREFAENCAMINHAMENTOTIPO A" +
+                           " WHERE A.NOME = '" + tipoEncaminhamentoComboBox.SelectedItem.ToString() + "'";
+            SqlDataReader reader = connection.Pesquisa(query);
+            while (reader.Read())
+            {
+                handleTipoEncaminhamento = Convert.ToInt32(reader["HANDLE"]);
+            }
+            reader.Close();
+            return handleTipoEncaminhamento;
+        }
+        private String BuscarHandleResponsavel()
+        {
+            String handleResponsavel = "";
+            if (responsavelComboBox.SelectedIndex != -1)
+            {
+                String query = " SELECT A.HANDLE" +
+                               " FROM PS_USUARIO A" +
+                               " WHERE A.LOGIN = '" + responsavelComboBox.SelectedItem.ToString() + "'";
+                SqlDataReader reader = connection.Pesquisa(query);
+                while (reader.Read())
+                {
+                    handleResponsavel = (reader["HANDLE"]).ToString();
+                }
+                reader.Close();
+                return handleResponsavel;
+            }
+            else
+            {
+                return "null";
+            }
+
+        }
+        private String BuscarHandleTipo()
+        {
+            String handleTipo = "";
+            if (tipoComboBox.SelectedIndex != -1)
+            {
+                String query = " SELECT A.HANDLE" +
+                               " FROM TR_TAREFATIPO A" +
+                               " WHERE A.NOME = '" + tipoComboBox.SelectedItem.ToString() + "'";
+                SqlDataReader reader = connection.Pesquisa(query);
+                while (reader.Read())
+                {
+                    handleTipo = reader["HANDLE"].ToString();
+                }
+                reader.Close();
+                return handleTipo;
+            }
+            else
+            {
+                return "null";
+            }
+
+        }
+
+        private String BuscarHandleSeveridade()
+        {
+            String handleSeveridade = "";
+            if (severidadeComboBox.SelectedIndex != -1)
+            {
+                String query = " SELECT A.HANDLE" +
+                           " FROM TR_TAREFASEVERIDADE A" +
+                           " WHERE A.NOME = '" + severidadeComboBox.SelectedItem.ToString() + "'";
+                SqlDataReader reader = connection.Pesquisa(query);
+                while (reader.Read())
+                {
+                    handleSeveridade = (reader["HANDLE"]).ToString();
+                }
+                reader.Close();
+                return handleSeveridade;
+            }
+            else
+            {
+                return "null";
+            }
+
+        }
+        private String BuscarHandleSituacao()
+        {
+            String handleSituacao = "";
+            if (situacaoComboBox.SelectedIndex != -1)
+            {
+                String query = " SELECT A.HANDLE" +
+                           " FROM TR_TAREFASITUACAO A" +
+                           " WHERE A.NOME = '" + situacaoComboBox.SelectedItem.ToString() + "'";
+                SqlDataReader reader = connection.Pesquisa(query);
+                while (reader.Read())
+                {
+                    handleSituacao = (reader["HANDLE"]).ToString();
+                }
+                reader.Close();
+                return handleSituacao;
+            }
+            else
+            {
+                return "null";
+            }
+
+        }
+        private void GravarButtonOnClick(object sender, EventArgs e)
+        {
+            AlterarRegistro("Gravar");
+        }
+
+        private void LiberarButtonOnClick(object sender, EventArgs e)
+        {
+            AlterarRegistro("Liberar");
+        }
+        private Boolean VerificaCamposObrigatorios()
+        {
+            return true;
+        }
+        private void ControleDeStatus()
+        {
+            String situacao = "";
+            String query = " SELECT B.NOME SITUACAO, A.DATA" +
+                           " FROM TR_TAREFAENCAMINHAMENTO A" +
+                           " INNER JOIN MD_STATUS B ON B.HANDLE = A.STATUS" +
+                           " WHERE A.HANDLE = " + handleEncaminhamento;
+            SqlDataReader reader = connection.Pesquisa(query);
+
+            while (reader.Read())
+            {
+                situacao = reader["SITUACAO"].ToString();
+                dataTextBox.Text = reader["DATA"].ToString();
+            }
+            reader.Close();
+
+            if (situacao == "Cadastrado")
+            {
+                tipoEncaminhamentoComboBox.Enabled = true;
+                tipoComboBox.Enabled = true;
+                responsavelComboBox.Enabled = true;
+                situacaoComboBox.Enabled = true;
+                severidadeComboBox.Enabled = true;
+                descricaoTextBox.ReadOnly = true;
+                assuntoTextBox.ReadOnly = true;
+
+                liberarButton.Visible = true;
+                gravarButton.Visible = false;
+                liberarButton.Location = new Point(681, 320);
+            }
+            else
+            {
+                if (situacao == "Ativo")
+                {
+                    tipoEncaminhamentoComboBox.Enabled = false;
+                    tipoComboBox.Enabled = false;
+                    responsavelComboBox.Enabled = false;
+                    situacaoComboBox.Enabled = false;
+                    severidadeComboBox.Enabled = false;
+                    descricaoTextBox.ReadOnly = false;
+                    assuntoTextBox.ReadOnly = false;
+
+                    liberarButton.Visible = false;
+                    gravarButton.Visible = false;
+                }
+                else
+                {
+                    tipoEncaminhamentoComboBox.Enabled = true;
+                    tipoComboBox.Enabled = true;
+                    responsavelComboBox.Enabled = true;
+                    situacaoComboBox.Enabled = true;
+                    severidadeComboBox.Enabled = true;
+                    descricaoTextBox.ReadOnly = true;
+                    assuntoTextBox.ReadOnly = true;
+
+                    liberarButton.Visible = false;
+                    gravarButton.Visible = true;
+                }
+            }
+            this.Text = "Encaminhamento - " + situacao;
+
+        }
         //
         private void OnFormClosed(object sender, FormClosedEventArgs e)
         {

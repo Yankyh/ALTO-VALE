@@ -297,6 +297,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="favicon.ico" />
+    <None Include="Resources\ic_launcher3.png" />
     <None Include="Resources\ic_launcher1.png" />
     <None Include="Resources\ic_launcher.png" />
   </ItemGroup>

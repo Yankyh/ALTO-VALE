@@ -34,7 +34,6 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
             InitializeComponent();
             connection.Conectar();
             cpfcnpjTextBox.Enabled = false;
-
             if (pessoaHandle == 0)
             {
                 ControleDeStatus();
@@ -55,7 +54,7 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
         {
             String apelido = "", razaoSocial = "", email = "", cpfCnpj = "", telefone = "", celular = "", observacao = "";
             Boolean ehCliente = false, ehFornecedor = false, ehOrgaoPublico = false, ehFuncionario = false;
-            int tipoPessoa = 0, cepSelecionadoHandle = 0;
+            int tipoPessoa = 0;
             apelido = apelidoTextBox.Text;
             razaoSocial = razaoSocialTextBox.Text;
             email = emailTextBox.Text;
@@ -69,7 +68,6 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
             ehFornecedor = fornecedorCheckBox.Checked;
             ehOrgaoPublico = orgaoPublicoCheckBox.Checked;
             ehFuncionario = funcionarioCheckBox.Checked;
-            int handlePessoa = 0;
 
             try
             {
@@ -78,8 +76,6 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
                 {
                     if (situacao == "Liberar")
                     {
-                        handlePessoa = BuscarHandlePessoa();
-
                         String query = "UPDATE PS_PESSOA SET STATUS = 3, APELIDO = '" + apelido + "', RAZAOSOCIAL = '" + razaoSocial + "'," +
                                              " EMAIL = '" + email + "', CPFCNPJ = '" + cpfCnpj + "', TIPO = " + tipoPessoa + ", " +
                                              " TELEFONE = '" + telefone + "', CELULAR = '" + celular + "', OBSERVACAO = '" + observacao + "'," +
@@ -89,20 +85,20 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
                         //Ativar Endereço
                         String query1 = " UPDATE PS_PESSOAENDERECO" +
                                         " SET STATUS = 3" +
-                                        " WHERE PESSOA = " + handlePessoa + "";
+                                        " WHERE PESSOA = " + pessoaHandle + "";
                         connection.Inserir(query1);
 
                         //Ativar Contato
                         String query2 = " UPDATE PS_PESSOACONTATO" +
                                         " SET STATUS = 3" +
-                                        " WHERE PESSOA =  " + handlePessoa + "";
+                                        " WHERE PESSOA =  " + pessoaHandle + "";
                         connection.Inserir(query2);
                     }
                     else
                     {
                         if (situacao == "Gravar" && VerificaDuplicidadeCpfCnpj() == false)
                         {
-                            String query = " INSERT INTO PS_PESSOA (STATUS, APELIDO, RAZAOSOCIAL, EMAIL,CPFCNPJSEMMASCARA, CPFCNPJ, TELEFONE, CELULAR, TIPO, ENDERECO, OBSERVACAO, EHCLIENTE, EHFORNECEDOR, EHORGAOPUBLICO)" +
+                            String query = " INSERT INTO PS_PESSOA (STATUS, APELIDO, RAZAOSOCIAL, EMAIL,CPFCNPJSEMMASCARA, CPFCNPJ, TELEFONE, CELULAR, TIPO, OBSERVACAO, EHCLIENTE, EHFORNECEDOR, EHORGAOPUBLICO)" +
                                            " VALUES" +
                                            " ( " + 1 + "," +
                                            "'" + apelido + "'," +
@@ -113,7 +109,6 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
                                            "'" + telefone + "', " +
                                            "'" + celular + "', " +
                                            "'" + tipoPessoa + "', " +
-                                           "" + cepSelecionadoHandle + ", " +
                                            "'" + observacao + "'," +
                                            "'" + ehCliente + "', " +
                                            "'" + ehFornecedor + "',  " +
@@ -136,18 +131,18 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
                 {
                     String query = " UPDATE PS_PESSOA" +
                                    " SET STATUS = 4" +
-                                   " WHERE HANDLE = " + handlePessoa;
+                                   " WHERE HANDLE = " + pessoaHandle;
                     connection.Inserir(query);
                     //Cancelar Endereço
                     String query1 = " UPDATE PS_PESSOAENDERECO" +
                                     " SET STATUS = 4" +
-                                    " WHERE PESSOA = " + handlePessoa + "";
+                                    " WHERE PESSOA = " + pessoaHandle + "";
                     connection.Inserir(query1);
 
                     //Cancelar Contato
                     String query2 = " UPDATE PS_PESSOACONTATO" +
                                     " SET STATUS = 4" +
-                                    " WHERE PESSOA = " + handlePessoa + "";
+                                    " WHERE PESSOA = " + pessoaHandle + "";
                     connection.Inserir(query2);
                 }
             }
@@ -345,15 +340,14 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
             PreencherEndereco();
 
             //Preenche o form com as informações da pessoa selecionada
-            String apelido = "", razaoSocial = "", email = "", cpfCnpj = "", telefone = "", celular = "", observacao = "", tipo = "", situacao = "", cep = "";
+            String apelido = "", razaoSocial = "", email = "", cpfCnpj = "", telefone = "", celular = "", observacao = "", tipo = "", situacao = "";
             //Abrangencia
             String ehFuncionario = "", ehFornecedor = "", ehOrgaoPublico = "", ehCliente = "";
 
-            String query = " SELECT C.NOME SITUACAO, A.APELIDO, A.RAZAOSOCIAL, B.NOME TIPO, A.CPFCNPJ, A.TELEFONE, A.CELULAR, A.EMAIL, A.OBSERVACAO, D.CEP, A.EHCLIENTE, A.EHFUNCIONARIO, A.EHFORNECEDOR, A.EHORGAOPUBLICO" +
+            String query = " SELECT C.NOME SITUACAO, A.APELIDO, A.RAZAOSOCIAL, B.NOME TIPO, A.CPFCNPJ, A.TELEFONE, A.CELULAR, A.EMAIL, A.OBSERVACAO,  A.EHCLIENTE, A.EHFUNCIONARIO, A.EHFORNECEDOR, A.EHORGAOPUBLICO" +
                            " FROM PS_PESSOA A" +
                            " INNER JOIN PS_PESSOATIPO B ON B.HANDLE = A.TIPO" +
                            " INNER JOIN MD_STATUS C ON C.HANDLE = A.STATUS" +
-                           " LEFT JOIN PS_PESSOAENDERECO D ON D.HANDLE = A.ENDERECO" +
                            " WHERE A.HANDLE = " + handlePessoa;
             SqlDataReader reader = connection.Pesquisa(query);
 
@@ -368,7 +362,6 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
                 celular = (reader["CELULAR"].ToString());
                 observacao = (reader["OBSERVACAO"].ToString());
                 situacao = (reader["SITUACAO"].ToString());
-                cep = (reader["CEP"].ToString());
 
                 //Abrangencia
                 ehCliente = (reader["EHCLIENTE"].ToString());
@@ -435,7 +428,7 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
             int handlePessoaModificar = 0;
 
             String query = "SELECT HANDLE FROM PS_PESSOA WHERE CPFCNPJ = '" + cpfcnpjTextBox.Text + "'";
-            SqlDataReader reader = connection.Pesquisa(query); ;
+            SqlDataReader reader = connection.Pesquisa(query); 
             while (reader.Read())
             {
                 handlePessoaModificar = Convert.ToInt32(reader["HANDLE"]);
@@ -931,10 +924,9 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
         private Boolean VerificaSeExisteUmEndereco()
         {
             Boolean existeEndereco = false;
-
             String query = " SELECT A.HANDLE" +
                            " FROM PS_PESSOA A" +
-                           " INNER JOIN PS_PESSOAENDERECO B ON B.HANDLE = A.ENDERECO" +
+                           " INNER JOIN PS_PESSOAENDERECO B ON B.PESSOA = A.HANDLE" +
                            " WHERE A.HANDLE = " + pessoaHandle;
             SqlDataReader reader = connection.Pesquisa(query);
             existeEndereco = reader.HasRows;

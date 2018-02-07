@@ -22,6 +22,7 @@ namespace ALTO_VALE.VIEW.TR_TAREFA
         //Bindings
         BindingSource Binding = new BindingSource();
         BindingSource Binding1 = new BindingSource();
+        BindingSource Binding2 = new BindingSource();
         //Variaveis static
         public static int handleTarefa = 0;
 
@@ -51,6 +52,7 @@ namespace ALTO_VALE.VIEW.TR_TAREFA
             PreencherComboBoxTipo();
             PreencherAnexoDataGridView();
             PreencherDocumentacaoDataGridView();
+            PreencherEncaminhamentoDataGridView();
 
             String query = " SELECT A.DATA, A.PRAZO, B.LOGIN SOLICITANTE, C.LOGIN RESPONSAVEL, D.NOME SEVERIDADE, E.NOME SITUACAO, F.NOME TIPO, A.ASSUNTO, A.SOLICITACAO" +
                            " FROM TR_TAREFA A" +
@@ -431,7 +433,7 @@ namespace ALTO_VALE.VIEW.TR_TAREFA
             documentacaoDataGridView.AutoGenerateColumns = true;
             Binding1.DataSource = connection.DataTable(query);
             documentacaoDataGridView.DataSource = Binding1;
-            documentacaoDataGridView.Columns[0].Width = 0;
+
             documentacaoDataGridView.Columns[0].Visible = false;
             documentacaoDataGridView.Columns[1].Width = 50;
             documentacaoDataGridView.Columns[2].Width = 130;
@@ -439,7 +441,25 @@ namespace ALTO_VALE.VIEW.TR_TAREFA
             documentacaoDataGridView.Columns[4].Width = 700;
             documentacaoDataGridView.AllowUserToResizeRows = false;
         }
+        private void PreencherEncaminhamentoDataGridView()
+        {
+            String query = " SELECT A.HANDLE, C.IMAGEM SIT, A.DATA, B.NOME TIPO, A.ASSUNTO,  A.DESCRICAO" +
+                           " FROM TR_TAREFAENCAMINHAMENTO A" +
+                           " INNER JOIN TR_TAREFAENCAMINHAMENTOTIPO B ON B.HANDLE = A.TIPOENCAMINHAMENTO" +
+                           " INNER JOIN MD_STATUS C ON C.HANDLE = A.STATUS" +
+                           " WHERE A.TAREFA = " + handleTarefa;
+            encaminhamentoDataGridView.AutoGenerateColumns = true;
+            Binding2.DataSource = connection.DataTable(query);
+            encaminhamentoDataGridView.DataSource = Binding2;
 
+            encaminhamentoDataGridView.Columns[0].Visible = false;
+            encaminhamentoDataGridView.Columns[1].Width = 50;
+            encaminhamentoDataGridView.Columns[2].Width = 120;
+            encaminhamentoDataGridView.Columns[3].Width = 150;
+            encaminhamentoDataGridView.Columns[4].Width = 200;
+            encaminhamentoDataGridView.Columns[5].Width = 500;
+            encaminhamentoDataGridView.AllowUserToResizeRows = false;
+        }
         private void LiberarButtonOnClick(object sender, EventArgs e)
         {
             AlterarRegistro("Liberar");
@@ -535,8 +555,17 @@ namespace ALTO_VALE.VIEW.TR_TAREFA
 
         private void AdicionarEncaminhamentoButtonOnClick(object sender, EventArgs e)
         {
+            ITarefaEncaminhamento.handleTarefa = BuscarHandleTarefa();
             ITarefaEncaminhamento iTarefaDocumentacao = new ITarefaEncaminhamento();
             iTarefaDocumentacao.ShowDialog();
+        }
+
+        private void EncaminhamentoCellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            ITarefaEncaminhamento.handleTarefa = BuscarHandleTarefa();
+            ITarefaEncaminhamento.handleEncaminhamento = BuscarHandleEncaminhamento();
+            ITarefaEncaminhamento iTarefaEncaminhamento = new ITarefaEncaminhamento();
+            iTarefaEncaminhamento.ShowDialog();
         }
 
         private void TipoDropDown(object sender, EventArgs e)
@@ -661,6 +690,20 @@ namespace ALTO_VALE.VIEW.TR_TAREFA
             }
             return handleDocumentacao;
         }
+        private int BuscarHandleEncaminhamento()
+        {
+            int handleEncaminhamento = 0;
+            try
+            {
+                handleEncaminhamento = Convert.ToInt32(encaminhamentoDataGridView.CurrentRow.Cells[0].Value.ToString());
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.ToString());
+            }
+            return handleEncaminhamento;
+        }
+        
         //Controle de status
         private void ControleDeStatus()
         {

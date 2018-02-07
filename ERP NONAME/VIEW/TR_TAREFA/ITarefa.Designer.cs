@@ -61,7 +61,7 @@
             this.documentacaoDataGridView = new System.Windows.Forms.DataGridView();
             this.encaminhamentoTabPage = new System.Windows.Forms.TabPage();
             this.adicionarEncaminhamentoButtonOnClick = new System.Windows.Forms.Button();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.encaminhamentoDataGridView = new System.Windows.Forms.DataGridView();
             this.anexoTabPage = new System.Windows.Forms.TabPage();
             this.anexoDataGridView = new System.Windows.Forms.DataGridView();
             this.adicionarArquivoButton = new System.Windows.Forms.Button();
@@ -87,7 +87,7 @@
             this.documentaoTabPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.documentacaoDataGridView)).BeginInit();
             this.encaminhamentoTabPage.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.encaminhamentoDataGridView)).BeginInit();
             this.anexoTabPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.anexoDataGridView)).BeginInit();
             this.panel1.SuspendLayout();
@@ -337,7 +337,7 @@
             // encaminhamentoTabPage
             // 
             this.encaminhamentoTabPage.Controls.Add(this.adicionarEncaminhamentoButtonOnClick);
-            this.encaminhamentoTabPage.Controls.Add(this.dataGridView2);
+            this.encaminhamentoTabPage.Controls.Add(this.encaminhamentoDataGridView);
             this.encaminhamentoTabPage.Location = new System.Drawing.Point(4, 27);
             this.encaminhamentoTabPage.Name = "encaminhamentoTabPage";
             this.encaminhamentoTabPage.Size = new System.Drawing.Size(960, 168);
@@ -358,25 +358,25 @@
             this.adicionarEncaminhamentoButtonOnClick.UseVisualStyleBackColor = true;
             this.adicionarEncaminhamentoButtonOnClick.Click += new System.EventHandler(this.AdicionarEncaminhamentoButtonOnClick);
             // 
-            // dataGridView2
+            // encaminhamentoDataGridView
             // 
-            this.dataGridView2.AllowUserToAddRows = false;
+            this.encaminhamentoDataGridView.AllowUserToAddRows = false;
             dataGridViewCellStyle5.BackColor = System.Drawing.Color.LightGray;
             dataGridViewCellStyle5.Font = new System.Drawing.Font("Arial", 9F);
             dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.MenuHighlight;
             dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.Black;
-            this.dataGridView2.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
-            this.dataGridView2.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
-            this.dataGridView2.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dataGridView2.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
+            this.encaminhamentoDataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
+            this.encaminhamentoDataGridView.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
+            this.encaminhamentoDataGridView.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.encaminhamentoDataGridView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
             dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle6.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.Transparent;
             dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView2.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.encaminhamentoDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            this.encaminhamentoDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle7.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -384,11 +384,11 @@
             dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.MenuHighlight;
             dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView2.DefaultCellStyle = dataGridViewCellStyle7;
-            this.dataGridView2.Location = new System.Drawing.Point(3, 3);
-            this.dataGridView2.MultiSelect = false;
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.ReadOnly = true;
+            this.encaminhamentoDataGridView.DefaultCellStyle = dataGridViewCellStyle7;
+            this.encaminhamentoDataGridView.Location = new System.Drawing.Point(3, 3);
+            this.encaminhamentoDataGridView.MultiSelect = false;
+            this.encaminhamentoDataGridView.Name = "encaminhamentoDataGridView";
+            this.encaminhamentoDataGridView.ReadOnly = true;
             dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle8.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -396,12 +396,13 @@
             dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView2.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
-            this.dataGridView2.RowHeadersVisible = false;
-            this.dataGridView2.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.dataGridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView2.Size = new System.Drawing.Size(927, 163);
-            this.dataGridView2.TabIndex = 67;
+            this.encaminhamentoDataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
+            this.encaminhamentoDataGridView.RowHeadersVisible = false;
+            this.encaminhamentoDataGridView.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.encaminhamentoDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.encaminhamentoDataGridView.Size = new System.Drawing.Size(927, 163);
+            this.encaminhamentoDataGridView.TabIndex = 67;
+            this.encaminhamentoDataGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.EncaminhamentoCellDoubleClick);
             // 
             // anexoTabPage
             // 
@@ -682,7 +683,7 @@
             this.documentaoTabPage.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.documentacaoDataGridView)).EndInit();
             this.encaminhamentoTabPage.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.encaminhamentoDataGridView)).EndInit();
             this.anexoTabPage.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.anexoDataGridView)).EndInit();
             this.panel1.ResumeLayout(false);
@@ -723,7 +724,7 @@
         private System.Windows.Forms.Button encerrarButton;
         private System.Windows.Forms.TabPage encaminhamentoTabPage;
         private System.Windows.Forms.DataGridView documentacaoDataGridView;
-        private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.DataGridView encaminhamentoDataGridView;
         private System.Windows.Forms.Button adicionarDocumentacaoButton;
         private System.Windows.Forms.Button adicionarEncaminhamentoButtonOnClick;
         private System.Windows.Forms.TabPage complementoTabPage;

@@ -27,7 +27,7 @@ namespace ALTO_VALE
         //Serve para saber qual datagridview esta selecionado
         String telaSelecionada = "";
         //Variaveis de configuração dos datagridviews que são padrão
-        int SITUACAOWIDTH = 32;
+        int SITUACAOWIDTH = 32, HANDLEWIDTH = 80, COLUNAHANDLE = 1;
 
         public Form1()
         {
@@ -111,16 +111,18 @@ namespace ALTO_VALE
             //Pessoa
             if (tela == "Pessoa")
             {
-                query = " SELECT A.HANDLE, B.IMAGEM SIT, A.RAZAOSOCIAL AS 'RAZÃO SOCIAL', A.APELIDO APELIDO, A.CPFCNPJ AS 'CPF/CNPJ', A.TELEFONE, C.CIDADE, D.SIGLA ESTADO, C.LOGRADOURO" +
+                query = " SELECT B.IMAGEM SIT, A.HANDLE NÚMERO, A.RAZAOSOCIAL AS 'RAZÃO SOCIAL', A.APELIDO APELIDO, A.CPFCNPJ AS 'CPF/CNPJ', A.TELEFONE, C.CIDADE, D.SIGLA ESTADO, C.LOGRADOURO" +
                                " FROM PS_PESSOA A" +
                                " INNER JOIN MD_STATUS B ON B.HANDLE = A.STATUS " +
                                " LEFT JOIN PS_PESSOAENDERECO C ON C.HANDLE = (SELECT MAX(HANDLE) FROM PS_PESSOAENDERECO WHERE PESSOA = A.HANDLE)" +
-                               " LEFT JOIN MD_ESTADO D ON D.HANDLE = C.ESTADO";
+                               " LEFT JOIN MD_ESTADO D ON D.HANDLE = C.ESTADO" +
+                               " WHERE 1=1" +
+                               " " + FiltroStatus() + ""; ;
                 Binding.DataSource = connection.DataTable(query);
                 menuDataGridView.DataSource = Binding;
 
-                menuDataGridView.Columns[0].Visible = false;
-                menuDataGridView.Columns[1].Width = SITUACAOWIDTH;
+                menuDataGridView.Columns[0].Width = SITUACAOWIDTH;
+                menuDataGridView.Columns[1].Width = HANDLEWIDTH;
                 menuDataGridView.Columns[2].Width = 300;
                 menuDataGridView.Columns[3].Width = 300;
                 menuDataGridView.Columns[4].Width = 150;
@@ -130,10 +132,7 @@ namespace ALTO_VALE
             //Tarefa
             if (tela == "Tarefa")
             {
-
-
-
-                query = " SELECT A.HANDLE, B.IMAGEM SIT, F.NOME SITUAÇÃO, E.NOME SEVERIDADE, G.NOME TIPO, A.PRAZO, A.ASSUNTO, C.LOGIN SOLICITANTE, D.LOGIN RESPONSAVEL, A.DATA " +
+                query = " SELECT B.IMAGEM SIT, A.HANDLE NÚMERO, F.NOME SITUAÇÃO, E.NOME SEVERIDADE, G.NOME TIPO, A.PRAZO, A.ASSUNTO, C.LOGIN SOLICITANTE, D.LOGIN RESPONSAVEL, A.DATA " +
                         " FROM TR_TAREFA A" +
                         " INNER JOIN MD_STATUS B ON B.HANDLE = A.STATUS" +
                         " INNER JOIN PS_USUARIO C ON C.HANDLE = A.SOLICITANTE" +
@@ -142,15 +141,12 @@ namespace ALTO_VALE
                         " INNER JOIN TR_TAREFASITUACAO F ON F.HANDLE = A.SITUACAO" +
                         " INNER JOIN TR_TAREFATIPO G ON G.HANDLE = A.TIPO" +
                         " WHERE 1=1" +
-                        " " + filtroStatus() + "";
-                //  " WHERE A.STATUS IN (" + status + ")";
+                        " " + FiltroStatus() + "";
                 Binding.DataSource = connection.DataTable(query);
                 menuDataGridView.DataSource = Binding;
 
-                menuDataGridView.Columns[0].Width = 0;
-
-                menuDataGridView.Columns[0].Visible = false;
-                menuDataGridView.Columns[1].Width = SITUACAOWIDTH;
+                menuDataGridView.Columns[0].Width = SITUACAOWIDTH;
+                menuDataGridView.Columns[1].Width = HANDLEWIDTH;
                 menuDataGridView.Columns[2].Width = 120;
                 menuDataGridView.Columns[3].Width = 120;
                 menuDataGridView.Columns[4].Width = 150;
@@ -162,26 +158,27 @@ namespace ALTO_VALE
             }
             if (tela == "Servidor de Email")
             {
-                VIEW.TN_EMAIL.IServidorEmail servidor = new VIEW.TN_EMAIL.IServidorEmail(1);
-                servidor.ShowDialog();
+                // VIEW.TN_EMAIL.IServidorEmail servidor = new VIEW.TN_EMAIL.IServidorEmail(1);
+                //  servidor.ShowDialog();
             }
             //Cep
             if (tela == "Cep")
             {
-                menuDataGridView.AutoGenerateColumns = true;
-                query = " SELECT A.HANDLE, B.IMAGEM SIT, A.CEP, A.PAIS, A.ESTADO, A.CIDADE, A.BAIRRO, A.LOGRADOURO" +
-                               " FROM MD_CEP A" +
-                               " INNER JOIN MD_STATUS B ON B.HANDLE = A.STATUS";
+                query = " SELECT B.IMAGEM SIT, A.HANDLE AS NÚMERO, A.CEP, A.PAIS, A.ESTADO, A.CIDADE, A.BAIRRO, A.LOGRADOURO" +
+                        " FROM MD_CEP A" +
+                        " INNER JOIN MD_STATUS B ON B.HANDLE = A.STATUS" +
+                        " WHERE 1=1" +
+                        " " + FiltroStatus();
                 Binding.DataSource = connection.DataTable(query);
                 menuDataGridView.DataSource = Binding;
 
-                menuDataGridView.Columns[1].Width = SITUACAOWIDTH;
+                menuDataGridView.Columns[0].Width = SITUACAOWIDTH;
+                menuDataGridView.Columns[1].Width = HANDLEWIDTH;
                 menuDataGridView.Columns[2].Width = 150;
                 menuDataGridView.Columns[3].Width = 150;
                 menuDataGridView.Columns[4].Width = 150;
                 menuDataGridView.Columns[5].Width = 200;
                 menuDataGridView.Columns[7].Width = 300;
-                menuDataGridView.Columns[0].Visible = false;
             }
 
         }
@@ -191,7 +188,7 @@ namespace ALTO_VALE
 
             try
             {
-                handleRegistroSelecionado = Convert.ToInt32(menuDataGridView.CurrentRow.Cells[0].Value);
+                handleRegistroSelecionado = Convert.ToInt32(menuDataGridView.CurrentRow.Cells[COLUNAHANDLE].Value);
             }
             catch (Exception e)
             {
@@ -236,7 +233,7 @@ namespace ALTO_VALE
 
 
         //Filtro temporário pro avi
-        private String filtroStatus()
+        private String FiltroStatus()
         {
             String situacoes = "", filtro = "AND B.NOME IN (";
 
@@ -298,7 +295,7 @@ namespace ALTO_VALE
             }
             filtro = filtro + situacoes + ")";
 
-            if(situacoes == "")
+            if (situacoes == "")
             {
                 return null;
             }

@@ -33,7 +33,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ITarefaEncaminhamento));
-            this.excluirButton = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.observacaoTabPage = new System.Windows.Forms.TabPage();
             this.descricaoTextBox = new System.Windows.Forms.RichTextBox();
@@ -41,8 +40,6 @@
             this.adicionarAnexoButton = new System.Windows.Forms.Button();
             this.anexoDataGridView = new System.Windows.Forms.DataGridView();
             this.liberarButton = new System.Windows.Forms.Button();
-            this.voltarButton = new System.Windows.Forms.Button();
-            this.cancelarButton = new System.Windows.Forms.Button();
             this.gravarButton = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
@@ -69,17 +66,6 @@
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // excluirButton
-            // 
-            this.excluirButton.Font = new System.Drawing.Font("Trebuchet MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.excluirButton.Location = new System.Drawing.Point(261, 320);
-            this.excluirButton.Name = "excluirButton";
-            this.excluirButton.Size = new System.Drawing.Size(103, 32);
-            this.excluirButton.TabIndex = 12;
-            this.excluirButton.Text = "Excluir";
-            this.excluirButton.UseVisualStyleBackColor = true;
-            this.excluirButton.Visible = false;
             // 
             // tabControl1
             // 
@@ -187,33 +173,14 @@
             // liberarButton
             // 
             this.liberarButton.Font = new System.Drawing.Font("Trebuchet MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.liberarButton.Location = new System.Drawing.Point(370, 320);
+            this.liberarButton.Location = new System.Drawing.Point(572, 320);
             this.liberarButton.Name = "liberarButton";
             this.liberarButton.Size = new System.Drawing.Size(103, 32);
             this.liberarButton.TabIndex = 9;
             this.liberarButton.Text = "Liberar";
             this.liberarButton.UseVisualStyleBackColor = true;
             this.liberarButton.Visible = false;
-            // 
-            // voltarButton
-            // 
-            this.voltarButton.Font = new System.Drawing.Font("Trebuchet MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.voltarButton.Location = new System.Drawing.Point(474, 320);
-            this.voltarButton.Name = "voltarButton";
-            this.voltarButton.Size = new System.Drawing.Size(103, 32);
-            this.voltarButton.TabIndex = 10;
-            this.voltarButton.Text = "Voltar";
-            this.voltarButton.UseVisualStyleBackColor = true;
-            // 
-            // cancelarButton
-            // 
-            this.cancelarButton.Font = new System.Drawing.Font("Trebuchet MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cancelarButton.Location = new System.Drawing.Point(577, 320);
-            this.cancelarButton.Name = "cancelarButton";
-            this.cancelarButton.Size = new System.Drawing.Size(103, 32);
-            this.cancelarButton.TabIndex = 11;
-            this.cancelarButton.Text = "Cancelar";
-            this.cancelarButton.UseVisualStyleBackColor = true;
+            this.liberarButton.Click += new System.EventHandler(this.LiberarButtonOnClick);
             // 
             // gravarButton
             // 
@@ -224,6 +191,7 @@
             this.gravarButton.TabIndex = 8;
             this.gravarButton.Text = "Gravar";
             this.gravarButton.UseVisualStyleBackColor = true;
+            this.gravarButton.Click += new System.EventHandler(this.GravarButtonOnClick);
             // 
             // panel1
             // 
@@ -451,11 +419,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(788, 355);
             this.Controls.Add(this.panel2);
-            this.Controls.Add(this.excluirButton);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.liberarButton);
-            this.Controls.Add(this.voltarButton);
-            this.Controls.Add(this.cancelarButton);
             this.Controls.Add(this.gravarButton);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
@@ -479,8 +444,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Button excluirButton;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage observacaoTabPage;
         private System.Windows.Forms.RichTextBox descricaoTextBox;
@@ -488,8 +451,6 @@
         private System.Windows.Forms.Button adicionarAnexoButton;
         private System.Windows.Forms.DataGridView anexoDataGridView;
         private System.Windows.Forms.Button liberarButton;
-        private System.Windows.Forms.Button voltarButton;
-        private System.Windows.Forms.Button cancelarButton;
         private System.Windows.Forms.Button gravarButton;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.TextBox dataTextBox;
