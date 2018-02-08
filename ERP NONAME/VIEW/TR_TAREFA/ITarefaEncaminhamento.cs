@@ -421,6 +421,10 @@ namespace ALTO_VALE.VIEW.TR_TAREFA
             {
                 liberarButton.Visible = true;
                 gravarButton.Visible = false;
+
+                descricaoTextBox.ReadOnly = false;
+                assuntoTextBox.ReadOnly = false;
+
                 liberarButton.Location = new Point(681, 320);
             }
             else
@@ -446,8 +450,8 @@ namespace ALTO_VALE.VIEW.TR_TAREFA
                     responsavelComboBox.Enabled = true;
                     situacaoComboBox.Enabled = true;
                     severidadeComboBox.Enabled = true;
-                    descricaoTextBox.ReadOnly = true;
-                    assuntoTextBox.ReadOnly = true;
+                    descricaoTextBox.ReadOnly = false;
+                    assuntoTextBox.ReadOnly = false;
 
                     liberarButton.Visible = false;
                     gravarButton.Visible = true;

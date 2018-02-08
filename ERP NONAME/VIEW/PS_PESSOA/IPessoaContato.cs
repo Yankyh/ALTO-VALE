@@ -242,8 +242,8 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
                 cancelarButton.Visible = true;
                 voltarButton.Visible = false;
                 liberarButton.Visible = true;
-                liberarButton.Location = new Point(564, 269);
-                cancelarButton.Location = new Point(668, 269);
+                liberarButton.Location = new Point(564, 296);
+                cancelarButton.Location = new Point(668, 296);
             }
             else
             {
@@ -261,8 +261,8 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
                     cancelarButton.Visible = true;
                     voltarButton.Visible = false;
                     gravarButton.Visible = false;
-                    liberarButton.Location = new Point(564, 269);
-                    cancelarButton.Location = new Point(668, 269);
+                    liberarButton.Location = new Point(564, 296);
+                    cancelarButton.Location = new Point(668, 296);
                 }
                 else
                 {
@@ -280,7 +280,7 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
                         cancelarButton.Visible = false;
                         voltarButton.Visible = true;
                         liberarButton.Visible = false;
-                        voltarButton.Location = new Point(668, 269);
+                        voltarButton.Location = new Point(668, 296);
                     }
                     else
                     {
@@ -298,7 +298,7 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
                             cancelarButton.Visible = false;
                             voltarButton.Visible = true;
                             liberarButton.Visible = false;
-                            voltarButton.Location = new Point(668, 269);
+                            voltarButton.Location = new Point(668, 296);
                         }
                         else
                         {
@@ -306,7 +306,7 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
                             cancelarButton.Visible = false;
                             voltarButton.Visible = false;
                             liberarButton.Visible = false;
-                            gravarButton.Location = new Point(668, 269);
+                            gravarButton.Location = new Point(668, 296);
                         }
                     }
                 }
@@ -397,6 +397,11 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
                 AlterarRegistro("Alterar");
                 ControleDeStatus();
             }
+
+        }
+
+        private void IPessoaContato_Load(object sender, EventArgs e)
+        {
 
         }
     }

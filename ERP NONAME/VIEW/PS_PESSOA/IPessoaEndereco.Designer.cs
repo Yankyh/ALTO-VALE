@@ -54,44 +54,46 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.tabControl1.SuspendLayout();
             this.observacaoTabPage.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Trebuchet MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(415, 58);
+            this.label1.Font = new System.Drawing.Font("Trebuchet MS", 9F);
+            this.label1.Location = new System.Drawing.Point(406, 62);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(46, 16);
+            this.label1.Size = new System.Drawing.Size(51, 18);
             this.label1.TabIndex = 62;
             this.label1.Text = "Número";
             // 
             // numeroTextBox
             // 
-            this.numeroTextBox.Font = new System.Drawing.Font("Trebuchet MS", 9F);
-            this.numeroTextBox.Location = new System.Drawing.Point(418, 74);
+            this.numeroTextBox.BackColor = System.Drawing.Color.LightGray;
+            this.numeroTextBox.Font = new System.Drawing.Font("Trebuchet MS", 10F);
+            this.numeroTextBox.Location = new System.Drawing.Point(417, 87);
             this.numeroTextBox.Name = "numeroTextBox";
-            this.numeroTextBox.Size = new System.Drawing.Size(162, 21);
+            this.numeroTextBox.Size = new System.Drawing.Size(162, 23);
             this.numeroTextBox.TabIndex = 6;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.label3.Font = new System.Drawing.Font("Trebuchet MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(533, 9);
+            this.label3.Font = new System.Drawing.Font("Trebuchet MS", 9F);
+            this.label3.Location = new System.Drawing.Point(497, 9);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(42, 16);
+            this.label3.Size = new System.Drawing.Size(44, 18);
             this.label3.TabIndex = 61;
             this.label3.Text = "Estado";
             // 
             // estadoComboBox
             // 
-            this.estadoComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.estadoComboBox.BackColor = System.Drawing.Color.LightGray;
             this.estadoComboBox.Font = new System.Drawing.Font("Trebuchet MS", 8F);
             this.estadoComboBox.FormattingEnabled = true;
-            this.estadoComboBox.Location = new System.Drawing.Point(536, 28);
+            this.estadoComboBox.Location = new System.Drawing.Point(500, 29);
             this.estadoComboBox.Name = "estadoComboBox";
             this.estadoComboBox.Size = new System.Drawing.Size(224, 24);
             this.estadoComboBox.TabIndex = 3;
@@ -99,29 +101,31 @@
             // 
             // referenciaTextBox
             // 
-            this.referenciaTextBox.Font = new System.Drawing.Font("Trebuchet MS", 9F);
-            this.referenciaTextBox.Location = new System.Drawing.Point(583, 74);
+            this.referenciaTextBox.BackColor = System.Drawing.Color.LightGray;
+            this.referenciaTextBox.Font = new System.Drawing.Font("Trebuchet MS", 10F);
+            this.referenciaTextBox.Location = new System.Drawing.Point(584, 87);
             this.referenciaTextBox.Name = "referenciaTextBox";
-            this.referenciaTextBox.Size = new System.Drawing.Size(386, 21);
+            this.referenciaTextBox.Size = new System.Drawing.Size(386, 23);
             this.referenciaTextBox.TabIndex = 7;
             // 
             // bairroTextBox
             // 
-            this.bairroTextBox.Font = new System.Drawing.Font("Trebuchet MS", 9F);
-            this.bairroTextBox.Location = new System.Drawing.Point(769, 29);
+            this.bairroTextBox.BackColor = System.Drawing.Color.LightGray;
+            this.bairroTextBox.Font = new System.Drawing.Font("Trebuchet MS", 10F);
+            this.bairroTextBox.Location = new System.Drawing.Point(730, 30);
             this.bairroTextBox.MaxLength = 18;
             this.bairroTextBox.Name = "bairroTextBox";
-            this.bairroTextBox.Size = new System.Drawing.Size(200, 21);
+            this.bairroTextBox.Size = new System.Drawing.Size(240, 23);
             this.bairroTextBox.TabIndex = 4;
             // 
             // label12
             // 
             this.label12.AutoSize = true;
             this.label12.BackColor = System.Drawing.Color.Transparent;
-            this.label12.Font = new System.Drawing.Font("Trebuchet MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(10, 55);
+            this.label12.Font = new System.Drawing.Font("Trebuchet MS", 9F);
+            this.label12.Location = new System.Drawing.Point(11, 68);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(66, 16);
+            this.label12.Size = new System.Drawing.Size(71, 18);
             this.label12.TabIndex = 58;
             this.label12.Text = "Logradouro";
             // 
@@ -129,10 +133,10 @@
             // 
             this.label13.AutoSize = true;
             this.label13.BackColor = System.Drawing.Color.Transparent;
-            this.label13.Font = new System.Drawing.Font("Trebuchet MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(11, 9);
+            this.label13.Font = new System.Drawing.Font("Trebuchet MS", 9F);
+            this.label13.Location = new System.Drawing.Point(12, 9);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(27, 16);
+            this.label13.Size = new System.Drawing.Size(29, 18);
             this.label13.TabIndex = 60;
             this.label13.Text = "Cep";
             // 
@@ -140,37 +144,39 @@
             // 
             this.label14.AutoSize = true;
             this.label14.BackColor = System.Drawing.Color.Transparent;
-            this.label14.Font = new System.Drawing.Font("Trebuchet MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(766, 9);
+            this.label14.Font = new System.Drawing.Font("Trebuchet MS", 9F);
+            this.label14.Location = new System.Drawing.Point(719, 3);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(39, 16);
+            this.label14.Size = new System.Drawing.Size(41, 18);
             this.label14.TabIndex = 57;
             this.label14.Text = "Bairro";
             // 
             // cidadeTextBox
             // 
-            this.cidadeTextBox.Font = new System.Drawing.Font("Trebuchet MS", 9F);
-            this.cidadeTextBox.Location = new System.Drawing.Point(199, 30);
+            this.cidadeTextBox.BackColor = System.Drawing.Color.LightGray;
+            this.cidadeTextBox.Font = new System.Drawing.Font("Trebuchet MS", 10F);
+            this.cidadeTextBox.Location = new System.Drawing.Point(200, 30);
             this.cidadeTextBox.Name = "cidadeTextBox";
-            this.cidadeTextBox.Size = new System.Drawing.Size(333, 21);
+            this.cidadeTextBox.Size = new System.Drawing.Size(294, 23);
             this.cidadeTextBox.TabIndex = 2;
             // 
             // logradouroTextBox
             // 
-            this.logradouroTextBox.Font = new System.Drawing.Font("Trebuchet MS", 9F);
-            this.logradouroTextBox.Location = new System.Drawing.Point(13, 74);
+            this.logradouroTextBox.BackColor = System.Drawing.Color.LightGray;
+            this.logradouroTextBox.Font = new System.Drawing.Font("Trebuchet MS", 10F);
+            this.logradouroTextBox.Location = new System.Drawing.Point(14, 87);
             this.logradouroTextBox.Name = "logradouroTextBox";
-            this.logradouroTextBox.Size = new System.Drawing.Size(398, 21);
+            this.logradouroTextBox.Size = new System.Drawing.Size(398, 23);
             this.logradouroTextBox.TabIndex = 5;
             // 
             // label15
             // 
             this.label15.AutoSize = true;
             this.label15.BackColor = System.Drawing.Color.Transparent;
-            this.label15.Font = new System.Drawing.Font("Trebuchet MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(197, 9);
+            this.label15.Font = new System.Drawing.Font("Trebuchet MS", 9F);
+            this.label15.Location = new System.Drawing.Point(198, 9);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(42, 16);
+            this.label15.Size = new System.Drawing.Size(45, 18);
             this.label15.TabIndex = 56;
             this.label15.Text = "Cidade";
             // 
@@ -178,10 +184,10 @@
             // 
             this.label16.AutoSize = true;
             this.label16.BackColor = System.Drawing.Color.Transparent;
-            this.label16.Font = new System.Drawing.Font("Trebuchet MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.Location = new System.Drawing.Point(580, 58);
+            this.label16.Font = new System.Drawing.Font("Trebuchet MS", 9F);
+            this.label16.Location = new System.Drawing.Point(573, 62);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(62, 16);
+            this.label16.Size = new System.Drawing.Size(68, 18);
             this.label16.TabIndex = 59;
             this.label16.Text = "Referência";
             // 
@@ -189,7 +195,7 @@
             // 
             this.tabControl1.Controls.Add(this.observacaoTabPage);
             this.tabControl1.Font = new System.Drawing.Font("Trebuchet MS", 9F);
-            this.tabControl1.Location = new System.Drawing.Point(5, 117);
+            this.tabControl1.Location = new System.Drawing.Point(6, 139);
             this.tabControl1.Multiline = true;
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -210,11 +216,12 @@
             // 
             // ObservacaoTextBox
             // 
+            this.ObservacaoTextBox.BackColor = System.Drawing.Color.LightGray;
             this.ObservacaoTextBox.Font = new System.Drawing.Font("Arial", 10F);
-            this.ObservacaoTextBox.Location = new System.Drawing.Point(1, 1);
+            this.ObservacaoTextBox.Location = new System.Drawing.Point(0, 0);
             this.ObservacaoTextBox.MaxLength = 999;
             this.ObservacaoTextBox.Name = "ObservacaoTextBox";
-            this.ObservacaoTextBox.Size = new System.Drawing.Size(960, 100);
+            this.ObservacaoTextBox.Size = new System.Drawing.Size(961, 101);
             this.ObservacaoTextBox.TabIndex = 9;
             this.ObservacaoTextBox.Text = "";
             // 
@@ -222,7 +229,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Trebuchet MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(9, 109);
+            this.label2.Location = new System.Drawing.Point(10, 109);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(0, 16);
             this.label2.TabIndex = 52;
@@ -230,7 +237,7 @@
             // cancelarButton
             // 
             this.cancelarButton.Font = new System.Drawing.Font("Trebuchet MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cancelarButton.Location = new System.Drawing.Point(770, 255);
+            this.cancelarButton.Location = new System.Drawing.Point(771, 278);
             this.cancelarButton.Name = "cancelarButton";
             this.cancelarButton.Size = new System.Drawing.Size(103, 32);
             this.cancelarButton.TabIndex = 12;
@@ -241,7 +248,7 @@
             // gravarButton
             // 
             this.gravarButton.Font = new System.Drawing.Font("Trebuchet MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gravarButton.Location = new System.Drawing.Point(874, 255);
+            this.gravarButton.Location = new System.Drawing.Point(875, 278);
             this.gravarButton.Name = "gravarButton";
             this.gravarButton.Size = new System.Drawing.Size(103, 32);
             this.gravarButton.TabIndex = 11;
@@ -251,11 +258,11 @@
             // 
             // cepComboBox
             // 
-            this.cepComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cepComboBox.BackColor = System.Drawing.Color.LightGray;
             this.cepComboBox.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.cepComboBox.Font = new System.Drawing.Font("Trebuchet MS", 8F);
             this.cepComboBox.FormattingEnabled = true;
-            this.cepComboBox.Location = new System.Drawing.Point(14, 29);
+            this.cepComboBox.Location = new System.Drawing.Point(15, 29);
             this.cepComboBox.Name = "cepComboBox";
             this.cepComboBox.Size = new System.Drawing.Size(181, 24);
             this.cepComboBox.TabIndex = 1;
@@ -265,7 +272,7 @@
             // voltarButton
             // 
             this.voltarButton.Font = new System.Drawing.Font("Trebuchet MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.voltarButton.Location = new System.Drawing.Point(666, 255);
+            this.voltarButton.Location = new System.Drawing.Point(667, 278);
             this.voltarButton.Name = "voltarButton";
             this.voltarButton.Size = new System.Drawing.Size(103, 32);
             this.voltarButton.TabIndex = 64;
@@ -276,7 +283,7 @@
             // liberarButton
             // 
             this.liberarButton.Font = new System.Drawing.Font("Trebuchet MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.liberarButton.Location = new System.Drawing.Point(563, 255);
+            this.liberarButton.Location = new System.Drawing.Point(564, 278);
             this.liberarButton.Name = "liberarButton";
             this.liberarButton.Size = new System.Drawing.Size(103, 32);
             this.liberarButton.TabIndex = 65;
@@ -287,21 +294,23 @@
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel1.Location = new System.Drawing.Point(5, 4);
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.label16);
+            this.panel1.Controls.Add(this.label14);
+            this.panel1.Location = new System.Drawing.Point(6, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(972, 100);
+            this.panel1.Size = new System.Drawing.Size(972, 120);
             this.panel1.TabIndex = 66;
             // 
             // IPessoaEndereco
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.ClientSize = new System.Drawing.Size(984, 290);
+            this.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.ClientSize = new System.Drawing.Size(984, 316);
             this.Controls.Add(this.liberarButton);
             this.Controls.Add(this.voltarButton);
             this.Controls.Add(this.cepComboBox);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.numeroTextBox);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.estadoComboBox);
@@ -309,11 +318,9 @@
             this.Controls.Add(this.bairroTextBox);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.label13);
-            this.Controls.Add(this.label14);
             this.Controls.Add(this.cidadeTextBox);
             this.Controls.Add(this.logradouroTextBox);
             this.Controls.Add(this.label15);
-            this.Controls.Add(this.label16);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.cancelarButton);
@@ -331,6 +338,8 @@
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.enderecoFormClosed);
             this.tabControl1.ResumeLayout(false);
             this.observacaoTabPage.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 

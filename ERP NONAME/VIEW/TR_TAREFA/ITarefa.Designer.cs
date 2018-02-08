@@ -97,10 +97,10 @@
             // 
             this.label4.AutoSize = true;
             this.label4.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.label4.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Font = new System.Drawing.Font("Trebuchet MS", 9F);
             this.label4.Location = new System.Drawing.Point(684, 11);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(73, 18);
+            this.label4.Size = new System.Drawing.Size(68, 18);
             this.label4.TabIndex = 62;
             this.label4.Text = "Severidade";
             // 
@@ -108,21 +108,21 @@
             // 
             this.assuntoTextBox.BackColor = System.Drawing.Color.LightGray;
             this.assuntoTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.assuntoTextBox.Font = new System.Drawing.Font("Trebuchet MS", 9.5F);
+            this.assuntoTextBox.Font = new System.Drawing.Font("Trebuchet MS", 10F);
             this.assuntoTextBox.Location = new System.Drawing.Point(10, 77);
             this.assuntoTextBox.MaxLength = 500;
             this.assuntoTextBox.Name = "assuntoTextBox";
-            this.assuntoTextBox.Size = new System.Drawing.Size(796, 22);
+            this.assuntoTextBox.Size = new System.Drawing.Size(796, 23);
             this.assuntoTextBox.TabIndex = 5;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.label3.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Font = new System.Drawing.Font("Trebuchet MS", 9F);
             this.label3.Location = new System.Drawing.Point(7, 58);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(54, 18);
+            this.label3.Size = new System.Drawing.Size(51, 18);
             this.label3.TabIndex = 57;
             this.label3.Text = "Assunto";
             // 
@@ -130,10 +130,10 @@
             // 
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.label2.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Font = new System.Drawing.Font("Trebuchet MS", 9F);
             this.label2.Location = new System.Drawing.Point(466, 11);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(58, 18);
+            this.label2.Size = new System.Drawing.Size(55, 18);
             this.label2.TabIndex = 56;
             this.label2.Text = "Situação";
             // 
@@ -141,10 +141,10 @@
             // 
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.label1.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Trebuchet MS", 9F);
             this.label1.Location = new System.Drawing.Point(248, 11);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(33, 18);
+            this.label1.Size = new System.Drawing.Size(32, 18);
             this.label1.TabIndex = 55;
             this.label1.Text = "Tipo";
             // 
@@ -152,10 +152,10 @@
             // 
             this.label13.AutoSize = true;
             this.label13.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.label13.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Font = new System.Drawing.Font("Trebuchet MS", 9F);
             this.label13.Location = new System.Drawing.Point(7, 11);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(70, 18);
+            this.label13.Size = new System.Drawing.Size(67, 18);
             this.label13.TabIndex = 54;
             this.label13.Text = "Solicitante";
             // 
@@ -166,7 +166,7 @@
             this.tabControl1.Controls.Add(this.documentaoTabPage);
             this.tabControl1.Controls.Add(this.encaminhamentoTabPage);
             this.tabControl1.Controls.Add(this.anexoTabPage);
-            this.tabControl1.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tabControl1.Font = new System.Drawing.Font("Trebuchet MS", 9F);
             this.tabControl1.Location = new System.Drawing.Point(5, 130);
             this.tabControl1.Multiline = true;
             this.tabControl1.Name = "tabControl1";
@@ -203,17 +203,19 @@
             this.prazoTextBox.BackColor = System.Drawing.Color.LightGray;
             this.prazoTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.prazoTextBox.Enabled = false;
-            this.prazoTextBox.Font = new System.Drawing.Font("Trebuchet MS", 9.5F);
+            this.prazoTextBox.Font = new System.Drawing.Font("Trebuchet MS", 10F);
             this.prazoTextBox.Location = new System.Drawing.Point(245, 20);
             this.prazoTextBox.Name = "prazoTextBox";
             this.prazoTextBox.ReadOnly = true;
-            this.prazoTextBox.Size = new System.Drawing.Size(154, 22);
+            this.prazoTextBox.Size = new System.Drawing.Size(154, 23);
             this.prazoTextBox.TabIndex = 72;
             // 
             // responsavelComboBox
             // 
-            this.responsavelComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.responsavelComboBox.Font = new System.Drawing.Font("Trebuchet MS", 8.5F);
+            this.responsavelComboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.responsavelComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.responsavelComboBox.BackColor = System.Drawing.Color.LightGray;
+            this.responsavelComboBox.Font = new System.Drawing.Font("Trebuchet MS", 8F);
             this.responsavelComboBox.FormattingEnabled = true;
             this.responsavelComboBox.Location = new System.Drawing.Point(4, 19);
             this.responsavelComboBox.Name = "responsavelComboBox";
@@ -225,10 +227,10 @@
             // 
             this.label9.AutoSize = true;
             this.label9.BackColor = System.Drawing.Color.Transparent;
-            this.label9.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Font = new System.Drawing.Font("Trebuchet MS", 9F);
             this.label9.Location = new System.Drawing.Point(242, -1);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(39, 18);
+            this.label9.Size = new System.Drawing.Size(37, 18);
             this.label9.TabIndex = 72;
             this.label9.Text = "Prazo";
             // 
@@ -236,10 +238,10 @@
             // 
             this.label5.AutoSize = true;
             this.label5.BackColor = System.Drawing.Color.Transparent;
-            this.label5.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Font = new System.Drawing.Font("Trebuchet MS", 9F);
             this.label5.Location = new System.Drawing.Point(1, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(79, 18);
+            this.label5.Size = new System.Drawing.Size(74, 18);
             this.label5.TabIndex = 80;
             this.label5.Text = "Responsável";
             // 
@@ -257,6 +259,8 @@
             // 
             // solicitacaoTextBox
             // 
+            this.solicitacaoTextBox.BackColor = System.Drawing.Color.LightGray;
+            this.solicitacaoTextBox.Font = new System.Drawing.Font("Trebuchet MS", 10F);
             this.solicitacaoTextBox.Location = new System.Drawing.Point(1, 0);
             this.solicitacaoTextBox.MaxLength = 8000;
             this.solicitacaoTextBox.Name = "solicitacaoTextBox";
@@ -301,7 +305,7 @@
             this.documentacaoDataGridView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Trebuchet MS", 9F);
             dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Transparent;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
@@ -309,7 +313,7 @@
             this.documentacaoDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Trebuchet MS", 9F);
             dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.MenuHighlight;
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.WindowText;
@@ -321,7 +325,7 @@
             this.documentacaoDataGridView.ReadOnly = true;
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Trebuchet MS", 9F);
             dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black;
@@ -371,7 +375,7 @@
             this.encaminhamentoDataGridView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
             dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Trebuchet MS", 9F);
             dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.Transparent;
             dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
@@ -379,7 +383,7 @@
             this.encaminhamentoDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Trebuchet MS", 9F);
             dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.MenuHighlight;
             dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.WindowText;
@@ -391,7 +395,7 @@
             this.encaminhamentoDataGridView.ReadOnly = true;
             dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Trebuchet MS", 9F);
             dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.Black;
@@ -423,12 +427,12 @@
             dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.MenuHighlight;
             dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.Black;
             this.anexoDataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle9;
-            this.anexoDataGridView.BackgroundColor = System.Drawing.SystemColors.InactiveCaption;
+            this.anexoDataGridView.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
             this.anexoDataGridView.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.anexoDataGridView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
             dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Trebuchet MS", 9F);
             dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.Transparent;
             dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
@@ -436,7 +440,7 @@
             this.anexoDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Trebuchet MS", 9F);
             dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.MenuHighlight;
             dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.WindowText;
@@ -448,7 +452,7 @@
             this.anexoDataGridView.ReadOnly = true;
             dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("Trebuchet MS", 9F);
             dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle12.SelectionForeColor = System.Drawing.Color.Black;
@@ -478,17 +482,19 @@
             // 
             this.label8.AutoSize = true;
             this.label8.BackColor = System.Drawing.Color.Transparent;
-            this.label8.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Font = new System.Drawing.Font("Trebuchet MS", 9F);
             this.label8.Location = new System.Drawing.Point(802, 49);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(35, 18);
+            this.label8.Size = new System.Drawing.Size(32, 18);
             this.label8.TabIndex = 70;
             this.label8.Text = "Data";
             // 
             // tipoComboBox
             // 
-            this.tipoComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.tipoComboBox.Font = new System.Drawing.Font("Trebuchet MS", 8.5F);
+            this.tipoComboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.tipoComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.tipoComboBox.BackColor = System.Drawing.Color.LightGray;
+            this.tipoComboBox.Font = new System.Drawing.Font("Trebuchet MS", 8F);
             this.tipoComboBox.FormattingEnabled = true;
             this.tipoComboBox.Location = new System.Drawing.Point(251, 30);
             this.tipoComboBox.Name = "tipoComboBox";
@@ -498,8 +504,10 @@
             // 
             // situacaoComboBox
             // 
-            this.situacaoComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.situacaoComboBox.Font = new System.Drawing.Font("Trebuchet MS", 8.5F);
+            this.situacaoComboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.situacaoComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.situacaoComboBox.BackColor = System.Drawing.Color.LightGray;
+            this.situacaoComboBox.Font = new System.Drawing.Font("Trebuchet MS", 8F);
             this.situacaoComboBox.FormattingEnabled = true;
             this.situacaoComboBox.Location = new System.Drawing.Point(469, 30);
             this.situacaoComboBox.Name = "situacaoComboBox";
@@ -509,8 +517,10 @@
             // 
             // severidadeComboBox
             // 
-            this.severidadeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.severidadeComboBox.Font = new System.Drawing.Font("Trebuchet MS", 8.5F);
+            this.severidadeComboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.severidadeComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.severidadeComboBox.BackColor = System.Drawing.Color.LightGray;
+            this.severidadeComboBox.Font = new System.Drawing.Font("Trebuchet MS", 8F);
             this.severidadeComboBox.FormattingEnabled = true;
             this.severidadeComboBox.Location = new System.Drawing.Point(687, 30);
             this.severidadeComboBox.Name = "severidadeComboBox";
@@ -522,11 +532,10 @@
             // 
             this.label7.AutoSize = true;
             this.label7.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.label7.Enabled = false;
-            this.label7.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Font = new System.Drawing.Font("Trebuchet MS", 9F);
             this.label7.Location = new System.Drawing.Point(868, 11);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(53, 18);
+            this.label7.Size = new System.Drawing.Size(51, 18);
             this.label7.TabIndex = 67;
             this.label7.Text = "Número";
             // 
@@ -534,10 +543,10 @@
             // 
             this.numeroTextBox.BackColor = System.Drawing.Color.LightGray;
             this.numeroTextBox.Enabled = false;
-            this.numeroTextBox.Font = new System.Drawing.Font("Trebuchet MS", 9.5F);
+            this.numeroTextBox.Font = new System.Drawing.Font("Trebuchet MS", 10F);
             this.numeroTextBox.Location = new System.Drawing.Point(862, 23);
             this.numeroTextBox.Name = "numeroTextBox";
-            this.numeroTextBox.Size = new System.Drawing.Size(97, 22);
+            this.numeroTextBox.Size = new System.Drawing.Size(97, 23);
             this.numeroTextBox.TabIndex = 5;
             // 
             // liberarButton
@@ -587,8 +596,10 @@
             // 
             // solicitanteComboBox
             // 
-            this.solicitanteComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.solicitanteComboBox.Font = new System.Drawing.Font("Trebuchet MS", 8.5F);
+            this.solicitanteComboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.solicitanteComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.solicitanteComboBox.BackColor = System.Drawing.Color.LightGray;
+            this.solicitanteComboBox.Font = new System.Drawing.Font("Trebuchet MS", 8F);
             this.solicitanteComboBox.FormattingEnabled = true;
             this.solicitanteComboBox.Location = new System.Drawing.Point(10, 30);
             this.solicitanteComboBox.Name = "solicitanteComboBox";
@@ -625,11 +636,11 @@
             this.dataTextBox.BackColor = System.Drawing.Color.LightGray;
             this.dataTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.dataTextBox.Enabled = false;
-            this.dataTextBox.Font = new System.Drawing.Font("Trebuchet MS", 9.5F);
+            this.dataTextBox.Font = new System.Drawing.Font("Trebuchet MS", 10F);
             this.dataTextBox.Location = new System.Drawing.Point(805, 69);
             this.dataTextBox.Name = "dataTextBox";
             this.dataTextBox.ReadOnly = true;
-            this.dataTextBox.Size = new System.Drawing.Size(154, 22);
+            this.dataTextBox.Size = new System.Drawing.Size(154, 23);
             this.dataTextBox.TabIndex = 71;
             // 
             // panel2

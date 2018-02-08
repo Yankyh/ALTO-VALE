@@ -338,6 +338,7 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
             preencherTipo();
             //Preenche os endereços
             PreencherEndereco();
+            PreencherAnexo();
 
             //Preenche o form com as informações da pessoa selecionada
             String apelido = "", razaoSocial = "", email = "", cpfCnpj = "", telefone = "", celular = "", observacao = "", tipo = "", situacao = "";
@@ -410,7 +411,7 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
             if (buscarStatusRegistro() == 3 || buscarStatusRegistro() == 4)
             {
                 //Altera o status
-                String query1 = "UPDATE PS_PESSOA SET STATUS  = 2 WHERE HANDLE = " + BuscarHandlePessoa();
+                String query1 = "UPDATE PS_PESSOA SET STATUS  = 2 WHERE HANDLE = " + pessoaHandle;
                 SqlDataReader reader = connection.Pesquisa(query1);
                 reader.Close();
                 ControleDeStatus();
@@ -423,20 +424,6 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
         }
 
 
-        private int BuscarHandlePessoa()
-        {
-            int handlePessoaModificar = 0;
-
-            String query = "SELECT HANDLE FROM PS_PESSOA WHERE CPFCNPJ = '" + cpfcnpjTextBox.Text + "'";
-            SqlDataReader reader = connection.Pesquisa(query); 
-            while (reader.Read())
-            {
-                handlePessoaModificar = Convert.ToInt32(reader["HANDLE"]);
-            }
-            reader.Close();
-            //alterado status do registro voltado
-            return handlePessoaModificar;
-        }
 
         private void liberarButtonOnClick(object sender, EventArgs e)
         {
@@ -618,7 +605,7 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
                            " INNER JOIN PS_PESSOACONTATO C ON C.PESSOA = A.HANDLE" +
                            " INNER JOIN PS_PESSOACONTATOTIPO D ON D.HANDLE = C.TIPO" +
                            " INNER JOIN MD_STATUS E ON E.HANDLE = C.STATUS" +
-                           " WHERE A.HANDLE = " + BuscarHandlePessoa();
+                           " WHERE A.HANDLE = " + pessoaHandle;
             Binding.DataSource = connection.DataTable(query);
 
             contatoDataGridView.DataSource = Binding;
@@ -634,13 +621,12 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
         //Preencher endereço da pessoa
         private void PreencherEndereco()
         {
-            enderecoDataGridView.AutoGenerateColumns = true;
             String query = " SELECT C.HANDLE, D.NOME SITUAÇÃO, C.CEP, C.CIDADE, E.NOME ESTADO, C.BAIRRO, C.LOGRADOURO, C.NUMERO, C.REFERENCIA" +
                            " FROM PS_PESSOA A" +
                            " INNER JOIN PS_PESSOAENDERECO C ON C.PESSOA = A.HANDLE" +
                            " INNER JOIN MD_STATUS D ON D.HANDLE = C.STATUS" +
                            " INNER JOIN MD_ESTADO E ON E.HANDLE = C.ESTADO" +
-                           " WHERE A.HANDLE = " + BuscarHandlePessoa();
+                           " WHERE A.HANDLE = " + pessoaHandle;
             Binding1.DataSource = connection.DataTable(query);
             enderecoDataGridView.DataSource = Binding1;
             enderecoDataGridView.Columns[7].Width = 150;
@@ -720,7 +706,7 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
 
         private void adicionarEnderecoButtonOnClick(object sender, EventArgs e)
         {
-            IPessoaEndereco.handlePessoa = BuscarHandlePessoa();
+            IPessoaEndereco.handlePessoa = pessoaHandle;
             IPessoaEndereco iPessoaEndereco = new IPessoaEndereco();
             iPessoaEndereco.ShowDialog();
         }
@@ -744,7 +730,7 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
         private void adicionarArquivoButtonOnClick(object sender, EventArgs e)
         {
             IAnexoPadrao.handleTabelaOrigem = 3;
-            IAnexoPadrao.handleOrigem = BuscarHandlePessoa();
+            IAnexoPadrao.handleOrigem = pessoaHandle;
             IAnexoPadrao iAnexoPadrao = new IAnexoPadrao();
             iAnexoPadrao.ShowDialog();
         }
@@ -756,11 +742,9 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
             String query = " SELECT A.HANDLE, A.DESCRICAO DESCRIÇÃO, A.NOMEARQUIVO NOME, A.CAMINHO" +
                            " FROM MD_ANEXO A" +
                            " INNER JOIN PS_PESSOA B ON B.HANDLE = A.HANDLEORIGEM" +
-                           " WHERE B.HANDLE = " + BuscarHandlePessoa();
-            anexoDataGridView.AutoGenerateColumns = true;
+                           " WHERE B.HANDLE = " + pessoaHandle;
             Binding2.DataSource = connection.DataTable(query);
             anexoDataGridView.DataSource = Binding2;
-            anexoDataGridView.Columns[0].Width = 0;
             anexoDataGridView.Columns[0].Visible = false;
             anexoDataGridView.Columns[1].Width = 200;
             anexoDataGridView.Columns[2].Width = 200;

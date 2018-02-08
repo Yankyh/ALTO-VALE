@@ -93,7 +93,7 @@
             // 
             // descricaoTextBox
             // 
-            this.descricaoTextBox.BackColor = System.Drawing.Color.White;
+            this.descricaoTextBox.BackColor = System.Drawing.Color.LightGray;
             this.descricaoTextBox.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.descricaoTextBox.Location = new System.Drawing.Point(1, 1);
             this.descricaoTextBox.MaxLength = 2000;
@@ -417,6 +417,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.ClientSize = new System.Drawing.Size(788, 355);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.tabControl1);
