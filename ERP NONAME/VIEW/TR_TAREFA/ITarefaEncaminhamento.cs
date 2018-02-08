@@ -22,20 +22,45 @@ namespace ALTO_VALE.VIEW.TR_TAREFA
         {
             InitializeComponent();
             connection.Conectar();
-            if (handleEncaminhamento != 0)
-            {
-                PreencherFormulario(handleEncaminhamento);
-            }
+
             PreencherComboBoxTipoEncaminhamento();
             PreencherComboBoxResponsavel();
             PreencherComboBoxSeveridade();
             PreencherComboBoxSituacao();
             PreencherComboBoxTipo();
+
+            if (handleEncaminhamento != 0)
+            {
+                PreencherFormulario(handleEncaminhamento);
+            }
+            ControleDeStatus();
         }
 
         private void PreencherFormulario(int handleEncaminhamento)
         {
+            String query = " SELECT B.NOME TIPOENCAMINHAMENTO, A.ASSUNTO, A.DATA, A.TAREFA, C.LOGIN RESPONSAVEL, D.NOME SITUACAO, E.NOME TIPO, F.NOME SEVERIDADE, A.DESCRICAO" +
+                           " FROM TR_TAREFAENCAMINHAMENTO A" +
+                           " INNER JOIN TR_TAREFAENCAMINHAMENTOTIPO B ON B.HANDLE = A.TIPOENCAMINHAMENTO" +
+                           " LEFT JOIN PS_USUARIO C ON C.HANDLE = A.RESPONSAVEL" +
+                           " LEFT JOIN TR_TAREFASITUACAO D ON D.HANDLE = A.SITUACAO" +
+                           " LEFT JOIN TR_TAREFATIPO E ON E.HANDLE = A.TIPO" +
+                           " LEFT JOIN TR_TAREFASEVERIDADE F ON F.HANDLE = A.SEVERIDADE" +
+                           " WHERE A.HANDLE = " + handleEncaminhamento;
+            SqlDataReader reader = connection.Pesquisa(query);
+            while (reader.Read())
+            {
+                tipoEncaminhamentoComboBox.SelectedItem = reader["TIPOENCAMINHAMENTO"];
+                responsavelComboBox.SelectedItem = reader["RESPONSAVEL"];
+                situacaoComboBox.SelectedItem = reader["SITUACAO"];
+                tipoComboBox.SelectedItem = reader["TIPO"];
+                severidadeComboBox.SelectedItem = reader["SEVERIDADE"];
 
+                assuntoTextBox.Text = reader["ASSUNTO"].ToString();
+                dataTextBox.Text = reader["DATA"].ToString();
+                tarefaTextBox.Text = reader["TAREFA"].ToString();
+                descricaoTextBox.Text = reader["DESCRICAO"].ToString();
+            }
+            reader.Close();
         }
 
 
@@ -116,6 +141,10 @@ namespace ALTO_VALE.VIEW.TR_TAREFA
 
         private void TipoEncaminhamentoIndexChanged(object sender, EventArgs e)
         {
+            ControleDeComboBox();
+        }
+        private void ControleDeComboBox()
+        {
             try
             {
                 responsavelComboBox.SelectedIndex = -1;
@@ -165,7 +194,6 @@ namespace ALTO_VALE.VIEW.TR_TAREFA
             {
 
             }
-
         }
         private void AlterarRegistro(String acao)
         {
@@ -182,7 +210,7 @@ namespace ALTO_VALE.VIEW.TR_TAREFA
                 if (acao == "Gravar")
                 {
                     String query = " INSERT INTO TR_TAREFAENCAMINHAMENTO" +
-                                   " (STATUS, TIPOENCAMINHAMENTO, RESPONSAVEL, SITUACAO, TIPO, SEVERIDADE, ASSUNTO, DATA, DESCRICAO, TAREFA) " +
+                                   " (STATUS, TIPOENCAMINHAMENTO, RESPONSAVEL, SITUACAO, TIPO, SEVERIDADE, ASSUNTO, DESCRICAO, TAREFA) " +
                                    " VALUES" +
                                    " (1," +
                                    " " + tipoEncaminhamento + "," +
@@ -191,7 +219,6 @@ namespace ALTO_VALE.VIEW.TR_TAREFA
                                    " " + tipo + "," +
                                    " " + severidade + "," +
                                    " '" + assunto + "'," +
-                                   " GETDATE()," +
                                    " '" + descricao + "'," +
                                    " " + handleTarefa + ")";
                     connection.Inserir(query);
@@ -212,11 +239,50 @@ namespace ALTO_VALE.VIEW.TR_TAREFA
                 {
                     if (acao == "Liberar")
                     {
+                        if (BuscarStatusDoRegistro() == "Cadastrado")
+                        {
+                            String query = " UPDATE TR_TAREFAENCAMINHAMENTO" +
+                                           " SET " +
+                                           " STATUS = 3," +
+                                           " TIPOENCAMINHAMENTO = " + tipoEncaminhamento + "," +
+                                           " RESPONSAVEL = " + responsavel + "," +
+                                           " SITUACAO = " + situacao + "," +
+                                           " TIPO = " + tipo + "," +
+                                           " SEVERIDADE = " + severidade + "," +
+                                           " ASSUNTO = '" + assunto + "'," +
+                                           " DATA = GETDATE()," +
+                                           " DESCRICAO = '" + descricao + "'" +
+                                           " WHERE HANDLE = "+handleEncaminhamento;
+
+                            connection.Inserir(query);
+                        }
+                        else
+                        {
+                            MessageBox.Show("O encaminhamento deve estar na situação Cadastrado para liberar.");
+                        }
 
                     }
                 }
             }
             ControleDeStatus();
+        }
+        private String BuscarStatusDoRegistro()
+        {
+            String status = "";
+            String query = " SELECT B.NOME SITUACAO" +
+                          " FROM TR_TAREFAENCAMINHAMENTO A" +
+                          " INNER JOIN MD_STATUS B ON B.HANDLE = A.STATUS" +
+                          " WHERE A.HANDLE = " + handleEncaminhamento;
+            SqlDataReader reader = connection.Pesquisa(query);
+
+            while (reader.Read())
+            {
+                status = (reader["SITUACAO"]).ToString();
+
+            }
+            reader.Close();
+
+            return status;
         }
         private int BuscarHandleTipoEncaminhamento()
         {
@@ -337,7 +403,7 @@ namespace ALTO_VALE.VIEW.TR_TAREFA
         private void ControleDeStatus()
         {
             String situacao = "";
-            String query = " SELECT B.NOME SITUACAO, A.DATA" +
+            String query = " SELECT B.NOME SITUACAO, A.DATA, A.TAREFA" +
                            " FROM TR_TAREFAENCAMINHAMENTO A" +
                            " INNER JOIN MD_STATUS B ON B.HANDLE = A.STATUS" +
                            " WHERE A.HANDLE = " + handleEncaminhamento;
@@ -347,19 +413,12 @@ namespace ALTO_VALE.VIEW.TR_TAREFA
             {
                 situacao = reader["SITUACAO"].ToString();
                 dataTextBox.Text = reader["DATA"].ToString();
+                tarefaTextBox.Text = reader["TAREFA"].ToString();
             }
             reader.Close();
 
             if (situacao == "Cadastrado")
             {
-                tipoEncaminhamentoComboBox.Enabled = true;
-                tipoComboBox.Enabled = true;
-                responsavelComboBox.Enabled = true;
-                situacaoComboBox.Enabled = true;
-                severidadeComboBox.Enabled = true;
-                descricaoTextBox.ReadOnly = true;
-                assuntoTextBox.ReadOnly = true;
-
                 liberarButton.Visible = true;
                 gravarButton.Visible = false;
                 liberarButton.Location = new Point(681, 320);
@@ -373,8 +432,9 @@ namespace ALTO_VALE.VIEW.TR_TAREFA
                     responsavelComboBox.Enabled = false;
                     situacaoComboBox.Enabled = false;
                     severidadeComboBox.Enabled = false;
-                    descricaoTextBox.ReadOnly = false;
-                    assuntoTextBox.ReadOnly = false;
+
+                    descricaoTextBox.ReadOnly = true;
+                    assuntoTextBox.ReadOnly = true;
 
                     liberarButton.Visible = false;
                     gravarButton.Visible = false;
@@ -400,6 +460,7 @@ namespace ALTO_VALE.VIEW.TR_TAREFA
         private void OnFormClosed(object sender, FormClosedEventArgs e)
         {
             handleTarefa = 0;
+            handleEncaminhamento = 0;
             connection.Desconectar();
         }
     }

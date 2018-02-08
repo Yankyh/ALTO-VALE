@@ -496,6 +496,7 @@ namespace ALTO_VALE.VIEW.TR_TAREFA
         {
             PreencherAnexoDataGridView();
             PreencherDocumentacaoDataGridView();
+            PreencherEncaminhamentoDataGridView();
         }
 
         private int BuscarHandleAnexo()

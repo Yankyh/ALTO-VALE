@@ -229,7 +229,7 @@
             this.assuntoTextBox.Location = new System.Drawing.Point(170, 25);
             this.assuntoTextBox.MaxLength = 60;
             this.assuntoTextBox.Name = "assuntoTextBox";
-            this.assuntoTextBox.Size = new System.Drawing.Size(374, 23);
+            this.assuntoTextBox.Size = new System.Drawing.Size(353, 23);
             this.assuntoTextBox.TabIndex = 2;
             // 
             // dataTextBox
@@ -237,9 +237,9 @@
             this.dataTextBox.BackColor = System.Drawing.Color.LightGray;
             this.dataTextBox.Enabled = false;
             this.dataTextBox.Font = new System.Drawing.Font("Trebuchet MS", 10F);
-            this.dataTextBox.Location = new System.Drawing.Point(550, 25);
+            this.dataTextBox.Location = new System.Drawing.Point(529, 25);
             this.dataTextBox.Name = "dataTextBox";
-            this.dataTextBox.Size = new System.Drawing.Size(127, 23);
+            this.dataTextBox.Size = new System.Drawing.Size(148, 23);
             this.dataTextBox.TabIndex = 99;
             // 
             // label8
@@ -247,7 +247,7 @@
             this.label8.AutoSize = true;
             this.label8.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.label8.Font = new System.Drawing.Font("Trebuchet MS", 9F);
-            this.label8.Location = new System.Drawing.Point(547, 7);
+            this.label8.Location = new System.Drawing.Point(526, 7);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(32, 18);
             this.label8.TabIndex = 84;
