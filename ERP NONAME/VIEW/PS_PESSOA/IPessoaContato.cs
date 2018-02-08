@@ -24,6 +24,9 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
             InitializeComponent();
             //Conexão
             connection.Conectar();
+            //Preenche os combo box's
+            PreencherComboBoxTipo();
+            PreencherComboBoxPessoa();
             //Preencher o formulário ao abrir
             if (contatoHandle == 0)
             {
@@ -36,7 +39,7 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
         }
 
         //Preencher o tipo
-        private void preencherTipo()
+        private void PreencherComboBoxTipo()
         {
             //Limpa a combo box
             tipoComboBox.Items.Clear();
@@ -53,13 +56,12 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
         }
 
         //Preencher pessoa
-        private void PreencherPessoa()
+        private void PreencherComboBoxPessoa()
         {
             //Limpa a combo box
             pessoaComboBox.Items.Clear();
-
             //Lista os tipos
-            String query = " SELECT A.RAZAOSOCIAL " +
+            String query = " SELECT DISTINCT(A.RAZAOSOCIAL) " +
                            " FROM PS_PESSOA A " +
                            " LEFT JOIN PS_PESSOACONTATO B ON B.PESSOA = A.HANDLE"+
                            " WHERE A.STATUS = 3 OR B.PESSOA = (SELECT PESSOA FROM PS_PESSOACONTATO WHERE HANDLE = "+contatoHandle+") ";
@@ -74,7 +76,7 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
 
         private void tipoDropDown(object sender, EventArgs e)
         {
-            preencherTipo();
+            PreencherComboBoxTipo();
         }
 
         private void gravarButtonOnClick(object sender, EventArgs e)
@@ -316,9 +318,6 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
 
         public void preencherFormulario(int contatoHandle)
         {
-            //Preenche o combo box tipo
-            preencherTipo();
-            PreencherPessoa();
 
             //Preenche o form com as informações da pessoa selecionada
             String telefone = "", celular = "", email = "", observacao = "", tipoContato = "", situacao = "", pessoa = "";
@@ -383,7 +382,7 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
 
         private void PessoaComboBoxDropDown(object sender, EventArgs e)
         {
-            PreencherPessoa();
+            PreencherComboBoxPessoa();
         }
 
         private void liberarButtonOnClick(object sender, EventArgs e)

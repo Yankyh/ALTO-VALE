@@ -715,6 +715,7 @@
             this.Name = "IPessoa";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Pessoa";
+            this.Activated += new System.EventHandler(this.PessoaOnActivated);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.IPessoa_FormClosed);
             this.tabControl.ResumeLayout(false);
             this.observacaoTabPage.ResumeLayout(false);

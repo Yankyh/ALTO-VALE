@@ -45,10 +45,11 @@
             this.observacaoTabPage = new System.Windows.Forms.TabPage();
             this.ObservacaoTextBox = new System.Windows.Forms.RichTextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.pessoaComboBox = new System.Windows.Forms.ComboBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.pessoaComboBox = new System.Windows.Forms.ComboBox();
             this.tabControl1.SuspendLayout();
             this.observacaoTabPage.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -93,7 +94,6 @@
             this.tipoComboBox.Name = "tipoComboBox";
             this.tipoComboBox.Size = new System.Drawing.Size(202, 24);
             this.tipoComboBox.TabIndex = 1;
-            this.tipoComboBox.DropDown += new System.EventHandler(this.tipoDropDown);
             // 
             // label12
             // 
@@ -225,6 +225,15 @@
             this.label4.TabIndex = 68;
             this.label4.Text = "Pessoa";
             // 
+            // panel1
+            // 
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel1.Controls.Add(this.pessoaComboBox);
+            this.panel1.Location = new System.Drawing.Point(6, 4);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(765, 115);
+            this.panel1.TabIndex = 69;
+            // 
             // pessoaComboBox
             // 
             this.pessoaComboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
@@ -232,19 +241,10 @@
             this.pessoaComboBox.BackColor = System.Drawing.Color.LightGray;
             this.pessoaComboBox.Font = new System.Drawing.Font("Trebuchet MS", 8F);
             this.pessoaComboBox.FormattingEnabled = true;
-            this.pessoaComboBox.Location = new System.Drawing.Point(13, 28);
+            this.pessoaComboBox.Location = new System.Drawing.Point(5, 22);
             this.pessoaComboBox.Name = "pessoaComboBox";
-            this.pessoaComboBox.Size = new System.Drawing.Size(323, 24);
-            this.pessoaComboBox.TabIndex = 67;
-            this.pessoaComboBox.DropDown += new System.EventHandler(this.PessoaComboBoxDropDown);
-            // 
-            // panel1
-            // 
-            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel1.Location = new System.Drawing.Point(6, 4);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(765, 115);
-            this.panel1.TabIndex = 69;
+            this.pessoaComboBox.Size = new System.Drawing.Size(324, 24);
+            this.pessoaComboBox.TabIndex = 2;
             // 
             // IPessoaContato
             // 
@@ -252,7 +252,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(777, 334);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.pessoaComboBox);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.liberarButton);
             this.Controls.Add(this.voltarButton);
@@ -278,6 +277,7 @@
             this.Load += new System.EventHandler(this.IPessoaContato_Load);
             this.tabControl1.ResumeLayout(false);
             this.observacaoTabPage.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -301,7 +301,7 @@
         private System.Windows.Forms.TabPage observacaoTabPage;
         private System.Windows.Forms.RichTextBox ObservacaoTextBox;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.ComboBox pessoaComboBox;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.ComboBox pessoaComboBox;
     }
 }

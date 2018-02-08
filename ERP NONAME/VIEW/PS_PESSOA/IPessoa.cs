@@ -337,8 +337,8 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
             //Preenche o combo box tipo
             preencherTipo();
             //Preenche os endereços
-            PreencherEndereco();
-            PreencherAnexo();
+            PreencherDataGridViewEndereco();
+            PreencherDataGridViewAnexo();
 
             //Preenche o form com as informações da pessoa selecionada
             String apelido = "", razaoSocial = "", email = "", cpfCnpj = "", telefone = "", celular = "", observacao = "", tipo = "", situacao = "";
@@ -389,7 +389,7 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
             fornecedorCheckBox.Checked = VerificaFlags(ehFornecedor);
             orgaoPublicoCheckBox.Checked = VerificaFlags(ehOrgaoPublico);
             //Preenche o contato
-            preencherContatoPessoa();
+            PreencherDataGridViewContato();
 
             ControleDeStatus();
         }
@@ -472,14 +472,14 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
                 if (status == "Ag. modificações")
                 {
                     //Controle de status
-                    apelidoTextBox.Enabled = true;
-                    razaoSocialTextBox.Enabled = true;
-                    emailTextBox.Enabled = true;
+                    apelidoTextBox.ReadOnly = false;
+                    razaoSocialTextBox.ReadOnly = false;
+                    emailTextBox.ReadOnly = false;
                     tipoComboBox.Enabled = true;
-                    cpfcnpjTextBox.Enabled = true;
-                    telefoneTextBox.Enabled = true;
-                    celularTextBox.Enabled = true;
-                    ObservacaoTextBox.Enabled = true;
+                    cpfcnpjTextBox.ReadOnly = false;
+                    telefoneTextBox.ReadOnly = false;
+                    celularTextBox.ReadOnly = false;
+                    ObservacaoTextBox.ReadOnly = false;
                     //Tabpage abrangencia
                     ClienteCheckBox.Enabled = true;
                     fornecedorCheckBox.Enabled = true;
@@ -504,14 +504,14 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
                     if (status == "Ativo")
                     {
                         //Caso esteja ativo, não permite alterar antes de voltar o registro
-                        apelidoTextBox.Enabled = false;
-                        razaoSocialTextBox.Enabled = false;
-                        emailTextBox.Enabled = false;
+                        apelidoTextBox.ReadOnly = true;
+                        razaoSocialTextBox.ReadOnly = true;
+                        emailTextBox.ReadOnly = true;
                         tipoComboBox.Enabled = false;
-                        cpfcnpjTextBox.Enabled = false;
-                        telefoneTextBox.Enabled = false;
-                        celularTextBox.Enabled = false;
-                        ObservacaoTextBox.Enabled = false;
+                        cpfcnpjTextBox.ReadOnly = true;
+                        telefoneTextBox.ReadOnly = true;
+                        celularTextBox.ReadOnly = true;
+                        ObservacaoTextBox.ReadOnly = true;
                         //Tabpage abrangencia
                         ClienteCheckBox.Enabled = false;
                         fornecedorCheckBox.Enabled = false;
@@ -534,14 +534,14 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
                         if (status == "Cancelado")
                         {
                             //Caso esteja cancelado, não permite alterar antes de voltar o registro
-                            apelidoTextBox.Enabled = false;
-                            razaoSocialTextBox.Enabled = false;
-                            emailTextBox.Enabled = false;
+                            apelidoTextBox.ReadOnly = true;
+                            razaoSocialTextBox.ReadOnly = true;
+                            emailTextBox.ReadOnly = true;
                             tipoComboBox.Enabled = false;
-                            cpfcnpjTextBox.Enabled = false;
-                            telefoneTextBox.Enabled = false;
-                            celularTextBox.Enabled = false;
-                            ObservacaoTextBox.Enabled = false;
+                            cpfcnpjTextBox.ReadOnly = true;
+                            telefoneTextBox.ReadOnly = true;
+                            celularTextBox.ReadOnly = true;
+                            ObservacaoTextBox.ReadOnly = true;
                             //Tabpage abrangencia
                             ClienteCheckBox.Enabled = false;
                             fornecedorCheckBox.Enabled = false;
@@ -597,7 +597,7 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
 
 
         //Contato da pessoa
-        private void preencherContatoPessoa()
+        private void PreencherDataGridViewContato()
         {
             contatoDataGridView.AutoGenerateColumns = true;
             String query = " SELECT E.NOME SITUAÇÃO, D.NOME TIPO, C.TELEFONE, C.CELULAR, C.EMAIL, C.OBSERVACAO, C.HANDLE" +
@@ -619,7 +619,7 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
             contatoDataGridView.AllowUserToResizeRows = false;
         }
         //Preencher endereço da pessoa
-        private void PreencherEndereco()
+        private void PreencherDataGridViewEndereco()
         {
             String query = " SELECT C.HANDLE, D.NOME SITUAÇÃO, C.CEP, C.CIDADE, E.NOME ESTADO, C.BAIRRO, C.LOGRADOURO, C.NUMERO, C.REFERENCIA" +
                            " FROM PS_PESSOA A" +
@@ -649,9 +649,9 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
 
         private void AtualizarInformacoesDoFormulario()
         {
-            preencherContatoPessoa();
-            PreencherEndereco();
-            PreencherAnexo();
+            PreencherDataGridViewContato();
+            PreencherDataGridViewEndereco();
+            PreencherDataGridViewAnexo();
         }
 
         private void removerContatoButtonOnClick(object sender, EventArgs e)
@@ -680,7 +680,7 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
                                     " FROM PS_PESSOACONTATO" +
                                     " WHERE HANDLE = " + pegarHandleContato();
                     connection.Inserir(query2);
-                    preencherContatoPessoa();
+                    PreencherDataGridViewContato();
                 }
             }
         }
@@ -737,7 +737,7 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
 
 
         //Preencher a tabela de anexo
-        private void PreencherAnexo()
+        private void PreencherDataGridViewAnexo()
         {
             String query = " SELECT A.HANDLE, A.DESCRICAO DESCRIÇÃO, A.NOMEARQUIVO NOME, A.CAMINHO" +
                            " FROM MD_ANEXO A" +
@@ -798,7 +798,7 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
                                     " FROM PS_PESSOAENDERECO" +
                                     " WHERE HANDLE = " + PegarHandleEndereco();
                     connection.Inserir(query2);
-                    PreencherEndereco();
+                    PreencherDataGridViewEndereco();
                 }
             }
         }
@@ -919,6 +919,11 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
             return existeEndereco;
         }
 
-
+        private void PessoaOnActivated(object sender, EventArgs e)
+        {
+            PreencherDataGridViewAnexo();
+            PreencherDataGridViewContato();
+            PreencherDataGridViewEndereco();
+        }
     }
 }
