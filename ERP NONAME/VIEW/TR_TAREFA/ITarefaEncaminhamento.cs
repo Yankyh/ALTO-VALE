@@ -241,20 +241,54 @@ namespace ALTO_VALE.VIEW.TR_TAREFA
                     {
                         if (BuscarStatusDoRegistro() == "Cadastrado")
                         {
-                            String query = " UPDATE TR_TAREFAENCAMINHAMENTO" +
-                                           " SET " +
-                                           " STATUS = 3," +
-                                           " TIPOENCAMINHAMENTO = " + tipoEncaminhamento + "," +
-                                           " RESPONSAVEL = " + responsavel + "," +
-                                           " SITUACAO = " + situacao + "," +
-                                           " TIPO = " + tipo + "," +
-                                           " SEVERIDADE = " + severidade + "," +
-                                           " ASSUNTO = '" + assunto + "'," +
-                                           " DATA = GETDATE()," +
-                                           " DESCRICAO = '" + descricao + "'" +
-                                           " WHERE HANDLE = "+handleEncaminhamento;
+                            try
+                            {
+                                String query = " UPDATE TR_TAREFAENCAMINHAMENTO" +
+                                               " SET " +
+                                               " STATUS = 3," +
+                                               " TIPOENCAMINHAMENTO = " + tipoEncaminhamento + "," +
+                                               " RESPONSAVEL = " + responsavel + "," +
+                                               " SITUACAO = " + situacao + "," +
+                                               " TIPO = " + tipo + "," +
+                                               " SEVERIDADE = " + severidade + "," +
+                                               " ASSUNTO = '" + assunto + "'," +
+                                               " DATA = GETDATE()," +
+                                               " DESCRICAO = '" + descricao + "'" +
+                                               " WHERE HANDLE = " + handleEncaminhamento;
 
-                            connection.Inserir(query);
+                                connection.Inserir(query);
+                                //Atualiza a tarefa
+                                if (tipoEncaminhamento == 1)
+                                {
+                                    AlterarTarefa("SEVERIDADE", severidade);
+                                }
+                                else
+                                {
+                                    if (tipoEncaminhamento == 4)
+                                    {
+                                        AlterarTarefa("SITUACAO", situacao);
+                                    }
+                                    else
+                                    {
+                                        if (tipoEncaminhamento == 2)
+                                        {
+                                            AlterarTarefa("RESPONSAVEL", responsavel);
+                                        }
+                                        else
+                                        {
+
+                                            if (tipoEncaminhamento == 3)
+                                            {
+                                                AlterarTarefa("TIPO", tipo);
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                            catch(Exception exception)
+                            {
+                                MessageBox.Show(exception.ToString());
+                            }
                         }
                         else
                         {
@@ -266,6 +300,14 @@ namespace ALTO_VALE.VIEW.TR_TAREFA
             }
             ControleDeStatus();
         }
+        private void AlterarTarefa(String campo, String valor)
+        {
+            String query = " UPDATE TR_TAREFA" +
+                           " SET " + campo + " = " + valor + "" +
+                           " WHERE HANDLE = " + handleTarefa;
+            connection.Inserir(query);
+        }
+
         private String BuscarStatusDoRegistro()
         {
             String status = "";

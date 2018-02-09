@@ -37,7 +37,7 @@ namespace ALTO_VALE
             menuTreeView.Visible = false;
         }
 
-        private void MenuTreeViewDoubleClick(object sender, EventArgs e)
+        private void MenuTreeViewOnDoubleClick(object sender, EventArgs e)
         {
             String nodeSelecionado = "";
             try

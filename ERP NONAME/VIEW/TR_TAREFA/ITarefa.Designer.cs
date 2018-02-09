@@ -196,7 +196,7 @@
             this.panel3.Location = new System.Drawing.Point(1, 0);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(954, 165);
-            this.panel3.TabIndex = 85;
+            this.panel3.TabIndex = 8;
             // 
             // prazoTextBox
             // 

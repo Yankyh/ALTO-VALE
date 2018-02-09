@@ -496,9 +496,7 @@ namespace ALTO_VALE.VIEW.TR_TAREFA
 
         private void TarefaFormActivated(object sender, EventArgs e)
         {
-            PreencherAnexoDataGridView();
-            PreencherDocumentacaoDataGridView();
-            PreencherEncaminhamentoDataGridView();
+            PreencherFormulario();
         }
 
         private int BuscarHandleAnexo()
