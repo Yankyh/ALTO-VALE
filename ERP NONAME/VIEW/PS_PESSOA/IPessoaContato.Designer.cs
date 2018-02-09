@@ -94,6 +94,7 @@
             this.tipoComboBox.Name = "tipoComboBox";
             this.tipoComboBox.Size = new System.Drawing.Size(202, 24);
             this.tipoComboBox.TabIndex = 1;
+            this.tipoComboBox.Leave += new System.EventHandler(this.TipoComboBoxOnFocusLeave);
             // 
             // label12
             // 
@@ -245,6 +246,7 @@
             this.pessoaComboBox.Name = "pessoaComboBox";
             this.pessoaComboBox.Size = new System.Drawing.Size(324, 24);
             this.pessoaComboBox.TabIndex = 2;
+            this.pessoaComboBox.Leave += new System.EventHandler(this.PessoaComboBoxOnFocusLeave);
             // 
             // IPessoaContato
             // 

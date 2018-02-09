@@ -232,6 +232,7 @@
             this.tipoComboBox.Name = "tipoComboBox";
             this.tipoComboBox.Size = new System.Drawing.Size(202, 24);
             this.tipoComboBox.TabIndex = 69;
+            this.tipoComboBox.Leave += new System.EventHandler(this.TipoComboBoxOnFocusLeave);
             // 
             // label12
             // 

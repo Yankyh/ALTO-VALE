@@ -98,6 +98,7 @@
             this.estadoComboBox.Size = new System.Drawing.Size(224, 24);
             this.estadoComboBox.TabIndex = 3;
             this.estadoComboBox.DropDown += new System.EventHandler(this.estadoDropDown);
+            this.estadoComboBox.Leave += new System.EventHandler(this.EstadoComboBoxOnFocusLeave);
             // 
             // referenciaTextBox
             // 
@@ -268,6 +269,7 @@
             this.cepComboBox.TabIndex = 1;
             this.cepComboBox.DropDown += new System.EventHandler(this.cepDropDown);
             this.cepComboBox.DropDownClosed += new System.EventHandler(this.cepDropDownClosed);
+            this.cepComboBox.Leave += new System.EventHandler(this.CepComboBoxOnFocusLeave);
             // 
             // voltarButton
             // 

@@ -460,6 +460,118 @@ namespace ALTO_VALE.VIEW.TR_TAREFA
             this.Text = "Encaminhamento - " + situacao;
 
         }
+
+        //
+        private void TipoComboBoxOnFocusLeave(object sender, EventArgs e)
+        {
+            Boolean itemExiste = false;
+            try
+            {
+                foreach (var item in tipoComboBox.Items)
+                {
+                    if (tipoComboBox.SelectedItem == item)
+                    {
+                        itemExiste = true;
+                    }
+                }
+                if (itemExiste == false)
+                {
+                    tipoComboBox.Text = "";
+                }
+            }
+            catch
+            {
+
+            }
+        }
+        private void TipoEncaminhamentoComboBoxOnFocusLeave(object sender, EventArgs e)
+        {
+            Boolean itemExiste = false;
+            try
+            {
+                foreach (var item in tipoEncaminhamentoComboBox.Items)
+                {
+                    if (tipoEncaminhamentoComboBox.SelectedItem == item)
+                    {
+                        itemExiste = true;
+                    }
+                }
+                if (itemExiste == false)
+                {
+                    tipoEncaminhamentoComboBox.Text = "";
+                }
+            }
+            catch
+            {
+
+            }
+        }
+        private void SeveridadeComboBoxOnFocusLeave(object sender, EventArgs e)
+        {
+            Boolean itemExiste = false;
+            try
+            {
+                foreach (var item in severidadeComboBox.Items)
+                {
+                    if (severidadeComboBox.SelectedItem == item)
+                    {
+                        itemExiste = true;
+                    }
+                }
+                if (itemExiste == false)
+                {
+                    severidadeComboBox.Text = "";
+                }
+            }
+            catch
+            {
+
+            }
+        }
+        private void SituacaoComboBoxOnFocusLeave(object sender, EventArgs e)
+        {
+            Boolean itemExiste = false;
+            try
+            {
+                foreach (var item in situacaoComboBox.Items)
+                {
+                    if (situacaoComboBox.SelectedItem == item)
+                    {
+                        itemExiste = true;
+                    }
+                }
+                if (itemExiste == false)
+                {
+                    situacaoComboBox.Text = "";
+                }
+            }
+            catch
+            {
+
+            }
+        }
+        private void ResponsavelComboBoxOnFocusLeave(object sender, EventArgs e)
+        {
+            Boolean itemExiste = false;
+            try
+            {
+                foreach (var item in responsavelComboBox.Items)
+                {
+                    if (responsavelComboBox.SelectedItem == item)
+                    {
+                        itemExiste = true;
+                    }
+                }
+                if (itemExiste == false)
+                {
+                    responsavelComboBox.Text = "";
+                }
+            }
+            catch
+            {
+
+            }
+        }
         //
         private void OnFormClosed(object sender, FormClosedEventArgs e)
         {

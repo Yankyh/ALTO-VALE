@@ -26,7 +26,7 @@ namespace ALTO_VALE.VIEW.TR_TAREFA
         {
             InitializeComponent();
             connection.Conectar();
-            PreencherTipo();
+            PreencherComboBoxTipo();
             tarefaTextBox.ReadOnly = true;
             if (handleDocumentacao != 0)
             {
@@ -41,7 +41,7 @@ namespace ALTO_VALE.VIEW.TR_TAREFA
         //Preencher formulario
         private void PreencherFormulario()
         {
-            PreencherTipo();
+            PreencherComboBoxTipo();
             PreencherAnexoDataGridView();
             String query = " SELECT B.NOME TIPO, A.OBSERVACAO, A.TAREFA, A.ASSUNTO, A.DATA" +
                            " FROM TR_TAREFADOCUMENTACAO A" +
@@ -253,9 +253,31 @@ namespace ALTO_VALE.VIEW.TR_TAREFA
             }
             return handleAnexo;
         }
+        //Valida os combo box
+        private void TipoComboBoxOnFocusLeave(object sender, EventArgs e)
+        {
+            Boolean itemExiste = false;
+            try
+            {
+                foreach (var item in tipoComboBox.Items)
+                {
+                    if (tipoComboBox.SelectedItem == item)
+                    {
+                        itemExiste = true;
+                    }
+                }
+                if (itemExiste == false)
+                {
+                    tipoComboBox.Text = "";
+                }
+            }
+            catch
+            {
 
+            }
+        }
         //Preencher campos
-        private void PreencherTipo()
+        private void PreencherComboBoxTipo()
         {
             //Limpa a combo box
             tipoComboBox.Items.Clear();

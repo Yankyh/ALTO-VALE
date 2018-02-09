@@ -22,6 +22,9 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
             InitializeComponent();
             //Conectar
             connection.Conectar();
+            //preenche o cep combo box
+            PreencherComboBoxCep();
+            PreencherComboBoxEstado();
             //Preencher o formulario
             if (handleEndereco != 0)
             {
@@ -59,9 +62,7 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
             }
             reader.Close();
 
-            //preenche o cep combo box
-            PreencherCepComboBox();
-            preencherEstado();
+
             //Preenche os campos
             cepComboBox.SelectedItem = cep;
             cidadeTextBox.Text = cidade;
@@ -203,10 +204,10 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
         //Tipo Pessoa
         private void estadoDropDown(object sender, EventArgs e)
         {
-            preencherEstado();
+            PreencherComboBoxEstado();
         }
         //preencher estado
-        private void preencherEstado()
+        private void PreencherComboBoxEstado()
         {
             //Limpa a combo box
             estadoComboBox.Items.Clear();
@@ -303,10 +304,10 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
 
         private void cepDropDown(object sender, EventArgs e)
         {
-            PreencherCepComboBox();
+            PreencherComboBoxCep();
         }
         //Preencher combo box cep
-        private void PreencherCepComboBox()
+        private void PreencherComboBoxCep()
         {
             //Limpa a combo box
             cepComboBox.Items.Clear();
@@ -376,7 +377,7 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
             }
             reader.Close();
             //Preenche o campo estado
-            preencherEstado();
+            PreencherComboBoxEstado();
             estadoComboBox.SelectedItem = estado;
             cidadeTextBox.Text = cidade;
             bairroTextBox.Text = bairro;
@@ -402,6 +403,52 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
         {
             handlePessoa = 0;
             handleEndereco = 0;
+        }
+
+        private void CepComboBoxOnFocusLeave(object sender, EventArgs e)
+        {
+            Boolean itemExiste = false;
+            try
+            {
+                foreach (var item in cepComboBox.Items)
+                {
+                    if (cepComboBox.SelectedItem == item)
+                    {
+                        itemExiste = true;
+                    }
+                }
+                if (itemExiste == false)
+                {
+                    cepComboBox.Text = "";
+                }
+            }
+            catch
+            {
+
+            }
+        }
+
+        private void EstadoComboBoxOnFocusLeave(object sender, EventArgs e)
+        {
+            Boolean itemExiste = false;
+            try
+            {
+                foreach (var item in estadoComboBox.Items)
+                {
+                    if (estadoComboBox.SelectedItem == item)
+                    {
+                        itemExiste = true;
+                    }
+                }
+                if (itemExiste == false)
+                {
+                    estadoComboBox.Text = "";
+                }
+            }
+            catch
+            {
+
+            }
         }
 
         //Controle de status

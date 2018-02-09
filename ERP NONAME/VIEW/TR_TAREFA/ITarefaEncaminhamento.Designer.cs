@@ -265,6 +265,7 @@
             this.tipoEncaminhamentoComboBox.Size = new System.Drawing.Size(158, 24);
             this.tipoEncaminhamentoComboBox.TabIndex = 1;
             this.tipoEncaminhamentoComboBox.SelectedIndexChanged += new System.EventHandler(this.TipoEncaminhamentoIndexChanged);
+            this.tipoEncaminhamentoComboBox.Leave += new System.EventHandler(this.TipoEncaminhamentoComboBoxOnFocusLeave);
             // 
             // label3
             // 
@@ -328,6 +329,7 @@
             this.situacaoComboBox.Name = "situacaoComboBox";
             this.situacaoComboBox.Size = new System.Drawing.Size(251, 24);
             this.situacaoComboBox.TabIndex = 4;
+            this.situacaoComboBox.Leave += new System.EventHandler(this.SituacaoComboBoxOnFocusLeave);
             // 
             // label1
             // 
@@ -352,6 +354,7 @@
             this.severidadeComboBox.Name = "severidadeComboBox";
             this.severidadeComboBox.Size = new System.Drawing.Size(202, 24);
             this.severidadeComboBox.TabIndex = 6;
+            this.severidadeComboBox.Leave += new System.EventHandler(this.SeveridadeComboBoxOnFocusLeave);
             // 
             // label7
             // 
@@ -376,6 +379,7 @@
             this.tipoComboBox.Name = "tipoComboBox";
             this.tipoComboBox.Size = new System.Drawing.Size(297, 24);
             this.tipoComboBox.TabIndex = 5;
+            this.tipoComboBox.Leave += new System.EventHandler(this.TipoComboBoxOnFocusLeave);
             // 
             // label9
             // 
@@ -401,6 +405,7 @@
             this.responsavelComboBox.Size = new System.Drawing.Size(202, 24);
             this.responsavelComboBox.TabIndex = 3;
             this.responsavelComboBox.TextUpdate += new System.EventHandler(this.TipoEncaminhamentoIndexChanged);
+            this.responsavelComboBox.Leave += new System.EventHandler(this.ResponsavelComboBoxOnFocusLeave);
             // 
             // label10
             // 

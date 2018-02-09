@@ -622,9 +622,9 @@
             this.tipoComboBox.Name = "tipoComboBox";
             this.tipoComboBox.Size = new System.Drawing.Size(304, 26);
             this.tipoComboBox.TabIndex = 3;
-            this.tipoComboBox.DropDown += new System.EventHandler(this.tipoDropDown);
             this.tipoComboBox.DropDownClosed += new System.EventHandler(this.tipoDropClosed);
             this.tipoComboBox.TextChanged += new System.EventHandler(this.tipoDropClosed);
+            this.tipoComboBox.Leave += new System.EventHandler(this.TipoComboBoxOnFocusLeave);
             // 
             // label3
             // 

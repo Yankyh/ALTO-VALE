@@ -34,6 +34,10 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
             InitializeComponent();
             connection.Conectar();
             cpfcnpjTextBox.Enabled = false;
+
+            //Preenche os combo box
+            PreencherComboBoxTipo();
+
             if (pessoaHandle == 0)
             {
                 ControleDeStatus();
@@ -239,12 +243,7 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
                 }
             }
         }
-        //Tipo Pessoa
-        private void tipoDropDown(object sender, EventArgs e)
-        {
-            preencherTipo();
-        }
-        private void preencherTipo()
+        private void PreencherComboBoxTipo()
         {
             //Limpa a combo box
             tipoComboBox.Items.Clear();
@@ -335,7 +334,7 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
         public void preencherFormulario(int handlePessoa)
         {
             //Preenche o combo box tipo
-            preencherTipo();
+            PreencherComboBoxTipo();
             //Preenche os endereços
             PreencherDataGridViewEndereco();
             PreencherDataGridViewAnexo();
@@ -924,6 +923,29 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
             PreencherDataGridViewAnexo();
             PreencherDataGridViewContato();
             PreencherDataGridViewEndereco();
+        }
+
+        private void TipoComboBoxOnFocusLeave(object sender, EventArgs e)
+        {
+            Boolean itemExiste = false;
+            try
+            {
+                foreach (var item in tipoComboBox.Items)
+                {
+                    if (tipoComboBox.SelectedItem == item)
+                    {
+                        itemExiste = true;
+                    }
+                }
+                if (itemExiste == false)
+                {
+                    tipoComboBox.Text = "";
+                }
+            }
+            catch
+            {
+
+            }
         }
     }
 }

@@ -63,8 +63,8 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
             //Lista os tipos
             String query = " SELECT DISTINCT(A.RAZAOSOCIAL) " +
                            " FROM PS_PESSOA A " +
-                           " LEFT JOIN PS_PESSOACONTATO B ON B.PESSOA = A.HANDLE"+
-                           " WHERE A.STATUS = 3 OR B.PESSOA = (SELECT PESSOA FROM PS_PESSOACONTATO WHERE HANDLE = "+contatoHandle+") ";
+                           " LEFT JOIN PS_PESSOACONTATO B ON B.PESSOA = A.HANDLE" +
+                           " WHERE A.STATUS = 3 OR B.PESSOA = (SELECT PESSOA FROM PS_PESSOACONTATO WHERE HANDLE = " + contatoHandle + ") ";
             SqlDataReader reader = connection.Pesquisa(query);
 
             while (reader.Read())
@@ -402,6 +402,52 @@ namespace ALTO_VALE.VIEW.PS_PESSOA
         private void IPessoaContato_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void PessoaComboBoxOnFocusLeave(object sender, EventArgs e)
+        {
+            Boolean itemExiste = false;
+            try
+            {
+                foreach (var item in pessoaComboBox.Items)
+                {
+                    if (pessoaComboBox.SelectedItem == item)
+                    {
+                        itemExiste = true;
+                    }
+                }
+                if (itemExiste == false)
+                {
+                    pessoaComboBox.Text = "";
+                }
+            }
+            catch
+            {
+
+            }
+        }
+
+        private void TipoComboBoxOnFocusLeave(object sender, EventArgs e)
+        {
+            Boolean itemExiste = false;
+            try
+            {
+                foreach (var item in tipoComboBox.Items)
+                {
+                    if (tipoComboBox.SelectedItem == item)
+                    {
+                        itemExiste = true;
+                    }
+                }
+                if (itemExiste == false)
+                {
+                    tipoComboBox.Text = "";
+                }
+            }
+            catch
+            {
+
+            }
         }
     }
 }
