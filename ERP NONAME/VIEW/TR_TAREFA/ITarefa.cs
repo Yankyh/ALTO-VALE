@@ -33,11 +33,18 @@ namespace ALTO_VALE.VIEW.TR_TAREFA
             InitializeComponent();
             //abre a conexão
             connection.Conectar();
+            //
+            PreencherComboBoxResponsavel();
+            PreencherComboBoxSeveridade();
+            PreencherComboBoxSituacao();
+            PreencherComboBoxSolicitante();
+            PreencherComboBoxTipo();
 
             if (handleTarefa != 0)
             {
                 PreencherFormulario();
             }
+
             ControleDeStatus();
         }
 
@@ -45,11 +52,6 @@ namespace ALTO_VALE.VIEW.TR_TAREFA
         private void PreencherFormulario()
         {
             //Preencher os combo box
-            PreencherComboBoxResponsavel();
-            PreencherComboBoxSeveridade();
-            PreencherComboBoxSituacao();
-            PreencherComboBoxSolicitante();
-            PreencherComboBoxTipo();
             PreencherAnexoDataGridView();
             PreencherDocumentacaoDataGridView();
             PreencherEncaminhamentoDataGridView();
@@ -574,6 +576,117 @@ namespace ALTO_VALE.VIEW.TR_TAREFA
             PreencherComboBoxTipo();
         }
 
+        private void SolicitanteComboBoxOnFocusLeave(object sender, EventArgs e)
+        {
+            Boolean itemExiste = false;
+            try
+            {
+                foreach (var item in solicitanteComboBox.Items)
+                {
+                   if(solicitanteComboBox.SelectedItem == item)
+                    {
+                        itemExiste = true;
+                    }
+                }
+                if(itemExiste == false)
+                {
+                    solicitanteComboBox.Text = "";
+                }
+            }
+            catch
+            {
+
+            }
+        }
+        //
+        private void TipoComboBoxOnFocusLeave(object sender, EventArgs e)
+        {
+            Boolean itemExiste = false;
+            try
+            {
+                foreach (var item in tipoComboBox.Items)
+                {
+                    if (tipoComboBox.SelectedItem == item)
+                    {
+                        itemExiste = true;
+                    }
+                }
+                if (itemExiste == false)
+                {
+                    tipoComboBox.Text = "";
+                }
+            }
+            catch
+            {
+
+            }
+        }
+        private void SeveridadeComboBoxOnFocusLeave(object sender, EventArgs e)
+        {
+            Boolean itemExiste = false;
+            try
+            {
+                foreach (var item in severidadeComboBox.Items)
+                {
+                    if (severidadeComboBox.SelectedItem == item)
+                    {
+                        itemExiste = true;
+                    }
+                }
+                if (itemExiste == false)
+                {
+                    severidadeComboBox.Text = "";
+                }
+            }
+            catch
+            {
+
+            }
+        }
+        private void SituacaoComboBoxOnFocusLeave(object sender, EventArgs e)
+        {
+            Boolean itemExiste = false;
+            try
+            {
+                foreach (var item in situacaoComboBox.Items)
+                {
+                    if (situacaoComboBox.SelectedItem == item)
+                    {
+                        itemExiste = true;
+                    }
+                }
+                if (itemExiste == false)
+                {
+                    situacaoComboBox.Text = "";
+                }
+            }
+            catch
+            {
+
+            }
+        }
+        private void ResponsavelComboBoxOnFocusLeave(object sender, EventArgs e)
+        {
+            Boolean itemExiste = false;
+            try
+            {
+                foreach (var item in responsavelComboBox.Items)
+                {
+                    if (responsavelComboBox.SelectedItem == item)
+                    {
+                        itemExiste = true;
+                    }
+                }
+                if (itemExiste == false)
+                {
+                    responsavelComboBox.Text = "";
+                }
+            }
+            catch
+            {
+
+            }
+        }
         private void SituacaoDropDown(object sender, EventArgs e)
         {
             PreencherComboBoxSituacao();
@@ -704,7 +817,7 @@ namespace ALTO_VALE.VIEW.TR_TAREFA
             }
             return handleEncaminhamento;
         }
-        
+
         //Controle de status
         private void ControleDeStatus()
         {

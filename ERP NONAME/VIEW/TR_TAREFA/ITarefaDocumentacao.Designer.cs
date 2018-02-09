@@ -225,9 +225,10 @@
             // 
             this.tipoComboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.tipoComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.tipoComboBox.BackColor = System.Drawing.Color.LightGray;
             this.tipoComboBox.Font = new System.Drawing.Font("Trebuchet MS", 8F);
             this.tipoComboBox.FormattingEnabled = true;
-            this.tipoComboBox.Location = new System.Drawing.Point(6, 20);
+            this.tipoComboBox.Location = new System.Drawing.Point(6, 21);
             this.tipoComboBox.Name = "tipoComboBox";
             this.tipoComboBox.Size = new System.Drawing.Size(202, 24);
             this.tipoComboBox.TabIndex = 69;

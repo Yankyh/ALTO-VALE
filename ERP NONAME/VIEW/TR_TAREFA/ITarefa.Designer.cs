@@ -221,7 +221,7 @@
             this.responsavelComboBox.Name = "responsavelComboBox";
             this.responsavelComboBox.Size = new System.Drawing.Size(235, 24);
             this.responsavelComboBox.TabIndex = 8;
-            this.responsavelComboBox.DropDown += new System.EventHandler(this.ResponsavelDropDown);
+            this.responsavelComboBox.Leave += new System.EventHandler(this.ResponsavelComboBoxOnFocusLeave);
             // 
             // label9
             // 
@@ -500,7 +500,7 @@
             this.tipoComboBox.Name = "tipoComboBox";
             this.tipoComboBox.Size = new System.Drawing.Size(212, 24);
             this.tipoComboBox.TabIndex = 2;
-            this.tipoComboBox.DropDown += new System.EventHandler(this.TipoDropDown);
+            this.tipoComboBox.Leave += new System.EventHandler(this.TipoComboBoxOnFocusLeave);
             // 
             // situacaoComboBox
             // 
@@ -513,7 +513,7 @@
             this.situacaoComboBox.Name = "situacaoComboBox";
             this.situacaoComboBox.Size = new System.Drawing.Size(212, 24);
             this.situacaoComboBox.TabIndex = 3;
-            this.situacaoComboBox.DropDown += new System.EventHandler(this.SituacaoDropDown);
+            this.situacaoComboBox.Leave += new System.EventHandler(this.SituacaoComboBoxOnFocusLeave);
             // 
             // severidadeComboBox
             // 
@@ -526,7 +526,7 @@
             this.severidadeComboBox.Name = "severidadeComboBox";
             this.severidadeComboBox.Size = new System.Drawing.Size(178, 24);
             this.severidadeComboBox.TabIndex = 4;
-            this.severidadeComboBox.DropDown += new System.EventHandler(this.SeveridadeDropDown);
+            this.severidadeComboBox.Leave += new System.EventHandler(this.SeveridadeComboBoxOnFocusLeave);
             // 
             // label7
             // 
@@ -605,7 +605,7 @@
             this.solicitanteComboBox.Name = "solicitanteComboBox";
             this.solicitanteComboBox.Size = new System.Drawing.Size(235, 24);
             this.solicitanteComboBox.TabIndex = 1;
-            this.solicitanteComboBox.DropDown += new System.EventHandler(this.SolicitanteDropDown);
+            this.solicitanteComboBox.Leave += new System.EventHandler(this.SolicitanteComboBoxOnFocusLeave);
             // 
             // encerrarButton
             // 
